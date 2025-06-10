@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZAIR - Flight Search</title>
+    <link rel="stylesheet" href="flightSearch.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <div class="logo">EZAIR</div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="active">항공</a></li>
+                        <li><a href="#">호텔</a></li>
+                        <li><a href="#">패키지</a></li>
+                        <li><a href="#">For U</a></li>
+                        <li><img src="https://placehold.co/15x8" alt="Dropdown"></li>
+                    </ul>
+                </nav>
+                <div class="header-icons">
+                    <div class="icon-wrapper"><div class="icon-placeholder"></div></div>
+                    <div class="icon-wrapper"><div class="icon-placeholder"></div></div>
+                </div>
+            </div>
+            <div class="hero-section">
+                <img class="hero-image" src="https://placehold.co/1920x320" alt="Hero Background">
+                <div class="hero-content">
+                    <div class="hero-title">맞춤형 여행의 시작</div>
+                    <div class="hero-subtitle">EZ AIR!</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="flight-search-card">
+                <div class="trip-type-selection">
+                    <div class="trip-type-button active">왕복</div>
+                    <div class="trip-type-button">편도</div>
+                    <div class="trip-type-button">다구간</div>
+                </div>
+                <div class="flight-details">
+                    <div class="origin-destination">
+                        <div class="origin">
+                            <div class="airport-code">ICN</div>
+                            <div class="city-name">인천</div>
+                            <img src="https://placehold.co/10x6" alt="Dropdown">
+                        </div>
+                        <div class="swap-button">
+                             </div>
+                        <div class="destination">
+                            <div class="airport-code">도착</div>
+                            <div class="city-name">선택</div>
+                            <img src="https://placehold.co/10x6" alt="Dropdown">
+                        </div>
+                    </div>
+                    <div class="date-selection">
+                        <div class="date-input">
+                            <img src="https://placehold.co/13x14" alt="Calendar Icon">
+                            <span>가는 날</span>
+                        </div>
+                        <div class="date-input">
+                            <img src="https://placehold.co/13x14" alt="Calendar Icon">
+                            <span>오는 날</span>
+                        </div>
+                    </div>
+                    <div class="passenger-class-selection">
+                        <div class="passenger-input">
+                            <img src="https://placehold.co/14x14" alt="Person Icon">
+                            <span>성인 1명, 일…</span>
+                        </div>
+                        <div class="direct-flight-input">
+                            <img src="https://placehold.co/19x19" alt="Flight Icon">
+                            <span>직항만</span>
+                        </div>
+                    </div>
+                    <div class="business-travel-option">
+                        <img src="https://placehold.co/19x19" alt="Briefcase Icon">
+                        <span>해외 출장입니다</span>
+                    </div>
+                    <button class="search-button">항공권 검색</button>
+                </div>
+            </div>
+
+            <div class="ai-assistant-card">
+                <div class="ai-tag">
+                    <div class="ai-text">AI</div>
+                    <div class="ai-decoration"></div>
+                    <div class="ai-decoration-small"></div>
+                    <div class="ai-decoration-smaller"></div>
+                </div>
+                <div class="ai-title">AI 항공권 어시스턴트</div>
+                <div class="ai-description">자연어로 편리하게 항공권을 검색하고 추천받으세요</div>
+                <div class="search-bar-ai">
+                    <div class="cloud-icon">구름</div>
+                    <input type="text" placeholder="&quot;다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘&quot;">
+                    <div class="microphone-icon">
+                        <div class="microphone-inner"></div>
+                    </div>
+                </div>
+                <div class="ai-features">
+                    <div class="feature-item">✨ 자연어 검색</div>
+                    <div class="feature-item">🎯 맞춤 추천</div>
+                    <div class="feature-item">⚡ 실시간 비교</div>
+                </div>
+            </div>
+
+            <aside class="travel-checklist">
+                <h3>여행 전에 필수 체크!</h3>
+                <div class="checklist-item">
+                    <img src="https://placehold.co/36x36" alt="Icon">
+                    <div class="item-content">
+                        <div class="item-title">해외 출장 가시나요?</div>
+                        <div class="item-description">출장 선호 항공편 알려드려요</div>
+                    </div>
+                    <img src="https://placehold.co/8x14" alt="Arrow">
+                </div>
+                <div class="checklist-item">
+                    <img src="https://placehold.co/36x36" alt="Icon">
+                    <div class="item-content">
+                        <div class="item-title">호텔 추천 For U</div>
+                        <div class="item-description">맞춤 호텔을 추천해드려요</div>
+                    </div>
+                    <img src="https://placehold.co/8x14" alt="Arrow">
+                </div>
+                <div class="checklist-item">
+                    <img src="https://placehold.co/36x36" alt="Icon">
+                    <div class="item-content">
+                        <div class="item-title">전세계 모든곳검색</div>
+                        <div class="item-description">인기 항공편만 가격순으로</div>
+                    </div>
+                    <img src="https://placehold.co/8x14" alt="Arrow">
+                </div>
+            </aside>
+
+            <section class="recommended-destinations">
+                <h2>구름이 추천 여행지</h2>
+                <div class="recommendation-tabs">
+                    <button class="tab-button active">
+                        <div class="icon-wrapper">
+                            <div class="airplane-icon-small"></div>
+                            <div class="airplane-icon-large"></div>
+                        </div>
+                        <span>항공편</span>
+                    </button>
+                    <button class="tab-button">
+                        <div class="icon-wrapper">
+                             <div class="hotel-icon"></div>
+                        </div>
+                        <span>숙박</span>
+                    </button>
+                </div>
+                <div class="ai-analysis-results">
+                    <div class="analysis-item">AI 분석 결과</div>
+                    <div class="analysis-item">문화 체험 선호도: <strong>높음</strong></div>
+                    <div class="analysis-item">예산 범위: <strong>중간</strong></div>
+                    <div class="analysis-item">여행 스타일: <strong>도시 + 자연</strong></div>
+                </div>
+
+                <div class="flight-cards-container">
+                    <div class="flight-card">
+                        <img src="https://placehold.co/363x184" alt="Destination Image" class="card-image">
+                        <div class="recommendation-badge">추천도 87%</div>
+                        <div class="card-tag">해변 휴양 | 리조트</div>
+                        <div class="card-content">
+                            <div class="flight-route">서울 (ICN) - 사가 (HSG)</div>
+                            <div class="flight-date">7월 6일 (일)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                            <div class="flight-date">7월 7일 (월)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                        </div>
+                    </div>
+                     <div class="flight-card">
+                        <img src="https://placehold.co/363x184" alt="Destination Image" class="card-image">
+                        <div class="recommendation-badge">추천도 87%</div>
+                        <div class="card-tag">해변 휴양 | 리조트</div>
+                        <div class="card-content">
+                            <div class="flight-route">서울 (ICN) - 사가 (HSG)</div>
+                            <div class="flight-date">7월 6일 (일)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                            <div class="flight-date">7월 7일 (월)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                        </div>
+                    </div>
+                     <div class="flight-card">
+                        <img src="https://placehold.co/363x184" alt="Destination Image" class="card-image">
+                        <div class="recommendation-badge">추천도 87%</div>
+                        <div class="card-tag">해변 휴양 | 리조트</div>
+                        <div class="card-content">
+                            <div class="flight-route">서울 (ICN) - 사가 (HSG)</div>
+                            <div class="flight-date">7월 6일 (일)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                            <div class="flight-date">7월 7일 (월)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                        </div>
+                    </div>
+                     <div class="flight-card">
+                        <img src="https://placehold.co/363x184" alt="Destination Image" class="card-image">
+                        <div class="recommendation-badge">추천도 87%</div>
+                        <div class="card-tag">해변 휴양 | 리조트</div>
+                        <div class="card-content">
+                            <div class="flight-route">서울 (ICN) - 사가 (HSG)</div>
+                            <div class="flight-date">7월 6일 (일)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                            <div class="flight-date">7월 7일 (월)</div>
+                            <div class="flight-info">티웨이 항공의 ICN - HSG 항공권</div>
+                            <div class="direct-flight-tag">직항</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="pagination-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </section>
+
+            <section class="themed-travel">
+                <h2>테마별 여행지</h2>
+                <div class="theme-cards-container">
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#가족여행</div>
+                        <div class="card-price">77,901원~</div>
+                        <div class="card-departure">06월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#휴양지</div>
+                        <div class="card-price">132,053원~</div>
+                        <div class="card-departure">09월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#커플여행</div>
+                        <div class="card-price">92,682원~</div>
+                        <div class="card-departure">07월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#신혼여행</div>
+                        <div class="card-price">182,950원~</div>
+                        <div class="card-departure">07월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#태교여행</div>
+                        <div class="card-price">132,053원~</div>
+                        <div class="card-departure">09월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#해외테마파크</div>
+                        <div class="card-price">92,682원~</div>
+                        <div class="card-departure">07월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#해변</div>
+                        <div class="card-price">141,936원~</div>
+                        <div class="card-departure">07월 출발</div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="https://placehold.co/263x174" alt="Theme Image" class="card-image">
+                        <div class="card-title">#스킨스쿠버다이빙</div>
+                        <div class="card-price">155,966원~</div>
+                        <div class="card-departure">09월 출발</div>
+                    </div>
+                </div>
+                <button class="view-more-button">추천 항공권 더보기</button>
+            </section>
+
+             <div class="carousel-banner">
+                <div class="banner-slide active">
+                    <img src="https://placehold.co/375x100" alt="Promotional Banner 1">
+                </div>
+                <div class="banner-slide">
+                    </div>
+                <div class="banner-slide">
+                    </div>
+                <div class="banner-slide">
+                    </div>
+                <div class="slide-counter">1 / 4</div>
+            </div>
+             <div class="left-arrow-circle">
+                <div class="left-arrow"></div>
+             </div>
+             <div class="right-arrow-circle">
+                <div class="right-arrow"></div>
+             </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-top">
+                <button class="footer-button">
+                    <div class="share-icon-wrapper">
+                         <div class="share-icon-small"></div>
+                         <div class="share-icon-large"></div>
+                    </div>
+                    <span>공유하기</span>
+                </button>
+                <button class="footer-button">
+                    <div class="top-icon-wrapper">
+                         <div class="top-icon-inner"></div>
+                         <div class="top-icon-border"></div>
+                    </div>
+                    <span>맨위로</span>
+                </button>
+            </div>
+            <div class="footer-buttons-bottom">
+                <button class="login-button">로그인</button>
+                <button class="all-services-button">전체서비스</button>
+            </div>
+            <p class="disclaimer">
+                네이버 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 네이버㈜는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+            </p>
+            <div class="company-info">네이버㈜ 사업자 정보</div>
+            <div class="legal-links">
+                <span>사업자정보 공개</span>
+                <span>|</span>
+                <span>이용약관</span>
+                <span>|</span>
+                <span class="bold">개인정보처리방침</span>
+                <span>|</span>
+                <span>고객센터</span>
+            </div>
+            <div class="copyright">ⓒ NAVER corp.</div>
+        </footer>
+    </div>
+    <script src="flightSearch.js"></script>
+</body>
+</html>

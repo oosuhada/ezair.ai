@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You - Hotel Recommendations</title>
+    <link rel="stylesheet" href="forYou.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-top-bar">
+                <div class="container header-top-content">
+                    <div class="logo-group">
+                        <div class="logo-box logo-1"></div>
+                        <div class="logo-box logo-2"></div>
+                        <div class="logo-box logo-3"></div>
+                    </div>
+                    <div class="login-info">
+                        <div class="login-status">로그인 후 등급확인</div>
+                        <button class="login-button">
+                            <span class="login-text">로그인</span>
+                        </button>
+                        <button class="menu-button">
+                            <i class="fas fa-th"></i> <!-- Font Awesome grid icon -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="container nav-links">
+                    <a href="#" class="nav-item">항공</a>
+                    <a href="#" class="nav-item">호텔</a>
+                    <a href="#" class="nav-item">패키지</a>
+                    <a href="#" class="nav-item business-travel">
+                        출장 <i class="fas fa-caret-down"></i>
+                    </a>
+                    <a href="#" class="nav-item active-nav for-you-link">For U</a>
+                    <a href="#" class="nav-item">이벤트・혜택</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <div class="container content-area">
+                <!-- Recent Hotels Section -->
+                <section class="recent-hotels-banner">
+                    <div class="banner-text">
+                        <h2 class="banner-title">최근 본 호텔이 없군요!</h2>
+                        <p class="banner-description">괜찮아요! 네이버 여행상품 PICK의 알고리즘이 제공하는 추천 호텔을 먼저 확인 해보세요!</p>
+                    </div>
+                    <img class="banner-image" src="https://placehold.co/82x19/F0F0F0/888888?text=AD" alt="Advertisement">
+                </section>
+
+                <!-- Age/Gender Preferred Hotels Section -->
+                <section class="preferred-hotels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="highlight">30대 여성</span>이<br>선호하는 호텔이에요!
+                        </h2>
+                        <div class="toggle-switch">
+                            <button class="toggle-btn domestic" data-target="domestic">국내</button>
+                            <button class="toggle-btn international active" data-target="international">해외</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="gender">여성 <i class="fas fa-caret-down"></i></button>
+                        <button class="filter-btn" data-filter="age-20s">20대</button>
+                        <button class="filter-btn active" data-filter="age-30s">30대</button>
+                        <button class="filter-btn" data-filter="age-40s">40대</button>
+                        <button class="filter-btn" data-filter="age-50s-plus">50대 이상</button>
+                    </div>
+
+                    <div class="info-bar">
+                        <p><span class="info-highlight">동일한 성별과 연령</span> 그룹에서 인기 많은 호텔</p>
+                    </div>
+
+                    <div class="hotel-cards-container scroll-x">
+                        <!-- Hotel Card 1 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+1" alt="아미아나 리조트 나쨩">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">아미아나 리조트 나쨩</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">수영장이 매우 좋음</span>
+                                </div>
+                                <p class="hotel-price">607,026<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 2 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+2" alt="디 아남 깜라인">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">디 아남 깜라인</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">음식이 맛있음</span>
+                                </div>
+                                <p class="hotel-price">244,820<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 3 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+3" alt="알마 리조트 깜라인">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">알마 리조트 깜라인</h3>
+                                <p class="hotel-location">캄란, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9</span>
+                                </div>
+                                <p class="hotel-price">171,045<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 4 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+4" alt="신라모노그램 다낭">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">신라모노그램 다낭</h3>
+                                <p class="hotel-location">다낭, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.2</span>
+                                </div>
+                                <p class="hotel-price">144,179<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 5 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+5" alt="퓨전 리조트 깜라인 - 올 인클루시브">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">퓨전 리조트 깜라인 - 올 …</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">해변이 매우 좋음</span>
+                                </div>
+                                <p class="hotel-price">297,433<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 6 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+6" alt="두짓타니 괌 리조트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">두짓타니 괌 리조트</h3>
+                                <p class="hotel-location">타무닝, 괌</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">쇼핑하기 편리한 위치</span>
+                                </div>
+                                <p class="hotel-price">343,541<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                </section>
+
+                <!-- Alone or Together Hotels Section -->
+                <section class="party-hotels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="highlight">혼자 또는 함께!</span><br>모두가 즐거운 호캉스
+                        </h2>
+                        <div class="toggle-switch">
+                            <button class="toggle-btn domestic" data-target="domestic">국내</button>
+                            <button class="toggle-btn international active" data-target="international">해외</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn"># 아이와 함께</button>
+                        <button class="filter-btn active"># 친구/연인과 함께</button>
+                        <button class="filter-btn"># 혼자하는 여행</button>
+                        <button class="filter-btn"># 여럿이 함께</button>
+                    </div>
+
+                    <div class="info-bar">
+                        <p>최근 30일 동안<span class="info-highlight"> 총인원 2명</span>으로 예약한 인기 호텔</p>
+                    </div>
+
+                    <div class="hotel-cards-container full-width-cards scroll-x">
+                        <!-- Full-width Hotel Card 1 -->
+                        <div class="hotel-card-lg">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+1" alt="디 아남 깜라인">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">디 아남 깜라인</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">음식이 맛있음</span>
+                                </div>
+                                <p class="hotel-price">244,820<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 2 -->
+                        <div class="hotel-card-lg">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+2" alt="윙크 호텔 다낭 센터">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">윙크 호텔 다낭 센터</h3>
+                                <p class="hotel-location">다낭, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.4</span>
+                                </div>
+                                <p class="hotel-price">31,592<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 3 -->
+                        <div class="hotel-card-lg">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+3" alt="프리미어 하바나 냐짱 호텔">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">프리미어 하바나 냐짱 호텔</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">객실이 넓음</span>
+                                </div>
+                                <p class="hotel-price">56,566<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 4 -->
+                        <div class="hotel-card-lg">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+4" alt="르 모어 호텔">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">르 모어 호텔</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">9</span>
+                                </div>
+                                <p class="hotel-price">43,634<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 5 -->
+                        <div class="hotel-card-lg">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+5" alt="신주쿠 워싱턴 호텔 도쿄 본관">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">신주쿠 워싱턴 호텔 도쿄 …</h3>
+                                <p class="hotel-location">도쿄, 일본</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">7.8</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">빠른 체크인</span>
+                                </div>
+                                <p class="hotel-price">109,776<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                </section>
+
+                <!-- Pool Hotels Section -->
+                <section class="pool-hotels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="highlight">수영장이 있는</span><br>호텔에서의 여유!
+                        </h2>
+                        <div class="toggle-switch">
+                            <button class="toggle-btn domestic" data-target="domestic">국내</button>
+                            <button class="toggle-btn international active" data-target="international">해외</button>
+                        </div>
+                    </div>
+
+                    <div class="info-bar light-bg">
+                        <p><span class="info-highlight">최근 30일 동안 수영장 리뷰가 좋은 </span>인기순 호텔</p>
+                    </div>
+
+                    <div class="hotel-cards-container full-width-cards scroll-x">
+                        <!-- Full-width Hotel Card 1 -->
+                        <div class="hotel-card-lg shadow-card">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+1" alt="윈덤 그랜드 푸꾸옥">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">윈덤 그랜드 푸꾸옥</h3>
+                                <p class="hotel-location">푸꾸옥, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.5</span>
+                                </div>
+                                <p class="hotel-price">93,347<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 2 -->
+                        <div class="hotel-card-lg shadow-card">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+2" alt="J 인스파이어드 호텔 & 리조트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">J 인스파이어드 호텔 …</h3>
+                                <p class="hotel-location">촌부리주, 태국</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.2</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">객실상태 깨끗함</span>
+                                </div>
+                                <p class="hotel-price">42,997<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 3 -->
+                        <div class="hotel-card-lg shadow-card">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+3" alt="스타시티 나트랑 호텔">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">스타시티 나트랑 호텔</h3>
+                                <p class="hotel-location">냐짱, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.8</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">위치 아주 좋음</span>
+                                </div>
+                                <p class="hotel-price">40,870<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 4 -->
+                        <div class="hotel-card-lg shadow-card">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+4" alt="캠플러스 게스트 로마 오버나이트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">캠플러스 게스트 로마 …</h3>
+                                <p class="hotel-location">로마, 이탈리아</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">음식이 맛있음</span>
+                                </div>
+                                <p class="hotel-price">182,951<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full-width Hotel Card 5 -->
+                        <div class="hotel-card-lg shadow-card">
+                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+5" alt="시 가든 호텔 다낭">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">시 가든 호텔 다낭</h3>
+                                <p class="hotel-location">다낭, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">객실상태 깨끗함</span>
+                                </div>
+                                <p class="hotel-price">31,304<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                </section>
+
+                <!-- Book Early Hotels Section -->
+                <section class="book-early-hotels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="highlight">미리 예약하고</span><br>여행에 집중하세요!
+                        </h2>
+                        <div class="toggle-switch">
+                            <button class="toggle-btn domestic" data-target="domestic">국내</button>
+                            <button class="toggle-btn international active" data-target="international">해외</button>
+                        </div>
+                    </div>
+
+                    <div class="info-bar">
+                        <p><span class="info-highlight">최근 30일 동안 여행 가기 전에 빨리 예약</span>하는 인기순 호텔</p>
+                    </div>
+
+                    <div class="hotel-cards-container scroll-x">
+                        <!-- Hotel Card 1 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+1" alt="힐튼 하와이안 빌리지 와이키키 비치 리조트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">힐튼 하와이안 빌리지 와…</h3>
+                                <p class="hotel-location">호놀룰루, 미국</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">7.4</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 106일전 예약</span>
+                                </div>
+                                <p class="hotel-price">340,150<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 2 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+2" alt="YEHS 호텔 시드니 하버 수프림">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">YEHS 호텔 시드니 하버 …</h3>
+                                <p class="hotel-location">시드니, 호주</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.3</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 99일전 예약</span>
+                                </div>
+                                <p class="hotel-price">129,586<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 3 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+3" alt="더 풀러턴 호텔 시드니">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">더 풀러턴 호텔 시드니</h3>
+                                <p class="hotel-location">시드니, 호주</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.8</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 97일전 예약</span>
+                                </div>
+                                <p class="hotel-price">275,279<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 4 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+4" alt="뉴월드 푸꾸옥 리조트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">뉴월드 푸꾸옥 리조트</h3>
+                                <p class="hotel-location">푸꾸옥, 베트남</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.9</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 86일전 예약</span>
+                                </div>
+                                <p class="hotel-price">337,963<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 5 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+5" alt="하얏트 리젠시 와이키키 비치 리조트 & 스파">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">하얏트 리젠시 와이키키 …</h3>
+                                <p class="hotel-location">호놀룰루, 미국</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.1</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 84일전 예약</span>
+                                </div>
+                                <p class="hotel-price">391,380<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Hotel Card 6 -->
+                        <div class="hotel-card">
+                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+6" alt="쉐라톤 와이키키 비치 리조트">
+                            <div class="hotel-details">
+                                <h3 class="hotel-name">쉐라톤 와이키키 비치 리…</h3>
+                                <p class="hotel-location">호놀룰루, 미국</p>
+                                <div class="hotel-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="score">8.4</span>
+                                    <span class="divider"></span>
+                                    <span class="review-text">평균 83일전 예약</span>
+                                </div>
+                                <p class="hotel-price">698,475<span class="currency">원~</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-actions">
+                <div class="container footer-action-buttons">
+                    <button class="action-btn share-btn">
+                        <i class="fas fa-share-alt"></i> <!-- Font Awesome share icon -->
+                        공유하기
+                    </button>
+                    <button class="action-btn top-btn">
+                        <i class="fas fa-arrow-up"></i> <!-- Font Awesome arrow up icon -->
+                        맨위로
+                    </button>
+                </div>
+            </div>
+            <div class="footer-main">
+                <button class="footer-link-btn">로그인</button>
+                <button class="footer-link-btn">전체서비스</button>
+                <p class="footer-disclaimer">
+                    네이버 호텔은 제휴사에서 제공하는 호텔정보 및 가격정보를 비교, 중개하는 서비스로서, 네이버(주)는 통신판매의 당사자가 아닙니다. 호텔 검색 결과 및 거래에 관한 의무와 책임은 판매자에게 있습니다. 외국인 관광 도시민박법에 따라 지정된 제주지역 외 국내 게스트하우스는 외국인만 투숙 가능합니다.
+                </p>
+                <a href="#" class="footer-sub-link">네이버㈜ 사업자 정보 <i class="fas fa-caret-down"></i></a>
+
+                <div class="footer-company-info">
+                    <div class="info-group">
+                        <span class="info-label">대표이사</span>
+                        <span class="info-value">최수연</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">주소</span>
+                        <span class="info-value">경기도 성남시 분당구 정자일로 95 NAVER 1784, 13561</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">전화</span>
+                        <span class="info-value">1588-3820(대표전화/고객센터)</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">이메일</span>
+                        <span class="info-value">ccnaver@naver.com</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">사업자 등록번호</span>
+                        <span class="info-value">220-81-62517</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">통신판매번호</span>
+                        <span class="info-value">2006-경기성남-0692</span>
+                    </div>
+                    <div class="info-group">
+                        <span class="info-label">호스팅 서비스 제공</span>
+                        <span class="info-value">NAVER Cloud</span>
+                    </div>
+                </div>
+
+                <div class="footer-legal-links">
+                    <a href="#" class="legal-link">사업자정보 공개</a>
+                    <a href="#" class="legal-link">이용약관</a>
+                    <a href="#" class="legal-link policy">개인정보처리방침</a>
+                    <a href="#" class="legal-link">고객센터</a>
+                </div>
+                <p class="copyright">ⓒ NAVER corp.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="forYou.js"></script>
+</body>
+</html>
