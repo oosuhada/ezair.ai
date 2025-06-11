@@ -100,4 +100,14 @@ window.addEventListener('load', function () {
         },
         freeMode: true
     });
+    const bannerSwiper = new Swiper('.myBannerSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction'
+        }
+    });
 });
