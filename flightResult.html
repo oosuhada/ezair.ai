@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ AIR</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <link rel="stylesheet" href="style/flightResult_style.css">
+    <script src="script/flightResult_script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="gnb_box">
+                <div class="logo"><a href="index.html"><img src="image/flightResult/EZAIR_bk.svg" alt="이지에어 로고"></a>
+                </div>
+                <div class="btns">
+                    <a class="cs" href="#"><img src="image/flightResult/header_cs.svg" alt="이지에어 고객센터"></a>
+                    <a class="user" href="#"><img src="image/flightResult/header_user.svg" alt="이지에어 마이페이지"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="result">
+        <section class="left_ai">
+            <div class="price_alert">
+                <div class="price_al_left">
+                    <img class="left_bell" src="image/flightResult/left_bell.svg" alt="">
+                    <h3>가격변동 알림받기</h3>
+                </div>
+                <div class="price_alert_toggle">
+                    <input type="checkbox" id="toggle" hidden>
+                    <label for="toggle" class="toggleSwitch">
+                        <span class="toggleButton"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="ai_assistant">
+                <div class="ai_assistant_top">
+                    <div class="ai_assi_tl">
+                        <div class="ai_icon">AI</div>
+                        <h3>AI 항공권 어시스턴트</h3>
+                    </div>
+                    <img src="image/flightResult/left_arrowUp.svg" alt="">
+                </div>
+                <textarea class="ai_search">"다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘"</textarea>
+                <button class="ai_search_bt">AI 검색하기</button>
+            </div>
+            <div class="price-tracking-card">
+                <div class="price-header">
+                    <h2 class="price-title">가격 추적 그래프</h2>
+                    <button class="close-btn">
+                        <img src="image/flightResult/left_oui_arrow-up.svg" alt="">
+                    </button>
+                </div>
+
+                <div class="price-status">
+                    <p class="status-text">검색하신 항공편은 현재 <span class="expensive">비쌉니다.</span></p>
+                    <div class="expensive-bar-container">
+                        <div class="expensive-bar-label">평균 대비 <span class="expensive-amount">45,919</span>원 비쌉니다</div>
+                        <div class="expensive-bar">
+                            <span class="bar-segment low" style="width: 20%;"></span>
+                            <span class="bar-segment medium" style="width: 60%;"></span>
+                            <span class="bar-segment high" style="width: 20%;"></span>
+                            <span class="current-price-indicator"></span>
+                        </div>
+                        <div class="price-range">
+                            <span class="min-price">48,000원</span>
+                            <span class="max-price">260,000원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-prediction">
+                    <p class="prediction-text">해당 항공편의 예상 최저가 시기는</p>
+                    <p class="prediction-date"><span class="month">7월 6일</span> ~ <span class="month">8월 18일</span>
+                    <p class="prediction-date_txt">입니다.</p>
+                    </p>
+                    <span class="weekend-included">주말포함<img src="image/flightResult/left_CheckCircle.svg" alt=""></span>
+                </div>
+
+                <div class="lowest-price">
+                    <div class="lowest-price-container">평균 <span class="price">725,149</span>원</div>
+                    <div class="monthly-graph">
+                        <div class="graph-bar" style="height: 90%;" data-month="1">1</div>
+                        <div class="graph-bar" style="height: 80%;" data-month="2">2</div>
+                        <div class="graph-bar" style="height: 60%;" data-month="3">3</div>
+                        <div class="graph-bar" style="height: 50%;" data-month="4">4</div>
+                        <div class="graph-bar" style="height: 40%;" data-month="5">5</div>
+                        <div class="graph-bar" style="height: 30%;" data-month="6">6</div>
+                        <div class="graph-bar active" style="height: 10%;" data-month="7">7</div>
+                        <div class="graph-bar active" style="height: 15%;" data-month="8">8</div>
+                        <div class="graph-bar" style="height: 40%;" data-month="9">9</div>
+                        <div class="graph-bar" style="height: 60%;" data-month="10">10</div>
+                        <div class="graph-bar" style="height: 80%;" data-month="11">11</div>
+                        <div class="graph-bar" style="height: 70%;" data-month="12">12</div>
+                    </div>
+                </div>
+
+                <div class="date-selection">
+                    <div class="selec">
+                        <h3 class="selection-title">맞춤일정</h3>
+                        <div class="legend">
+                            <span class="legend-item"><span class="dot cheapest"></span>최저가</span>
+                            <span class="legend-item"><span class="dot expensive"></span>최고가</span>
+                        </div>
+                    </div>
+                    <div class="month-navigation">
+                        <button class="nav-btn prev-month">
+                            <img src="image/flightResult/left_pre_month.svg" alt="">
+                        </button>
+                        <span class="current-month">7월 출발</span>
+                        <button class="nav-btn next-month">
+                            <img src="image/flightResult/left_next_month.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="calendar_txt">
+                        <div class="calendar_txtl">
+                            <p>가는 날</p>
+                        </div>
+                        <div class="calendar_txtr">
+                            <p>오는 날</p>
+                        </div>
+                    </div>
+                    <div class="date-picker-row">
+                        <div class="calendar-container">
+                            <label for="depart-1" class="calendar-label">날짜선택</label>
+                            <input type="text" id="depart-1" class="flatpickr-input" readonly>
+                        </div>
+                        <span class="price-amount">96,360원</span>
+                        <div class="calendar-container">
+                            <label for="return-1" class="calendar-label">날짜선택</label>
+                            <input type="text" id="return-1" class="flatpickr-input" readonly>
+                        </div>
+                    </div>
+
+                    <div class="date-picker-row">
+                        <div class="calendar-container">
+                            <label for="depart-2" class="calendar-label">날짜선택</label>
+                            <input type="text" id="depart-2" class="flatpickr-input" readonly>
+                        </div>
+                        <span class="price-amount expensive">1,686,900원</span>
+                        <div class="calendar-container">
+                            <label for="return-2" class="calendar-label">날짜선택</label>
+                            <input type="text" id="return-2" class="flatpickr-input" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="right_ai">
+            <div class="search-widget">
+                <nav class="search-tabs">
+                   <div class="search_box_top">
+                    <button type="button" class="trip-btn active">왕복</button>
+                    <button type="button" class="trip-btn">편도</button>
+                    <button type="button" class="trip-btn">다구간</button>
+                     <div class="tab-options">
+                        <input type="checkbox" id="overseas" checked>
+                        <label for="overseas">해외 출발</label>
+                        <span class="tooltip-icon">ⓘ</span>
+                    </div>
+                </nav>
+
+                <div class="search-main">
+                    <div class="route-selectors">
+                        <div class="airport-selector">
+                            <span class="airport-code">인천 ICN</span>
+                            <span class="arrow-down"></span>
+                        </div>
+                        <button class="swap-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.5 1.036a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 .5.5v1.964a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V1.036zm13 3.464a.5.5 0 0 1 .5.5v1.964a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V5.000a.5.5 0 0 1 .5-.5h12zM1.5 9.036a.5.5 0 0 1 .5-.5h12a.5.5 0 0 1 .5.5v1.964a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V9.036z" />
+                            </svg>
+                        </button>
+                        <div class="airport-selector">
+                            <span class="airport-code">사가 HSG</span>
+                            <span class="arrow-down"></span>
+                        </div>
+                    </div>
+
+                    <div class="booking-details">
+                        <div class="date-selector">
+                            <span class="icon">📅</span>
+                            <span>00.00. - 00.00.</span>
+                        </div>
+                        <div class="passenger-selector">
+                            <span class="icon">👤</span>
+                            <span>성인 1명, 일반석</span>
+                        </div>
+                    </div>
+
+                    <button class="search-button">항공권 검색</button>
+                </div>
+
+                <div class="search-filters">
+                    <div class="filter-buttons">
+                        <button class="refresh-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                                <path fill-rule="evenodd"
+                                    d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.5A5.002 5.002 0 0 0 8 3zM3.143 8.182a.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.5A5.002 5.002 0 0 0 8 13c1.552 0 2.94-.707 3.857-1.818a.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.5z" />
+                            </svg>
+                        </button>
+                        <button class="filter-button active">공항</button>
+                        <button class="filter-button">직항/경유</button>
+                        <button class="filter-button">요금조건</button>
+                        <button class="filter-button">항공사</button>
+                        <button class="filter-button">시각/가격</button>
+                        <button class="filter-button">수하물/수수료</button>
+                        <button class="filter-button">CO2 배출량 적음</button>
+                    </div>
+                    <button class="expand-button">
+                        <span class="arrow-down"></span>
+                    </button>
+                </div>
+
+                <div class="more-filters">
+                    <div class="filter_top">
+                        <div class="filter_l">
+                            <h3>출발공항</h3>
+                            <input type="radio">
+                            <p>인천국제공항 <span>ICN</span></p>
+                            <input type="radio">
+                            <p>김포국제공항 <span>ICN</span></p>
+                        </div>
+                    </div>
+                    <div class="filter_M">
+                        <h3>도착공항</h3>
+                        <input type="radio">
+                        <p>사가공항 <span>HSG</span></p>
+                    </div>
+                    <div class="filter_r">
+                        <p>출도착 동일 공항 요금만 보기</p>
+                        <div class="filter_toggle">
+                            <input type="checkbox" id="toggle" hidden>
+                            <label for="toggle" class="toggleSwitch2">
+                                <span class="toggleButton2"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
