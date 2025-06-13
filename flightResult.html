@@ -198,9 +198,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="passenger-selector">
-                            <span class="icon">👤</span>
-                            <span>성인 1명, 일반석</span>
+                        <div class="passenger-select-wrapper">
+                            <button id="passenger-btn">성인 1명, 일반석</button>
+                            <div id="passenger-dropdown" class="dropdown">
+                                <label>
+                                    인원수:
+                                    <select id="passenger-count">
+                                        <option value="1">1명</option>
+                                        <option value="2">2명</option>
+                                        <option value="3">3명</option>
+                                        <option value="4">4명</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    좌석 등급:
+                                    <select id="seat-class">
+                                        <option value="일반석">일반석</option>
+                                        <option value="비즈니스">비즈니스</option>
+                                        <option value="일등석">일등석</option>
+                                    </select>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -221,7 +239,7 @@
                         <button class="filter-button">CO2 배출량 적음</button>
                     </div>
                     <button class="expand-button">
-                        <span class="arrow-down"></span>
+                        <img class="arrow-down" src="image/flightResult/left_oui_arrow-up.svg" alt="">
                     </button>
                 </div>
 
@@ -229,30 +247,524 @@
                     <div class="filter_top">
                         <div class="filter_l">
                             <h3>출발공항</h3>
-                            <input type="radio">
-                            <p>인천국제공항 <span>ICN</span></p>
-                            <input type="radio">
-                            <p>김포국제공항 <span>ICN</span></p>
-                        </div>
-                    </div>
-                    <div class="filter_M">
-                        <h3>도착공항</h3>
-                        <input type="radio">
-                        <p>사가공항 <span>HSG</span></p>
-                    </div>
-                    <div class="filter_r">
-                        <p>출도착 동일 공항 요금만 보기</p>
-                        <div class="filter_toggle">
-                            <input type="checkbox" id="toggle2" hidden>
-                            <label for="toggle" class="toggleSwitch2">
-                                <span class="toggleButton2"></span>
-                            </label>
+                            <div class="filter_l_bt">
+                                <label>
+                                    <input type="checkbox" value="ICN">
+                                    <span class="custom-checkbox"></span>
+                                    인천국제공항 <span class="code">ICN</span>
+                                </label>
+                            </div>
+                            <div class="filter_l_bt">
+                                <label>
+                                    <input type="checkbox" value="GMP">
+                                    <span class="custom-checkbox"></span>
+                                    김포국제공항 <span class="code">GMP</span>
+                                </label>
+                            </div>
                         </div>
 
+                        <div class="filter_M">
+                            <h3>도착공항</h3>
+                            <div class="filter_l_bt">
+                                <label>
+                                    <input type="checkbox" value="HSG">
+                                    <span class="custom-checkbox"></span>
+                                    사가공항 <span class="code">HSG</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter_r">
+                            <p>출도착 동일 공항 요금만 보기</p>
+                            <div class="filter_toggle">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" />
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter_bottom">
+                        <div class="filter_bottoml">
+                            <ul>
+                                <li>전체선택</li>
+                                <li>전체 지우기</li>
+                            </ul>
+                        </div>
+                        <div class="filter_bottomr">
+                            <button class="cancel">취소</button>
+                            <button class="apply">적용</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="empty1"></div>
+            <div class="aiflight-widget">
+                <div class="fw-header">
+                    <div class="fw-header-left">
+                        <h3 class="fw-title">EZ 추천 항공권</h3>
+                        <button class="fw-trip-select">
+                            왕복 동시 선택
+                            <img src="image/flightResult/left_oui_arrow-up.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="fw-header-right">
+                        <button class="fw-sort-btn">
+                            가격 순
+                            <img src="image/flightResult/left_oui_arrow-up.svg" alt="">
+                        </button>
+                        <button class="fw-sort-btn">
+                            카드 혜택 포함
+                            <img src="image/flightResult/left_oui_arrow-up.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="aiflight-result-cards">
+                <div class="flight-result-card">
+                    <div class="sort-bar">
+                        <div class="sort-options">
+                            <button class="sort-btn active">예약 많은</button>
+                            <p>|</p>
+                            <button class="sort-btn">많이 찾는</button>
+                            <p>|</p>
+                            <button class="sort-btn">최저가</button>
+                            <button class="favorite-btn" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_Heart.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flight-result-card">
+                    <div class="sort-bar">
+                        <div class="sort-options">
+                            <button class="sort-btn active">예약 많은</button>
+                            <p>|</p>
+                            <button class="sort-btn">많이 찾는</button>
+                            <p>|</p>
+                            <button class="sort-btn">최저가</button>
+                            <button class="favorite-btn" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_Heart.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flight-result-card">
+                    <div class="sort-bar">
+                        <div class="sort-options">
+                            <button class="sort-btn active">예약 많은</button>
+                            <p>|</p>
+                            <button class="sort-btn">많이 찾는</button>
+                            <p>|</p>
+                            <button class="sort-btn">최저가</button>
+                            <button class="favorite-btn" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_Heart.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="aiflight-result_more">추천 항공권 더보기</button>
+            </div>
+
+
+            <div class="flight-widget">
+                <div class="fw-header">
+                    <div class="fw-header-left">
+                        <h3 class="fw-title">항공권 비교</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flight-result-cards">
+                <div class="flight-result-card">
+                    <div class="sort-bar2">
+                        <div class="sort-options2">
+                            <button class="sort-btn2 active">예약 많은</button>
+                            <p>|</p>
+                            <button class="favorite-btn2" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_HeartBlue.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flight-result-card">
+                    <div class="sort-bar2">
+                        <div class="sort-options2">
+                            <button class="favorite-btn2" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_HeartBlue.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flight-result-card">
+                    <div class="sort-bar2">
+                        <div class="sort-options2">
+                            <button class="favorite-btn2" aria-label="즐겨찾기">
+                                <img src="image/flightResult/result_HeartBlue.svg" alt="♡">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flight-content">
+                        <div class="flight_con_l">
+                            <img src="image/flightResult/result_airseoul.svg" alt="">
+                            <h3>에어서울</h3>
+                        </div>
+                        <div class="flight_con_m">
+                            <div class="flightconM_top">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                            <div class="flightconM_bottom">
+                                <div class="flightcon_l">
+                                    <h3>오전 08:10</h3><br>
+                                    <p>인천 ICN</p>
+                                </div>
+                                <div class="flight-cm_line">
+                                    <p>01시간 40분</p>
+                                    <div class="line_air">
+                                        <div class="line"></div>
+                                        <img src="image/flightResult/result_Airplane.svg" alt="">
+                                    </div>
+                                    <span class="blue_txt">직항</span>
+                                </div>
+                                <div class="flightcon_r">
+                                    <h3>오전 09:50</h3><br>
+                                    <p>사가 HSG</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flight_con_r">
+                            <div class="flightconR_top">
+                                <p>성인/KB국민카드(이용실적 충족시)<br>
+                                    <span>왕복 307,347원~ </span>
+                                </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                            </div>
+                            <div class="reserve_bt">
+                                <button>예매하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="flight-result_more">항공권 비교 더보기</button>
+            </div>
         </section>
+
+          <footer class="site-footer">
+                <div class="footer-actions">
+                    <button class="share-btn">
+                        <img src="image/bottom_bt1.svg" alt="공유하기"> 공유하기
+                    </button>
+                    <button class="top-btn">
+                        <img src="image/bottom_bt2.svg" alt="맨위로"> 맨위로
+                    </button>
+                </div>
+
+                <div class="footer-links">
+                    <button class="footer-login">로그인</button>
+                    <button class="footer-service">전체서비스</button>
+                </div>
+
+                <p class="footer-desc">
+                    이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+                    관련한 의무와 책임은 각 판매자에게 있습니다.
+                </p>
+
+                <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+                <div class="footer-info">
+                    <a href="#">사업자정보 공개</a> |
+                    <a href="#">이용약관</a> |
+                    <a href="#" class="highlight">개인정보처리방침</a> |
+                    <a href="#">고객센터</a>
+                </div>
+
+                <p class="footer-copy">&copy; NAVER corp.</p>
+            </footer>
+
     </div>
 </body>
 

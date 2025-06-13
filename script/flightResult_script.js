@@ -66,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
     searchWidget.classList.toggle('is-expanded');
     this.classList.toggle('is-active');
   });
+  document.querySelector('.apply').addEventListener('click', () => {
+  // 검색 위젯과 토글 버튼에서 열린 상태 클래스를 제거
+  searchWidget.classList.remove('is-expanded');
+  expandButton.classList.remove('is-active');
+});
 });
 
 document.addEventListener('DOMContentLoaded', () => {//검색탭
@@ -78,8 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {//검색탭
   });
 })
 
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('passenger-btn');
+  const dropdown = document.getElementById('passenger-dropdown');
 
-document.addEventListener('DOMContentLoaded', function () {
-
-
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+  });
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove('show');
+    }
+  });
+  const selectCount = document.getElementById('passenger-count');
+  const selectClass = document.getElementById('seat-class');
+  function updateLabel() {
+    btn.textContent = `성인 ${selectCount.value}명, ${selectClass.value}`;
+  }
+  selectCount.addEventListener('change', updateLabel);
+  selectClass.addEventListener('change', updateLabel);
 });
+
