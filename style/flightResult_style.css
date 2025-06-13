@@ -78,9 +78,11 @@ body {
 }
 
 .result {
-    width: 1440px;
-    margin: 0 auto;
+   max-width: 1440px;
+    margin: 0px auto;
+    margin-bottom: 48px;
     display: flex;
+
 
 }
 
