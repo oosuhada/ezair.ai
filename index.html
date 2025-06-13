@@ -56,9 +56,55 @@
                 </div>
                 <div class="search_box_mb">
                     <div class="search_box_mid">
-                        <input type="text" placeholder="출발지">
-                        <button class="swap-btn"><img src="image/ArrowsClockwise.svg" alt=""></button>
-                        <input type="text" placeholder="도착지">
+                        <div class="airport-box">
+                            <select class="airport-select">
+                                <option value="" disabled selected>출발지</option>
+
+                                <option value="서울">서울</option>
+                                <option value="부산">부산</option>
+                                <option value="대구">대구</option>
+                                <option value="여수">여수</option>
+                                <option value="포항">포항</option>
+                                <option value="양양">양양</option>
+                                <option value="인천">인천</option>
+                                <option value="제주">제주</option>
+                                <option value="무안">무안</option>
+                                <option value="군산">군산</option>
+                                <option value="원주">원주</option>
+                                <option value="김포">김포</option>
+                                <option value="청주">청주</option>
+                                <option value="광주">광주</option>
+                                <option value="울산">울산</option>
+                                <option value="사천">사천</option>
+
+
+                            </select>
+
+                            <button class="swap-btn">
+                                <img src="image/ArrowsClockwise.svg" alt="스왑">
+                            </button>
+
+                            <select class="airport-select">
+                                <option value="" disabled selected>도착지</option>
+                                <option value="서울">서울</option>
+                                <option value="부산">부산</option>
+                                <option value="대구">대구</option>
+                                <option value="여수">여수</option>
+                                <option value="포항">포항</option>
+                                <option value="양양">양양</option>
+                                <option value="인천">인천</option>
+                                <option value="제주">제주</option>
+                                <option value="무안">무안</option>
+                                <option value="군산">군산</option>
+                                <option value="원주">원주</option>
+                                <option value="김포">김포</option>
+                                <option value="청주">청주</option>
+                                <option value="광주">광주</option>
+                                <option value="울산">울산</option>
+                                <option value="사천">사천</option>
+
+                            </select>
+                        </div>
                         <div class="calendar-container">
                             <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
                             <input type="text" id="depart-calendar" readonly>
@@ -104,20 +150,23 @@
                             <div class="ai-ip-box">
                                 <img src="image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
                                 <div class="ai-input-box">
-                                    <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘"
-                                        readonly />
+                                    <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
                                     <button class="ai-search-btn"></button>
                                 </div>
                                 <div class="ai-tags">
-                                    ✨ 자연어 검색<br>
-                                    🎯 맞춤 추천<br>
-                                    ⚡ 실시간 비교
+                                ✨ 자연어 검색<br>
+                                🎯 맞춤 추천<br>
+                                ⚡ 실시간 비교
+                            </div>
+                                <div id="searchResults">
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <div class="top_right">
             <div class="empty1"></div>
