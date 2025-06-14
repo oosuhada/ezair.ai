@@ -1454,312 +1454,326 @@ body {
         width: 24px;
     }
 
-    /* --- 3. 모바일 전용 필터 --- */
-    @media (max-width: 768px) {
 
-        /* ======================================================
-    == 1. 기본 레이아웃 및 데스크탑 요소 숨기기
-    ====================================================== */
-
-        /* 데스크탑에서 사용하던 요소들을 모바일에서 완전히 숨깁니다. */
-        .left_ai,
-        .search-widget,
-        .empty1,
-        .aiflight-widget,
-        .flight-widget,
-        .site-footer {
-            display: none !important;
-        }
-
-        body {
-            background-color: #FAFAFA;
-        }
-
-        .result,
-        .right_ai {
-            padding: 0;
-            margin: 0;
-        }
-
-        /* ======================================================
-    == 2. 헤더 디자인
-    ====================================================== */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: #fff;
-            z-index: 1000;
-        }
-
-        header .inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 56px;
-            padding: 0 16px;
-            border-bottom: 1px solid #EAEBEE;
-        }
-
-        header .gnb_box {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        header .btns {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .hamburger-btn {
-            display: block;
-            padding: 0;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        header .logo img {
-            height: 18px;
-        }
-
-        header .cs img,
-        header .user img,
-        header .hamburger-btn img {
-            height: 24px;
-            width: 24px;
-        }
-
-        /* ======================================================
+    /* ======================================================
     == 3. 모바일 전용 필터 디자인 (최종 정리)
     ====================================================== */
-        .mobile-filter-widget {
-            display: flex;
-            flex-direction: column;
-            position: sticky;
-            top: 56px;
-            /* 헤더 높이 */
-            z-index: 999;
-            background-color: #fff;
-            padding: 16px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid #F2F3F5;
-        }
-
-        /* --- [A] 접힌 상태 스타일 --- */
-        .filter-collapsed {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mf-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .mf-route-text {
-            font-size: 20px;
-            font-weight: 800;
-            color: #343A40;
-        }
-
-        .mf-trip-type {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            color: #666;
-        }
-
-        .mf-summary-box {
-            display: flex;
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #E5E5E5;
-            border-radius: 8px;
-            font-size: 14px;
-            background: none;
-            color: var(--gray700);
-            cursor: pointer;
-        }
-
-        .mf-summary-box .mf-divider {
-            color: #E5E5E5;
-            margin: 0 12px;
-        }
-
-        .mf-price-alert {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            color: var(--gray700);
-        }
-
-        .mf-price-alert .mf-toggle-switch {
-            /* label 태그 */
-            position: relative;
-            display: inline-block;
-            width: 38px;
-            height: 22px;
-        }
-
-        .mf-price-alert .mf-slider {
-            /* span 태그 */
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            border-radius: 22px;
-            transition: .4s;
-        }
-
-        .mf-price-alert .mf-slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 2px;
-            bottom: 2px;
-            background-color: white;
-            border-radius: 50%;
-            transition: .4s;
-        }
-
-        .mf-price-alert input:checked+.mf-slider {
-            background-color: #2196F3;
-        }
-
-        .mf-price-alert input:checked+.mf-slider:before {
-            transform: translateX(16px);
-        }
-
-        .mf-change-btn {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 14px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .mf-change-btn img {
-            width: 16px;
-            height: 16px;
-            transition: transform .3s ease;
-        }
-
-        /* 하단 슬라이드 필터 */
-        .mf-slide-filters {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-top: 16px;
-            border-top: 1px solid #eee;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .mf-slide-filters::-webkit-scrollbar {
-            display: none;
-        }
-
-        .mf-slide-filters button {
-            white-space: nowrap;
-            border-radius: 99px;
-            padding: 8px 14px;
-            font-size: 13px;
-            border: 1px solid #ddd;
-            background: #fff;
-            cursor: pointer;
-        }
-
-        /* AI 어시스턴트 버튼 전용 스타일 (수정) */
-        .mf-slide-filters .mf-ai-btn {
-            background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
-            color: white;
-            border: none;
-            font-weight: 700;
-        }
-
-        .mf-refresh-btn {
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        /* --- 필터 펼침/닫힘 상태 제어 (최종 확인용) --- */
-
-        /* 기본 상태: '접힌' 뷰는 보이고, '펼친' 뷰는 숨김 */
-        .mobile-filter-widget .filter-collapsed {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .mobile-filter-widget .filter-expanded {
-            display: none;
-        }
-
-        /* .is-expanded 클래스가 추가되었을 때의 상태 */
-        .mobile-filter-widget.is-expanded .filter-collapsed {
-            display: none;
-            /* '접힌' 뷰를 숨김 */
-        }
-
-        .mobile-filter-widget.is-expanded .filter-expanded {
-            display: flex;
-            /* '펼친' 뷰를 보임 */
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* --- 필터 펼침/닫힘 상태 제어 --- */
-
-        /* 펼친 상태(.expanded-view)는 기본적으로 숨겨둡니다. */
-        .mobile-filter-widget .filter-expanded {
-            display: none;
-        }
-
-        /* .mobile-filter-widget에 .is-expanded 클래스가 붙었을 때의 처리 */
-        .mobile-filter-widget.is-expanded .filter-collapsed {
-            display: none;
-            /* '접힌 상태'를 숨깁니다. */
-        }
-
-        .mobile-filter-widget.is-expanded .filter-expanded {
-            display: flex;
-            /* '펼친 상태'를 보이게 합니다. */
-            flex-direction: column;
-            gap: 16px;
-        }
-        .mobile-filter-widget.is-expanded .filter-expanded .search-main {
-            display: flex;
-            flex-direction: column;
-            border: none;
-            background-color: var(--gray50);
-            width: 100%;
-            border-radius: 8px;
-        }
-        #passenger-btn-mobile{
-            border:none;
-            border-radius: 8px;
-            padding: 4px;
-            width: 100%;
-            cursor: pointer;
-        }
+    .mobile-filter-widget {
+        display: flex;
+        flex-direction: column;
+        position: sticky;
+        top: 56px;
+        /* 헤더 높이 */
+        z-index: 999;
+        background-color: #fff;
+        padding: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid #F2F3F5;
     }
+
+    /* --- [A] 접힌 상태 스타일 --- */
+    .filter-collapsed {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mf-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mf-route-text {
+        font-size: 20px;
+        font-weight: 800;
+        color: #343A40;
+    }
+
+    .mf-trip-type {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .mf-summary-box {
+        display: flex;
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        font-size: 14px;
+        background: none;
+        color: var(--gray700);
+        cursor: pointer;
+    }
+
+    .mf-summary-box .mf-divider {
+        color: #E5E5E5;
+        margin: 0 12px;
+    }
+
+    .mf-price-alert {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--gray700);
+    }
+
+    .mf-price-alert .mf-toggle-switch {
+        /* label 태그 */
+        position: relative;
+        display: inline-block;
+        width: 38px;
+        height: 22px;
+    }
+
+    .mf-price-alert .mf-slider {
+        /* span 태그 */
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 22px;
+        transition: .4s;
+    }
+
+    .mf-price-alert .mf-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        border-radius: 50%;
+        transition: .4s;
+    }
+
+    .mf-price-alert input:checked+.mf-slider {
+        background-color: #2196F3;
+    }
+
+    .mf-price-alert input:checked+.mf-slider:before {
+        transform: translateX(16px);
+    }
+
+    .mf-change-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .mf-change-btn img {
+        width: 16px;
+        height: 16px;
+        transition: transform .3s ease;
+    }
+
+    /* 하단 슬라이드 필터 */
+    .mf-slide-filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .mf-slide-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mf-slide-filters button {
+        white-space: nowrap;
+        border-radius: 99px;
+        padding: 8px 14px;
+        font-size: 13px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    /* AI 어시스턴트 버튼 전용 스타일 (수정) */
+    .mf-slide-filters .mf-ai-btn {
+        background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+        color: white;
+        border: none;
+        font-weight: 700;
+    }
+
+    .mf-refresh-btn {
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    /* --- 필터 펼침/닫힘 상태 제어 (최종 확인용) --- */
+
+    /* 기본 상태: '접힌' 뷰는 보이고, '펼친' 뷰는 숨김 */
+    .mobile-filter-widget .filter-collapsed {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .mobile-filter-widget .filter-expanded {
+        display: none;
+    }
+
+    /* .is-expanded 클래스가 추가되었을 때의 상태 */
+    .mobile-filter-widget.is-expanded .filter-collapsed {
+        display: none;
+        /* '접힌' 뷰를 숨김 */
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded {
+        display: flex;
+        /* '펼친' 뷰를 보임 */
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* --- 필터 펼침/닫힘 상태 제어 --- */
+
+    /* 펼친 상태(.expanded-view)는 기본적으로 숨겨둡니다. */
+    .mobile-filter-widget .filter-expanded {
+        display: none;
+    }
+
+    /* .mobile-filter-widget에 .is-expanded 클래스가 붙었을 때의 처리 */
+    .mobile-filter-widget.is-expanded .filter-collapsed {
+        display: none;
+        /* '접힌 상태'를 숨깁니다. */
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded {
+        display: flex;
+        /* '펼친 상태'를 보이게 합니다. */
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        background-color: var(--gray50);
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main .date-selector {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .route-selectors .airport-selector {
+        width: 134px;
+    }
+
+    #passenger-btn-mobile {
+        border: none;
+        border-radius: 8px;
+        padding: 4px;
+        width: 260%;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    .passenger-select-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main .search-buttonM {
+        width: 100%;
+        height: 48px;
+        background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+        color: var(--wht);
+        border-radius: 8px;
+
+    }
+
+    /* --- 모바일 전용 캘린더 입력창 스타일 --- */
+    .date-selector-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        border: 1px solid var(--gray100);
+        border-radius: 8px;
+        background-color: #F8F9FA;
+        cursor: pointer;
+    }
+
+    .calendar-container-mobile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .calendar-label-mobile {
+        font-size: 14px;
+        color: var(--blk);
+    }
+
+    .date-selector-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .date-selector-mobile {
+        display: flex;
+        gap: 0;
+        align-items: center;
+        width: 50%;
+    }
+
+    .calendar-container-mobile {
+        display: inline-block;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-size: 14px;
+        display: flex;
+        height: 16px;
+    }
+
+    .calendar-label-mobile {
+        display: flex;
+       align-items: center;
+    }
+
+    .flatpickr-input-mobile {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+ 
+
+
 }
