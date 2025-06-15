@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ AIR 마이페이지</title>
+    <link rel="stylesheet" href="style/myPage_style.css">
+    <script src="script/myPage_script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <div class="logo"><a href="index.html"><img src="image/EZAIR_bk.svg" alt="이지에어 로고"></a></div>
+
+            <nav class="gnb">
+                <ul>
+                    <li class="index"><a href="index.html">항공</a></li>
+                    <li class="hotel"><a href="#">호텔</a></li>
+                    <li class="package"><a href="#">패키지</a></li>
+                    <li class="forU"><a href="#">EZ for you</a><img src="image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                </ul>
+            </nav>
+            <div class="btns">
+                <a class="cs" href="cs.html"><img src="image/gnb_cs_bk.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="myPage.html"><img src="image/gnb_user_bk.svg" alt="이지에어 마이페이지"></a>
+            </div>
+            <button type="button" class="hamburger-btn" aria-label="메뉴 열기">
+                <img src="image/mobileList.svg" alt="">
+            </button>
+        </div>
+    </header>
+    <section class="myPage">
+        <div class="mp-hero">
+            <h1 class="mp-title">마이페이지</h1>
+        </div>
+        <section class="mp-container">
+            <nav class="mypage-nav">
+                <div class="mp-left">
+                    <div class="user-profile"><img src="image/myPg/myPg_profile.svg" alt="">
+                        <p>airplane@gmail.com</p>
+                    </div>
+                    <div class="Reservation">
+                        <div class="left-box"><img src="image/myPg/CalendarDots.svg" alt="">나의 예약 </div>
+                        <button id="Reservation"><img src="image/myPg/right_airrow.svg" alt=""></button>
+                    </div>
+                    <div class="Wish">
+                        <div class="left-box"><img src="image/myPg/Heart.svg" alt="">위시리스트 / 알림</div>
+                        <button id="Wish"><img src="image/myPg/right_airrow.svg" alt=""></button>
+                    </div>
+                    <div class="Account">
+                        <div class="left-box"><img src="image/myPg/UserCirclePlus.svg" alt="">내 계정</div>
+                        <button id="Account"><img src="image/myPg/right_airrow.svg" alt=""></button>
+                    </div>
+                    <button id="logOut">로그아웃</button>
+                </div>
+            </nav>
+            <div class="mp-right">
+
+                <div id="mpr-Reservation" class="mpr-panel active">
+                    <div class="mp-r-sort">
+                        <div class="mp-r-tl">내 예약</div>
+                        <div class="mp-r-tr">
+                            <p>총 1건</p>
+                            <div class="sort">최신순 <img src="image/myPg/oui_arrow-down.svg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="reservCard">
+                        <div class="reservCardTop">
+                            <div class="reserveCardTopl">
+                                <p>여정 1 <span>|</span> ICN <img src="image/myPg/Airplane.svg" alt="">HSG</p>
+                                <p class="date">2025.07.07. 금 ~ 2025.07.10. 월</p>
+                                <p class="date">왕복, 성인 1명, 일반석</p>
+                            </div>
+                            <div class="reserveCardTopr">
+                                <a href="#">예약 항공사로 이동</a>
+                            </div>
+                        </div>
+                        <div class="reserveCardBottom">
+                            <div class="reserveCardBl">
+                                <div class="rcardB-top">
+                                    <p>가는 편</p><span>|</span>
+                                    <p>00.00. 월</p><span>|</span>
+                                    <p>직항, 01시간 40분</p>
+                                </div>
+                                <div class="rcardB-mid"><img src="image/myPg/airSeoul.svg" alt="">에어서울</div>
+                                <div class="rcardB-btom">
+                                    <div class="rcardBlbtoml">오전 08:10<span>인천 ICN</span></div>
+                                    <img src="image/myPg/Airplane_gr.svg" alt="">
+                                    <div class="rcardBlbtomr">오전 09:50<span>사가 HSG</span></div>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="reserveCardBr">
+                                <div class="rcardB-top">
+                                    <p>가는 편</p><span>|</span>
+                                    <p>00.00. 월</p><span>|</span>
+                                    <p>직항, 01시간 40분</p>
+                                </div>
+                                <div class="rcardB-mid"><img src="image/myPg/airSeoul.svg" alt="">에어서울</div>
+                                <div class="rcardB-btom">
+                                    <div class="rcardBlbtoml">오전 08:10<span>인천 ICN</span></div>
+                                    <img src="image/myPg/Airplane_gr.svg" alt="">
+                                    <div class="rcardBlbtomr">오전 09:50<span>사가 HSG</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mpr-Wish" class="mpr-panel">
+                    <div class="mp-r-sort">
+                        <div class="mp-r-tl">
+                            <button id="mpr-wishlist" class="wishlist">위시리스트</button>
+                            <span>|</span>
+                            <button id="mpr-alert" class="alert">알림</button>
+                        </div>
+                        <div class="mp-r-tr">
+                            <p>총 1건</p>
+                            <div class="sort">최신순 <img src="image/myPg/oui_arrow-down.svg" alt=""></div>
+                        </div>
+                    </div>
+                    <div id="wishCard" class="wishCard active">
+                        <div class="reservCardTop">
+                            <div class="reserveCardTopl">
+                                <p>여정 1 <span>|</span> ICN <img src="image/myPg/Airplane.svg" alt="">HSG</p>
+                                <p class="date">2025.07.07. 금 ~ 2025.07.10. 월</p>
+                                <p class="date">왕복, 성인 1명, 일반석</p>
+                            </div>
+                            <div class="reserveCardTopr">
+                                <button class="X"><img src="image/myPg/X.svg" alt=""></button>
+                            </div>
+                        </div>
+                        <div class="flight-content">
+                            <div class="flight_con_l">
+                                <img src="image/flightResult/result_airseoul.svg" alt="">
+                                <h3>에어서울</h3>
+                            </div>
+                            <div class="flight_con_m">
+                                <div class="flightconM_top">
+                                    <div class="flightcon_l">
+                                        <h3>오전 08:10</h3><br>
+                                        <p>인천 ICN</p>
+                                    </div>
+                                    <div class="flight-cm_line">
+                                        <p>01시간 40분</p>
+                                        <div class="line_air">
+                                            <div class="line"></div>
+                                            <img src="image/flightResult/result_Airplane.svg" alt="">
+                                        </div>
+                                        <span class="blue_txt">직항</span>
+                                    </div>
+                                    <div class="flightcon_r">
+                                        <h3>오전 09:50</h3><br>
+                                        <p>사가 HSG</p>
+                                    </div>
+                                </div>
+                                <div class="flightconM_bottom">
+                                    <div class="flightcon_l">
+                                        <h3>오전 10:50</h3><br>
+                                        <p>사가 HSG</p>
+                                    </div>
+                                    <div class="flight-cm_line">
+                                        <p>01시간 25분</p>
+                                        <div class="line_air">
+                                            <div class="line"></div>
+                                            <img src="image/flightResult/result_Airplane.svg" alt="">
+                                        </div>
+                                        <span class="blue_txt">직항</span>
+                                    </div>
+                                    <div class="flightcon_r">
+                                        <h3>오후 12:15</h3><br>
+                                        <p>인천 ICN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight_con_r">
+                                <div class="flightconR_top">
+                                    <p>성인/KB국민카드(이용실적 충족시)<br>
+                                        <span>왕복 307,347원~ </span>
+                                    </p><img class="douwnArrow" src="image/flightResult/result_oui_arrow-up.svg" alt="">
+                                </div>
+                                <div class="reserve_bt">
+                                    <button>예매하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="price-alert-banner" class="price-alert-banner">
+                        <div class="alert-banner">
+                            <div class="banner-content">
+                                <div class="banner-icon">
+                                    <img src="image/myPg/wish_alert.svg" alt="AI 어시스턴트">
+                                </div>
+                                <div class="banner-text">
+                                    <p class="banner-title">선택한 여행: 사가(HSG)</p>
+                                    <p class="banner-message">
+                                        선택한 항공권 가격이 모두 상승했습니다. 가장 저렴한 항공권은 <strong>BL25</strong>입니다.<br>
+                                        새로운 가격인 <strong>202,500원</strong>에 구매할 수 있어요.
+                                    </p>
+                                    <p class="banner-meta">
+                                        2025.07.07. &nbsp;|&nbsp;
+                                        <button type="button" class="banner-delete">삭제</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="banner-action">
+                                <button type="button" class="reserve-btn">예매하러 가기</button>
+                            </div>
+                        </div>
+                        <div class="alert-banner">
+                            <div class="banner-content">
+                                <div class="banner-icon">
+                                    <img src="image/myPg/wish_alert.svg" alt="AI 어시스턴트">
+                                </div>
+                                <div class="banner-text">
+                                    <p class="banner-title">선택한 여행: 나고야(NGO)</p>
+                                    <p class="banner-message">
+                                        선택한 항공권 가격이 모두 상승했습니다. 가장 저렴한 항공권은 <strong>BL25</strong>입니다.<br>
+                                        새로운 가격인 <strong>102,500원</strong>에 구매할 수 있어요.
+                                    </p>
+                                    <p class="banner-meta">
+                                        2025.07.07. &nbsp;|&nbsp;
+                                        <button type="button" class="banner-delete">삭제</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="banner-action">
+                                <button type="button" class="reserve-btn">예매하러 가기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mpr-Account" class="mpr-panel">
+                    <div class="mp-r-sort">
+                        <div class="mp-r-tl">내 계정</div>
+                    </div>
+                    <div class="settings-page">
+                        <nav class="settings-tabs">
+                            <button type="button" class="tab-btn active" data-target="account-management">
+                                계정 관리
+                            </button>
+                            <button type="button" class="tab-btn" data-target="preferences">
+                                환경 설정
+                            </button>
+                            <button type="button" class="tab-btn" data-target="payment-methods">
+                                결제 수단
+                            </button>
+                        </nav>
+                        <div id="account-management" class="tab-content active">
+                            <div class="profile-picture">
+                                <div class="avatar-wrapper">
+                                    <div class="default-avatar" alt="프로필 사진"></div>
+                                    <button type="button" class="upload-btn">
+                                        <img src="image/myPg/user_img.svg" alt="사진 변경" />
+                                    </button>
+                                </div>
+                            </div>
+                            <form class="account-form">
+                                <div class="form-group">
+                                    <label for="nickname">닉네임</label>
+                                    <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력하세요" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">이메일 주소</label>
+                                    <input type="email" id="email" name="email" placeholder="example@ezair.com" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">비밀번호</label>
+                                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password-confirm">비밀번호 확인</label>
+                                    <input type="password" id="password-confirm" name="password_confirm"
+                                        placeholder="비밀번호를 다시 입력하세요" />
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-save">저장</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </section>
+
+
+    <footer class="site-footer">
+        <div class="footer-actions">
+            <button class="share-btn">
+                <img src="image/bottom_bt1.svg" alt="공유하기"> 공유하기
+            </button>
+            <button class="top-btn">
+                <img src="image/bottom_bt2.svg" alt="맨위로"> 맨위로
+            </button>
+        </div>
+
+        <div class="footer-links">
+            <button class="footer-login">로그인</button>
+            <button class="footer-service">전체서비스</button>
+        </div>
+
+        <p class="footer-desc">
+            이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+            관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+
+        <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+        <div class="footer-info">
+            <a href="#">사업자정보 공개</a> |
+            <a href="#">이용약관</a> |
+            <a href="#" class="highlight">개인정보처리방침</a> |
+            <a href="#">고객센터</a>
+        </div>
+
+        <p class="footer-copy">&copy; EZ AIR corp.</p>
+    </footer>
+
+</body>
+
+</html>
