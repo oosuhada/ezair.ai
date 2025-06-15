@@ -295,23 +295,100 @@
                     </button>
                 </div>
                 <div class="price-details hidden">
-                    <p class="details-text">
-                        현재 사가행 최저가 항공편 평균 가격은
-                        <span class="range">48,000원 ~ 260,000원</span> 사이입니다.
-                    </p>
-                    <div class="price-bar-wrapper">
-                        <div class="bar low"></div>
-                        <div class="bar medium"></div>
-                        <div class="bar high"></div>
-                        <div class="indicator" style="left:85%;"></div>
-                    </div>
-                    <div class="price-labels">
-                        <span>48,000원</span>
-                        <span>260,000원</span>
+                    <div class="price-comparison">
+                        <div class="price-comparison_text">
+                            <p>현재 사가행 최저가 항공편 평균 가격은</p>
+                            <p><strong>48,000원</strong> ~ <strong>260,000원</strong> 사이입니다.</p>
+                        </div>
+
+                        <div class="price-comparison_chart">
+                            <div class="price-bar">
+                                <div class="segment segment-low"></div>
+                                <div class="segment segment-medium"></div>
+                                <div class="segment segment-high"></div>
+                                <div class="price-bar_indicator"></div>
+                            </div>
+                            <div class="price-bar_annotation">평균 대비 45,919원 비쌉니다</div>
+                            <div class="price-bar_labels">
+                                <span class="price-bar_min">48,000원</span>
+                                <span class="price-bar_max">260,000원</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="price-chart">
+                        <div class="line-chart-widget">
+                            <!-- 탭 -->
+                            <div class="time-range">
+                                <button class="active">60일 전</button>
+                                <button>30일 전</button>
+                                <button>7일 전</button>
+                            </div>
 
+                            <!-- 차트 영역 -->
+                            <div class="chart-area">
+                                <!-- Y축 라벨 -->
+                                <div class="y-axis">
+                                    <span>90</span>
+                                    <span>70</span>
+                                    <span>50</span>
+                                    <span>30</span>
+                                </div>
+
+                                <!-- 실제 차트 + X축 레이블 -->
+                                <div class="chart-inner">
+                                    <svg viewBox="0 0 989 200" class="chart-svg" preserveAspectRatio="none">
+                                        <!-- 가로 그리드선 -->
+                                        <g class="grid horizontal">
+                                            <line x1="0" y1="0" x2="989" y2="0" />
+                                            <line x1="0" y1="50" x2="989" y2="50" />
+                                            <line x1="0" y1="100" x2="989" y2="100" />
+                                            <line x1="0" y1="150" x2="989" y2="150" />
+                                        </g>
+                                        <!-- 세로 그리드선 7개 -->
+                                        <g class="grid vertical">
+                                            <line x1="0" y1="0" x2="0" y2="200" />
+                                            <line x1="164.8" y1="0" x2="164.8" y2="200" />
+                                            <line x1="329.6" y1="0" x2="329.6" y2="200" />
+                                            <line x1="494.4" y1="0" x2="494.4" y2="200" />
+                                            <line x1="659.2" y1="0" x2="659.2" y2="200" />
+                                            <line x1="824" y1="0" x2="824" y2="200" />
+                                            <line x1="909" y1="0" x2="909" y2="200" />
+                                        </g>
+                                        <!-- 데이터 라인 -->
+                                        <polyline class="data-line" points="
+            0,122
+            164.8,112
+            329.6,82
+            494.4,172
+            659.2,112
+            824,132
+            909,122
+          " />
+                                        <!-- 마지막 포인트 -->
+                                        <circle class="data-point" cx="909" cy="122" r="4" />
+
+                                        <!-- 툴팁 -->
+                                        <g class="tooltip-group">
+                                            <rect x="880" y="82" width="109" height="24" rx="12" />
+                                            <text x="934.5" y="98" text-anchor="middle">345,919원</text>
+                                            <path d="M900,105 l7,6 l7,-6" />
+                                        </g>
+                                    </svg>
+
+                                    <!-- X축 레이블 -->
+                                    <div class="x-labels">
+                                        <span>60일 전</span>
+                                        <span>50일 전</span>
+                                        <span>40일 전</span>
+                                        <span>30일 전</span>
+                                        <span>20일 전</span>
+                                        <span>10일 전</span>
+                                        <span>1일 전</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
