@@ -1,1551 +1,1846 @@
-/* Base Styles */
-body {
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+* {
+    padding: 0;
     margin: 0;
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    background-color: var(--light-gray-bg);
-    min-width: 360px;
-    line-height: 1.5;
-    color: var(--dark-text);
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-a {
+    box-sizing: border-box;
     text-decoration: none;
-    color: inherit;
+    list-style: none;
+    font-family: 'NanumSquare', sans-serif
 }
 
-/* Color Variables */
+body {
+    overflow-x: hidden;
+    background-color: var(--gray50);
+
+}
+a {
+  color: inherit;  
+  text-decoration: none; 
+  background-color: transparent;
+  cursor: pointer;
+}
 :root {
-    --primary-blue: #5398F5;
-    --dark-blue: #386DF8;
-    --light-gray-bg: #F5F7F8;
-    --border-gray: #E9E9E9;
-    --dark-text: #242424;
-    --medium-text: #424242;
-    --light-text: #666666;
-    --accent-red: #FE5D41;
-    --accent-green: #0ABE16;
-    --accent-purple: #9A4AFF;
-    --footer-bg: #F4F7F8;
-    --footer-border: #E2E5E8;
-    --footer-text: #A7AAAC;
-    --footer-dark-text: #696A6C;
-    --card-border: #E9E9EC;
-    --box-shadow-light: rgba(0, 0, 0, 0.07);
-    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --blk: #1a1a1a;
+    --wht: #ffffff;
+    --gray700: #404040;
+    --gray500: #666666;
+    --gray300: #a3a3a3;
+    --gray100: #E5E5E5;
+    --gray50: #fafafa;
+    --gradient1: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
+    --gradient2: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+    --gradient3: linear-gradient(293deg, #1987FA 14.88%, #10C2A0 83.04%);
+    --box-shadow: 0px 3px 9px 0px rgba(37, 50, 67, 0.18), 0px 1px 1px 0px rgba(37, 50, 67, 0.03);
+    --primary: #1987fa;
+    --secondary: #10c2a0;
+    --accent: #00c8f8;
+    --banner-bg: #136dff;
+    --bg-light: #f4f4f4;
+    --border-radius: 8px;
+    --radius-pill: 9999px;
 }
 
-/* Reusable Classes */
-.font-bold { font-weight: 700; }
-.font-medium { font-weight: 500; }
-.text-primary-blue { color: var(--primary-blue); }
-.text-dark-text { color: var(--dark-text); }
-.text-medium-text { color: var(--medium-text); }
-.text-light-text { color: var(--light-text); }
-.text-accent-red { color: var(--accent-red); }
-.text-accent-green { color: var(--accent-green); }
-.green-icon { color: var(--accent-green); }
-.green-text { color: var(--accent-green); }
-.arrow-icon { color: var(--light-text); font-size: 0.75rem; }
-.small-icon { color: var(--light-text); font-size: 0.75rem; }
-.info-icon { color: #999999; font-size: 0.875rem; }
-
-/* Header */
-.header {
-    width: 100%;
-    background-color: var(--primary-blue);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 56px; /* Fixed height for header */
-    justify-content: center;
+.light {
+    font-weight: 300
 }
 
-.header-container {
+.normal {
+    font-weight: 400
+}
+
+.bold {
+    font-weight: 700
+}
+
+.bolder {
+    font-weight: 800
+}
+
+.inner {
     width: 100%;
-    max-width: 1280px;
+    height: 66px;
+    margin: 0 auto;
+}
+
+.gnb_box {
+    max-width: 1440px;
+    height: 66px;
+    gap: 33px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    margin: 0 auto;
+}
+
+.btns .cs {
+    margin-right: 20px;
+}
+
+.hamburger-btn {
+    display: none;
+}
+
+/* ----헤더 끝 */
+.mobile-filter-widget {
+    display: none;
+}
+
+.left_ai {
+    width: 331px;
+    margin-top: 16px;
+}
+
+.result {
+    max-width: 1440px;
+    margin: 0px auto;
+    margin-bottom: 48px;
+    display: flex;
+
+
+}
+
+.price_alert {
+    width: 100%;
+    height: 82px;
+    background-color: var(--wht);
+    border-radius: 12px;
+    display: flex;
     justify-content: space-between;
-    padding: 0 1rem; /* px-4 */
-    box-sizing: border-box;
-}
-
-.header-logo-group {
-    display: flex;
     align-items: center;
-    gap: 1rem;
+    padding: 16px;
 }
 
-.header-logo {
+.price_al_left {
+    display: flex;
+}
+
+.price_alert img {
+    width: 20px;
+    margin-right: 12px;
+}
+
+.price_alert h3 {
+    font-size: 16px;
+}
+
+.toggleSwitch {
+    width: 46px;
     height: 24px;
-    width: auto;
+    display: block;
+    position: relative;
+    border-radius: 30px;
+    background-color: #fff;
+    border: 1px solid var(--banner-bg);
+    cursor: pointer;
+    margin: 30px;
 }
 
-.header-service {
+.toggleSwitch .toggleButton {
+    width: 20px;
     height: 20px;
-    width: auto;
-}
-
-.header-mypage-link {
-    position: relative;
-    align-items: center;
-    color: white;
-    font-size: 0.875rem;
-    opacity: 0.8;
-    padding-left: 0.5rem;
-}
-
-.header-separator {
     position: absolute;
-    width: 1px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.2);
-    left: -0.5rem;
     top: 50%;
+    left: 1px;
     transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--banner-bg);
 }
 
-.header-user-info {
+#toggle:checked~.toggleSwitch {
+    background: var(--banner-bg);
+}
+
+#toggle:checked~.toggleSwitch .toggleButton {
+    left: calc(100% - 21px);
+    background: #fff;
+}
+
+.toggleSwitch,
+.toggleButton {
+    transition: all 0.2s ease-in;
+}
+
+.ai_assistant {
+    width: 100%;
+    height: 328px;
+    background: var(--wht);
+    border-radius: 12px;
+    margin-top: 8px;
+    padding: 16px;
+}
+
+.ai_assistant_top {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: white;
+    justify-content: space-between;
 }
 
-.user-level {
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.header-separator-vertical {
-    width: 1px;
-    height: 12px;
-    background-color: rgba(204, 229, 255, 0.5);
-}
-
-.notification-item {
+.ai_assi_tl {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
 }
 
-.icon {
-    font-size: 1rem;
-    color: white;
-}
-
-.notification-count {
-    font-size: 0.75rem;
-    font-weight: 700;
-    background-color: rgba(255, 0, 0, 0.8);
-    color: white;
-    border-radius: 9999px;
-    padding: 0.125rem 0.5rem;
-    position: absolute;
-    top: -0.5rem;
-    right: -0.5rem;
-    min-width: 1.5rem; /* Ensure minimum size for content */
+.ai_icon {
+    width: 45px;
+    height: 24px;
+    color: var(--wht);
+    background: var(--gradient1);
+    border-radius: 24px;
     text-align: center;
-    box-sizing: border-box;
-}
-.notification-count.bg-blue-100 {
-    background-color: #DBECFC;
-    color: var(--primary-blue);
-}
-.notification-count.bg-red-400 {
-    background-color: #FC4C4E;
-    color: white;
+    font-size: 10px;
+    line-height: 24px;
+    margin-right: 8px;
+
 }
 
-.user-profile-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.ai_assi_tl h3 {
+    font-size: 18px;
 }
 
-.user-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 9999px;
-    object-fit: cover;
+.ai_search {
+    width: 100%;
+    height: 200px;
+    padding: 13px 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray300);
+    background-color: var(--gray100);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    outline: none;
+    resize: none;
+    margin-top: 16px;
 }
 
-.user-name {
-    font-size: 0.875rem;
-}
-
-.menu-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
+.ai_search_bt {
+    border: none;
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 12px;
+    color: var(--wht);
+    background: var(--gradient1);
+    margin-top: 8px;
     cursor: pointer;
 }
 
+/* -----------------ai서치끝 */
 
-/* Main Navigation */
-.main-nav {
+.price-tracking-card {
     width: 100%;
-    background-color: #F0F0F0;
-    border-bottom: 1px solid #E6E6E6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--wht);
+    margin-top: 16px;
 }
 
-.main-nav-container {
-    width: 100%;
-    max-width: 1280px;
-    height: 60px;
+.price-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem; /* Reduced gap for smaller screens */
-    padding: 0 1rem;
-    box-sizing: border-box;
-    justify-content: space-around; /* Distribute items evenly */
+    margin-bottom: 15px;
 }
 
-.nav-item {
+.price-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.price-status {
+    margin-bottom: 20px;
+}
+
+.status-text {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.expensive {
+    color: #e44d26;
+    font-weight: bold;
+}
+
+.expensive-bar-container {
     position: relative;
-    padding-bottom: 0.125rem;
+}
+
+.expensive-bar-label {
+    background-color: #fdecea;
+    color: #e44d26;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    margin-bottom: 8px;
     text-align: center;
-    white-space: nowrap; /* Prevent wrapping */
 }
 
-.nav-item a {
-    color: var(--dark-text);
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 60px;
+.expensive-bar {
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    position: relative;
 }
 
-.nav-item.active a {
-    color: var(--primary-blue);
-}
-
-.nav-underline {
+.bar-segment {
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.bar-segment.low {
+    background-color: #FFA726;
+    left: 0;
+}
+
+.bar-segment.medium {
+    background-color: var(--secondary);
+    left: 20%;
+}
+
+.bar-segment.high {
+    background-color: red;
+    left: 80%;
+}
+
+.current-price-indicator {
+    position: absolute;
+    top: -3px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--wht);
+    border: 2px solid red;
+    border-radius: 50%;
     transform: translateX(-50%);
-    width: 34px; /* Adjust width as needed */
-    height: 2px;
-    background-color: var(--primary-blue);
+    z-index: 1000;
+    animation: move-price-indicator 1.5s ease-in-out 0.2s forwards;
 }
 
-.nav-dropdown {
+@keyframes move-price-indicator {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 85%;
+    }
+}
+
+.price-range {
     display: flex;
+    justify-content: space-between;
+    font-size: 0.7em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.price-prediction {
+    text-align: left;
+    color: #337ab7;
+    margin-bottom: 20px;
+}
+
+.prediction-text {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: var(--gray500);
+}
+
+.prediction-date {
+    font-weight: bold;
+    color: var(--banner-bg);
+}
+
+.prediction-date_txt {
+    color: var(--gray500);
+}
+
+.weekend-included {
+
+    align-items: center;
+    font-size: 0.8em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.weekend-included svg {
+    margin-right: 3px;
+}
+
+.lowest-price {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.lowest-price-container {
+    background-color: #f0f8ff;
+    color: #337ab7;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.monthly-graph {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 100px;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.graph-bar {
+    width: 6%;
+    color: var(--gray500);
+    font-weight: bold;
+    background-color: var(--gray100);
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    font-size: 0.7em;
+    margin: 0 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.graph-bar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.8s ease-in-out;
+    height: 0;
+
+}
+
+.graph-bar.active::before {
+    background-color: #136effb2;
+    mix-blend-mode: hard-light
+}
+
+.graph-bar:hover::before {
+    background-color: var(--gray100);
+    mix-blend-mode: darken
+}
+
+.graph-bar.active {
+    color: var(--gray500);
+    font-weight: bold;
+}
+
+.graph-bar.is-animated::before {
+    height: 100%;
+}
+
+.date-selection {
+    margin-top: 20px;
+}
+
+.selec {
+    display: flex;
+    justify-content: space-around;
+}
+
+.selection-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.cheapest {
+    background-color: #5bc0de;
+}
+
+.dot.expensive {
+    background-color: #e44d26;
+}
+
+.month-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.current-month {
+    font-weight: bold;
+}
+
+.date-picker-row {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.nav-dropdown-icon {
-    color: #999999;
-    font-size: 0.75rem;
-    margin-left: 0.25rem;
-}
-
-/* Main Content */
-.main-content {
-    width: 100%;
+.calendar-container {
     display: flex;
-    flex-direction: column;
+    gap: 1rem;
     align-items: center;
-    padding: 1.25rem 0;
-    box-sizing: border-box;
-    position: relative; /* Needed for fixed sidebar */
 }
 
-.main-content-container {
-    width: 100%;
-    max-width: 1090px; /* Aligned with original design width */
-    padding: 0 1rem;
-    box-sizing: border-box;
+.calendar-label {
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 1rem;
+    font-size: 14px;
+}
+
+.calendar_txt {
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem; /* Gap between sections */
+    justify-content: space-around;
 }
 
-/* Search Section */
-.search-section {
+.flatpickr-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flatpickr-calendar {
+    z-index: 9999;
+    /* 버튼 위에 뜨도록 */
+    margin-top: 4px;
+    /* 버튼 바로 아래 여백 */
+}
+
+.date-picker-row {
+    display: flex;
+}
+
+.price-amount {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--banner-bg);
+    min-width: 80px;
+    text-align: center;
+
+}
+
+.price-amount.expensive {
+    color: red;
+    text-align: center;
+}
+
+/* -------왼쪽ai 끝 */
+
+.right_ai {
+    width: 100%;
+    padding: 0px 22px;
+}
+
+.search-widget {
     background-color: white;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 0px 0px 12px 12px;
+    padding: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1128px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    top: 0;
+    left: 14%;
+    right: 0;
+}
+
+.search-main {
+    padding: 10px;
 }
 
 .search-tabs {
     display: flex;
-    border-bottom: 1px solid #E6E6E6;
-    padding-left: 1rem; /* Consistent padding */
-}
-
-.search-tabs .tab-item {
-    position: relative;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-}
-
-.search-tabs .tab-item span {
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 2.25rem;
-}
-
-.search-tabs .tab-item:not(.active) span {
-    color: var(--light-text);
-}
-
-.search-tabs .tab-item.active span {
-    color: var(--primary-blue);
-}
-
-.search-tabs .tab-underline {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 56px;
-    height: 2px;
-    background-color: var(--primary-blue);
-}
-
-.flight-search-inputs {
-    display: flex;
-    flex-direction: column; /* Default to column for mobile */
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem;
-    gap: 1rem; /* Gap between input groups */
+    padding: 10px 4px 10px 10px;
 }
 
-.airport-select {
+.tab-buttons {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    width: 100%; /* Full width on mobile */
+    gap: 32px;
+    padding-bottom: 12px;
 }
 
-.airport-code {
-    color: var(--dark-text);
-    font-size: 2.25rem;
-    font-weight: 500;
-}
-
-.airport-name {
-    color: var(--dark-text);
-    font-size: 0.875rem;
-    font-weight: 700;
-    display: flex; /* To align icon with text */
-    align-items: center;
-    gap: 0.25rem;
-}
-.airport-select .info-icon { /* Specific style for the dropdown arrow for airport */
-    font-size: 0.6em; /* Smaller arrow */
-    margin-left: 0.25rem;
-    color: var(--dark-text);
-}
-
-
-.swap-icon {
-    padding: 0.5rem;
-    color: #999999;
-    font-size: 1.5rem; /* Larger icon */
-    transform: rotate(90deg); /* Rotate for vertical flow on mobile */
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column; /* Stack fields vertically on mobile */
-    width: 100%;
-    gap: 0.5rem;
-}
-
-.input-field {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: white;
-    border: 1px solid var(--border-gray);
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-}
-
-.input-icon {
-    color: #999999;
-    font-size: 0.875rem;
-    margin-right: 0.5rem;
-}
-
-.price-alert-group {
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--light-text);
-    font-size: 0.875rem;
-    width: 100%;
-    box-sizing: border-box;
-}
-.price-alert-group > span {
-    padding: 0.5rem 0; /* Add padding for readability when stacked */
-}
-
-.price-alert-icon {
-    color: #999999;
-}
-
-.price-alert-separator {
-    width: 1px;
-    height: 12px;
-    background-color: #E6E6E6;
-    display: none; /* Hidden on mobile when stacked */
-}
-
-.price-alert-button {
-    background-color: var(--primary-blue);
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+.tab-buttons .trip-btn {
+    background: none;
     border: none;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
+    position: relative;
     cursor: pointer;
-    white-space: nowrap;
 }
+
+.tab-buttons .trip-btn::after {
+    content: '';
+    position: absolute;
+    top: 29px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    border-radius: 2px 2px 0 0;
+    transition: background 0.2s;
+}
+
+.tab-buttons .trip-btn.active {
+    color: var(--primary);
+}
+
+.tab-buttons .trip-btn.active::after {
+    background: var(--primary)
+}
+
+.tab-options {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.search-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.route-selectors,
+.booking-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobileAir1,
+.mobileAir2 {
+    display: none;
+}
+
+.route-selectors {
+    flex-grow: 1;
+}
+
+.airport-selector,
+.date-selector {
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.airport-selector {
+    flex-grow: 1;
+}
+
+.swap-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border: 1px solid var(--gray300);
+}
+
+.date-picker-row3 {
+    display: flex;
+}
+
+.calendar-container3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.refresh-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border: none;
+}
+
+.passenger-select-wrapper {
+    position: relative;
+    display: inline-block;
+    /* 버튼 크기 기준 정렬 */
+}
+
+#passenger-btn {
+    background: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+}
+
+#passenger-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+#passenger-dropdown.show {
+    display: block;
+}
+
 
 .search-button {
-    background-color: var(--primary-blue);
+    background-color: var(--primary);
     color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 0.375rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width on mobile */
     border: none;
-    cursor: pointer;
-    margin-top: 0.5rem; /* Space from elements above */
-}
-
-.filter-tags {
-    background-color: #F0F0F0;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid #E6E6E6;
-    border-bottom: 1px solid #E6E6E6;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    row-gap: 0.75rem; /* More space between rows if wrapped */
-}
-
-.filter-tag {
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    background-color: white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: var(--light-text);
-    white-space: nowrap;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.filter-tag.active {
-    background-color: rgba(83, 152, 245, 0.1);
-    color: var(--primary-blue);
-}
-
-/* User Status Section */
-.user-status-section {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    margin-bottom: 1.25rem;
-}
-
-.user-level-info {
-    flex: 1;
-    padding: 1.25rem; /* Smaller padding for mobile */
-    background-color: #FCFCFC; /* Original FCFCFC */
-    border-radius: 0.5rem; /* Full rounded corners */
-    border: 1px solid #DBDBDB; /* Original DBDBDB */
+.search-filters {
+    background-color: var(--bg-light);
+    padding: 9px 60px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: center;
+    gap: 8px;
 }
 
-.coupon-info {
-    position: relative;
-    width: 100%;
-    padding: 1.25rem; /* Consistent padding */
-    background-color: white;
-    border-radius: 0.5rem; /* Full rounded corners */
-    border: 1px solid var(--border-gray);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    margin-top: 1rem; /* Space between level info and coupon on mobile */
-}
-
-.coupon-icon {
-    color: #999999;
-    font-size: 1.125rem;
-    margin-right: 0.5rem;
-}
-
-.coupon-count {
-    color: var(--accent-red);
-    font-weight: 700;
-    font-size: 1rem;
-    margin-left: 0.25rem;
-}
-
-.coupon-separator {
-    display: none; /* Only show on larger screens */
-}
-
-/* Popular Flights Section */
-.popular-flights-section {
-    background-color: white;
-    border-radius: 0.375rem;
-    border: 1px solid #B2C8ED;
-    margin-bottom: 1.25rem;
-}
-
-.section-header {
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    align-items: flex-start;
-    padding: 1rem;
-    border-bottom: 1px solid #F0F0F0;
-    gap: 0.5rem; /* Space between title and link on mobile */
-}
-
-.title-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.section-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--dark-text);
-    margin: 0; /* Reset default margin */
-}
-
-.view-more-link {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: var(--light-text);
-    font-size: 0.875rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.flight-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.flight-item {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column; /* Stack vertically on mobile */
-    align-items: flex-start;
-    border-bottom: 1px solid #F0F0F0;
-    gap: 0.75rem; /* Space between sections of flight item */
-}
-.flight-item:last-child {
-    border-bottom: none;
-}
-
-.flight-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%; /* Ensure it takes full width */
-}
-
-.airline-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.airline-logo {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    border-radius: 9999px; /* Added rounded corners for logos */
-}
-
-.airline-name {
-    color: var(--dark-text);
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-.co2-info {
-    display: flex;
-    align-items: center;
-    color: var(--light-text);
-    font-size: 0.75rem;
-}
-
-.co2-info sub {
-    font-size: 0.6rem;
-    margin-left: 0.125rem;
-}
-
-.flight-tags {
+.filter-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
-    row-gap: 0.5rem; /* More space between rows if wrapped */
+    gap: 8px;
+    flex-grow: 1;
 }
 
-.flight-tag {
-    background-color: var(--primary-blue);
+.filter-button {
+    background-color: white;
+    border: 1px solid var(--gray300);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background-color: var(--primary);
     color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    white-space: nowrap;
+    border-color: var(--primary);
 }
-.flight-tag.tag-blue { background-color: var(--primary-blue); }
-.flight-tag.tag-green { background-color: var(--accent-green); }
-.flight-tag.tag-red { background-color: var(--accent-red); }
-.flight-tag.tag-purple { background-color: var(--accent-purple); }
 
+/* ---필터 드롭다운 */
 
-.flight-times {
+.search-widget.is-expanded .more-filters {
+    max-height: 200px;
+}
+
+.expand-button {
+    border: none;
+    background-color: transparent;
+}
+
+.arrow-down {
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+.expand-button.is-active .arrow-down {
+    transform: rotate(180deg);
+}
+
+/* ---필터더보기 */
+.more-filters {
+    background-color: var(--wht);
+    border-radius: 8px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+.filter_top {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: var(--dark-text);
-    font-size: 1rem;
-    font-weight: 500;
-    width: 100%; /* Full width */
+    align-items: start;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--gray100);
+    margin-bottom: 6px;
 }
 
-.flight-route {
+.filter_l_bt {
     display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    white-space: nowrap;
 }
 
-.airport-code-small {
-    color: var(--primary-blue);
-    font-size: 0.75rem;
-}
-
-.day-after {
-    color: #8F8F8F; /* gray-400 */
-    font-size: 0.75rem;
-}
-
-.flight-duration {
+.filter_r {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: var(--dark-text);
-    font-size: 0.875rem;
-    font-weight: 500;
-    width: 100%;
 }
 
-.duration-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    white-space: nowrap;
-}
-
-.flight-price {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Align price to the right */
-    position: relative;
-    padding-right: 2.5rem; /* Space for heart icon */
-    width: 100%;
-    margin-top: 0.5rem; /* Space from other info */
-    box-sizing: border-box;
-}
-
-.price-card-info {
-    color: var(--light-text);
-    font-size: 0.8125rem; /* text-xs */
-    white-space: nowrap;
-}
-
-.price {
-    color: var(--accent-red);
-    font-size: 1.125rem;
-    white-space: nowrap;
-}
-
-.heart-icon {
+.filter_l_bt input[type="checkbox"] {
     position: absolute;
-    right: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.filter_l_bt .custom-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.filter_l_bt input[type="checkbox"]:checked+.custom-checkbox {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.filter_l_bt input[type="checkbox"]:checked+.custom-checkbox::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--banner-bg);
+    border: 2px solid var(--wht);
+    border-radius: 50%;
+    position: relative;
     top: 50%;
-    transform: translateY(-50%);
-    color: #a0a0a0;
-    font-size: 1.25rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.filter_l h3,
+.filter_M h3 {
+    margin-bottom: 18px;
+}
+
+.filter_l_bt {
+    margin-bottom: 8px;
+    margin-bottom: 18px;
+}
+
+.filter_l_bt label {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--blk);
 }
 
-.view-more-button-container {
-    padding: 1rem;
-    width: 100%;
-    box-sizing: border-box;
+.filter_l_bt .code {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--gray500);
 }
 
-.view-more-flights-button {
-    width: 100%;
-    border: 1px solid #B2C8ED;
-    border-radius: 0.375rem;
-    color: var(--primary-blue);
-    font-weight: 700;
-    padding: 0.5rem 0;
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 16px;
+
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--banner-bg);
+    background-color: var(--wht, --banner-bg);
+    border-radius: 14px;
+    transition: background-color 0.2s;
+}
+
+.toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    left: 0px;
+    bottom: 1px;
+    background-color: var(--banner-bg);
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.toggle-switch input:checked+.slider {
+    background-color: var(--banner-bg, --banner-bg);
+}
+
+.toggle-switch input:checked+.slider::before {
+    transform: translateX(14px);
+    background-color: var(--wht);
+}
+
+.toggle-switch input:focus+.slider {
+    box-shadow: 0 0 2px var(--banner-bg, --wht);
+}
+
+.filter_bottom {
+    padding: 0 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter_bottoml ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.filter_bottoml ul li {
+    font-size: 14px;
+}
+
+.filter_bottoml {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    background-color: white;
+}
+
+.cancel,
+.apply {
+    width: 60px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+}
+
+.apply {
+    background: var(--banner-bg);
+    color: var(--wht);
+}
+
+/* -----------필터위젯 끝*/
+.empty1 {
+    width: 100%;
+    height: 200px;
+}
+
+.aiflight-widget {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'NanumSquare', sans-serif;
+}
+
+
+.fw-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.fw-header-left,
+.fw-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.fw-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 24px;
+}
+
+.fw-trip-select,
+.fw-sort-btn {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--gray500);
+    font-size: 14px;
     cursor: pointer;
-    white-space: nowrap;
 }
 
-/* Round Trip Simultaneous Selection Section */
-.simultaneous-selection-section {
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    background-color: white;
+.fw-sort-btn {
+    margin-left: 24px;
 }
 
-.simultaneous-selection-section .section-header {
-    border-bottom: 1px solid #F0F0F0;
-    padding: 1rem;
-    background-color: white;
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
-    flex-direction: column; /* Stack on mobile */
-    align-items: flex-start;
-    gap: 0.75rem;
+.icon-down-sm {
+    font-size: 12px;
+    margin-left: 4px;
 }
 
-.simultaneous-selection-section .title-group .arrow-icon {
-    font-size: 0.75rem;
+/* 
+---------맨위필터끝 */
+.aiflight-result-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.flight-result-card {
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'NanumSquare', sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+.sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #4CA0FF 0%, #88CFFF 100%);
+    padding: 8px 24px;
 }
 
 .sort-options {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 1rem;
-    color: var(--light-text);
-    font-size: 0.875rem;
+    gap: 16px;
+    justify-content: center;
+
 }
 
-.sort-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-/* Hotel Recommendation Section */
-.hotel-recommendation-section {
-    background-color: white;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1.25rem;
-}
-
-.hotel-recommendation-section .section-header {
-    padding: 1rem;
-    border-bottom: 1px solid #F0F0F0;
-    flex-direction: column; /* Stack on mobile */
-    align-items: flex-start;
-    gap: 0.75rem;
-}
-
-.hotel-recommendation-section .section-title .text-primary-blue {
-    color: var(--primary-blue);
-}
-
-.hotel-recommendation-section .view-more-link {
-    font-size: 0.875rem;
-    color: var(--light-text);
-    margin-top: 0; /* Reset margin */
-    align-self: flex-end; /* Push to end when stacked */
-}
-
-.hotel-offers {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    gap: 0.75rem;
-}
-
-.hotel-offer-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem; /* Increased padding */
-    background-color: white;
-    border: 1px solid var(--card-border);
-    border-radius: 0.625rem; /* More rounded */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-}
-
-.hotel-offer-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.hotel-offer-icon {
-    width: 30px; /* Adjusted size based on original image size */
-    height: 30px;
-    border-radius: 0.75rem; /* Rounded corners for the icons */
-    object-fit: cover;
-}
-
-.hotel-offer-content span {
-    color: var(--dark-text);
-    font-size: 0.875rem;
-    line-height: 1.3; /* Adjusted line-height */
-}
-
-.hotel-offer-content .font-bold {
-    font-weight: 700;
-}
-
-.hotel-offer-arrow {
-    color: #999999;
-    margin-left: auto;
-    font-size: 1rem; /* Larger arrow */
-}
-
-/* Hotel Cards Container */
-.hotel-cards-wrapper {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 1rem;
-    position: relative;
-    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-    scroll-behavior: smooth; /* Smooth scrolling for buttons */
-}
-
-.hotel-cards-wrapper::-webkit-scrollbar {
-    height: 6px;
-}
-
-.hotel-cards-wrapper::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 10px;
-}
-
-.hotel-cards-wrapper::-webkit-scrollbar-track {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-
-.hotel-cards-container {
+.sort-options p {
     display: inline-flex;
-    gap: 0.75rem;
-    padding-bottom: 0.5rem; /* Space for scrollbar */
-}
-
-.hotel-card {
-    width: 180px; /* Original width of 180px */
-    flex-shrink: 0;
-    border: 1px solid var(--card-border);
-    border-radius: 0.625rem; /* More rounded */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    overflow: hidden; /* Ensures image and content stay within bounds */
-}
-
-.hotel-image {
-    width: 100%;
-    height: 106px; /* Original height of 106px */
-    object-fit: cover;
-    border-top-left-radius: 0.625rem;
-    border-top-right-radius: 0.625rem;
-}
-
-.hotel-info {
-    padding: 0.75rem;
-    font-size: 0.875rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem; /* Space between info elements */
-}
-
-.hotel-name {
-    font-weight: 400;
-    color: var(--dark-text);
-    margin: 0;
-    white-space: normal;
-    font-size: 1rem; /* Adjust font size */
-    line-height: 1.3;
-}
-
-.hotel-rating {
-    display: flex;
-    align-items: center;
-    color: var(--medium-text);
-    font-weight: 700;
-    margin: 0;
-    font-size: 0.875rem; /* Adjust font size */
-}
-
-.star-icon {
-    color: #FFD700;
-    font-size: 0.75rem;
-    margin-right: 0.25rem;
-}
-
-.hotel-price {
-    color: var(--accent-red);
-    font-weight: 700;
-    font-size: 1rem;
-    white-space: nowrap;
-}
-
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: white;
-    border-radius: 9999px;
-    padding: 0.75rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    z-index: 5; /* Ensure buttons are above cards */
-    display: flex; /* Make sure it's a flex container for centering icon */
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem; /* Larger icon for better touch target */
-    color: var(--light-text);
-    width: 48px; /* Fixed width for better click target */
-    height: 48px; /* Fixed height for better click target */
+    color: var(--wht);
+
 }
 
-.scroll-btn:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-50%) scale(1.05);
-}
-
-.scroll-btn.left-btn {
-    left: 1rem;
-}
-
-.scroll-btn.right-btn {
-    right: 1rem;
-}
-
-.toggle-visibility-option {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: var(--light-text);
-    font-size: 0.875rem;
-    cursor: pointer;
-}
-.toggle-visibility-option i {
-    margin-left: 0.5rem; /* Space between text and icon */
-}
-
-
-/* More Flights Section */
-.more-flights-section {
-    width: 100%;
-    background-color: #36639F; /* Adjusted to a slightly darker blue based on original image */
-    border-radius: 0.375rem;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1.25rem; /* Keep consistent margin */
-    box-sizing: border-box;
-}
-
-.more-flights-button {
+.sort-btn {
     background: none;
     border: none;
-    color: white;
-    font-size: 1.125rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
-/* Right Sidebars */
-.right-sidebars {
-    /* Default for mobile: positioned relative to main content flow */
-    position: static;
-    width: 100%;
-    padding: 1rem; /* Add padding for small screens */
-    box-sizing: border-box;
+.favorite-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+/* ────────────────── 본문 영역 ────────────────── */
+.flight-content {
+    display: flex;
+    padding: 0 24px;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.flight_con_l {
+    display: flex;
+    align-items: flex-start;
+    padding: 24px 0px;
+}
+
+.flight_con_l img {
+    width: 117px;
+}
+
+.flight_con_l h3 {
+    font-size: 18px;
+}
+
+.flight_con_m {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem; /* Space between sidebar boxes */
+    padding: 24px 0px;
+    gap: 16px;
 }
 
-.travel-check-box, .current-events-box {
-    background-color: white;
-    border-radius: 0.625rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    border: 1px solid #F1F1F1; /* Original F1F1F1 */
+.flightconM_top,
+.flightconM_bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.box-title {
-    color: #222225; /* Original 222225 */
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 1rem;
-    border-bottom: 1px solid #F0F0F3; /* Original F0F0F3 */
-    margin: 0; /* Reset default margin */
+.flightcon_l,
+.flightcon_r {
+    text-align: right;
+    line-height: 14px;
 }
 
-.box-content {
+.flightcon_l h3,
+.flightcon_r h3 {
+    font-size: 16px;
+}
+
+.flightcon_l p,
+.flightcon_r p {
+    font-size: 14px;
+}
+
+.flight-cm_line {
     display: flex;
     flex-direction: column;
-}
-.box-content .box-item:not(:last-child) {
-    border-bottom: 1px solid #F0F0F3; /* Original F0F0F3 */
-}
-
-.box-item {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-}
-
-.box-item-icon {
-    width: 36px;
-    height: 36px;
-    object-fit: cover;
-}
-
-.box-item-text {
-    flex-grow: 1;
-}
-
-.item-title {
-    color: #222225;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    margin: 0;
-}
-
-.item-description {
-    color: #939396; /* Original 939396 */
-    font-size: 0.8125rem;
-    margin: 0;
-}
-
-.item-arrow {
-    color: #999999;
-    margin-left: auto;
-}
-
-/* Footer Section */
-.footer {
-    width: 100%;
-    background-color: var(--footer-bg);
-    border-top: 1px solid var(--footer-border);
-    padding: 2rem 0;
-    box-sizing: border-box;
-}
-
-.footer-container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.footer-top {
-    display: flex;
-    flex-direction: column; /* Stack on mobile */
-    align-items: center;
-    width: 100%;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--footer-border);
-    gap: 1rem; /* Space between share and back to top */
-}
-
-.footer-share, .footer-back-to-top {
-    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    color: var(--dark-text);
-    font-size: 0.875rem;
-    cursor: pointer;
+    gap: 0px;
 }
 
-.footer-share .fa-solid { color: var(--primary-blue); }
-.footer-back-to-top .fa-solid { color: var(--primary-blue); }
-
-.footer-disclaimer {
-    color: var(--footer-text);
-    font-size: 0.8125rem;
-    text-align: center;
-    margin: 1rem 0;
-    line-height: 1.5;
-    word-break: keep-all; /* Prevent breaking Korean words awkwardly */
+.flight-cm_line p {
+    font-size: 14px;
 }
 
-.footer-company-info {
+.flight-cm_line .line_air {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: rgba(0, 0, 0, 0.70); /* Original color */
-    font-size: 0.75rem;
-    margin-bottom: 0.5rem;
+    gap: 4px;
+}
+
+.blue_txt {
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.flight-cm_line .line_air .line {
+    width: 178px;
+    height: 3px;
+    background-color: #ccc;
+}
+
+.flight_con_r {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.flight_con_r p {
+    font-size: 14px;
+    color: var(--gray500);
+}
+
+.flightconR_top {
+    display: flex;
+    align-items: flex-end
+}
+
+.flightconR_top p {
+    text-align: center;
+}
+
+.flightconR_top p span {
+    font-size: 24px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.reserve_bt button {
+    border: none;
+    width: 242px;
+    height: 48px;
+    background: var(--primary);
+    color: var(--wht);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+/* .reserve_bt a{
+    text-decoration: none;
+    font-style: none;
+} */
+
+
+
+.aiflight-result_more {
+    border: none;
+    width: 188px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 48px;
+    color: var(--wht);
+    background: var(--gradient1);
     cursor: pointer;
 }
 
-.footer-company-info-arrow {
-    color: var(--footer-text);
-    font-size: 0.75rem;
+
+/* ------------추천카드끝 */
+.flight-result-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.sort-bar2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray100);
+    padding: 8px 24px;
+}
+
+.sort-options2 {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+
+}
+
+.sort-options2 p {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wht);
+
+}
+
+.sort-btn2 {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.favorite-btn2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.flight-result_more {
+    border: none;
+    width: 188px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 48px;
+    color: var(--wht);
+    background: var(--primary);
+    cursor: pointer;
+}
+
+/* ---일반항공추천끝 */
+
+.site-footer {
+    background-color: #f5f8f9;
+    padding: 40px 0 60px;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+    border-top: 1px solid #eee;
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.footer-actions button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.footer-actions img {
+    width: 18px;
+    height: 18px;
 }
 
 .footer-links {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem; /* Smaller gap on mobile */
-    row-gap: 0.75rem; /* For wrapped links */
-    color: var(--footer-dark-text);
-    font-size: 0.75rem;
-    margin-bottom: 1rem;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
-.footer-link {
-    white-space: nowrap; /* Keep links from breaking */
-    position: relative;
-    padding: 0 0.5rem; /* Padding for tap targets */
+.footer-links button {
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    font-size: 13px;
+    background: #fff;
+    color: #444;
+    border-radius: 4px;
     cursor: pointer;
 }
-.footer-link.with-separator::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 10px; /* Adjusted height for separator */
-    width: 1px;
-    background-color: #D1D4D7;
-}
-.footer-link:last-child.with-separator::after {
-    display: none; /* No separator after the last link */
+
+.footer-desc {
+    max-width: 1000px;
+    margin: 0 auto 8px;
+    color: #999;
+    font-size: 12px;
 }
 
-
-.footer-details-box {
-    background-color: #E9ECEF;
-    padding: 1rem; /* Consistent padding */
-    border-radius: 0.375rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
-    align-items: flex-start; /* Align text left */
-    font-size: 0.75rem;
-    line-height: 1.3;
+.footer-company {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 12px;
 }
 
-.footer-detail-group p {
-    margin: 0;
-    color: var(--footer-text);
-    line-height: inherit;
+.footer-info {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
 }
 
-.footer-detail-group .detail-value {
-    color: var(--footer-dark-text);
+.footer-info a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 4px;
 }
 
-.footer-copyright {
-    color: var(--footer-dark-text);
-    font-size: 0.75rem;
-    margin-top: 1rem;
-    text-align: center;
+.footer-info .highlight {
+    font-weight: bold;
+    color: #111;
 }
 
-/* Responsive adjustments */
+.footer-copy {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 6px;
+}
 
-/* Small devices (phones, 640px and up) */
-@media (min-width: 640px) {
-    .header-container, .main-nav-container, .main-content-container, .footer-container {
-        padding: 0 1.5rem; /* sm:px-6 */
+/* --------푸터끝 */
+
+@media (max-width: 768px) {
+
+    /* --- 1. 데스크탑 요소 숨기기 --- */
+    .search-widget,
+    .left_ai,
+    .empty1,
+    .flight-widget {
+        display: none !important;
     }
 
-    .header-service {
-        display: block; /* Show service logo on small screens */
+    .result,
+    .right_ai {
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
     }
 
-    .main-nav-container {
-        gap: 1.5rem; /* Increased gap */
+    /* --- 2. 헤더 --- */
+    header {
+        top: 0;
+        background-color: #fff;
+        z-index: 1000;
     }
 
-    .flight-search-inputs {
-        flex-direction: row; /* Horizontal on small screens */
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .airport-select {
-        width: 45%; /* Two columns */
-        margin-bottom: 0;
-    }
-
-    .swap-icon {
-        transform: rotate(0deg); /* Horizontal arrow */
-    }
-
-    .input-group {
-        flex-direction: row; /* Horizontal fields */
-        width: 100%; /* Take full width */
+    header .inner {
+        display: flex;
         justify-content: space-between;
-    }
-    .input-group .input-field {
-        flex: 1 1 calc(50% - 0.5rem); /* Two columns */
-    }
-
-    .price-alert-group {
-        flex-direction: row; /* Horizontal on small screens */
-        justify-content: center;
-        gap: 1rem;
-    }
-    .price-alert-group > span {
-        padding: 0; /* Remove extra padding */
-    }
-    .price-alert-separator {
-        display: block; /* Show separator */
+        align-items: center;
+        height: 56px;
+        padding: 0 16px;
+        border-bottom: 1px solid #EAEBEE;
     }
 
-    .search-button {
-        width: auto; /* Shrink button */
-        margin-top: 0;
+    header .gnb_box {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 0;
     }
 
-    .user-status-section {
-        flex-direction: row; /* Horizontal on small screens */
-        align-items: stretch; /* Stretch height to match */
+    header .btns {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
-    .user-level-info {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+    .hamburger-btn {
+        display: block;
+        padding: 0;
+        background: transparent;
+        border: none;
     }
 
-    .coupon-info {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-left: 1px solid var(--border-gray); /* Add left border back */
-        margin-top: 0;
+    header .logo img {
+        height: 18px;
     }
 
-    .hotel-offer-card {
-        width: calc(50% - 0.5rem); /* Two columns */
+    header .cs img,
+    header .user img,
+    header .hamburger-btn img {
+        height: 24px;
+        width: 24px;
     }
 
-    .footer-top {
-        flex-direction: row; /* Horizontal */
-        margin-bottom: 0;
+
+    /* ======================================================
+    == 3. 모바일 전용 필터 디자인 (최종 정리)
+    ====================================================== */
+    .mobile-filter-widget {
+        display: flex;
+        flex-direction: column;
+        top: 56px;
+        /* 헤더 높이 */
+        z-index: 999;
+        background-color: #fff;
+        padding: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid #F2F3F5;
     }
-    .footer-share, .footer-back-to-top {
-        margin-bottom: 0;
+
+    /* --- [A] 접힌 상태 스타일 --- */
+    .filter-collapsed {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
-    .footer-share {
-        flex: 1;
-        justify-content: flex-end;
-        padding-right: 1.5rem;
-        position: relative; /* For separator */
+
+    .mf-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    .footer-share::after {
-        content: '';
+
+    .mf-route-text {
+        font-size: 20px;
+        font-weight: 800;
+        color: #343A40;
+    }
+
+    .mf-trip-type {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .mf-summary-box {
+        display: flex;
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        font-size: 14px;
+        background: none;
+        color: var(--gray700);
+        cursor: pointer;
+    }
+
+    .mf-summary-box .mf-divider {
+        color: #E5E5E5;
+        margin: 0 12px;
+    }
+
+    .mf-price-alert {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--gray700);
+    }
+
+    .mf-price-alert .mf-toggle-switch {
+        /* label 태그 */
+        position: relative;
+        display: inline-block;
+        width: 38px;
+        height: 22px;
+    }
+
+    .mf-price-alert .mf-slider {
+        /* span 태그 */
         position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
         right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 18px; /* Matched original */
-        width: 1px;
-        background-color: #D4D9DF; /* Original color */
-        opacity: 0.5;
-    }
-    .footer-back-to-top {
-        flex: 1;
-        justify-content: flex-start;
-        padding-left: 1.5rem;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 22px;
+        transition: .4s;
     }
 
-    .footer-links {
-        gap: 1rem; /* More space between links */
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .header-container {
-        padding: 0 2rem; /* px-8 */
-    }
-
-    .header-mypage-link {
-        display: flex; /* Show My Page link */
-    }
-
-    .main-nav-container {
-        gap: 2rem; /* Original gap */
-    }
-    .nav-item.hidden.md\:block {
-        display: block; /* Show more nav items */
-    }
-
-    .menu-icon {
-        display: none; /* Hide menu icon */
-    }
-
-    .flight-search-inputs {
-        justify-content: space-between;
-        gap: 1rem;
-    }
-    .airport-select, .input-group {
-        flex: 1 1 calc(33.33% - 1rem); /* 3 columns layout */
-        max-width: calc(33.33% - 1rem);
-    }
-    .search-button {
-        flex: 1 1 auto; /* Make it fit remaining space */
-        max-width: none;
-    }
-
-    .user-level-info, .coupon-info {
-        padding: 20px 32px; /* Original padding */
-        border-radius: 10px; /* Restore original rounded corners */
-        width: auto;
-    }
-    .user-level-info {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-top-right-radius: 0; /* Remove right radius */
-        border-bottom-right-radius: 0; /* Remove right radius */
-        flex: 1; /* Take remaining space */
-    }
-    .coupon-info {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-top-left-radius: 0; /* Remove left radius */
-        border-bottom-left-radius: 0; /* Remove left radius */
-        width: 436px; /* Original width */
-        flex-shrink: 0;
-        border-left: 1px solid var(--border-gray); /* Add left border */
-    }
-    .coupon-separator {
+    .mf-price-alert .mf-slider:before {
         position: absolute;
-        height: 40px;
-        width: 1px;
-        background-color: #D8D8D8; /* Original D8D8D8 */
-        left: -1px; /* Overlap with border */
-        top: 50%;
-        transform: translateY(-50%);
-        display: block; /* Show separator */
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        border-radius: 50%;
+        transition: .4s;
     }
 
+    .mf-price-alert input:checked+.mf-slider {
+        background-color: #2196F3;
+    }
 
-    .section-header {
-        flex-direction: row; /* Horizontal */
-        justify-content: space-between;
+    .mf-price-alert input:checked+.mf-slider:before {
+        transform: translateX(16px);
+    }
+
+    .mf-change-btn {
+        display: flex;
         align-items: center;
-        gap: 1rem;
-    }
-    .view-more-link {
-        margin-top: 0;
-        align-self: auto;
-    }
-
-    .flight-item {
-        flex-direction: row; /* Horizontal */
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        gap: 0; /* No gap when horizontal */
-    }
-    .flight-details {
-        width: auto; /* Adjust width */
-    }
-    .flight-times, .flight-duration {
-        width: auto;
-        flex-grow: 1; /* Allow growth */
-        text-align: center;
-        align-items: center; /* Center content */
-    }
-    .flight-times {
-        margin-left: 1rem;
-    }
-    .flight-duration {
-        margin-left: 1rem;
-    }
-    .flight-price {
-        width: auto;
-        margin-top: 0;
-        flex-shrink: 0; /* Prevent shrinking */
-        padding-right: 2.5rem; /* Consistent padding for heart icon */
+        gap: 4px;
+        font-size: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #666;
     }
 
-    .hotel-offer-card {
-        width: calc(50% - 0.75rem); /* Two columns with gap */
+    .mf-change-btn img {
+        width: 16px;
+        height: 16px;
+        transition: transform .3s ease;
     }
 
-    .right-sidebars {
-        position: static; /* Remain static in document flow */
-        width: 100%; /* Take full width of parent */
-        padding: 1rem; /* Adjust padding */
-        display: flex; /* Ensure it remains flex */
-        flex-direction: column;
-        order: 1; /* Place below main content sections */
+    /* 하단 슬라이드 필터 */
+    .mf-slide-filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
-    .footer-top {
-        flex-direction: row; /* Horizontal */
-        justify-content: space-between;
-    }
-}
-
-/* Large devices (desktops, 1024px and up) */
-@media (min-width: 1024px) {
-    .main-content-container {
-        display: grid;
-        grid-template-columns: 1fr 288px; /* Main content and sidebar */
-        gap: 1.25rem;
-        max-width: 1378px; /* 1090px + 288px + 20px gap */
+    .mf-slide-filters::-webkit-scrollbar {
+        display: none;
     }
 
-    .search-section,
-    .user-status-section,
-    .popular-flights-section,
-    .simultaneous-selection-section,
-    .hotel-recommendation-section,
-    .more-flights-section {
-        grid-column: 1 / 2; /* Main content in first column */
-        width: 100%; /* Take full grid column width */
-    }
-
-    .right-sidebars {
-        grid-column: 2 / 3; /* Sidebar in second column */
-        position: sticky; /* Sticky positioning for desktop */
-        top: 1rem; /* Adjust top offset as needed */
-        height: fit-content; /* Only take content height */
-        padding: 0; /* No extra padding */
-        display: flex; /* Ensure it stays flex */
-        flex-direction: column;
-        gap: 1.25rem; /* Space between sidebar boxes */
-        order: 0; /* Place back in original order visually */
-    }
-    .travel-check-box, .current-events-box {
-        margin-bottom: 0; /* Remove redundant margin */
-    }
-
-    .flight-search-inputs {
-        justify-content: flex-start; /* Align to start */
-        padding-left: 1rem; /* Consistent padding */
-        padding-right: 1rem; /* Consistent padding */
-    }
-    .airport-select, .input-group {
-        flex: 0 0 auto; /* Prevent stretching */
-        width: auto;
-    }
-    .airport-select {
-        flex-basis: 146.5px; /* Original width of 146.5px */
-    }
-    .swap-icon {
-        flex-shrink: 0; /* Don't shrink */
-        width: 30px; /* Original width */
-        height: 27px; /* Original height */
-        margin: 0 0.5rem; /* Space around icon */
-        transform: rotate(0deg); /* Reset rotation */
-    }
-    .input-group {
-        flex-basis: auto; /* Allow content-based width */
-        justify-content: flex-start;
-        gap: 0.5rem;
-    }
-    .input-group .input-field {
-        flex: 0 0 auto; /* Prevent stretching */
-        width: auto;
+    .mf-slide-filters button {
         white-space: nowrap;
-    }
-    .price-alert-group {
-        justify-content: flex-start;
-        gap: 0.5rem;
-        flex: 1; /* Take remaining space */
-        width: auto;
-    }
-    .search-button {
-        width: 159px; /* Original width */
-        flex-shrink: 0; /* Prevent shrinking */
+        border-radius: 99px;
+        padding: 8px 14px;
+        font-size: 13px;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
     }
 
-    .hotel-offer-card {
-        width: calc(50% - 0.75rem); /* Two columns with gap */
+    /* AI 어시스턴트 버튼 전용 스타일 (수정) */
+    .mf-slide-filters .mf-ai-btn {
+        background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+        color: white;
+        border: none;
+        font-weight: 700;
     }
 
-    .scroll-btn {
-        display: flex; /* Show scroll buttons on large screens */
+    .mf-refresh-btn {
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
     }
 
-    .footer-top {
-        justify-content: center; /* Center share and back-to-top */
-    }
-    .footer-share {
-        padding-right: 1.5rem; /* Restore separator padding */
-    }
-    .footer-back-to-top {
-        padding-left: 1.5rem; /* Restore separator padding */
-    }
-    .footer-company-info, .footer-links {
-        justify-content: center; /* Center footer links */
+    /* --- 필터 펼침/닫힘 상태 제어 (최종 확인용) --- */
+
+    /* 기본 상태: '접힌' 뷰는 보이고, '펼친' 뷰는 숨김 */
+    .mobile-filter-widget .filter-collapsed {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .footer-details-box {
-        align-items: center; /* Center content in details box */
+    .mobile-filter-widget .filter-expanded {
+        display: none;
+    }
+
+    /* .is-expanded 클래스가 추가되었을 때의 상태 */
+    .mobile-filter-widget.is-expanded .filter-collapsed {
+        display: none;
+        /* '접힌' 뷰를 숨김 */
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded {
+        display: flex;
+        /* '펼친' 뷰를 보임 */
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* --- 필터 펼침/닫힘 상태 제어 --- */
+
+    /* 펼친 상태(.expanded-view)는 기본적으로 숨겨둡니다. */
+    .mobile-filter-widget .filter-expanded {
+        display: none;
+    }
+
+    /* .mobile-filter-widget에 .is-expanded 클래스가 붙었을 때의 처리 */
+    .mobile-filter-widget.is-expanded .filter-collapsed {
+        display: none;
+        /* '접힌 상태'를 숨깁니다. */
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded {
+        display: flex;
+        /* '펼친 상태'를 보이게 합니다. */
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        background-color: var(--gray50);
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main .date-selector {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .route-selectors .airport-selector {
+        width: 134px;
+    }
+
+    #passenger-btn-mobile {
+        border: none;
+        border-radius: 8px;
+        padding: 4px;
+        width: 260%;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    .passenger-select-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-filter-widget.is-expanded .filter-expanded .search-main .search-buttonM {
+        width: 100%;
+        height: 48px;
+        background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+        color: var(--wht);
+        border-radius: 8px;
+
+    }
+
+    /* --- 모바일 전용 캘린더 입력창 스타일 --- */
+    .date-selector-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        border: 1px solid var(--gray100);
+        border-radius: 8px;
+        background-color: #F8F9FA;
+        cursor: pointer;
+    }
+
+    .calendar-container-mobile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .calendar-label-mobile {
+        font-size: 14px;
+        color: var(--blk);
+    }
+
+    .date-selector-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .date-selector-mobile {
+        display: flex;
+        gap: 0;
+        align-items: center;
+        width: 50%;
+    }
+
+    .calendar-container-mobile {
+        display: inline-block;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-size: 14px;
+        display: flex;
+        height: 16px;
+    }
+
+    .calendar-label-mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    .flatpickr-input-mobile {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* 
+ -----------------_-----필텈 */
+
+    .fw-trip-select {
+        display: none;
+    }
+
+    .flight-result-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        /* max-width: 380px; */
+        /* 필요시 조정 */
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .flight-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    .flight_con_l img {
+        height: 24px;
+    }
+
+    .flight_con_l h3 {
+        display: none;
+    }
+
+    .flight_con_l,
+    .flight_con_m {
+        display: flex;
+        align-items: flex-start;
+        padding: 14px 0px;
+    }
+
+    .flight_con_l,
+    .flight_con_m {
+        display: flex;
+        align-items: center;
+    }
+
+
+    .flight-cm_line .line_air .line {
+        width: 78px;
+        height: 3px;
+        background-color: #ccc;
+    }
+
+    .reserve_bt {
+        display: none;
+    }
+
+    .flight_con_r {
+        padding: 14px;
+        background-color: var(--gray50);
+    }
+
+    .site-footer {
+        margin-top: 40px;
     }
 }
