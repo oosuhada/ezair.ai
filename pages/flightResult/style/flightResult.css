@@ -558,7 +558,7 @@ nav {
     margin: 2px 4px;
     font-size: 14px;
     background-color: #f4f4f4;
-    
+
 }
 
 .calendar_txt {
@@ -591,6 +591,7 @@ nav {
     text-align: center;
 
 }
+
 .price-amount.expensive {
     color: red;
     text-align: center;
@@ -1727,19 +1728,132 @@ nav {
         background-color: var(--gray50);
         width: 100%;
         border-radius: 8px;
-            flex-direction: column;
+        flex-direction: column;
     }
 
     .mobile-filter-widget.is-expanded .filter-expanded .search-main .date-selector {
         width: 100%;
         display: flex;
-    
+
         justify-content: center;
 
     }
+/* ------모바일 아래에서 올라오는 슬라이드 */
+    .ai-slide-panel {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        transition: bottom 0.4s ease;
+        z-index: 999;
+        padding: 20px;
+        height: 500px;
+        
+    }
 
+    .ai-slide-panel.active {
+        bottom: 0;
+    }
 
+.ai-slide-panel .ai_assistant{
+    margin-top: 20px;
+    
+}
+.mf-slide-filters2 {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ccc;
+  gap: 20px;
+  scrollbar-width: none; /* Firefox */
+}
+.mf-slide-filters2::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 
+.mf-slide-filters2 .mf-filter-btn {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: #333;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mf-slide-filters2 .mf-filter-btn.active {
+  color: #007aff;
+  font-weight: 600;
+  border-bottom: 2px solid #007aff;
+}
+
+  .ai_search_bt{
+    
+    bottom: 10px;
+    width:85%;
+  }
+
+  .ai_search_bt {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/* 내부 스크롤 영역 확보 */
+.ai_assistant {
+  padding-bottom: 60px; /* ai_search_bt 높이보다 조금 더 여유있게 */
+  overflow-y: auto;
+  max-height: calc(100vh - 120px); /* 필요에 따라 조절 */
+}
+
+.dimmed-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 */
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* 활성화 시 */
+.dimmed-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ai-slide-panel {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 90vh;
+  background: #fff;
+  z-index: 100; /* dimmed-overlay보다 위 */
+  transition: bottom 0.4s ease;
+}
+
+/* 올라올 때 */
+.ai-slide-panel.active {
+  bottom: 0;
+          height: 480px;
+}
+/* --------------------------------------- */
     .route-selectors .airport-selector {
         width: 70%;
     }
@@ -1766,8 +1880,7 @@ nav {
         background: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
         color: var(--wht);
         border-radius: 8px;
-        border:none
-
+        border: none
     }
 
     /* --- 모바일 전용 캘린더 입력창 스타일 --- */
@@ -1798,14 +1911,14 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
 
     .date-selector-mobile {
         display: flex;
         gap: 0;
         align-items: center;
-        width:100%;
+        width: 100%;
     }
 
     .calendar-container-mobile {
