@@ -482,14 +482,103 @@ label input[type="radio"] {
 
 
 /* -----추천항공편 */
-.recom_box_top{
+/* 공통 설정 */
+.recommend{
+    align-items: center;
+    justify-content: center;
+}
+.recommend_top{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:36px
+
+}
+.recom_box_top_con{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.recom_box_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  width: 1090px;
+}
+
+.recom_box_bt {
+  display: flex;
+  gap: 8px;
+}
+
+.recom-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid #00c8f8;
+  color: #00c8f8;
+  background: white;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.recom-btn img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(51%) sepia(83%) saturate(700%) hue-rotate(161deg) brightness(94%) contrast(94%);
+  transition: filter 0.3s;
+}
+
+.recom-btn.active {
+  background: linear-gradient(to right, #00c8f8, #00d9a6);
+  color: #fff;
+  border: none;
+}
+
+.recom-btn.active img {
+  filter: brightness(0) invert(1);
+}
+.ai_recom_box{
+    width: 60%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .ai_recom_box ul {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 16px;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #00c8f8;
+  background: white;
+  color: #1987fa;
+  background-image: linear-gradient(to right, #00c8f8, #00d9a6);
+  background-clip: padding-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+.ai_recom_box ul li:first-child {
+  font-weight: bold;
+  font-size: 18px;
+  -webkit-text-fill-color: linear-gradient(to right, #00c8f8, #00d9a6);;
+}
+
+
+/* 카드 스타일 */
 .recom_box {
-  width: 320px;
+  width: 280px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
@@ -545,7 +634,6 @@ label input[type="radio"] {
   margin: 8px 0;
   font-size: 14px;
   color: #333;
-  position: relative;
 }
 
 .recom_box_text small {
@@ -563,40 +651,25 @@ label input[type="radio"] {
   font-weight: bold;
 }
 
-/* ----슬라이드- */
+
+/* 슬라이더 영역 */
 .recom_box_bottom {
   position: relative;
   padding: 12px 0;
 }
+
 .recom_box_bottom .swiper {
   max-width: 1190px;
-  margin: 0 auto;    
-}
-.swiper {
-   position: relative;
-  padding: 0 40px; /* 양옆 공간 확보 */
-  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 40px;
+  overflow: visible;
 }
 
 .swiper-slide {
   width: auto;
 }
 
-.recom_box {
-  width: 280px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
-/* 좌우 그라데이션 (페이드) */
-.swiper {
-  position: relative;
-  padding: 0 40px; /* 양옆 공간 확보 */
-  overflow: visible;
-}
-
+/* 좌우 그라데이션 */
 .gradient-left,
 .gradient-right {
   position: absolute;
@@ -617,6 +690,7 @@ label input[type="radio"] {
   background: linear-gradient(to left, white 80%, transparent 100%);
 }
 
+/* 슬라이드 네비게이션 */
 .swiper-button-prev,
 .swiper-button-next {
   color: #fff;
@@ -626,5 +700,14 @@ label input[type="radio"] {
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
+  position: absolute;
   z-index: 1000;
+}
+
+.swiper-button-prev {
+  left: 380px;
+}
+
+.swiper-button-next {
+  right: 380px;
 }
