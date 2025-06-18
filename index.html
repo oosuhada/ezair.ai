@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ AIR 이지에어에 오신 것을 환영합니다.</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <link rel="stylesheet" href="style/style.css">
+    <script src="script/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <nav class="gnb">
+                <div class="logo"><a href="index.html"><img src="image/EZAIR.svg" alt="이지에어 로고"></a></div>
+                <ul>
+                    <li class="air"><a href="#">항공</a></li>
+                    <li class="hotel"><a href="#">호텔</a></li>
+                    <li class="package"><a href="#">패키지</a></li>
+                    <li class="forU"><a href="#">EZ for you</a><img src="image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                </ul>
+            </nav>
+            <div class="btns">
+                <a class="cs" href="#"><img src="image/gnb_cs.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="#"><img src="image/gnb_user.svg" alt="이지에어 마이페이지"></a>
+            </div>
+        </div>
+        <div class="top">
+            <img class="top_airplane" src="image/top_airplane.png" alt="">
+            <img class="top_cloud_left" src="image/top_cloud_left.png" alt="">
+            <h1 class="title">맞춤형 여행의 시작<br>
+                <p class="title_2">EZ AIR</p>
+            </h1>
+            <img class="top_main_cloud" src="image/top_main_cloud.png" alt="">
+            <img class="top_cloud_right" src="image/top_cloud_right.png" alt="">
+        </div>
+    </header>
+    <main>
+        <div id="search">
+            <div class="search_box">
+                <div class="search_box_top">
+                    <button type="button" class="trip-btn active">왕복</button>
+                    <button type="button" class="trip-btn">편도</button>
+                    <button type="button" class="trip-btn">다구간</button>
+                    <div><input type="radio" name="business trip" id="radio1">해외출장입니다.</div>
+                </div>
+                <div class="search_box_mb">
+                    <div class="search_box_mid">
+                        <input type="text" placeholder="출발지">
+                        <button class="swap-btn"><img src="image/ArrowsClockwise.svg" alt=""></button>
+                        <input type="text" placeholder="도착지">
+                        <div class="calendar-container">
+                            <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
+                            <input type="text" id="depart-calendar" readonly>
+
+                            <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
+                            <input type="text" id="return-calendar" readonly>
+
+                        </div>
+                        <div class="passenger-select-wrapper">
+                            <button id="passenger-btn">성인 1명, 일반석</button>
+                            <div id="passenger-dropdown" class="dropdown">
+                                <label>
+                                    인원수:
+                                    <select id="passenger-count">
+                                        <option value="1">1명</option>
+                                        <option value="2">2명</option>
+                                        <option value="3">3명</option>
+                                        <option value="4">4명</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    좌석 등급:
+                                    <select id="seat-class">
+                                        <option value="일반석">일반석</option>
+                                        <option value="비즈니스">비즈니스</option>
+                                        <option value="일등석">일등석</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <label><input type="radio" name="direct-flight" id="radio2">직항만</label>
+                        <button type="submit">검색</button>
+
+                    </div>
+                    <div class="search_box_bottom">
+                        <div class="ai-assistant-box">
+                            <div class="ai-header">
+                                <span class="ai-badge">AI</span>
+                                <strong><span class="bold">AI 항공권 어시스턴트</span></strong>
+                                <span class="desc">자연어로 편리하게 항공권을 검색하고 추천받으세요</span>
+                            </div>
+
+                            <div class="ai-ip-box">
+                                <img src="image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
+                                <div class="ai-input-box">
+                                    <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘"
+                                        readonly />
+                                    <button class="ai-search-btn"></button>
+                                </div>
+                                <div class="ai-tags">
+                                    ✨ 자연어 검색<br>
+                                    🎯 맞춤 추천<br>
+                                    ⚡ 실시간 비교
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top_right">
+            <div class="empty1"></div>
+            <div class="checklist-box">
+                <p class="checklist-title">여행 전에 필수 체크!</p>
+                <ul class="checklist-items">
+                    <li>
+                        <img src="image/top_right_img1.png" alt="출장 아이콘">
+                        <div class="text-box">
+                            <strong>해외 출장 가시나요?</strong>
+                            <span>출장 선호 항공편 알려드려요</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                    <li>
+                        <img src="image/top_right_img2.png" alt="호텔 아이콘">
+                        <div class="text-box">
+                            <strong>호텔 추천 For U</strong>
+                            <span>맞춤 호텔을 추천해드려요</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                    <li>
+                        <img src="image/top_right_img3.png" alt="세계 아이콘">
+                        <div class="text-box">
+                            <strong>전세계 모든곳검색</strong>
+                            <span>인기 항공편만 가격순으로</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="Recommend">
+            <h2>구름이 추천 항공편</h2>
+            <div class="recom_box_top">
+                <div class="recom_box_bt">
+                    <button type="button" class="trip-btn active"><img src="image/002_airplane-solid.svg"
+                            alt="">항공</button>
+                    <button type="button" class="trip-btn"><img src="image/002_hotel-fill.svg" alt="">숙박</button>
+                </div>
+                <div class="ai_recom_box">
+                    <ul>
+                        <li>AI분석 결과</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
