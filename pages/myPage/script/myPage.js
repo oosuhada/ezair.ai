@@ -1,68 +1,38 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // 탭 버튼들
+    const tabs = document.querySelectorAll('#Reservation, #Wish, #Account');
+    // 모든 패널
+    const panels = document.querySelectorAll('.mpr-panel');
 
-// myPage.js
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide icons
-    lucide.createIcons();
+            panels.forEach(panel => panel.classList.remove('active'));
 
-    // Scroll to top functionality
-    const backToTopButton = document.querySelector('.back-to-top-button');
-    if (backToTopButton) {
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            const targetId = 'mpr-' + tab.id;
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) targetPanel.classList.add('active');
+        });
+    });
+    (function () {
+        const btnMap = {
+            'mpr-wishlist': 'wishCard',
+            'mpr-alert': 'price-alert-banner'
+        };
+        const allSections = Object.values(btnMap).map(id => document.getElementById(id));
+        const btns = Object.keys(btnMap).map(id => document.getElementById(id));
+
+        btns.forEach(btn => {
+            const targetId = btnMap[btn.id];
+            btn.addEventListener('click', () => {
+                allSections.forEach(sec => sec && sec.classList.remove('active'));
+                const target = document.getElementById(targetId);
+                if (target) target.classList.add('active');
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
             });
         });
-    }
-
-    // Optional: Hide/show back-to-top button based on scroll position
-    window.addEventListener('scroll', () => {
-        if (backToTopButton) {
-            if (window.scrollY > 200) { // Show button after scrolling down 200px
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        }
-    });
-
-    // Optional: Toggle company details visibility in the footer
-    const footerInfoToggle = document.querySelector('.footer-info-toggle');
-    const companyDetails = document.querySelector('.company-details');
-    const footerArrow = document.querySelector('.footer-info-toggle .footer-arrow');
-
-    if (footerInfoToggle && companyDetails && footerArrow) {
-        // Initial state: hidden on smaller screens, shown on desktop
-        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-        companyDetails.style.display = isDesktop ? 'grid' : 'none';
-        footerArrow.setAttribute('data-lucide', isDesktop ? 'chevron-up' : 'chevron-down');
-
-
-        footerInfoToggle.addEventListener('click', () => {
-            if (companyDetails.style.display === 'none' || companyDetails.style.display === '') {
-                companyDetails.style.display = 'grid';
-                footerArrow.setAttribute('data-lucide', 'chevron-up');
-            } else {
-                companyDetails.style.display = 'none';
-                footerArrow.setAttribute('data-lucide', 'chevron-down');
-            }
-            lucide.createIcons(); // Re-create icons after changing data-lucide
-        });
-
-        // Listen for resize events to adjust visibility for desktop users who resize down
-        window.addEventListener('resize', () => {
-            const currentIsDesktop = window.matchMedia('(min-width: 1024px)').matches;
-            if (currentIsDesktop && companyDetails.style.display === 'none') {
-                 companyDetails.style.display = 'grid';
-                 footerArrow.setAttribute('data-lucide', 'chevron-up');
-                 lucide.createIcons();
-            } else if (!currentIsDesktop && companyDetails.style.display === 'grid') {
-                 // On smaller screens, if it was open, close it by default
-                 companyDetails.style.display = 'none';
-                 footerArrow.setAttribute('data-lucide', 'chevron-down');
-                 lucide.createIcons();
-            }
-        });
-    }
+    })();
 });
