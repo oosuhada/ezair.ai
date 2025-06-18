@@ -86,4 +86,18 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.classList.add('active'); // 클릭된 버튼만 활성화
         });
     });
+
+});
+
+window.addEventListener('load', function () {
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        freeMode: true
+    });
 });

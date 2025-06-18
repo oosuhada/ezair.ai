@@ -482,3 +482,149 @@ label input[type="radio"] {
 
 
 /* -----추천항공편 */
+.recom_box_top{
+    display: flex;
+}
+.ai_recom_box ul {
+    display: flex;
+}
+.recom_box {
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.recom_box_img {
+  position: relative;
+}
+
+.recom_box_img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.recom_percent {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #00c48c;
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.recom_tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.recom_box_text {
+  padding: 16px;
+}
+
+.recom_box_text h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: #222;
+}
+
+.recom_box_text p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+}
+
+.recom_box_text small {
+  font-size: 12px;
+  color: #777;
+}
+
+.direct_badge {
+  background: #1987fa;
+  color: white;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+/* ----슬라이드- */
+.recom_box_bottom {
+  position: relative;
+  padding: 12px 0;
+}
+.recom_box_bottom .swiper {
+  max-width: 1190px;
+  margin: 0 auto;    
+}
+.swiper {
+   position: relative;
+  padding: 0 40px; /* 양옆 공간 확보 */
+  overflow: hidden;
+}
+
+.swiper-slide {
+  width: auto;
+}
+
+.recom_box {
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* 좌우 그라데이션 (페이드) */
+.swiper {
+  position: relative;
+  padding: 0 40px; /* 양옆 공간 확보 */
+  overflow: visible;
+}
+
+.gradient-left,
+.gradient-right {
+  position: absolute;
+  top: 0;
+  width: 418px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gradient-left {
+  left: 0;
+  background: linear-gradient(to right, white 80%, transparent 100%);
+}
+
+.gradient-right {
+  right: 0;
+  background: linear-gradient(to left, white 80%, transparent 100%);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  background: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
