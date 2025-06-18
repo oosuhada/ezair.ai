@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, {
             x: endX,
             y: endY,
-            duration: 5,
+            duration: 9,
             ease: "power2.inOut"
-        }, "-=3");
+        }, "-=6");
 
         // 비행기가 화면에서 벗어난 직후 갑자기 사라지게
         tl.set(introAirplane, {
@@ -122,17 +122,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 4. Fade out video and clouds
         tl.to(windowInner, {
-            duration: 1.5,
+            duration: 1.3,
             opacity: 0,
             ease: "power2.inOut",
             onComplete: function() {
                 windowInner.style.display = 'none';
             }
-        }, "-=1.5");
+        }, "-=1");
 
         // 5. Transform airplane window to chatbox (position, size, border, and background)
         tl.to(airplaneWindow, {
-            duration: 2,
+            duration:2,
             x: targetX,
             y: targetY,
             width: targetWidth,
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             borderColor: targetBorderColor,
             boxShadow: targetBoxShadow,
             ease: "power2.inOut"
-        }, "+=0.5");
+        }, "+=0");
 
         // 6. Inject and fade in chatbox content with introOverlay background transition and main content fade-in
         tl.to(airplaneWindow, {
@@ -182,30 +182,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // 타이핑 애니메이션과 동시에 introOverlay 배경색을 검정에서 투명으로 전환, 메인 콘텐츠 페이드인
                     gsap.to("#typing-text", {
-                        duration: 4,
+                        duration: 2,
                         text: placeholderText,
                         ease: "none"
                     });
 
                     gsap.to(introOverlay, {
-                        duration: 4,
+                        duration: 6,
                         backgroundColor: 'rgba(0,0,0,0)', // 투명 배경으로 전환
                         ease: "power2.inOut"
                     });
 
                     gsap.to(mainContent, {
-                        duration: 4,
+                        duration: 6,
                         opacity: 1,
                         visibility: 'visible',
                         ease: "power2.inOut"
                     });
                 }
             }
-        }, "+=0.5");
+        }, "+=0.3");
 
         // 7. Fade out and remove the intro overlay
         tl.to(introOverlay, {
-            duration: 2,
+            duration: 3.5,
             opacity: 0,
             ease: "power2.inOut",
             onComplete: function() {
@@ -217,6 +217,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     clearProps: "all"
                 });
             }
-        }, "+=3");
+        }, "+=2");
     }
 });
