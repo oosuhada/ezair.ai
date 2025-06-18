@@ -214,3 +214,24 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+window.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.flight-result-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // delay를 줘서 순차적 애니메이션
+        setTimeout(() => {
+          entry.target.classList.add('animate-in');
+        }, index * 150); // 순서에 따라 시간 차를 줌
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+  });
+
+  cards.forEach(card => {
+    observer.observe(card);
+  });
+});
