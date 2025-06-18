@@ -1,3 +1,4 @@
+// gemini_search.js
 // 핵심 수정: import 문을 사용하여 GoogleGenerativeAI를 가져옵니다.
 import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
 
