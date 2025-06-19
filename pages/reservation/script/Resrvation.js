@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initFlightCardToggles();
 });
 
+const testBtn = document.querySelector('#passenger-btn');
+    if (testBtn) {
+        testBtn.addEventListener('click', () => console.log('클릭됨'));
+    } else {
+        console.warn('#passenger-btn 요소를 찾을 수 없습니다.');
+    }
+
 function initTripTabs() {
     document.querySelectorAll('.search-widget .trip-btn').forEach(tab => {
         tab.addEventListener('click', () => {
@@ -205,3 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(polyline);
 });
+
+
+
+
+document.querySelector('#passenger-btn').addEventListener('click', () => console.log('클릭됨'));
