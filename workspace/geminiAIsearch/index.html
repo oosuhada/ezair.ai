@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ AIR 이지에어에 오신 것을 환영합니다.</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <nav class="gnb">
+                <div class="logo"><a href="index.html"><img src="../../image/EZAIR.svg" alt="이지에어 로고"></a></div>
+                <ul>
+                    <li class="air"><a href="#">항공</a></li>
+                    <li class="hotel"><a href="#">호텔</a></li>
+                    <li class="package"><a href="#">패키지</a></li>
+                    <li class="forU"><a href="#">EZ for you</a><img src="../../image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                </ul>
+            </nav>
+            <div class="btns">
+                <a class="cs" href="#"><img src="../../image/gnb_cs.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="#"><img src="../../image/gnb_user.svg" alt="이지에어 마이페이지"></a>
+            </div>
+        </div>
+        <div class="top">
+            <img class="top_airplane" src="../../image/top_airplane.png" alt="">
+            <img class="top_cloud_left" src="../../image/top_cloud_left.png" alt="">
+            <h1 class="title">맞춤형 여행의 시작<br>
+                <p class="title_2">EZ AIR</p>
+            </h1>
+            <img class="top_main_cloud" src="../../image/top_main_cloud.png" alt="">
+            <img class="top_cloud_right" src="../../image/top_cloud_right.png" alt="">
+        </div>
+    </header>
+    <main>
+        <div id="search">
+            <div class="search_box">
+                <div class="search_box_top">
+                    <button type="button" class="trip-btn active">왕복</button>
+                    <button type="button" class="trip-btn">편도</button>
+                    <button type="button" class="trip-btn">다구간</button>
+                    <div><input type="radio" name="business trip" id="radio1">해외출장입니다.</div>
+                </div>
+                <div class="search_box_mb">
+                    <div class="search_box_mid">
+                        <div style="position: relative;">
+                            <input type="text" placeholder="출발지" id="origin-input">
+                            <div id="origin-suggestions" class="suggestions-dropdown"></div>
+                        </div>
+
+                        <button class="swap-btn"><img src="../../image/ArrowsClockwise.svg" alt=""></button>
+
+                        <div style="position: relative;">
+                            <input type="text" placeholder="도착지" id="destination-input">
+                            <div id="destination-suggestions" class="suggestions-dropdown"></div>
+                        </div>
+
+                        <div class="calendar-container">
+                            <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
+                            <input type="text" id="depart-calendar" readonly>
+
+                            <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
+                            <input type="text" id="return-calendar" readonly>
+
+                        </div>
+                        <div class="passenger-select-wrapper">
+                            <button id="passenger-btn">성인 1명, 일반석</button>
+                            <div id="passenger-dropdown" class="dropdown">
+                                <label>
+                                    인원수:
+                                    <select id="passenger-count">
+                                        <option value="1">1명</option>
+                                        <option value="2">2명</option>
+                                        <option value="3">3명</option>
+                                        <option value="4">4명</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    좌석 등급:
+                                    <select id="seat-class">
+                                        <option value="ECONOMY">일반석</option>
+                                        <option value="BUSINESS">비즈니스</option>
+                                        <option value="FIRST">일등석</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <label><input type="radio" name="direct-flight" id="radio2">직항만</label>
+                        <button type="submit" id="search-flights-btn">검색</button>
+
+                    </div>
+                    <div class="search_box_bottom">
+                        <div class="ai-assistant-box">
+                            <div class="ai-header">
+                                <span class="ai-badge">AI</span>
+                                <strong><span class="bold">AI 항공권 어시스턴트</span></strong>
+                                <span class="desc">자연어로 편리하게 항공권을 검색하고 추천받으세요</span>
+                            </div>
+
+                            <div class="ai-ip-box">
+                                <img src="../../image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
+                                <div class="ai-input-box">
+                                    <input type="text" class="ai-input" placeholder="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
+                                    <button class="ai-search-btn"></button>
+                                </div>
+                                <div class="ai-tags">
+                                    ✨ 자연어 검색<br>
+                                    🎯 맞춤 추천<br>
+                                    ⚡ 실시간 비교
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top_right">
+            <div class="empty1"></div>
+            <div class="checklist-box">
+                <p class="checklist-title">여행 전에 필수 체크!</p>
+                <ul class="checklist-items">
+                    <li>
+                        <img src="../../image/top_right_img1.png" alt="출장 아이콘">
+                        <div class="text-box">
+                            <strong>해외 출장 가시나요?</strong>
+                            <span>출장 선호 항공편 알려드려요</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                    <li>
+                        <img src="../../image/top_right_img2.png" alt="호텔 아이콘">
+                        <div class="text-box">
+                            <strong>호텔 추천 For U</strong>
+                            <span>맞춤 호텔을 추천해드려요</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                    <li>
+                        <img src="../../image/top_right_img3.png" alt="세계 아이콘">
+                        <div class="text-box">
+                            <strong>전세계 모든곳검색</strong>
+                            <span>인기 항공편만 가격순으로</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="recommend">
+            <div class="recommend_top">
+                <div class="recom_box_top_con">
+                    <h2>구름이 추천 항공편</h2>
+                    <div class="recom_box_top">
+                        <div class="recom_box_bt">
+                            <button type="button" class="recom-btn active"><img src="../../image/002_airplane-solid.svg"
+                                    alt="">항공</button>
+                            <button type="button" class="recom-btn"><img src="../../image/002_hotel-fill.svg"
+                                    alt="">숙박</button>
+                        </div>
+                        <div class="ai_recom_box">
+                            <ul>
+                                <li>AI분석 결과</li>
+                                <li>• 문화 체험 선호도: 높음</li>
+                                <li>• 예산 범위: 중간</li>
+                                <li>• 여행 스타일: 도시 + 자연</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recom_box_bottom">
+                <div class="swiper-container-wrapper">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="gradient-left"></div>
+                    <div class="gradient-right"></div>
+
+                    <div class="swiper mySwiper">
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img"><img src="../../image/002_img.png" alt="">
+                                        <span class="recom_percent">추천도 87%</span>
+                                        <span class="recom_tag">해변 휴양 | 리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG) </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                        <p>7월 7일 (월)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img"><img src="../../image/002_img2.png" alt="">
+                                        <span class="recom_percent">추천도 87%</span>
+                                        <span class="recom_tag">해변 휴양 | 리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG) </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                        <p>7월 7일 (월)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img"><img src="../../image/002_img3.png" alt="">
+                                        <span class="recom_percent">추천도 87%</span>
+                                        <span class="recom_tag">해변 휴양 | 리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG) </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                        <p>7월 7일 (월)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span
+                                                class="direct_badge">직항</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img"><img src="../../image/002_img4.png" alt="">
+                                        <span class="recom_percent">추천도 87%</span>
+                                        <span class="recom_tag">해변 휴양 | 리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG) </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이 항공의 ICN - HSG
+                                                항공권</small><span class="direct_badge">직항</span></p>
+                                        <p>7월 7일 (월)<br><small>티웨이 항공의 ICN - HSG
+                                                항공권</small><span class="direct_badge">직항</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img"><img src="../../image/002_img5.png" alt="">
+                                        <span class="recom_percent">추천도
+                                            87%</span>
+                                        <span class="recom_tag">해변 휴양 |
+                                            리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG) </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이 항공의 ICN -
+                                                HSG 항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                        <p>7월 7일 (월)<br><small>티웨이 항공의 ICN -
+                                                HSG 항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img">
+                                        <img src="../../image/002_img6.png" alt="">
+                                        <span class="recom_percent">추천도
+                                            87%</span>
+                                        <span class="recom_tag">해변
+                                            휴양 | 리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN) - 사가 (HSG)
+                                        </h3>
+                                        <p>7월 6일 (일)<br><small>티웨이
+                                                항공의 ICN - HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                        <p>7월 7일 (월)<br><small>티웨이
+                                                항공의 ICN - HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img">
+                                        <img src="../../image/002_img7.png" alt="">
+                                        <span class="recom_percent">추천도
+                                            87%</span>
+                                        <span class="recom_tag">해변
+                                            휴양 |
+                                            리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울 (ICN)
+                                            - 사가
+                                            (HSG)
+                                        </h3>
+                                        <p>7월 6일
+                                            (일)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                        <p>7월 7일
+                                            (월)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img">
+                                        <img src="../../image/002_img8.png" alt="">
+                                        <span class="recom_percent">추천도
+                                            87%</span>
+                                        <span class="recom_tag">해변
+                                            휴양
+                                            |
+                                            리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울
+                                            (ICN)
+                                            -
+                                            사가
+                                            (HSG)
+                                        </h3>
+                                        <p>7월
+                                            6일
+                                            (일)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                        <p>7월
+                                            7일
+                                            (월)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="swiper-slide">
+                                <div class="recom_box">
+                                    <div class="recom_box_img">
+                                        <img src="../../image/002_img9.png" alt="">
+                                        <span class="recom_percent">추천도
+                                            87%</span>
+                                        <span class="recom_tag">해변
+                                            휴양
+                                            |
+                                            리조트</span>
+                                    </div>
+                                    <div class="recom_box_text">
+                                        <h3>서울
+                                            (ICN)
+                                            -
+                                            사가
+                                            (HSG)
+                                        </h3>
+                                        <p>7월
+                                            6일
+                                            (일)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                        <p>7월
+                                            7일
+                                            (월)<br><small>티웨이
+                                                항공의
+                                                ICN
+                                                -
+                                                HSG
+                                                항공권</small><span class="direct_badge">직항</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-swiper-container">
+                <div class="swiper myBannerSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="../../image/mid_banner.png" alt="배너1">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="../../image/mid_banner.png" alt="배너2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="../../image/mid_banner.png" alt="배너3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="../../image/mid_banner.png" alt="배너4">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <section class="theme-travel">
+                <h2>테마별 여행지</h2>
+                <div class="theme-grid">
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img1.png" alt="#가족여행">
+                        <div class="text-box">
+                            <strong>#가족여행</strong>
+                            <span class="price">77,901원</span> - 06월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img2.png" alt="#휴양지">
+                        <div class="text-box">
+                            <strong>#휴양지</strong>
+                            <span class="price">132,053원</span> - 09월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img3.png" alt="#커플여행">
+                        <div class="text-box">
+                            <strong>#커플여행</strong>
+                            <span class="price">92,682원</span> - 07월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img4.png" alt="#신혼여행">
+                        <div class="text-box">
+                            <strong>#신혼여행</strong>
+                            <span class="price">182,950원</span> - 07월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img5.png" alt="#태교여행">
+                        <div class="text-box">
+                            <strong>#태교여행</strong>
+                            <span class="price">132,053원</span> - 09월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img6.png" alt="#해외테마파크">
+                        <div class="text-box">
+                            <strong>#해외테마파크</strong>
+                            <span class="price">92,682원</span> - 07월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img7.png" alt="#해변">
+                        <div class="text-box">
+                            <strong>#해변</strong>
+                            <span class="price">141,936원</span> - 09월 출발
+                        </div>
+                    </a>
+                    <a href="#" class="theme-card">
+                        <img src="../../image/003_img8.png" alt="#스킨스쿠버다이빙">
+                        <div class="text-box">
+                            <strong>#스킨스쿠버다이빙</strong>
+                            <span class="price">155,966원</span> - 09월 출발
+                        </div>
+                    </a>
+                </div>
+                <div class="more-btn-wrap">
+                    <button class="more-theme">추천 항공권 더보기</button>
+                </div>
+            </section>
+            <div id="flight-results-section" style="display: none;"> <hr>
+                <h2>검색 결과</h2>
+                <div id="flight-results">
+                    <p id="no-results-message" style="display: none;">항공편을 찾을 수 없습니다.</p>
+                </div>
+            </div>
+
+            <div id="ai-results-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>AI 항공권 검색 결과</h2>
+                    <div id="modal-flight-results" class="flight-results-container">
+                        <p>AI 어시스턴트가 항공편 정보를 분석 중입니다...</p>
+                    </div>
+                    <div class="ai-recommendation-text">
+                        <h3>AI 어시스턴트의 추가 추천</h3>
+                        <p id="ai-additional-recommendation"></p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="site-footer">
+                <div class="footer-actions">
+                    <button class="share-btn">
+                        <img src="../../image/bottom_bt1.svg" alt="공유하기"> 공유하기
+                    </button>
+                    <button class="top-btn">
+                        <img src="../../image/bottom_bt2.svg" alt="맨위로"> 맨위로
+                    </button>
+                </div>
+
+                <div class="footer-links">
+                    <button class="footer-login">로그인</button>
+                    <button class="footer-service">전체서비스</button>
+                </div>
+
+                <p class="footer-desc">
+                    이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+                    관련한 의무와 책임은 각 판매자에게 있습니다.
+                </p>
+
+                <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+                <div class="footer-info">
+                    <a href="#">사업자정보 공개</a> |
+                    <a href="#">이용약관</a> |
+                    <a href="#" class="highlight">개인정보처리방침</a> |
+                    <a href="#">고객센터</a>
+                </div>
+
+                <p class="footer-copy">&copy; NAVER corp.</p>
+            </footer>
+    </main>
+    <script src="script/script.js"></script>
+    <script src="script/amadeus_search.js"></script>
+    <script src="script/gemini_search.js"></script>
+</body>
+
+</html>
