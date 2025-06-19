@@ -5,7 +5,7 @@ let returnPicker;
 let isRoundTrip = true; // Default to round trip
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("[Amadeus_Search] DOMContentLoaded fired. Initializing..."); // ✅ 추가된 로그
+    console.log("[Amadeus_Search] DOMContentLoaded fired. Initializing...");
 
     const searchFlightsBtn = document.getElementById('search-flights-btn');
     const originInput = document.getElementById('origin-input');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         window.departPicker = departPicker; // Expose globally
-        console.log("[Amadeus_Search] departPicker initialized."); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] departPicker initialized.");
 
         returnPicker = flatpickr(returnCalendar, {
             dateFormat: "Y-m-d",
@@ -53,18 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         window.returnPicker = returnPicker; // Expose globally
-        console.log("[Amadeus_Search] returnPicker initialized."); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] returnPicker initialized.");
     } else {
-        console.warn("[Amadeus_Search] depart-calendar or return-calendar not found for Flatpickr initialization."); // ✅ 추가된 로그
+        console.warn("[Amadeus_Search] depart-calendar or return-calendar not found for Flatpickr initialization.");
     }
 
 
     // Event listeners for calendar labels to open pickers
     const departLabel = document.getElementById('depart-label');
     const returnLabel = document.getElementById('return-label');
-    if (departLabel) departLabel.addEventListener("click", () => departPicker && departPicker.open()); // null 체크 추가
-    if (returnLabel) returnLabel.addEventListener("click", () => { // null 체크 추가
-        if (window.isRoundTrip && returnPicker) { // Only open return calendar if round trip is selected and picker exists
+    if (departLabel) departLabel.addEventListener("click", () => departPicker && departPicker.open());
+    if (returnLabel) returnLabel.addEventListener("click", () => {
+        if (window.isRoundTrip && returnPicker) {
             returnPicker.open();
         }
     });
@@ -73,22 +73,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const passengerBtn = document.getElementById('passenger-btn');
     const passengerDropdown = document.getElementById('passenger-dropdown');
 
-    if (passengerBtn) { // null 체크 추가
+    if (passengerBtn) {
         passengerBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent document click from immediately closing it
-            if (passengerDropdown) passengerDropdown.classList.toggle('show'); // null 체크 추가
+            if (passengerDropdown) passengerDropdown.classList.toggle('show');
         });
     } else {
-        console.warn("[Amadeus_Search] passenger-btn not found."); // ✅ 추가된 로그
+        console.warn("[Amadeus_Search] passenger-btn not found.");
     }
 
 
     // Function to update the passenger button text (exposed globally)
     function updatePassengerLabel() {
-        const count = passengerCount ? passengerCount.value : '1'; // null 체크 추가
-        const seat = seatClass && seatClass.options[seatClass.selectedIndex] ? seatClass.options[seatClass.selectedIndex].text : '일반석'; // null 체크 추가
+        const count = passengerCount ? passengerCount.value : '1';
+        const seat = seatClass && seatClass.options[seatClass.selectedIndex] ? seatClass.options[seatClass.selectedIndex].text : '일반석';
         if (passengerBtn) passengerBtn.textContent = `성인 ${count}명, ${seat}`;
-        else console.warn("[Amadeus_Search] Cannot update passenger label: passenger-btn not found."); // ✅ 추가된 로그
+        else console.warn("[Amadeus_Search] Cannot update passenger label: passenger-btn not found.");
     }
     window.updatePassengerLabel = updatePassengerLabel; // Expose globally
 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Trip type (왕복/편도/다구간) button logic
     tripButtons.forEach(btn => {
         btn.addEventListener('click', function() {
-            console.log(`[Amadeus_Search] Trip type button clicked: ${this.textContent}`); // ✅ 추가된 로그
+            console.log(`[Amadeus_Search] Trip type button clicked: ${this.textContent}`);
             tripButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             const tripType = this.textContent;
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (returnCalendarContainer) {
                     returnCalendarContainer.style.display = 'none';
                 }
-                if (returnPicker) returnPicker.clear(); // null 체크 추가
-                if (returnLabel) { // null 체크 추가
+                if (returnPicker) returnPicker.clear();
+                if (returnLabel) {
                     returnLabel.textContent = '오는 날';
                     returnLabel.classList.remove('selected');
                 }
@@ -136,20 +136,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to fetch and display location suggestions (Amadeus reference data)
     async function fetchAndDisplaySuggestions(inputElement, suggestionsDiv, initialSearch = false) {
-        console.log(`[Amadeus_Search] Fetching suggestions for: ${inputElement.id}, keyword: ${inputElement.value}`); // ✅ 추가된 로그
+        console.log(`[Amadeus_Search] Fetching suggestions for: ${inputElement.id}, keyword: ${inputElement.value}`);
         const keyword = inputElement.value.trim();
 
         if (initialSearch && keyword.length === 0) {
             suggestionsDiv.innerHTML = '<div class="suggestion-item no-results">입력하여 도시/공항을 검색하세요.</div>';
             suggestionsDiv.style.display = 'block';
-            console.log("[Amadeus_Search] Initial search: empty keyword."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Initial search: empty keyword.");
             return;
         }
 
         if (keyword.length < 2) {
             suggestionsDiv.innerHTML = '<div class="suggestion-item no-results">최소 두 글자 이상 입력해주세요.</div>';
             suggestionsDiv.style.display = 'block';
-            console.log("[Amadeus_Search] Keyword too short."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Keyword too short.");
             return;
         }
 
@@ -157,22 +157,22 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!(/[a-zA-Z]/.test(firstChar)) && !(/[ㄱ-힣]/.test(firstChar))) {
              suggestionsDiv.innerHTML = '<div class="suggestion-item no-results">유효하지 않은 검색어입니다. (영문/한글로 시작해야 합니다)</div>';
              suggestionsDiv.style.display = 'block';
-             console.log("[Amadeus_Search] Invalid first character in keyword."); // ✅ 추가된 로그
+             console.log("[Amadeus_Search] Invalid first character in keyword.");
              return;
         }
 
 
         suggestionsDiv.innerHTML = '<div class="suggestion-item loading">검색 중...</div>';
         suggestionsDiv.style.display = 'block';
-        console.log("[Amadeus_Search] Displaying loading message for suggestions."); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] Displaying loading message for suggestions.");
 
         try {
-            // 백엔드 URL이 3001번 포트로 변경되었으므로 수정
-            const response = await fetch(`http://localhost:3001/api/search-locations?keyword=${encodeURIComponent(keyword)}`);
-            console.log("[Amadeus_Search] Location suggestions API call response status:", response.status); // ✅ 추가된 로그
+            // 백엔드 URL을 3000번 포트로 변경
+            const response = await fetch(`http://localhost:3000/api/search-locations?keyword=${encodeURIComponent(keyword)}`);
+            console.log("[Amadeus_Search] Location suggestions API call response status:", response.status);
 
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({})); // JSON 파싱 실패 대비
+                const errorData = await response.json().catch(() => ({}));
                 const errorMessage = errorData.details && errorData.details.errors && errorData.details.errors.length > 0
                                    ? `Amadeus API 오류: ${errorData.details.errors[0].detail}`
                                    : errorData.error || 'Failed to fetch location suggestions';
@@ -180,11 +180,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const data = await response.json();
-            console.log("[Amadeus_Search] Location suggestions data received:", data.data ? data.data.length : 0, "items."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Location suggestions data received:", data.data ? data.data.length : 0, "items.");
             displaySuggestions(data.data, inputElement, suggestionsDiv);
 
         } catch (error) {
-            console.error('[Amadeus_Search] Error fetching location suggestions:', error); // ✅ 로그 변경
+            console.error('[Amadeus_Search] Error fetching location suggestions:', error);
             suggestionsDiv.innerHTML = `<div class="suggestion-item error">오류 발생: ${error.message}</div>`;
             suggestionsDiv.style.display = 'block';
         }
@@ -196,12 +196,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!locations || locations.length === 0) {
             suggestionsDiv.innerHTML = '<div class="suggestion-item no-results">결과 없음</div>';
-            console.log("[Amadeus_Search] No suggestions found."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] No suggestions found.");
             return;
         }
 
         locations.forEach(location => {
-            // ... (기존 코드와 동일) ...
             const suggestionItem = document.createElement('div');
             suggestionItem.classList.add('suggestion-item');
 
@@ -230,17 +229,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputElement.value = suggestionItem.dataset.cityName + (suggestionItem.dataset.iataCode ? ` (${suggestionItem.dataset.iataCode})` : '');
                 suggestionsDiv.style.display = 'none';
                 suggestionsDiv.innerHTML = '';
-                console.log(`[Amadeus_Search] Suggestion selected for ${inputElement.id}: ${inputElement.value}`); // ✅ 추가된 로그
+                console.log(`[Amadeus_Search] Suggestion selected for ${inputElement.id}: ${inputElement.value}`);
             });
             suggestionsDiv.appendChild(suggestionItem);
         });
         suggestionsDiv.style.display = 'block';
-        console.log("[Amadeus_Search] Displaying suggestions dropdown."); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] Displaying suggestions dropdown.");
     }
 
     // Event listeners for input fields (using 'input' for real-time suggestions)
     let originSearchTimeout;
-    if (originInput) { // null 체크 추가
+    if (originInput) {
         originInput.addEventListener('input', () => {
             clearTimeout(originSearchTimeout);
             originSearchTimeout = setTimeout(() => {
@@ -251,11 +250,11 @@ document.addEventListener('DOMContentLoaded', function () {
             fetchAndDisplaySuggestions(originInput, originSuggestionsDiv, true);
         });
     } else {
-        console.warn("[Amadeus_Search] origin-input not found."); // ✅ 추가된 로그
+        console.warn("[Amadeus_Search] origin-input not found.");
     }
 
     let destinationSearchTimeout;
-    if (destinationInput) { // null 체크 추가
+    if (destinationInput) {
         destinationInput.addEventListener('input', () => {
             clearTimeout(destinationSearchTimeout);
             destinationSearchTimeout = setTimeout(() => {
@@ -266,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fetchAndDisplaySuggestions(destinationInput, destinationSuggestionsDiv, true);
         });
     } else {
-        console.warn("[Amadeus_Search] destination-input not found."); // ✅ 추가된 로그
+        console.warn("[Amadeus_Search] destination-input not found.");
     }
 
 
@@ -281,9 +280,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Main search button click handler
-    if (searchFlightsBtn) { // null 체크 추가
+    if (searchFlightsBtn) {
         searchFlightsBtn.addEventListener('click', async () => {
-            console.log("[Amadeus_Search] Main search flights button clicked!"); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Main search flights button clicked!");
             // 입력값에서 IATA 코드 추출 (예: "서울 (ICN)" -> "ICN")
             const extractIataCodeFromInput = (inputVal) => {
                 const match = inputVal.match(/\(([^)]+)\)/);
@@ -309,33 +308,34 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     } else {
-        console.warn("[Amadeus_Search] search-flights-btn not found."); // ✅ 추가된 로그
+        console.warn("[Amadeus_Search] search-flights-btn not found.");
     }
 
 
     // Function to perform the actual flight search (Amadeus flight offers) (exposed globally)
     async function performFlightSearch(params) {
-        console.log("[Amadeus_Search] Performing flight search with params:", params); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] Performing flight search with params:", params);
         const { origin, destination, departDate, returnDate, adults, travelClass, nonStop } = params;
 
         if (!origin || !destination || !departDate) {
             alert('출발지, 도착지, 가는 날은 필수 입력 사항입니다.');
-            console.warn("[Amadeus_Search] Missing required search parameters."); // ✅ 추가된 로그
+            console.warn("[Amadeus_Search] Missing required search parameters.");
             return;
         }
 
         if (window.isRoundTrip && !returnDate) {
             alert('왕복 선택 시 오는 날도 입력해주세요.');
-            console.warn("[Amadeus_Search] Round trip selected but return date is missing."); // ✅ 추가된 로그
+            console.warn("[Amadeus_Search] Round trip selected but return date is missing.");
             return;
         }
 
-        if (flightResultsSection) flightResultsSection.style.display = 'block'; // 결과 섹션 표시
+        if (flightResultsSection) flightResultsSection.style.display = 'block';
         if (flightResultsDiv) flightResultsDiv.innerHTML = '<p>항공편을 검색 중입니다...</p>';
         if (noResultsMessage) noResultsMessage.style.display = 'none';
 
         try {
-            const response = await fetch('http://localhost:3001/api/search-flights', {
+            // 백엔드 URL을 3000번 포트로 변경
+            const response = await fetch('http://localhost:3000/api/search-flights', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     nonStop
                 })
             });
-            console.log("[Amadeus_Search] Flight search API call response status:", response.status); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Flight search API call response status:", response.status);
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
@@ -361,30 +361,30 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const data = await response.json();
-            console.log("[Amadeus_Search] Flight offers data received:", data.data ? data.data.length : 0, "offers."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] Flight offers data received:", data.data ? data.data.length : 0, "offers.");
             displayFlightOffers(data.data, data.dictionaries);
         } catch (error) {
-            console.error('[Amadeus_Search] Error during flight search:', error); // ✅ 로그 변경
+            console.error('[Amadeus_Search] Error during flight search:', error);
             if (flightResultsDiv) flightResultsDiv.innerHTML = `<p style="color: red;">항공편 검색 중 오류가 발생했습니다: ${error.message}</p>`;
             if (noResultsMessage) noResultsMessage.style.display = 'block';
         }
     }
-    window.performFlightSearch = performFlightSearch;
+    window.performFlightSearch = performFlightSearch; // Expose globally
+
 
     // Function to display flight offers in the UI
     function displayFlightOffers(offers, dictionaries) {
-        console.log("[Amadeus_Search] Displaying flight offers..."); // ✅ 추가된 로그
+        console.log("[Amadeus_Search] Displaying flight offers...");
         if (flightResultsDiv) flightResultsDiv.innerHTML = '';
 
         if (!offers || offers.length === 0) {
             if (noResultsMessage) noResultsMessage.style.display = 'block';
-            console.log("[Amadeus_Search] No flight offers found to display."); // ✅ 추가된 로그
+            console.log("[Amadeus_Search] No flight offers found to display.");
             return;
         }
-        if (noResultsMessage) noResultsMessage.style.display = 'none';
+        noResultsMessage.style.display = 'none';
 
         offers.forEach(offer => {
-            // ... (기존 코드와 동일) ...
             const price = offer.price.grandTotal;
             const outboundItinerary = offer.itineraries[0];
             const outboundSegment = outboundItinerary.segments[0];
@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             card.innerHTML = flightDetailsHtml;
-            if (flightResultsDiv) flightResultsDiv.appendChild(card); // null 체크 추가
+            if (flightResultsDiv) flightResultsDiv.appendChild(card);
         });
     }
 
