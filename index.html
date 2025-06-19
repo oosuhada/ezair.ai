@@ -12,39 +12,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/generative-ai"></script>
 
+    <script>
+        // This is ONLY for local development/demo purposes to bypass backend issues.
+        // DO NOT use this in a production environment.
+        window.GEMINI_API_KEY = "AIzaSyBDIzlLet6e6M4_WSsQhujozHsXebYtXiE"; // 여기에 실제 API 키가 올바르게 입력되어야 합니다.
+    </script>
 
     <link rel="stylesheet" href="style/style.css">
-    <script src="script/script.js"></script>
 </head>
 
 <body>
     <header>
         <div class="inner">
             <nav class="gnb">
-                <div class="logo"><a href="index.html"><img src="image/EZAIR.svg" alt="이지에어 로고"></a></div>
+                <div class="logo"><a href="index.html"><img src="../../image/EZAIR.svg" alt="이지에어 로고"></a></div>
                 <ul>
                     <li class="air"><a href="#">항공</a></li>
                     <li class="hotel"><a href="#">호텔</a></li>
                     <li class="package"><a href="#">패키지</a></li>
-                    <li class="forU"><a href="#">EZ for you</a><img src="image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                    <li class="forU"><a href="#">EZ for you</a><img src="../../image/gnb_beta.png" alt="이지에어 포유 베타"></li>
                 </ul>
             </nav>
             <div class="btns">
-                <a class="cs" href="#"><img src="image/gnb_cs.svg" alt="이지에어 고객센터"></a>
-                <a class="user" href="#"><img src="image/gnb_user.svg" alt="이지에어 마이페이지"></a>
+                <a class="cs" href="#"><img src="../../image/gnb_cs.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="#"><img src="../../image/gnb_user.svg" alt="이지에어 마이페이지"></a>
             </div>
         </div>
-        <div class="top">
-            <img class="top_airplane" src="image/top_airplane.png" alt="">
-            <img class="top_cloud_left" src="image/top_cloud_left.png" alt="">
-            <h1 class="title">맞춤형 여행의 시작<br>
-                <p class="title_2">EZ AIR</p>
-            </h1>
-            <img class="top_main_cloud" src="image/top_main_cloud.png" alt="">
-            <img class="top_cloud_right" src="image/top_cloud_right.png" alt="">
-        </div>
     </header>
+    <div class="hero-section">
+        <img class="top_airplane" src="../../image/top_airplane.png" alt="">
+        <img class="top_cloud_left" src="../../image/top_cloud_left.png" alt="">
+        <h1 class="title">맞춤형 여행의 시작<br>
+            <p class="title_2">EZ AIR</p>
+        </h1>
+        <img class="top_main_cloud" src="../../image/top_main_cloud.png" alt="">
+        <img class="top_cloud_right" src="../../image/top_cloud_right.png" alt="">
+    </div>
     <main>
         <div id="search">
             <div class="search_box">
@@ -56,9 +61,18 @@
                 </div>
                 <div class="search_box_mb">
                     <div class="search_box_mid">
-                        <input type="text" placeholder="출발지">
-                        <button class="swap-btn"><img src="image/ArrowsClockwise.svg" alt=""></button>
-                        <input type="text" placeholder="도착지">
+                        <div style="position: relative;">
+                            <input type="text" placeholder="출발지" id="origin-input">
+                            <div id="origin-suggestions" class="suggestions-dropdown"></div>
+                        </div>
+
+                        <button class="swap-btn"><img src="../../image/ArrowsClockwise.svg" alt=""></button>
+
+                        <div style="position: relative;">
+                            <input type="text" placeholder="도착지" id="destination-input">
+                            <div id="destination-suggestions" class="suggestions-dropdown"></div>
+                        </div>
+
                         <div class="calendar-container">
                             <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
                             <input type="text" id="depart-calendar" readonly>
@@ -82,15 +96,15 @@
                                 <label>
                                     좌석 등급:
                                     <select id="seat-class">
-                                        <option value="일반석">일반석</option>
-                                        <option value="비즈니스">비즈니스</option>
-                                        <option value="일등석">일등석</option>
+                                        <option value="ECONOMY">일반석</option>
+                                        <option value="BUSINESS">비즈니스</option>
+                                        <option value="FIRST">일등석</option>
                                     </select>
                                 </label>
                             </div>
                         </div>
                         <label><input type="radio" name="direct-flight" id="radio2">직항만</label>
-                        <button type="submit">검색</button>
+                        <button type="submit" id="search-flights-btn">검색</button>
 
                     </div>
                     <div class="search_box_bottom">
@@ -102,10 +116,9 @@
                             </div>
 
                             <div class="ai-ip-box">
-                                <img src="image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
+                                <img src="../../image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
                                 <div class="ai-input-box">
-                                    <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘"
-                                        readonly />
+                                    <input type="text" class="ai-input" placeholder="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
                                     <button class="ai-search-btn"></button>
                                 </div>
                                 <div class="ai-tags">
@@ -125,7 +138,7 @@
                 <p class="checklist-title">여행 전에 필수 체크!</p>
                 <ul class="checklist-items">
                     <li>
-                        <img src="image/top_right_img1.png" alt="출장 아이콘">
+                        <img src="../../image/top_right_img1.png" alt="출장 아이콘">
                         <div class="text-box">
                             <strong>해외 출장 가시나요?</strong>
                             <span>출장 선호 항공편 알려드려요</span>
@@ -133,7 +146,7 @@
                         <span class="arrow">›</span>
                     </li>
                     <li>
-                        <img src="image/top_right_img2.png" alt="호텔 아이콘">
+                        <img src="../../image/top_right_img2.png" alt="호텔 아이콘">
                         <div class="text-box">
                             <strong>호텔 추천 For U</strong>
                             <span>맞춤 호텔을 추천해드려요</span>
@@ -141,7 +154,7 @@
                         <span class="arrow">›</span>
                     </li>
                     <li>
-                        <img src="image/top_right_img3.png" alt="세계 아이콘">
+                        <img src="../../image/top_right_img3.png" alt="세계 아이콘">
                         <div class="text-box">
                             <strong>전세계 모든곳검색</strong>
                             <span>인기 항공편만 가격순으로</span>
@@ -157,9 +170,9 @@
                     <h2>구름이 추천 항공편</h2>
                     <div class="recom_box_top">
                         <div class="recom_box_bt">
-                            <button type="button" class="recom-btn active"><img src="image/002_airplane-solid.svg"
+                            <button type="button" class="recom-btn active"><img src="../../image/002_airplane-solid.svg"
                                     alt="">항공</button>
-                            <button type="button" class="recom-btn"><img src="image/002_hotel-fill.svg"
+                            <button type="button" class="recom-btn"><img src="../../image/002_hotel-fill.svg"
                                     alt="">숙박</button>
                         </div>
                         <div class="ai_recom_box">
@@ -185,7 +198,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="recom_box">
-                                    <div class="recom_box_img"><img src="image/002_img.png" alt="">
+                                    <div class="recom_box_img"><img src="../../image/002_img.png" alt="">
                                         <span class="recom_percent">추천도 87%</span>
                                         <span class="recom_tag">해변 휴양 | 리조트</span>
                                     </div>
@@ -202,7 +215,7 @@
 
                             <div class="swiper-slide">
                                 <div class="recom_box">
-                                    <div class="recom_box_img"><img src="image/002_img2.png" alt="">
+                                    <div class="recom_box_img"><img src="../../image/002_img2.png" alt="">
                                         <span class="recom_percent">추천도 87%</span>
                                         <span class="recom_tag">해변 휴양 | 리조트</span>
                                     </div>
@@ -219,7 +232,7 @@
 
                             <div class="swiper-slide">
                                 <div class="recom_box">
-                                    <div class="recom_box_img"><img src="image/002_img3.png" alt="">
+                                    <div class="recom_box_img"><img src="../../image/002_img3.png" alt="">
                                         <span class="recom_percent">추천도 87%</span>
                                         <span class="recom_tag">해변 휴양 | 리조트</span>
                                     </div>
@@ -236,7 +249,7 @@
 
                             <div class="swiper-slide">
                                 <div class="recom_box">
-                                    <div class="recom_box_img"><img src="image/002_img4.png" alt="">
+                                    <div class="recom_box_img"><img src="../../image/002_img4.png" alt="">
                                         <span class="recom_percent">추천도 87%</span>
                                         <span class="recom_tag">해변 휴양 | 리조트</span>
                                     </div>
@@ -253,7 +266,7 @@
 
                             <div class="swiper-slide">
                                 <div class="recom_box">
-                                    <div class="recom_box_img"><img src="image/002_img5.png" alt="">
+                                    <div class="recom_box_img"><img src="../../image/002_img5.png" alt="">
                                         <span class="recom_percent">추천도
                                             87%</span>
                                         <span class="recom_tag">해변 휴양 |
@@ -275,7 +288,7 @@
                             <div class="swiper-slide">
                                 <div class="recom_box">
                                     <div class="recom_box_img">
-                                        <img src="image/002_img6.png" alt="">
+                                        <img src="../../image/002_img6.png" alt="">
                                         <span class="recom_percent">추천도
                                             87%</span>
                                         <span class="recom_tag">해변
@@ -300,7 +313,7 @@
                             <div class="swiper-slide">
                                 <div class="recom_box">
                                     <div class="recom_box_img">
-                                        <img src="image/002_img7.png" alt="">
+                                        <img src="../../image/002_img7.png" alt="">
                                         <span class="recom_percent">추천도
                                             87%</span>
                                         <span class="recom_tag">해변
@@ -335,7 +348,7 @@
                             <div class="swiper-slide">
                                 <div class="recom_box">
                                     <div class="recom_box_img">
-                                        <img src="image/002_img8.png" alt="">
+                                        <img src="../../image/002_img8.png" alt="">
                                         <span class="recom_percent">추천도
                                             87%</span>
                                         <span class="recom_tag">해변
@@ -376,7 +389,7 @@
                             <div class="swiper-slide">
                                 <div class="recom_box">
                                     <div class="recom_box_img">
-                                        <img src="image/002_img9.png" alt="">
+                                        <img src="../../image/002_img9.png" alt="">
                                         <span class="recom_percent">추천도
                                             87%</span>
                                         <span class="recom_tag">해변
@@ -421,16 +434,16 @@
                 <div class="swiper myBannerSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="image/mid_banner.png" alt="배너1">
+                            <img src="../../image/mid_banner.png" alt="배너1">
                         </div>
                         <div class="swiper-slide">
-                            <img src="image/mid_banner.png" alt="배너2">
+                            <img src="../../image/mid_banner.png" alt="배너2">
                         </div>
                         <div class="swiper-slide">
-                            <img src="image/mid_banner.png" alt="배너3">
+                            <img src="../../image/mid_banner.png" alt="배너3">
                         </div>
                         <div class="swiper-slide">
-                            <img src="image/mid_banner.png" alt="배너4">
+                            <img src="../../image/mid_banner.png" alt="배너4">
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -440,56 +453,56 @@
                 <h2>테마별 여행지</h2>
                 <div class="theme-grid">
                     <a href="#" class="theme-card">
-                        <img src="image/003_img1.png" alt="#가족여행">
+                        <img src="../../image/003_img1.png" alt="#가족여행">
                         <div class="text-box">
                             <strong>#가족여행</strong>
                             <span class="price">77,901원</span> - 06월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img2.png" alt="#휴양지">
+                        <img src="../../image/003_img2.png" alt="#휴양지">
                         <div class="text-box">
                             <strong>#휴양지</strong>
                             <span class="price">132,053원</span> - 09월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img3.png" alt="#커플여행">
+                        <img src="../../image/003_img3.png" alt="#커플여행">
                         <div class="text-box">
                             <strong>#커플여행</strong>
                             <span class="price">92,682원</span> - 07월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img4.png" alt="#신혼여행">
+                        <img src="../../image/003_img4.png" alt="#신혼여행">
                         <div class="text-box">
                             <strong>#신혼여행</strong>
                             <span class="price">182,950원</span> - 07월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img5.png" alt="#태교여행">
+                        <img src="../../image/003_img5.png" alt="#태교여행">
                         <div class="text-box">
                             <strong>#태교여행</strong>
                             <span class="price">132,053원</span> - 09월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img6.png" alt="#해외테마파크">
+                        <img src="../../image/003_img6.png" alt="#해외테마파크">
                         <div class="text-box">
                             <strong>#해외테마파크</strong>
                             <span class="price">92,682원</span> - 07월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img7.png" alt="#해변">
+                        <img src="../../image/003_img7.png" alt="#해변">
                         <div class="text-box">
                             <strong>#해변</strong>
                             <span class="price">141,936원</span> - 09월 출발
                         </div>
                     </a>
                     <a href="#" class="theme-card">
-                        <img src="image/003_img8.png" alt="#스킨스쿠버다이빙">
+                        <img src="../../image/003_img8.png" alt="#스킨스쿠버다이빙">
                         <div class="text-box">
                             <strong>#스킨스쿠버다이빙</strong>
                             <span class="price">155,966원</span> - 09월 출발
@@ -500,13 +513,34 @@
                     <button class="more-theme">추천 항공권 더보기</button>
                 </div>
             </section>
+            <div id="flight-results-section" style="display: none;"> <hr>
+                <h2>검색 결과</h2>
+                <div id="flight-results">
+                    <p id="no-results-message" style="display: none;">항공편을 찾을 없습니다.</p>
+                </div>
+            </div>
+
+            <div id="ai-results-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>AI 항공권 검색 결과</h2>
+                    <div id="modal-flight-results" class="flight-results-container">
+                        <p>AI 어시스턴트가 항공편 정보를 분석 중입니다...</p>
+                    </div>
+                    <div class="ai-recommendation-text">
+                        <h3>AI 어시스턴트의 추가 추천</h3>
+                        <p id="ai-additional-recommendation"></p>
+                    </div>
+                </div>
+            </div>
+
             <footer class="site-footer">
                 <div class="footer-actions">
                     <button class="share-btn">
-                        <img src="image/bottom_bt1.svg" alt="공유하기"> 공유하기
+                        <img src="../../image/bottom_bt1.svg" alt="공유하기"> 공유하기
                     </button>
                     <button class="top-btn">
-                        <img src="image/bottom_bt2.svg" alt="맨위로"> 맨위로
+                        <img src="../../image/bottom_bt2.svg" alt="맨위로"> 맨위로
                     </button>
                 </div>
 
@@ -531,9 +565,10 @@
 
                 <p class="footer-copy">&copy; NAVER corp.</p>
             </footer>
-
-
     </main>
+    <script src="script/script.js"></script>
+    <script src="script/amadeus_search.js"></script>
+    <script type="module" src="script/gemini_search.js"></script>
 </body>
 
 </html>
