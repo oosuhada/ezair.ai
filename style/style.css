@@ -142,7 +142,7 @@ nav {
 /* ------------헤더끝 */
 #search .search_box {
   width: 1090px;
-  height: 263px;
+  height: 373px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -202,23 +202,56 @@ nav {
   gap: 12px;
   padding: 10px 20px 20px;
 }
-
-.search_box_mid input[type="text"] {
-  padding: 10px 16px;
-  border: 1px solid #eee;
+/* 기존 .airport-box 스타일 유지 */
+.airport-box {
+  display: flex;
+  align-items: center;
+  background: var(--wht);
   border-radius: var(--border-radius);
-  font-size: 14px;
-  color: #333;
-  min-width: 120px;
-  background: #f9f9f9;
+  padding: 6px 12px;
+  gap: 8px;
 }
 
-.swap-btn {
-  background: none;
+/* select 태그를 input 스타일과 동일하게 */
+.airport-select {
+  flex: 1;
+  width: 146px;
+  height: 65px;
+  padding: 0 8px;
   border: none;
-  padding: 0;
-  margin: 0 4px;
+  background: transparent;
+  font-size: 34px;
+  text-align: center;
+  color: var(--blk);
+  outline: none;
+  appearance: none;        
+  background-image: url('image/chevron-down.svg');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+}
+
+.airport-select option[disabled] {
+  color: var(--gray300);
+}
+
+.airport-box .swap-btn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow);
   cursor: pointer;
+  padding: 0;
+}
+
+.airport-box .swap-btn img {
+  width: 16px;
+  height: 16px;
 }
 
 .calendar-label {
@@ -408,6 +441,7 @@ label input[type="radio"] {
 }
 
 .ai-tags {
+  width: 112px;
   background: #f4f8ff;
   font-size: 12px;
   color: #1a73e8;
@@ -415,6 +449,7 @@ label input[type="radio"] {
   border-radius: 8px;
   text-align: left;
   line-height: 1.4;
+  margin-left: 18px;
 }
 
 /* -----------서치박스 */
