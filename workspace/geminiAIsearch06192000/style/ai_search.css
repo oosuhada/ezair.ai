@@ -1,0 +1,152 @@
+/* AI Search Box Styles */
+.ai-assistant-box {
+  border: 1px solid var(--primary); /* 그라데이션 보더 대신 단색 */
+  border-image: linear-gradient(to right, var(--primary), var(--secondary)) 1; /* 그라데이션 효과 */
+  border-radius: var(--border-radius);
+  padding: 20px; /* 패딩 조정 */
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* 부모 너비에 맞춤 */
+  box-shadow: var(--box-shadow-light); /* 그림자 */
+  background-color: var(--wht); /* 흰색 배경 */
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 간격 조정 */
+  margin-bottom: 15px; /* 아래 여백 조정 */
+  font-size: 15px;
+  color: var(--blk);
+}
+
+.ai-badge {
+  background: var(--gradient-blue-green); /* 그라데이션 뱃지 */
+  color: var(--wht);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px; /* 패딩 조정 */
+  border-radius: var(--radius-pill); /* 둥근 뱃지 */
+}
+
+.bold { font-weight: 700; }
+
+.desc {
+  color: var(--gray500);
+  font-size: 14px;
+}
+
+.ai-ip-box {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 15px; /* 요소 간 간격 */
+}
+
+.ai-cloud {
+  width: 40px; /* 구름 아이콘 크기 조정 */
+  height: 40px;
+  flex-shrink: 0; /* 크기 줄어들지 않도록 */
+}
+
+.ai-input-box {
+  flex-grow: 1; /* 가용 공간 채우기 */
+  display: flex;
+  align-items: center;
+  background: var(--gray50); /* 입력창 배경색 */
+  border-radius: var(--radius-pill); /* 둥근 입력창 */
+  padding: 10px 20px; /* 패딩 조정 */
+  border: 1px solid var(--gray100);
+}
+
+.ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: var(--blk);
+  outline: none;
+  padding: 0; /* 내부 패딩 제거 */
+}
+
+.ai-input::placeholder {
+  color: var(--gray300);
+}
+
+.ai-search-btn {
+  width: 38px; /* 버튼 크기 */
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gradient-blue-green); /* 그라데이션 버튼 */
+  border: none;
+  margin-left: 10px; /* 왼쪽 마진 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ai-search-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.ai-tags {
+  background: #e9f5ff; /* 배경색 조정 */
+  font-size: 12px;
+  color: var(--primary); /* 텍스트 색상 */
+  padding: 8px 15px; /* 패딩 조정 */
+  border-radius: var(--border-radius);
+  text-align: left;
+  line-height: 1.5;
+  flex-shrink: 0; /* 크기 줄어들지 않도록 */
+}
+
+/* Responsive Adjustments for AI Search */
+@media (max-width: 1023px) {
+  .ai-assistant-box {
+    width: 100%;
+    padding: 15px;
+  }
+  .ai-ip-box {
+    flex-direction: column; /* 세로 정렬 */
+    align-items: stretch;
+    gap: 10px;
+  }
+  .ai-cloud {
+    margin: 0 auto 10px auto; /* 중앙 정렬 */
+  }
+  .ai-input-box {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .ai-input { font-size: 14px; }
+  .ai-search-btn {
+    width: 35px;
+    height: 35px;
+  }
+  .ai-tags {
+    margin-top: 10px; /* 위에 간격 */
+    width: 100%; /* 너비 100% */
+    text-align: center;
+  }
+  .ai-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ai-assistant-box { padding: 10px; }
+  .ai-cloud { width: 35px; height: 35px; }
+  .ai-input-box { padding: 8px 12px; }
+  .ai-input { font-size: 13px; }
+  .ai-search-btn { width: 30px; height: 30px; }
+  .ai-header { font-size: 13px; }
+  .ai-badge { font-size: 11px; padding: 3px 8px; }
+  .ai-tags { font-size: 11px; padding: 6px 10px; }
+}
+
+@media (max-width: 480px) {
+  .ai-input { font-size: 12px; }
+}
