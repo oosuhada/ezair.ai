@@ -11,7 +11,7 @@
 body {
   overflow-x: hidden;
 }
-var {
+:root{
     --mainblue: #1987FA;
     --maingreen: #10C2A0;
     --blk: #1a1a1a;
