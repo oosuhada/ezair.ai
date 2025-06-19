@@ -1,0 +1,216 @@
+{
+  "seoul_newyork_flights": {
+    "flights": [
+      {
+        "id": "flight-NY-001",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE081",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-01T10:00:00",
+        "arrivalTime": "2025-07-01T11:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1200000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "recommend"
+      },
+      {
+        "id": "flight-NY-002",
+        "airline": "Asiana Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "OZ222",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-01T14:30:00",
+        "arrivalTime": "2025-07-01T15:30:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1350000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "direct"
+      },
+      {
+        "id": "flight-NY-003",
+        "airline": "Delta Air Lines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "DL189",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-02T09:00:00",
+        "arrivalTime": "2025-07-02T10:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1150000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "special"
+      },
+      {
+        "id": "flight-NY-004",
+        "airline": "United Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "UA088",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-03T11:00:00",
+        "arrivalTime": "2025-07-03T12:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1280000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-005",
+        "airline": "Air Canada",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "AC031",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-01T08:30:00",
+        "arrivalTime": "2025-07-01T09:30:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1180000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-006",
+        "airline": "Singapore Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "SQ016",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-02T13:00:00",
+        "arrivalTime": "2025-07-02T14:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1400000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-007",
+        "airline": "ANA (All Nippon Airways)",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "NH108",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-03T10:00:00",
+        "arrivalTime": "2025-07-03T11:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1250000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-008",
+        "airline": "Cathay Pacific",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "CX840",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-01T16:00:00",
+        "arrivalTime": "2025-07-01T17:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1300000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-009",
+        "airline": "Lufthansa",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "LH400",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-02T07:00:00",
+        "arrivalTime": "2025-07-02T08:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1220000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-010",
+        "airline": "British Airways",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "BA178",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-03T15:00:00",
+        "arrivalTime": "2025-07-03T16:00:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1380000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-011",
+        "airline": "Air France",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "AF082",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-01T11:30:00",
+        "arrivalTime": "2025-07-01T12:30:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1270000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-NY-012",
+        "airline": "KLM Royal Dutch Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KL606",
+        "origin": "ICN",
+        "destination": "JFK",
+        "departureTime": "2025-07-02T09:30:00",
+        "arrivalTime": "2025-07-02T10:30:00",
+        "duration": "14h 00m",
+        "price": {
+          "amount": 1290000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      }
+    ],
+    "ai_insight": "서울-뉴욕 노선은 직항편이 많으며, 대한항공과 아시아나항공 외에도 델타항공, 유나이티드항공, 에어캐나다 등 다양한 항공사의 선택지가 있습니다. 7월 초는 성수기 시작 전이라 비교적 합리적인 가격을 찾을 수 있습니다.",
+    "additional_recommendation": "뉴욕 여행 시 대중교통 이용이 편리하며, 시티패스 구매를 고려해보세요. 브로드웨이 쇼 티켓은 미리 예약하는 것이 좋습니다."
+  },
+  "no_results": {
+    "ai_insight": "죄송합니다. 현재 조건으로는 항공편을 찾을 수 없습니다. 날짜를 변경하거나 조건을 완화하여 다시 시도해 주십시오.",
+    "additional_recommendation": "다른 날짜를 선택하시거나, 경유가 가능한 항공편을 검색해보세요. 또는 주변 공항을 포함하여 검색하시면 더 많은 옵션을 찾을 수 있습니다."
+  }
+}
