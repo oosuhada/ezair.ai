@@ -332,7 +332,7 @@ main {
   .search_box,
   .recommend,
   .banner-swiper-container,
-  .theme-travel { width: 95%; padding: 0 15px; }
+  .theme-travel { width: 100%; padding: 0px 0px; }
   .hero-section { height: 200px; }
   .title { font-size: 30px; }
   .title_2 { font-size: 35px; }
