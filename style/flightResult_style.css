@@ -81,7 +81,7 @@ body {
     width: 1440px;
     margin: 0 auto;
     display: flex;
-    
+
 }
 
 .price_alert {
@@ -286,7 +286,7 @@ body {
 }
 
 .bar-segment.low {
-    background-color:#FFA726 ;
+    background-color: #FFA726;
     left: 0;
 }
 
@@ -296,7 +296,7 @@ body {
 }
 
 .bar-segment.high {
-    background-color:red;
+    background-color: red;
     left: 80%;
 }
 
@@ -312,13 +312,15 @@ body {
     z-index: 1000;
     animation: move-price-indicator 1.5s ease-in-out 0.5s forwards;
 }
+
 @keyframes move-price-indicator {
-  from {
-    left: 0;
-  }
-  to {
-    left: 85%;
-  }
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 85%;
+    }
 }
 
 .price-range {
@@ -346,11 +348,12 @@ body {
     color: var(--banner-bg);
 }
 
-.prediction-date_txt{
+.prediction-date_txt {
     color: var(--gray500);
 }
+
 .weekend-included {
-   
+
     align-items: center;
     font-size: 0.8em;
     color: #555;
@@ -423,15 +426,18 @@ body {
 }
 
 .graph-bar.is-animated::before {
-    height: 100%; 
+    height: 100%;
 }
+
 .date-selection {
     margin-top: 20px;
 }
-.selec{
+
+.selec {
     display: flex;
     justify-content: space-around;
 }
+
 .selection-title {
     font-size: 1.1em;
     font-weight: bold;
@@ -486,11 +492,13 @@ body {
 .current-month {
     font-weight: bold;
 }
-.date-picker-row{
+
+.date-picker-row {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .calendar-container {
     display: flex;
     gap: 1rem;
@@ -506,10 +514,12 @@ body {
     margin-right: 1rem;
     font-size: 14px;
 }
-.calendar_txt{
+
+.calendar_txt {
     display: flex;
     justify-content: space-around;
 }
+
 .flatpickr-input {
     position: absolute;
     opacity: 0;
@@ -530,9 +540,9 @@ body {
 .price-amount {
     font-size: 0.9em;
     font-weight: bold;
-    color:var(--banner-bg);
+    color: var(--banner-bg);
     min-width: 80px;
-   text-align: center;
+    text-align: center;
 
 }
 
@@ -556,38 +566,55 @@ body {
     gap: 16px;
     position: absolute;
     top: 0;
-    left:13%;
+    left: 13%;
     right: 0;
 }
 
 .search-tabs {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px;
 }
-.tab-item {
-    padding: 8px 12px;
-    border: none;
+
+.tab-buttons {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 12px;
+}
+
+.tab-buttons .trip-btn {
     background: none;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #6c757d;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #666;
     position: relative;
+    cursor: pointer;
 }
-.tab-item.active {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.tab-item.active::after {
+
+.tab-buttons .trip-btn::after {
     content: '';
     position: absolute;
-    bottom: -9px;
+    top: 29px;
     left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
+    right: 0;
+    height: 3px;
+    background: transparent;
+    border-radius: 2px 2px 0 0;
+    transition: background 0.2s;
 }
+
+.tab-buttons .trip-btn.active {
+    color: var(--primary);
+}
+
+.tab-buttons .trip-btn.active::after {
+    background: var(--primary)
+}
+
 .tab-options {
     margin-left: auto;
     display: flex;
@@ -602,41 +629,67 @@ body {
     gap: 12px;
 }
 
-.route-selectors, .booking-details {
+.route-selectors,
+.booking-details {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .route-selectors {
     flex-grow: 1;
 }
 
-.airport-selector, .date-selector, .passenger-selector {
+.airport-selector,
+.date-selector,
+.passenger-selector {
     background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 10px 12px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .airport-selector {
     flex-grow: 1;
 }
 
-.swap-button, .refresh-button, .expand-button {
+.swap-button,
+.expand-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border-color);
     background-color: white;
     border-radius: 50%;
     width: 36px;
     height: 36px;
     cursor: pointer;
+    border: 1px solid var(--gray300);
 }
+.date-picker-row3{
+    display: flex;
+}
+.calendar-container3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.refresh-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border: none;
+}
+
+
 .search-button {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     color: white;
     border: none;
     border-radius: 8px;
@@ -647,41 +700,45 @@ body {
 }
 
 .search-filters {
-   
+
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .filter-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
+
 .filter-button {
     background-color: white;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--gray300);
     border-radius: 20px;
     padding: 6px 14px;
     font-size: 0.9rem;
     cursor: pointer;
 }
+
 .filter-button.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     color: white;
-    border-color: var(--primary-color);
+    border-color: var(--primary);
 }
 
 .more-filters {
-    background-color: var(--bg-light);
+    background-color: var(--gray300);
     border-radius: 8px;
-  
+
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
 }
+
 .search-widget.is-expanded .more-filters {
-      max-height: 200px;
+    max-height: 200px;
 }
 
 .arrow-down {
@@ -692,11 +749,13 @@ body {
     border-top: 5px solid #6c757d;
     transition: transform 0.3s ease-in-out;
 }
+
 .expand-button.is-active .arrow-down {
-   transform: rotate(180deg);
+    transform: rotate(180deg);
 }
+
 /* ---필터더보기 */
-.more-filters{
+.more-filters {
     display: flex;
 }
 
@@ -709,7 +768,6 @@ body {
     background-color: #fff;
     border: 1px solid var(--banner-bg);
     cursor: pointer;
-    /* margin: 30px; */
 }
 
 .toggleSwitch2 .toggleButton2 {
@@ -723,11 +781,11 @@ body {
     background: var(--banner-bg);
 }
 
-#toggle:checked~.toggleSwitch2 {
+#toggle2:checked~.toggleSwitch2 {
     background: var(--banner-bg);
 }
 
-#toggle:checked~.toggleSwitch2 .toggleButton2 {
+#toggle2:checked~.toggleSwitch2 .toggleButton2 {
     left: calc(100% - 21px);
     background: #fff;
 }
