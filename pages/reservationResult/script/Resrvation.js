@@ -2,9 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initTripTabs();
-    initPassengerDropdown();
     initFlatpickr3();
-    initFlightCardToggles();
 });
 
 const testBtn = document.querySelector('#passenger-btn');
@@ -213,7 +211,23 @@ document.addEventListener("DOMContentLoaded", function () {
   observer.observe(polyline);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  // 버튼 내의 Lottie 컨테이너 가져오기
+  const aiLoadingLottieContainer = document.getElementById('ai-loading-lottie');
 
+  if (aiLoadingLottieContainer) {
+    const lottieAnimation = lottie.loadAnimation({
+      container: aiLoadingLottieContainer,
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json'
+    });
 
-
-document.querySelector('#passenger-btn').addEventListener('click', () => console.log('클릭됨'));
+    lottieAnimation.addEventListener('DOMLoaded', () => {
+      lottieAnimation.playSegments([90, 120], true);
+    });
+  } else {
+    console.warn('#ai-loading-lottie 요소를 찾을 수 없습니다.');
+  }
+});

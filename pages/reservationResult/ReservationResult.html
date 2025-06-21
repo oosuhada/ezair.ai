@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.4/lottie.min.js"></script>
+
     <link rel="stylesheet" href="./style/Resrvation.css">
     <link rel="stylesheet" href="../../common/common.css">
 
@@ -52,17 +54,17 @@
             <div class="search-main">
                 <div class="route-selectors">
                     <div class="airport-selector">
-                        <button class="mobileAir1"><img src="/image/flightResult/AirplaneTakeoff.svg" alt=""></button>
+                        <button class="mobileAir1"><img src="../../image/flightResult/AirplaneTakeoff.svg" alt=""></button>
                         <span class="airport-code">인천 ICN</span>
-                        <span class="arrow-down"><img src="/image/flightResult/left_oui_arrow-up.svg" alt=""></span>
+                        <span class="arrow-down"><img src="../../image/flightResult/left_oui_arrow-up.svg" alt=""></span>
                     </div>
                     <button class="swap-button">
-                        <img src="/image/flightResult/result_ArrowsClockwise.svg" alt="">
+                        <img src="../../image/flightResult/result_ArrowsClockwise.svg" alt="">
                     </button>
                     <div class="airport-selector">
-                        <button class="mobileAir2"><img src="/image/flightResult/AirplaneLanding.svg" alt=""></button>
+                        <button class="mobileAir2"><img src="../../image/flightResult/AirplaneLanding.svg" alt=""></button>
                         <span class="airport-code">사가 HSG</span>
-                        <span class="arrow-down"><img src="/image/flightResult/left_oui_arrow-up.svg" alt=""></span>
+                        <span class="arrow-down"><img src="../../image/flightResult/left_oui_arrow-up.svg" alt=""></span>
                     </div>
                 </div>
 
@@ -70,20 +72,20 @@
                     <div class="date-selector">
                         <div class="date-picker-row3">
                             <div class="calendar-container3">
-                                <img src="/image/flightResult/result_CalendarDots.svg" alt="">
+                                <img src="../../image/flightResult/result_CalendarDots.svg" alt="">
                                 <label for="depart-3" class="calendar-label3">00-00</label>
                                 <input type="text" id="depart-3" class="flatpickr-input3" readonly>
                             </div>
-                            <span>-</span>
+                            <span>|</span>
                             <div class="calendar-container3">
-                                <img src="/image/flightResult/result_CalendarDots.svg" alt="">
+                                <img src="../../image/flightResult/result_CalendarDots.svg" alt="">
                                 <label for="return-3" class="calendar-label3">00-00</label>
                                 <input type="text" id="return-3" class="flatpickr-input3" readonly>
                             </div>
                         </div>
                     </div>
                     <div class="passenger-select-wrapper">
-                        <button id="passenger-btn"><img src="/image/flightResult/result_user.svg" alt="">성인 1명,
+                        <button id="passenger-btn"><img src="../../image/flightResult/result_user.svg" alt="">성인 1명,
                             일반석</button>
                         <div id="passenger-dropdown" class="dropdown">
                             <label>
@@ -117,7 +119,9 @@
                 </div>
                 <div class="ai-input-box">
                     <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
-                    <button class="ai-search-btn"></button>
+                    <button class="ai-search-btn">
+                        <div id="ai-loading-lottie"></div>
+                    </button>
                 </div>
                 <div id="searchResults">
                 </div>
@@ -141,7 +145,7 @@
                         <div class="flight-card-basic">
                             <div class="flight-basic-airline">
                                 <div class="f-b-l">
-                                    <img src="/image/flightResult/result_airseoul.svg" alt="Air Seoul 로고">
+                                    <img src="../../image/flightResult/result_airseoul.svg" alt="Air Seoul 로고">
                                     <span>에어서울</span>
                                 </div>
                                 <div class="bt">
@@ -152,14 +156,14 @@
                             <div class="flight-basic-times">
                                 <span class="time">오전 08:10</span>
                                 <span class="airport">인천 ICN</span>
-                                <span class="icon"><img src="/image/reservation/Airplane.svg" alt=""></span>
+                                <span class="icon"><img src="../../image/reservation/Airplane.svg" alt=""></span>
                                 <span class="time">오전 09:50</span>
                                 <span class="airport">사가 HSG</span>
                             </div>
                         </div>
                         <button class="flight-card-toggle" aria-expanded="false">
                             <span class="flight-card-toggle-label">여정 자세히 보기</span>
-                            <span class="flight-card-toggle-icon"><img src="/image/reservation/oui_arrow-down.svg"
+                            <span class="flight-card-toggle-icon"><img src="../../image/reservation/oui_arrow-down.svg"
                                     alt=""></span>
                         </button>
                     </div>
@@ -187,7 +191,7 @@
                         </div>
                         <button class="flight-card-toggle" aria-expanded="true">
                             <span class="flight-card-toggle-label">간략하게 보기</span>
-                            <span class="flight-card-toggle-icon"><img src="/image/reservation/oui_arrow-down.svg"
+                            <span class="flight-card-toggle-icon"><img src="../../image/reservation/oui_arrow-down.svg"
                                     alt=""></span>
                         </button>
                     </div>
@@ -209,7 +213,7 @@
                         <div class="flight-card-basic">
                             <div class="flight-basic-airline">
                                 <div class="f-b-l">
-                                    <img src="/image/flightResult/result_airseoul.svg" alt="Air Seoul 로고">
+                                    <img src="../../image/flightResult/result_airseoul.svg" alt="Air Seoul 로고">
                                     <span>에어서울</span>
                                 </div>
                                 <div class="bt">
@@ -220,14 +224,14 @@
                             <div class="flight-basic-times">
                                 <span class="time">오전 10:50</span>
                                 <span class="airport">사가 HSG</span>
-                                <span class="icon"><img src="/image/reservation/Airplane.svg" alt=""></span>
+                                <span class="icon"><img src="../../image/reservation/Airplane.svg" alt=""></span>
                                 <span class="time">오전 12:15</span>
                                 <span class="airport">인천 ICN</span>
                             </div>
                         </div>
                         <button class="flight-card-toggle" aria-expanded="false">
                             <span class="flight-card-toggle-label">여정 자세히 보기</span>
-                            <span class="flight-card-toggle-icon"><img src="/image/reservation/oui_arrow-down.svg"
+                            <span class="flight-card-toggle-icon"><img src="../../image/reservation/oui_arrow-down.svg"
                                     alt=""></span>
                         </button>
                     </div>
@@ -237,7 +241,7 @@
         <div class="row2">
             <div class="baggage-info">
                 <div class="baggage-icon">
-                    <img src="/image/reservation/bag.svg" alt="수하물 아이콘">
+                    <img src="../../image/reservation/bag.svg" alt="수하물 아이콘">
                 </div>
                 <div class="baggage-content">
                     <div class="baggage-title">
@@ -255,7 +259,7 @@
             <p class="checklist-title">여행 전에 필수 체크!</p>
             <ul class="checklist-items">
                 <li>
-                    <img src="/image/top_right_img1.png" alt="출장 아이콘">
+                    <img src="../../image/top_right_img1.png" alt="출장 아이콘">
                     <div class="text-box">
                         <strong>해외 출장 가시나요?</strong>
                         <span>출장 선호 항공편 알려드려요</span>
@@ -263,7 +267,7 @@
                     <span class="arrow">›</span>
                 </li>
                 <li>
-                    <img src="/image/top_right_img2.png" alt="호텔 아이콘">
+                    <img src="../../image/top_right_img2.png" alt="호텔 아이콘">
                     <div class="text-box">
                         <strong>호텔 추천 For U</strong>
                         <span>맞춤 호텔을 추천해드려요</span>
@@ -271,7 +275,7 @@
                     <span class="arrow">›</span>
                 </li>
                 <li>
-                    <img src="/image/top_right_img3.png" alt="세계 아이콘">
+                    <img src="../../image/top_right_img3.png" alt="세계 아이콘">
                     <div class="text-box">
                         <strong>전세계 모든곳검색</strong>
                         <span>인기 항공편만 가격순으로</span>
@@ -395,16 +399,16 @@
             <div class="swiper myBannerSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="/image/mid_banner.png" alt="배너1">
+                        <img src="../../image/mid_banner.png" alt="배너1">
                     </div>
                     <div class="swiper-slide">
-                        <img src="/image/mid_banner.png" alt="배너2">
+                        <img src="../../image/mid_banner.png" alt="배너2">
                     </div>
                     <div class="swiper-slide">
-                        <img src="/image/mid_banner.png" alt="배너3">
+                        <img src="../../image/mid_banner.png" alt="배너3">
                     </div>
                     <div class="swiper-slide">
-                        <img src="/image/mid_banner.png" alt="배너4">
+                        <img src="../../image/mid_banner.png" alt="배너4">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -416,66 +420,66 @@
             </div>
             <div class="card-container">
                 <div class="card-row">
-                    <div class="card-left"><img src="/image/reservation/image1.png" alt="">에어서울 <p class="info">고객센터
-                            <img src="/image/reservation/WarningCircle.svg" alt="">
+                    <div class="card-left"><img src="../../image/reservation/image1.png" alt="">에어서울 <p class="info">고객센터
+                            <img src="../../image/reservation/WarningCircle.svg" alt="">
                         </p>
                     </div>
                     <div class="card-mid-txt">
                         결제당일 무료취소 | 환불가능(수수료 지불시)
                     </div>
-                    <div class="price">307,347원 <img src="/image/reservation/oui_arrow-down.svg" alt=""></div>
+                    <div class="price">307,347원 <img src="../../image/reservation/oui_arrow-down.svg" alt=""></div>
                 </div>
 
 
                 <div class="card-row">
-                    <div class="card-left"><img src="/image/reservation/image2.png" alt="">NOL인터파크투어 <p class="info">
+                    <div class="card-left"><img src="../../image/reservation/image2.png" alt="">NOL인터파크투어 <p class="info">
                             고객센터
-                            <img src="/image/reservation/WarningCircle.svg" alt="">
+                            <img src="../../image/reservation/WarningCircle.svg" alt="">
                         </p>
                     </div>
                     <div class="card-mid-txt">
                         결제당일 무료취소 | 환불가능(수수료 지불시)
                     </div>
-                    <div class="price">307,347원 <img src="/image/reservation/oui_arrow-down.svg" alt=""></div>
+                    <div class="price">307,347원 <img src="../../image/reservation/oui_arrow-down.svg" alt=""></div>
                 </div>
 
 
                 <div class="card-row">
-                    <div class="card-left"><img src="/image/reservation/image3.png" alt="">부킹닷컴 <p class="info">고객센터
-                            <img src="/image/reservation/WarningCircle.svg" alt="">
+                    <div class="card-left"><img src="../../image/reservation/image3.png" alt="">부킹닷컴 <p class="info">고객센터
+                            <img src="../../image/reservation/WarningCircle.svg" alt="">
                         </p>
                     </div>
 
                     <div class="card-mid-txt">
                         결제당일 무료취소 | 환불가능(수수료 지불시)
                     </div>
-                    <div class="price">307,347원 <img src="/image/reservation/oui_arrow-down.svg" alt=""></div>
+                    <div class="price">307,347원 <img src="../../image/reservation/oui_arrow-down.svg" alt=""></div>
                 </div>
 
 
                 <div class="card-row">
-                    <div class="card-left"><img src="/image/reservation/image4.png" alt="">마이리얼트립 <p class="info">고객센터
-                            <img src="/image/reservation/WarningCircle.svg" alt="">
+                    <div class="card-left"><img src="../../image/reservation/image4.png" alt="">마이리얼트립 <p class="info">고객센터
+                            <img src="../../image/reservation/WarningCircle.svg" alt="">
                         </p>
                     </div>
                     <div class="card-mid-txt">
                         결제당일 무료취소 | 환불가능(수수료 지불시)
                     </div>
-                    <div class="price">307,347원 <img src="/image/reservation/oui_arrow-down.svg" alt=""></div>
+                    <div class="price">307,347원 <img src="../../image/reservation/oui_arrow-down.svg" alt=""></div>
                 </div>
 
 
                 <div class="card-row">
-                    <div class="card-left"><img src="/image/reservation/image5.png" alt="">하나투어 <p class="info">고객센터
-                            <img src="/image/reservation/WarningCircle.svg" alt="">
+                    <div class="card-left"><img src="../../image/reservation/image5.png" alt="">하나투어 <p class="info">고객센터
+                            <img src="../../image/reservation/WarningCircle.svg" alt="">
                         </p>
                     </div>
                     <div class="card-mid-txt">
                         결제당일 무료취소 | 환불가능(수수료 지불시)
                     </div>
-                    <div class="price">307,347원 <img src="/image/reservation/oui_arrow-down.svg" alt=""></div>
+                    <div class="price">307,347원 <img src="../../image/reservation/oui_arrow-down.svg" alt=""></div>
                 </div>
-                <div class="card-more">3개 판매사 더보기 <img src="/image/reservation/ArrowDown.svg" alt=""></div>
+                <div class="card-more">3개 판매사 더보기 <img src="../../image/reservation/ArrowDown.svg" alt=""></div>
 
             </div>
         </div>
