@@ -1394,9 +1394,7 @@ body {
     .search-widget,
     .left_ai,
     .empty1,
-    .aiflight-widget,
-    .flight-widget,
-    .site-footer {
+    .flight-widget {
         display: none !important;
     }
 
@@ -1763,7 +1761,7 @@ body {
 
     .calendar-label-mobile {
         display: flex;
-       align-items: center;
+        align-items: center;
     }
 
     .flatpickr-input-mobile {
@@ -1772,7 +1770,69 @@ body {
         pointer-events: none;
     }
 
- 
+    /* 
+ -----------------_-----필텈 */
+
+    .fw-trip-select {
+        display: none;
+    }
+
+    .flight-result-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        /* max-width: 380px; */
+        /* 필요시 조정 */
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .flight-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    .flight_con_l img {
+        height: 24px;
+    }
+
+    .flight_con_l h3 {
+        display: none;
+    }
+
+    .flight_con_l,
+    .flight_con_m {
+        display: flex;
+        align-items: flex-start;
+        padding: 14px 0px;
+    }
+
+    .flight_con_l,
+    .flight_con_m {
+        display: flex;
+        align-items: center;
+    }
 
 
+    .flight-cm_line .line_air .line {
+        width: 78px;
+        height: 3px;
+        background-color: #ccc;
+    }
+
+    .reserve_bt {
+        display: none;
+    }
+
+    .flight_con_r {
+        padding: 14px;
+        background-color: var(--gray50);
+    }
+
+    .site-footer {
+        margin-top: 40px;
+    }
 }
