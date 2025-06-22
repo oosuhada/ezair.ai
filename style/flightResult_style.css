@@ -1461,7 +1461,6 @@ body {
     .mobile-filter-widget {
         display: flex;
         flex-direction: column;
-        position: sticky;
         top: 56px;
         /* 헤더 높이 */
         z-index: 999;
