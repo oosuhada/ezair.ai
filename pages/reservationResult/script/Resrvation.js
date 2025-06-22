@@ -1,7 +1,6 @@
 // script/Resrvation_script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-
     initTripTabs();
     initFlatpickr3();
 });
