@@ -1,8 +1,11 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function () {
+    // GSAP 플러그인 등록
+    gsap.registerPlugin(ScrollTrigger);
+
     // 라디오 버튼 toggle 기능 (해외출장 / 직항만)
     function setupToggleRadio(id) {
         const radio = document.getElementById(id);
+        if (!radio) return;
         let isChecked = false;
 
         radio.addEventListener('click', function () {
@@ -19,18 +22,83 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    setupToggleRadio('radio1'); // 해외출장입니다
-    // setupToggleRadio('radio2'); // Direct flight radio is handled by amadeus_search.js now if needed
+    setupToggleRadio('radio1');
 
     // 왕복/편도/다구간 버튼 active
     const tripButtons = document.querySelectorAll('.trip-btn');
-
     tripButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            tripButtons.forEach(b => b.classList.remove('active')); // 모두 비활성화
-            btn.classList.add('active'); // 클릭된 버튼만 활성화
+            tripButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         });
     });
+
+    // --- 애니메이션 로직 추가 ---
+
+    // 1. AI 태그 롤링 애니메이션
+    const tagWrapper = document.querySelector(".ai-tags .tag-wrapper");
+    const tagItems = gsap.utils.toArray(".ai-tags .tag-item");
+    
+    if (tagWrapper && tagItems.length > 0) {
+        // 첫 번째 아이템의 높이를 기준으로 계산
+        const tagHeight = tagItems[0].offsetHeight;
+        
+        gsap.set(tagWrapper, { y: 0 }); // 초기 위치 설정
+
+        const tl = gsap.timeline({ repeat: -1 });
+
+        // 각 아이템으로 이동하는 애니메이션을 타임라인에 추가
+        tagItems.forEach((tag, i) => {
+            if (i > 0) { // 첫 번째 아이템은 이미 보여지고 있으므로 두 번째부터
+                tl.to(tagWrapper, { 
+                    y: -tagHeight * i, 
+                    duration: 0.5, 
+                    ease: "power2.inOut", 
+                    delay: 2 // 각 태그가 2초간 보임
+                });
+            }
+        });
+        
+        // 마지막 태그가 보인 후 처음으로 복귀
+        tl.to(tagWrapper, { y: 0, duration: 0.5, ease: "power2.inOut", delay: 2 });
+    }
+
+
+    // 2. 추천 항공편(.recommend) 카드 등장 애니메이션
+    const recommendCards = gsap.utils.toArray(".recommend .swiper-slide");
+    if (recommendCards.length > 0) {
+        gsap.from(recommendCards, {
+            scrollTrigger: {
+                trigger: ".recommend",
+                start: "top 80%", // 섹션의 80% 지점이 뷰포트 하단에 닿을 때
+                toggleActions: "play none none none",
+                once: true, // 한 번만 실행
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            stagger: 0.1, // 0.1초 간격으로 순차적 등장
+            ease: "power2.out"
+        });
+    }
+    
+    // 3. 테마별 여행지(.theme-travel) 카드 등장 애니메이션
+    const themeCards = gsap.utils.toArray(".theme-travel .theme-card");
+    if (themeCards.length > 0) {
+        gsap.from(themeCards, {
+            scrollTrigger: {
+                trigger: ".theme-travel",
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out"
+        });
+    }
 
 });
 

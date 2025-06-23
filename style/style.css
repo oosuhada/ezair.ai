@@ -464,16 +464,16 @@ main {
 .recom_box_bottom {
   position: relative;
   padding: 15px 0;
-  width: 100%; /* 너비 100% */
-  overflow: hidden;
+  width: 100%;
+  overflow: visible; /* [수정] 버튼이 보일 수 있도록 visible로 변경 */
 }
 
 .recom_box_bottom .swiper {
   width: 100%;
-  max-width: 1200px; /* 최대 너비 설정 */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 60px; /* 좌우 화살표 공간 */
-  overflow: visible; /* 슬라이드 그림자 보이도록 */
+  padding: 0 60px;
+  overflow: hidden; /* [수정] 카드(슬라이드)가 넘치지 않도록 hidden으로 변경 */
 }
 
 .swiper-slide {
@@ -634,7 +634,7 @@ main {
 
 .more-btn-wrap {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 
 .more-theme {

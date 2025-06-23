@@ -1,306 +1,374 @@
-// gemini_search.js
-
 // 핵심 수정: import 문을 사용하여 GoogleGenerativeAI를 가져옵니다.
 import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log("[Gemini_Search] DOM content loaded. Initializing scripts.");
 
+    // --- API 키 및 모델 설정 ---
     const GEMINI_API_KEY = window.GEMINI_API_KEY;
-
-    if (!GEMINI_API_KEY || GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-        console.error("⛔️ 오류: Gemini API 키가 설정되지 않았거나 기본값입니다. HTML 파일의 window.GEMINI_API_KEY를 확인하세요.");
-        alert("Gemini API 키를 설정해주세요! (HTML 파일 참조)");
+    if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("YOUR_GEMINI_API_KEY")) {
+        console.error("⛔️ 오류: Gemini API 키가 설정되지 않았습니다.");
+        // 사용자에게 알림을 표시할 수 있습니다.
         return;
     }
-    console.log("[Gemini_Search] API Key loaded.");
-
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); // 모델 이름을 gemini-1.5-flash로 사용
-    console.log("[Gemini_Search] Gemini model initialized with 'gemini-1.5-flash'.");
-
-    const departFlatpickrInstance = window.departPicker;
-    const returnFlatpickrInstance = window.returnPicker;
-
-    if (!departFlatpickrInstance || !returnFlatpickrInstance) {
-        console.warn("[Gemini_Search] Flatpickr instances not found. Ensure amadeus_search.js is loaded first if needed.");
-    } else {
-        console.log("[Gemini_Search] Flatpickr instances successfully referenced.");
-    }
-
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    
+    // --- DOM 요소 참조 ---
     const aiInput = document.querySelector('.ai-input');
-    const aiSearchBtn = document.querySelector('.ai-search-btn'); // This is the button we'll target
+    const aiSearchBtn = document.querySelector('.ai-search-btn');
+    const aiNotification = document.getElementById('ai-notification');
+    
+    // 모달 관련 요소
     const aiResultsModal = document.getElementById('ai-results-modal');
-    const closeModalBtn = aiResultsModal ? aiResultsModal.querySelector('.close-button') : null;
-    const modalFlightResults = document.getElementById('modal-flight-results');
+    const closeModalBtn = aiResultsModal.querySelector('.close-button');
+    const modalFlightResultsContainer = document.getElementById('modal-flight-results');
+    const aiStatusMessage = document.getElementById('ai-status-message');
+    const aiLoadingStatus = modalFlightResultsContainer.querySelector('.ai-loading-status');
+    const aiLoadingText = document.getElementById('ai-loading-text');
+    const aiFinalResults = document.getElementById('ai-final-results');
+    const aiInsightText = document.getElementById('ai-insight-text');
+    const aiFlightCardsContainer = document.getElementById('ai-flight-cards');
+    const aiRecommendationContainer = document.querySelector('.ai-recommendation-text');
     const aiAdditionalRecommendation = document.getElementById('ai-additional-recommendation');
-    const searchFlightsBtn = document.getElementById('search-flights-btn');
+    const aiFollowUpContainer = document.querySelector('.ai-follow-up-actions');
+    const followUpButtonsContainer = aiFollowUpContainer.querySelector('.follow-up-buttons');
 
-    console.log("[Gemini_Search] DOM elements check:", {
-        aiInput: !!aiInput,
-        aiSearchBtn: !!aiSearchBtn,
-        aiResultsModal: !!aiResultsModal,
-        closeModalBtn: !!closeModalBtn,
-        modalFlightResults: !!modalFlightResults,
-        aiAdditionalRecommendation: !!aiAdditionalRecommendation,
-        searchFlightsBtn: !!searchFlightsBtn
+    // --- 상태 관리 변수 ---
+    let isLoading = false;
+    let currentSearchContext = {};
+    let loadingTimeouts = [];
+
+    // --- Lottie 애니메이션 설정 ---
+    aiSearchBtn.innerHTML = ''; // 기존 아이콘 제거
+    const lottieAnimation = lottie.loadAnimation({
+        container: aiSearchBtn,
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json'
+    });
+    lottieAnimation.addEventListener('DOMLoaded', () => {
+        lottieAnimation.playSegments([90, 120], true); // 기본 상태
     });
 
-    if (aiInput && aiSearchBtn && aiResultsModal && closeModalBtn && modalFlightResults && aiAdditionalRecommendation && searchFlightsBtn) {
-        console.log("[Gemini_Search] All required AI assistant elements found. Attaching event listeners.");
+    // --- 인터랙션 및 UI 함수 ---
 
-        // --- Lottie animation for ai-search-btn ---
-        // Ensure the aiSearchBtn is empty before loading the animation
-        aiSearchBtn.innerHTML = '';
-        const lottieAnimation = lottie.loadAnimation({
-            container: aiSearchBtn, // the DOM element that will contain the animation
-            renderer: 'svg',
-            loop: true, // You can set this to false if you want it to play once per click
-            autoplay: false, // Set to false so we can control playback on click
-            path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json'
+    function createRipple(event) {
+        const button = event.currentTarget;
+        const ripple = document.createElement("span");
+        ripple.className = 'ripple';
+        button.appendChild(ripple);
+        // Clean up the ripple element after the animation is done
+        ripple.addEventListener('animationend', () => {
+            ripple.remove();
         });
-        console.log("[Gemini_Search] Lottie animation initialized for .ai-search-btn.");
-        // --- End Lottie animation setup ---
+    }
 
+    function showNotification(message, type = 'warning', duration = 4000) {
+        aiNotification.textContent = message;
+        aiNotification.className = 'ai-notification'; // Reset classes
+        aiNotification.classList.add(type, 'show');
+        
+        setTimeout(() => {
+            aiNotification.classList.remove('show');
+        }, duration);
+    }
 
-        aiSearchBtn.addEventListener('click', async function() {
-            console.log("[Gemini_Search] AI search button clicked!");
-            const query = aiInput.value.trim();
+    function setLoadingState(loading) {
+        isLoading = loading;
+        aiSearchBtn.classList.toggle('loading', loading);
+        aiInput.disabled = loading;
+        if (loading) {
+            lottieAnimation.playSegments([61, 89], true); // 로딩중 애니메이션
+        } else {
+            lottieAnimation.playSegments([90, 120], true); // 기본 상태로 복귀
+        }
+    }
 
-            if (lottieAnimation) {
-                lottieAnimation.goToAndPlay(0, true); // Play from the beginning
-            }
+    function runLoadingSequence() {
+        loadingTimeouts.forEach(clearTimeout);
+        loadingTimeouts = [];
 
-            if (query) {
-                console.log("[Gemini_Search] AI search query entered:", query);
-                modalFlightResults.innerHTML = '<p>AI 어시스턴트가 항공편 검색 조건을 분석 중입니다...</p>';
-                aiAdditionalRecommendation.innerHTML = ''; // 이전 추천 초기화
-                aiResultsModal.style.display = 'flex'; // 모달창 표시
+        const messages = [
+            { text: "최적의 출발지와 도착지를 찾는 중...", delay: 1500 },
+            { text: "달력에서 날짜를 확인하고 있어요...", delay: 1500 },
+            { text: "거의 다 됐습니다! 잠시만 기다려주세요...", delay: 2000 }
+        ];
 
-                try {
-                    console.log("[Gemini_Search] Initiating Gemini API call for parameter extraction...");
-                    // Gemini에게 검색 조건만 추출하도록 프롬프트 변경
-                    const geminiPrompt = `You are a helpful AI assistant for flight booking.
-Please extract the following flight search parameters from the user query and provide them in a JSON format.
-If a parameter is not explicitly mentioned, use reasonable defaults or leave it as null/empty if no clear default can be inferred.
-Always output the response as a single JSON object.
+        let cumulativeDelay = 0;
+        
+        const updateText = (text) => {
+            gsap.to(aiLoadingText, { opacity: 0, duration: 0.2, onComplete: () => {
+                aiLoadingText.textContent = text;
+                gsap.to(aiLoadingText, { opacity: 1, duration: 0.2 });
+            }});
+        };
 
-Parameters to extract:
-- origin: IATA code of the departure city/airport (e.g., "ICN", "GMP"). If city name is given, try to infer the major airport IATA.
-- destination: IATA code of the arrival city/airport (e.g., "JFK", "CJU").
-- departDate: Departure date in YYYY-MM-DD format. Infer from relative terms like "next week", "this weekend", "tomorrow".
-- returnDate: Return date in YYYY-MM-DD format (for round trips). If only departure date is given, or "one-way" is specified, set to null or empty string.
-- adults: Number of adult passengers (default: 1).
-- travelClass: Preferred travel class (ECONOMY, PREMIUM_ECONOMY, BUSINESS, FIRST) (default: "ECONOMY").
-- nonStop: Boolean indicating if only non-stop flights are preferred (default: false).
+        updateText("요청하신 내용을 분석 중입니다...");
 
-User Query: "${query}"
+        messages.forEach(message => {
+            cumulativeDelay += message.delay;
+            const timeout = setTimeout(() => updateText(message.text), cumulativeDelay);
+            loadingTimeouts.push(timeout);
+        });
+    }
 
-Expected JSON format:
-\`\`\`json
-{
-  "origin": "IATA_CODE_ORIGIN",
-  "destination": "IATA_CODE_DESTINATION",
-  "departDate": "YYYY-MM-DD",
-  "returnDate": "YYYY-MM-DD",
-  "adults": 1,
-  "travelClass": "ECONOMY",
-  "nonStop": false,
-  "recommendation": "AI 어시스턴트의 추가 추천 텍스트 (HTML 허용, 예: '날짜를 유연하게 조정해보세요.')"
-}
-\`\`\`
-Example 1:
-User Query: "이번 주말 서울에서 제주 가는 가장 저렴한 왕복 항공권 찾아줘"
-Response should be:
+    function resetModal() {
+        aiStatusMessage.style.display = 'block';
+        aiLoadingStatus.style.display = 'none';
+        aiFinalResults.style.display = 'none';
+        
+        // Clear dynamic content
+        aiInsightText.textContent = '';
+        aiFlightCardsContainer.innerHTML = '';
+        aiAdditionalRecommendation.textContent = '';
+        followUpButtonsContainer.innerHTML = '';
+        aiRecommendationContainer.style.display = 'none';
+        aiFollowUpContainer.style.display = 'none';
+    }
+    
+    function createFlightCardHTML(flight) {
+        // This is a template function. You should adapt it to your actual flight data structure.
+        const isNonStop = flight.nonStop ? '직항' : `${flight.stops}회 경유`;
+        // Dummy logo based on airline name
+        const logoUrl = `https://logo.clearbit.com/${flight.airline.toLowerCase().replace(/\s/g, '')}.com`;
+    
+        return `
+            <div class="ai-flight-card">
+                <div class="airline-info">
+                    <img src="${logoUrl}" alt="${flight.airline} 로고" class="airline-logo" onerror="this.style.display='none'">
+                    <span class="airline-name">${flight.airline}</span>
+                </div>
+                <div class="flight-details">
+                    <div class="flight-segment">
+                        <div class="time-airport">
+                            <div class="time">${flight.departureTime}</div>
+                            <div class="airport-code">${flight.origin}</div>
+                        </div>
+                        <div class="duration-info">
+                            <div class="duration">${flight.duration}</div>
+                            <div class="arrow-line"></div>
+                            <div class="stop-info">${isNonStop}</div>
+                        </div>
+                        <div class="time-airport">
+                            <div class="time">${flight.arrivalTime}</div>
+                            <div class="airport-code">${flight.destination}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <div>
+                        <div class="price">${flight.price.toLocaleString()}</div>
+                        <span class="currency">원</span>
+                    </div>
+                    <button class="select-btn">선택</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderResultsInModal(data) {
+        // 1. Hide loading animation
+        aiLoadingStatus.style.display = 'none';
+
+        // 2. Show Insight
+        aiInsightText.textContent = data.aiInsight || "AI가 추천하는 최적의 항공편입니다.";
+        
+        // 3. Render flight cards with animation
+        aiFlightCardsContainer.innerHTML = '';
+        data.flights.forEach(flight => {
+            aiFlightCardsContainer.innerHTML += createFlightCardHTML(flight);
+        });
+
+        // 4. Render Additional Recommendation
+        if (data.aiRecommendation) {
+            aiAdditionalRecommendation.textContent = data.aiRecommendation;
+            aiRecommendationContainer.style.display = 'block';
+        }
+
+        // 5. Render Follow-up actions
+        if (data.followUpActions && data.followUpActions.length > 0) {
+            followUpButtonsContainer.innerHTML = '';
+            data.followUpActions.forEach(action => {
+                followUpButtonsContainer.innerHTML += `<button class="ai-action-btn" data-query="${action.query}">${action.label}</button>`;
+            });
+            aiFollowUpContainer.style.display = 'block';
+        }
+
+        // 6. Show the final results container and animate cards
+        aiFinalResults.style.display = 'flex';
+        gsap.fromTo(".ai-flight-card", 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' }
+        );
+    }
+    
+    // --- Main Search Logic ---
+    async function handleAISearch(query) {
+        if (isLoading) return;
+        setLoadingState(true);
+        
+        // --- 1. Reset and Show Modal ---
+        resetModal();
+        aiStatusMessage.style.display = 'none';
+        aiLoadingStatus.style.display = 'flex';
+        aiResultsModal.style.display = 'flex';
+        runLoadingSequence();
+        
+        try {
+            // --- 2. Call Gemini API ---
+            // Note: In a real app, include previous context for follow-up questions.
+            const geminiPrompt = `
+You are a helpful flight booking assistant. Extract parameters from the user query into a JSON object.
+- The JSON should contain: origin (IATA), destination (IATA), departDate (YYYY-MM-DD), returnDate (YYYY-MM-DD or null), adults (number), travelClass (ECONOMY, BUSINESS, FIRST), nonStop (boolean).
+- Also include a short, friendly "aiInsight" text summarizing what you understood.
+- Today is ${new Date().toISOString().split('T')[0]}.
+- User Query: "${query}"
+
+Example Response:
 \`\`\`json
 {
   "origin": "ICN",
   "destination": "CJU",
-  "departDate": "2025-06-21",
-  "returnDate": "2025-06-22",
+  "departDate": "2024-10-25",
+  "returnDate": null,
   "adults": 1,
   "travelClass": "ECONOMY",
-  "nonStop": false,
-  "recommendation": "이번 주말 항공권은 가격이 높을 수 있습니다. 평일 출발을 고려해 보세요."
+  "nonStop": true,
+  "aiInsight": "금요일에 서울에서 제주도로 가는 가장 저렴한 직항 항공편을 찾아볼게요!"
 }
 \`\`\`
-Example 2:
-User Query: "다음 달에 파리 가는 비즈니스석 편도 2명"
-Response should be:
-\`\`\`json
-{
-  "origin": null,
-  "destination": "CDG",
-  "departDate": "2025-07-01",
-  "returnDate": null,
-  "adults": 2,
-  "travelClass": "BUSINESS",
-  "nonStop": false,
-  "recommendation": "파리 비즈니스석은 조기 예매 시 더 저렴할 수 있습니다."
-}
-\`\`\`
-If the query is not clearly about flights or booking, explain why you cannot process it in the 'recommendation' field and set other parameters to null.
 `;
-                    const result = await model.generateContent(geminiPrompt);
-                    const response = await result.response;
-                    const geminiText = response.text();
-                    console.log("[Gemini_Search] Gemini API response received:", geminiText);
+            const result = await model.generateContent(geminiPrompt);
+            const responseText = result.response.text();
+            console.log("[Gemini Response]", responseText);
 
-                    let extractedParams;
-                    let aiRecommendationText = "AI 어시스턴트의 추가 추천<br>요청하신 내용을 정확히 이해하지 못했습니다. '서울에서 제주도 다음주 금요일 가장 저렴한 항공권'과 같이 구체적으로 문의해주세요.";
+            const jsonMatch = responseText.match(/```json\n([\s\S]*?)\n```/);
+            if (!jsonMatch) throw new Error("AI 응답 형식이 올바르지 않습니다.");
+            
+            const params = JSON.parse(jsonMatch[1]);
+            currentSearchContext = params; // Save context for follow-ups
 
-                    try {
-                        const jsonMatch = geminiText.match(/```json\n([\s\S]*?)\n```/);
-                        if (jsonMatch && jsonMatch[1]) {
-                            extractedParams = JSON.parse(jsonMatch[1]);
-                            console.log("[Gemini_Search] Gemini response JSON code block parsed successfully:", extractedParams);
-                        } else {
-                            // JSON 코드 블록이 없으면 전체를 JSON으로 시도
-                            extractedParams = JSON.parse(geminiText);
-                            console.log("[Gemini_Search] Gemini response full JSON parsed successfully (no code block):", extractedParams);
-                        }
-                        if (extractedParams.recommendation) {
-                            aiRecommendationText = extractedParams.recommendation;
-                            delete extractedParams.recommendation; // 추천 텍스트는 파라미터에서 제외
-                        }
+            // --- 3. Call Flight Search API (using amadeus_search.js) ---
+            // This is a MOCK. In a real scenario, amadeus_search.js would make an API call.
+            // We pass our modal rendering function as a callback.
+            if (window.performFlightSearch) {
+                // The `performFlightSearch` function should be modified to accept a callback.
+                // For demo, we'll call the callback directly with mock data.
+                console.log("[Flight Search] Triggering search with params:", params);
+                
+                // MOCK DATA - a real implementation would get this from an API
+                const mockFlightData = {
+                    aiInsight: params.aiInsight,
+                    aiRecommendation: "주말에 출발하는 항공편은 가격이 오를 수 있으니, 평일 출발도 고려해보세요!",
+                    followUpActions: [
+                        { label: "더 저렴한 날짜 찾아줘", query: "더 싼 날짜는 언제가 좋을까?" },
+                        { label: "2명으로 검색", query: "2명이면 얼마야?" },
+                        { label: "호텔도 추천해줘", query: "이 근처에 묵을만한 호텔 추천해줘" }
+                    ],
+                    flights: [
+                        { airline: "T'way Air", origin: params.origin, destination: params.destination, departureTime: "09:30", arrivalTime: "10:40", duration: "1시간 10분", nonStop: true, stops: 0, price: 78000 },
+                        { airline: "Asiana", origin: params.origin, destination: params.destination, departureTime: "10:00", arrivalTime: "11:15", duration: "1시간 15분", nonStop: true, stops: 0, price: 85000 },
+                        { airline: "Korean Air", origin: params.origin, destination: params.destination, departureTime: "11:00", arrivalTime: "12:10", duration: "1시간 10분", nonStop: true, stops: 0, price: 92000 }
+                    ]
+                };
 
-                    } catch (parseError) {
-                        console.error("[Gemini_Search] Failed to parse Gemini response text as JSON:", parseError);
-                        console.log("[Gemini_Search] Original Gemini response text (parsing failed):", geminiText);
-                        // 파싱 실패 시 기본 값 설정
-                        extractedParams = {
-                            origin: null, destination: null, departDate: null, returnDate: null,
-                            adults: 1, travelClass: "ECONOMY", nonStop: false
-                        };
-                        aiRecommendationText = "AI 어시스턴트가 요청하신 내용을 정확히 이해하지 못했습니다.<br>AI 어시스턴트의 추가 추천<br>요청하신 내용을 정확히 이해하지 못했습니다. '서울에서 제주도 다음주 금요일 가장 저렴한 항공권'과 같이 구체적으로 문의해주세요.";
-                    }
-
-                    // AI 추천 텍스트 모달에 먼저 표시
-                    aiAdditionalRecommendation.innerHTML = aiRecommendationText;
-
-                    // 추출된 파라미터로 UI 업데이트 및 Amadeus 검색 트리거
-                    if (extractedParams.origin && extractedParams.destination && extractedParams.departDate) {
-                        console.log("[Gemini_Search] Extracted parameters are valid. Updating main UI and triggering Amadeus search.");
-
-                        // 1. 메인 검색 UI 필드 업데이트
-                        // origin, destination 필드 업데이트 (도시명 (IATA) 형식)
-                        // Amadeus API에서 도시/공항 이름 정보를 직접 가져오지 않으므로, IATA 코드만 표시하거나 사용자에게 입력하도록 유도해야 할 수 있습니다.
-                        // 여기서는 일단 IATA 코드만으로 업데이트하거나, AI가 도시명을 제공하면 함께 사용합니다.
-                        document.getElementById('origin-input').value = `${extractedParams.originCity || ''} (${extractedParams.origin || ''})`;
-                        document.getElementById('destination-input').value = `${extractedParams.destinationCity || ''} (${extractedParams.destination || ''})`;
-
-                        // 달력 업데이트
-                        if (departFlatpickrInstance && extractedParams.departDate) {
-                            departFlatpickrInstance.setDate(extractedParams.departDate);
-                        } else {
-                            console.warn("[Gemini_Search] Could not set depart date from Gemini results or Flatpickr instance not found.");
-                        }
-
-                        // 왕복/편도 및 오는 날 업데이트
-                        const tripButtons = document.querySelectorAll('.trip-btn');
-                        const oneWayButton = Array.from(tripButtons).find(btn => btn.textContent === '편도');
-                        const roundTripButton = Array.from(tripButtons).find(btn => btn.textContent === '왕복');
-                        const returnCalendarContainer = document.getElementById('return-calendar') ? document.getElementById('return-calendar').closest('.calendar-container').querySelector('#return-label').parentElement : null;
-
-
-                        if (extractedParams.returnDate && returnFlatpickrInstance) {
-                            returnFlatpickrInstance.setDate(extractedParams.returnDate);
-                            if (roundTripButton) {
-                                tripButtons.forEach(btn => btn.classList.remove('active'));
-                                roundTripButton.classList.add('active');
-                                window.isRoundTrip = true;
-                                if (returnCalendarContainer) returnCalendarContainer.style.display = 'block';
-                            }
-                        } else {
-                            // 편도 설정 또는 오는 날 정보 없음
-                            if (oneWayButton) {
-                                tripButtons.forEach(btn => btn.classList.remove('active'));
-                                oneWayButton.classList.add('active');
-                                window.isRoundTrip = false;
-                                if (returnCalendarContainer) returnCalendarContainer.style.display = 'none';
-                                if (returnFlatpickrInstance) returnFlatpickrInstance.clear();
-                            }
-                        }
-
-                        // 인원수, 좌석 등급 업데이트
-                        if (extractedParams.adults) {
-                            document.getElementById('passenger-count').value = extractedParams.adults;
-                        }
-                        if (extractedParams.travelClass) {
-                            document.getElementById('seat-class').value = extractedParams.travelClass.toUpperCase();
-                        }
-                        if (window.updatePassengerLabel) { // amadeus_search.js의 함수 호출
-                            window.updatePassengerLabel();
-                        }
-
-                        // 직항 여부 업데이트
-                        const directFlightRadio = document.getElementById('radio2');
-                        if (directFlightRadio) {
-                            directFlightRadio.checked = extractedParams.nonStop;
-                        }
-
-                        // 2. Amadeus 검색 버튼 클릭 트리거
-                        // amadeus_search.js의 searchFlightsBtn.addEventListener에서 처리되므로,
-                        // 모든 필드가 채워진 후에 클릭을 호출합니다.
-                        setTimeout(() => {
-                            if (window.performFlightSearch) { // amadeus_search.js의 전역 함수 호출
-                                // performFlightSearch에 필요한 파라미터를 정확히 전달합니다.
-                                window.performFlightSearch({
-                                    origin: extractedParams.origin,
-                                    destination: extractedParams.destination,
-                                    departDate: extractedParams.departDate,
-                                    returnDate: extractedParams.returnDate,
-                                    adults: extractedParams.adults,
-                                    travelClass: extractedParams.travelClass,
-                                    nonStop: extractedParams.nonStop
-                                });
-                                console.log("[Gemini_Search] Triggered Amadeus search based on Gemini results.");
-                                // 모달의 "AI 항공권 검색 결과" 섹션은 "실제 검색 결과를 보려면 아래를 확인하세요." 등의 메시지로 변경
-                                modalFlightResults.innerHTML = '<p>AI가 검색 조건을 분석하여 주요 검색 필드를 업데이트했습니다.<br>실제 항공편 검색 결과를 보려면 페이지 하단의 "검색 결과" 섹션을 확인해주세요!</p>';
-                            } else {
-                                console.error("[Gemini_Search] window.performFlightSearch is not available. Ensure amadeus_search.js is loaded correctly.");
-                                modalFlightResults.innerHTML = '<p>AI가 검색 조건을 분석했지만, 실제 항공편 검색 기능을 찾을 수 없습니다.<br>스크립트 로드 순서나 파일 누락 여부를 확인해주세요.</p>';
-                            }
-                        }, 500); // UI 업데이트 후 약간의 딜레이
-
-                    } else {
-                        modalFlightResults.innerHTML = '<p>AI 어시스턴트가 요청하신 내용에서 유효한 항공편 검색 조건을 추출할 수 없었습니다.<br>예: "서울에서 제주 다음주 금요일 왕복 항공권 찾아줘"와 같이 구체적으로 문의해주세요.</p>';
-                        console.log("[Gemini_Search] AI could not extract valid flight search parameters.");
-                    }
-
-                } catch (error) {
-                    console.error("[Gemini_Search] An error occurred during AI flight search or parameter extraction:", error);
-                    modalFlightResults.innerHTML = '<p>AI 항공권 검색 중 오류가 발생했습니다. 다시 시도해 주세요.</p>';
-                    aiAdditionalRecommendation.innerHTML = "문제가 지속되면 시스템 관리자에게 문의하거나, '서울에서 제주도 다음주 금요일 가장 저렴한 항공권'과 같이 구체적으로 문의해주세요.";
-                } finally {
-                    if (lottieAnimation) {
-                        lottieAnimation.stop(); // Stop the animation after the search is complete
-                    }
-                }
+                // Simulate API delay
+                setTimeout(() => {
+                    renderResultsInModal(mockFlightData);
+                }, 1000); // 1s delay
 
             } else {
-                console.warn("[Gemini_Search] AI search query is empty. Please enter a query.");
-                if (lottieAnimation) {
-                    lottieAnimation.stop(); // Stop the animation if no query
-                }
+                throw new Error("비행편 검색 기능을 찾을 수 없습니다.");
             }
-        });
 
-        closeModalBtn.addEventListener('click', function() {
-            aiResultsModal.style.display = 'none';
-            console.log("[Gemini_Search] AI search modal closed.");
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == aiResultsModal) {
-                aiResultsModal.style.display = 'none';
-                console.log("[Gemini_Search] AI search modal closed by clicking outside.");
-            }
-        });
-        console.log("[Gemini_Search] AI Flight Assistant features initialized and ready.");
-    } else {
-        console.warn("[Gemini_Search] One or more AI assistant HTML elements not found. Please check HTML IDs and classes.");
-        console.warn({ aiInput: !!aiInput, aiSearchBtn: !!aiSearchBtn, aiResultsModal: !!aiResultsModal, closeModalBtn: !!closeModalBtn, modalFlightResults: !!modalFlightResults, aiAdditionalRecommendation: !!aiAdditionalRecommendation, searchFlightsBtn: !!searchFlightsBtn });
+        } catch (error) {
+            console.error("[AI Search Error]", error);
+            aiLoadingStatus.style.display = 'none';
+            aiStatusMessage.textContent = `오류가 발생했습니다: ${error.message}`;
+            aiStatusMessage.style.display = 'block';
+        } finally {
+            loadingTimeouts.forEach(clearTimeout);
+            setLoadingState(false);
+        }
     }
 
-}); // DOMContentLoaded 끝
+
+    // --- Event Listeners ---
+    aiSearchBtn.addEventListener('click', (e) => {
+        createRipple(e);
+        const query = aiInput.value.trim();
+        if (!query) {
+            showNotification('검색어를 입력해주세요!', 'warning');
+            gsap.fromTo(aiInput, {x: -5}, {x: 5, repeat: 5, yoyo: true, duration: 0.05, clearProps: "transform"});
+            return;
+        }
+        handleAISearch(query);
+    });
+    
+    aiInput.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter') {
+           aiSearchBtn.click();
+        }
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        aiResultsModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == aiResultsModal) {
+            aiResultsModal.style.display = 'none';
+        }
+    });
+
+    // Event delegation for follow-up questions
+    aiFollowUpContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('ai-action-btn')) {
+            const newQuery = e.target.dataset.query;
+            aiInput.value = newQuery;
+            handleAISearch(newQuery);
+        }
+    });
+
+    // ==================================================
+    // === ✨ AI 태그 롤링 애니메이션 추가 ✨ ===
+    // ==================================================
+    const tagWrapper = document.querySelector('.tag-wrapper');
+    const tagItems = document.querySelectorAll('.tag-item');
+
+    if (tagWrapper && tagItems.length > 1) {
+        const tagCount = tagItems.length;
+        const tagHeight = tagItems[0].offsetHeight;
+        let currentIndex = 0;
+
+        // 자연스러운 반복을 위해 첫 번째 요소를 복제하여 맨 뒤에 추가
+        const firstItemClone = tagItems[0].cloneNode(true);
+        tagWrapper.appendChild(firstItemClone);
+
+        // 3초마다 태그를 위로 롤링시키는 함수
+        function rollTags() {
+            currentIndex++; // 다음 인덱스로 이동
+
+            gsap.to(tagWrapper, {
+                y: -currentIndex * tagHeight, // y축으로 태그 높이만큼 이동
+                duration: 0.7, // 애니메이션 속도
+                ease: 'power2.inOut', // 부드러운 움직임 효과
+                onComplete: () => {
+                    // 마지막 요소(복제된 첫 번째 요소)에 도달하면
+                    if (currentIndex === tagCount) {
+                        // 애니메이션 없이 즉시 첫 위치로 리셋
+                        gsap.set(tagWrapper, { y: 0 });
+                        currentIndex = 0;
+                    }
+                }
+            });
+        }
+
+        // 3초 간격으로 애니메이션 실행
+        setInterval(rollTags, 3000);
+    }
+    
+    console.log("[Gemini_Search] AI Flight Assistant features initialized.");
+});
