@@ -44,8 +44,8 @@
 }
 
 .ai-cloud {
-  width: 40px; /* 구름 아이콘 크기 조정 */
-  height: 40px;
+  width: 70px; /* 구름 아이콘 크기 조정 */
+  height: 70px;
   flex-shrink: 0; /* 크기 줄어들지 않도록 */
 }
 
