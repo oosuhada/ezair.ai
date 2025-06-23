@@ -228,6 +228,36 @@ main {
   margin-bottom: 20px; /* AI 박스 위 여백 */
 }
 
+.ai-tags {
+  overflow: hidden;
+  height: 32px; /* tag 하나 높이 */
+  position: relative;
+}
+
+.tag-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scrollUp linear infinite;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.tag-item {
+  height: 32px;
+  line-height: 32px;
+  white-space: nowrap;
+  padding-top: 6px;
+}
+
 /* Right Column (Checklist Box) */
 .top_right {
   position: absolute; /* 검색창과 겹치지 않게 절대 위치 */

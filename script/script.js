@@ -36,32 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- 애니메이션 로직 추가 ---
 
     // 1. AI 태그 롤링 애니메이션
-    const tagWrapper = document.querySelector(".ai-tags .tag-wrapper");
-    const tagItems = gsap.utils.toArray(".ai-tags .tag-item");
-    
-    if (tagWrapper && tagItems.length > 0) {
-        // 첫 번째 아이템의 높이를 기준으로 계산
-        const tagHeight = tagItems[0].offsetHeight;
-        
-        gsap.set(tagWrapper, { y: 0 }); // 초기 위치 설정
+    document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.getElementById("tagWrapper");
+  const items = Array.from(wrapper.children);
 
-        const tl = gsap.timeline({ repeat: -1 });
+  // tag-item을 2번 더 복제하여 총 3세트로 만듦
+  for (let i = 0; i < 2; i++) {
+    items.forEach(item => {
+      wrapper.appendChild(item.cloneNode(true));
+    });
+  }
 
-        // 각 아이템으로 이동하는 애니메이션을 타임라인에 추가
-        tagItems.forEach((tag, i) => {
-            if (i > 0) { // 첫 번째 아이템은 이미 보여지고 있으므로 두 번째부터
-                tl.to(tagWrapper, { 
-                    y: -tagHeight * i, 
-                    duration: 0.5, 
-                    ease: "power2.inOut", 
-                    delay: 2 // 각 태그가 2초간 보임
-                });
-            }
-        });
-        
-        // 마지막 태그가 보인 후 처음으로 복귀
-        tl.to(tagWrapper, { y: 0, duration: 0.5, ease: "power2.inOut", delay: 2 });
-    }
+  // 애니메이션 시간 자동 계산 (선택)
+  const durationPerItem = 2; // 초
+  const totalItemCount = wrapper.children.length;
+  const totalDuration = durationPerItem * totalItemCount;
+
+  wrapper.style.animationDuration = `${totalDuration}s`;
+});
+
 
 
     // 2. 추천 항공편(.recommend) 카드 등장 애니메이션
@@ -76,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             opacity: 0,
             y: 50,
-            duration: 0.6,
+            duration: 2,
             stagger: 0.1, // 0.1초 간격으로 순차적 등장
             ease: "power2.out"
         });
@@ -94,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             opacity: 0,
             y: 50,
-            duration: 0.6,
-            stagger: 0.1,
+            duration: 2,
+            stagger: .35,
             ease: "power2.out"
         });
     }
