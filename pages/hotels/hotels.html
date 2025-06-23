@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flight Search</title>
+  <title>EZ AIR</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/pages/hotels/style/hotels.css">
+  <link rel="stylesheet" href="/pages/common/common.css">
 </head>
-<body class="bg-gray-100 font-sans">
-  <header class="bg-teal-600 text-white custom-header">
-    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-center items-center">
-      <div class="flex items-center space-x-4">
-        <div class="w-14 h-3 bg-white"></div>
-        <div class="w-20 h-6 bg-white"></div>
-        <div class="w-16 h-5 bg-white"></div>
-      </div>
-      <nav class="flex space-x-4 mt-4 md:mt-0 md:ml-auto">
-        <a href="#" class="text-sm font-bold text-teal-600 custom-login-link">로그인 후 등급확인</a>
-        <div class="w-22 h-4 bg-white"></div>
-        <div class="flex items-center space-x-2">
-          <div class="w-20 h-14 bg-[url('https://placehold.co/76x54')] custom-login-button-bg">
-            <button class="text-white text-xs font-light custom-login-button">로그인</button>
-          </div>
-          <div class="w-5 h-6 bg-white"></div>
-        </div>
+
+<body>
+  <header>
+    <div class="inner">
+      <div class="logo"><a href="/index.html"><img src="/image/EZAIR.svg" alt="이지에어 로고"></a></div>
+
+      <nav class="gnb">
+        <ul>
+          <li class="index"><a href="/index.html">항공</a></li>
+          <li class="hotel"><a href="/pages/hotels/hotels.html">호텔</a></li>
+          <li class="package"><a href="/pages/pkgtour/pkgtour.html">패키지</a></li>
+          <li class="forU"><a href="/pages/forYou/forYou.html">EZ for you</a><img src="/image/gnb_beta.png"
+              alt="이지에어 포유 베타"></li>
+        </ul>
       </nav>
-    </div>
-    <div class="bg-gray-200 custom-navbar-bottom">
-      <div class="container mx-auto px-4 py-4 flex justify-center space-x-6">
-        <a href="#" class="text-black font-bold">항공</a>
-        <a href="#" class="text-teal-600 font-bold border-b-2 border-teal-600">호텔</a>
-        <a href="#" class="text-black font-bold">패키지</a>
-        <a href="#" class="text-black font-bold">출장</a>
-        <a href="#" class="text-black font-bold">For U</a>
-        <a href="#" class="text-black font-bold">이벤트・혜택</a>
+      <div class="btns">
+        <a class="cs" href="/pages/cs/cs.html"><img src="/image/gnb_cs.svg" alt="이지에어 고객센터"></a>
+        <a class="user" href="/pages/myPage/myPage.html"><img src="/image/gnb_user.svg" alt="이지에어 마이페이지"></a>
       </div>
+      <button type="button" class="hamburger-btn" aria-label="메뉴 열기">
+        <img src="/image/mobileList.svg" alt="">
+      </button>
     </div>
   </header>
+
 
   <main class="container mx-auto px-4 py-8">
     <section class="relative bg-teal-600 text-white text-center py-10 custom-hero-section">
@@ -54,7 +51,8 @@
       </div>
     </section>
 
-    <section class="bg-white rounded-2xl shadow-md p-4 mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 custom-search-bar">
+    <section
+      class="bg-white rounded-2xl shadow-md p-4 mt-8 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 custom-search-bar">
       <div class="flex-1 bg-gray-100 rounded-lg p-3 custom-input-field">어디로 가시나요?</div>
       <div class="flex-1 bg-gray-100 rounded-lg p-3 custom-input-field">숙박일정을 선택하세요</div>
       <div class="flex-1 bg-gray-100 rounded-lg p-3 custom-input-field">성인 2</div>
@@ -95,7 +93,8 @@
       <div class="flex justify-between items-center">
         <h2 class="text-xl font-bold">호텔 Best 차트</h2>
         <div class="flex space-x-2 custom-chart-toggle">
-          <button class="bg-white text-teal-600 font-bold rounded-full px-4 py-2 border border-teal-600 custom-toggle-button-active">국내</button>
+          <button
+            class="bg-white text-teal-600 font-bold rounded-full px-4 py-2 border border-teal-600 custom-toggle-button-active">국내</button>
           <button class="bg-teal-100 text-teal-500 font-bold rounded-full px-4 py-2 custom-toggle-button">해외</button>
         </div>
       </div>
@@ -121,77 +120,77 @@
           </div>
         </div>
         <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">나인트리 바이 파르나스 서울 인사동</p>
-              <p class="text-sm text-gray-600">9.0 | 4성급</p>
-              <p class="font-bold">174,777원~</p>
-            </div>
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">나인트리 바이 파르나스 서울 인사동</p>
+            <p class="text-sm text-gray-600">9.0 | 4성급</p>
+            <p class="font-bold">174,777원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">글래드 여의도</p>
-              <p class="text-sm text-gray-600">8.9 | 4성급</p>
-              <p class="font-bold">142,547원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">글래드 여의도</p>
+            <p class="text-sm text-gray-600">8.9 | 4성급</p>
+            <p class="font-bold">142,547원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">서울 올림픽 파크텔</p>
-              <p class="text-sm text-gray-600">8.8 | 4급</p>
-              <p class="font-bold">137,499원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">서울 올림픽 파크텔</p>
+            <p class="text-sm text-gray-600">8.8 | 4급</p>
+            <p class="font-bold">137,499원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">신라스테이 광화문 (명동)</p>
-              <p class="text-sm text-gray-600">8.3 | 3성급</p>
-              <p class="font-bold">163,025원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">신라스테이 광화문 (명동)</p>
+            <p class="text-sm text-gray-600">8.3 | 3성급</p>
+            <p class="font-bold">163,025원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">파라스파라 서울</p>
-              <p class="text-sm text-gray-600">8.7</p>
-              <p class="font-bold">226,197원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">파라스파라 서울</p>
+            <p class="text-sm text-gray-600">8.7</p>
+            <p class="font-bold">226,197원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">호텔 리베라 서울</p>
-              <p class="text-sm text-gray-600">8.3 | 4성급</p>
-              <p class="font-bold">114,008원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">호텔 리베라 서울</p>
+            <p class="text-sm text-gray-600">8.3 | 4성급</p>
+            <p class="font-bold">114,008원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">롯데 호텔 월드</p>
-              <p class="text-sm text-gray-600">9.1 | 5성급</p>
-              <p class="font-bold">282,461원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">롯데 호텔 월드</p>
+            <p class="text-sm text-gray-600">9.1 | 5성급</p>
+            <p class="font-bold">282,461원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">엠디호텔 독산</p>
-              <p class="text-sm text-gray-600">8.5 | 3성급</p>
-              <p class="font-bold">65,140원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">엠디호텔 독산</p>
+            <p class="text-sm text-gray-600">8.5 | 3성급</p>
+            <p class="font-bold">65,140원~</p>
           </div>
-          <div class="flex items-center space-x-4 custom-hotel-item">
-            <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
-            <div>
-              <p class="font-bold">코리아나 호텔</p>
-              <p class="text-sm text-gray-600">8.7 | 4성급</p>
-              <p class="font-bold">120,780원~</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-hotel-item">
+          <img src="https://placehold.co/106x106" alt="Hotel" class="w-24 h-24 rounded-lg">
+          <div>
+            <p class="font-bold">코리아나 호텔</p>
+            <p class="text-sm text-gray-600">8.7 | 4성급</p>
+            <p class="font-bold">120,780원~</p>
           </div>
+        </div>
       </div>
     </section>
 
@@ -206,19 +205,19 @@
           </div>
         </div>
         <div class="flex items-center space-x-4 custom-sidebar-item">
-            <img src="https://placehold.co/36x36" alt="Icon">
-            <div>
-              <p class="font-bold">항공 구매시 호텔 15% 할</p>
-              <p class="text-sm text-gray-600">여행 출발 전 언제든 사용 가능</p>
-            </div>
+          <img src="https://placehold.co/36x36" alt="Icon">
+          <div>
+            <p class="font-bold">항공 구매시 호텔 15% 할</p>
+            <p class="text-sm text-gray-600">여행 출발 전 언제든 사용 가능</p>
           </div>
-          <div class="flex items-center space-x-4 custom-sidebar-item">
-            <img src="https://placehold.co/36x36" alt="Icon">
-            <div>
-              <p class="font-bold">멤버십 혜택 챙기셨나요?</p>
-              <p class="text-sm text-gray-600">할인은 기본, 적립은 중복으로</p>
-            </div>
+        </div>
+        <div class="flex items-center space-x-4 custom-sidebar-item">
+          <img src="https://placehold.co/36x36" alt="Icon">
+          <div>
+            <p class="font-bold">멤버십 혜택 챙기셨나요?</p>
+            <p class="text-sm text-gray-600">할인은 기본, 적립은 중복으로</p>
           </div>
+        </div>
       </div>
     </aside>
 
@@ -265,13 +264,15 @@
         <p>이메일: ccnaver@naver.com</p>
         <p>주소: 경기도 성남시 분당구 정자일로 95 NAVER 1784, 13561</p>
         <p>호스팅 서비스 제공: NAVER Cloud</p>
-        <p class="mt-4">네이버 호텔은 제휴사에서 제공하는 호텔정보 및 가격정보를 비교, 중개하는 서비스로서, 네이버(주)는 통신판매의 당사자가 아닙니다. 호텔 검색 결과 및 거래에 관한 의무와 책임은 판매자에게 있습니다.</p>
+        <p class="mt-4">네이버 호텔은 제휴사에서 제공하는 호텔정보 및 가격정보를 비교, 중개하는 서비스로서, 네이버(주)는 통신판매의 당사자가 아닙니다. 호텔 검색 결과 및 거래에 관한 의무와
+          책임은 판매자에게 있습니다.</p>
         <img src="https://placehold.co/74x14" alt="Naver" class="mt-4 custom-naver-logo">
       </div>
     </div>
   </footer>
 
-  <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden custom-popup-overlay">
+  <div id="popup"
+    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden custom-popup-overlay">
     <div class="bg-white rounded-lg p-6 w-full max-w-md custom-popup-content">
       <h3 class="text-lg font-bold text-center">항공 + 호텔 둘 다 예약시<br>호텔 예약금액의<br>5%를 돌려드려요!!</h3>
       <img src="https://placehold.co/246x150" alt="Popup Image" class="w-full h-36 mt-4">
@@ -282,4 +283,5 @@
 
   <script src="/pages/hotels/script/hotels.js"></script>
 </body>
+
 </html>
