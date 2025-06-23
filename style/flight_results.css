@@ -1,0 +1,212 @@
+/* /style/flight_results.css */
+
+/* --- AI Result Header (Main page) --- */
+.ai-result-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #e9f5ff;
+    border-radius: var(--border-radius);
+}
+.ai-result-header h2 {
+    color: var(--primary);
+}
+.ai-result-header p {
+    color: var(--gray700);
+    font-size: 15px;
+}
+
+
+/* --- Unified Flight Card Style --- */
+.flight-card, .ai-flight-card {
+    background-color: var(--wht);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray100);
+    box-shadow: var(--box-shadow-light);
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    opacity: 0; /* Initially hidden for animation */
+}
+
+.flight-card:hover, .ai-flight-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.flight-card .airline-info {
+    flex-shrink: 0;
+    text-align: center;
+    width: 80px;
+}
+
+.airline-info .airline-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    border: 1px solid var(--gray100);
+    border-radius: 6px;
+}
+
+.airline-info .airline-name {
+    font-size: 13px;
+    color: var(--gray700);
+    font-weight: 500;
+}
+
+.flight-card .flight-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.flight-segment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.time-airport {
+    text-align: center;
+}
+
+.time-airport .time {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blk);
+}
+
+.time-airport .airport-code {
+    font-size: 13px;
+    color: var(--gray500);
+}
+
+.duration-info {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.duration-info .duration {
+    font-size: 13px;
+    color: var(--gray700);
+    margin-bottom: 2px;
+}
+
+.duration-info .arrow-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray300);
+    position: relative;
+}
+
+.arrow-line::after {
+    content: '▶';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--gray500);
+}
+
+.duration-info .stop-info {
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.flight-card .price-section {
+    flex-shrink: 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.price-section .tags {
+    margin-bottom: 10px;
+}
+
+.price-section .tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.tag.cheapest {
+    background-color: #FFFBEA;
+    color: #F59E0B;
+    border: 1px solid #FCD34D;
+}
+
+.tag.fastest {
+    background-color: #EBF5FF;
+    color: #3B82F6;
+    border: 1px solid #93C5FD;
+}
+
+.price-section .price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.price-section .currency {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray700);
+    margin-left: 2px;
+}
+
+.price-section .select-btn {
+    background: var(--gradient-blue-green);
+    color: var(--wht);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+}
+
+.price-section .select-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+    .flight-card, .ai-flight-card {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .flight-card .airline-info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--gray100);
+    }
+    .flight-card .price-section {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .price-section .select-btn {
+        margin-top: 0;
+    }
+}
