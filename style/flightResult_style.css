@@ -14,7 +14,12 @@ body {
     background-color: var(--gray50);
 
 }
-
+a {
+  color: inherit;  
+  text-decoration: none; 
+  background-color: transparent;
+  cursor: pointer;
+}
 :root {
     --blk: #1a1a1a;
     --wht: #ffffff;
@@ -1218,7 +1223,10 @@ body {
     cursor: pointer;
     font-size: 18px;
 }
-
+/* .reserve_bt a{
+    text-decoration: none;
+    font-style: none;
+} */
 
 
 
