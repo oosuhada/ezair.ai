@@ -1,0 +1,670 @@
+/* myPage.css */
+
+/* Variables */
+:root {
+    --color-primary-blue: #379AFC;
+    --color-light-blue: #EEF3FD;
+    --color-dark-text: #222225;
+    --color-medium-text: #444447;
+    --color-light-text: #555558;
+    --color-border: #E2E5E8;
+    --color-background-light: #F0F0F3;
+    --color-background-footer: #F4F7F8;
+    --color-grey-background: #F7F7F9;
+    --color-white: #ffffff;
+    --color-highlight-blue: #287CFF;
+    --color-progress-grey: #E9E9EC;
+    --color-teal: #20C1D1;
+    --color-purple: #6A64D9;
+    --color-grey-separator: #C5C5C7;
+    --color-footer-grey: #696A6C;
+    --color-footer-border: #D1D4D7;
+    --font-family-apple: 'Inter', sans-serif; /* Using Inter as a common alternative */
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-apple);
+    background-color: var(--color-background-light);
+    color: var(--color-dark-text);
+    line-height: 1.5;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1920px; /* Max width as per original design for very large screens */
+    margin: 0 auto;
+    background-color: var(--color-background-light);
+    min-height: 100vh;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    width: 100%;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
+}
+
+.top-nav-content {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px; /* Horizontal padding for smaller screens */
+}
+
+.top-nav-icon,
+.top-nav-logo,
+.top-nav-search,
+.top-nav-bell {
+    height: 26px; /* Adjust height for consistency */
+    object-fit: contain;
+}
+
+.top-nav-icon {
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+}
+
+.top-nav-logo {
+    width: 71px;
+    height: 26px;
+    flex-grow: 1; /* Allows logo to push other elements */
+}
+
+.top-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-nav-search,
+.top-nav-bell {
+    width: 55px;
+    height: 15px;
+}
+
+.top-nav-separator {
+    width: 1px;
+    height: 12px;
+    background-color: var(--color-grey-separator);
+}
+
+/* Main Content Area */
+.main-content {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 0 16px; /* Horizontal padding for smaller screens */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section {
+    background-color: var(--color-white);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* User Profile Card */
+.user-profile-card {
+    padding: 20px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 8px;
+    border-bottom: 1px solid var(--color-border); /* Separator */
+    padding-bottom: 20px; /* Space before separator */
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    text-align: center;
+}
+
+.action-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-dark-text); /* Default icon color */
+}
+
+.action-text {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 21.6px;
+    color: var(--color-dark-text);
+}
+
+.icon-small {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    color: var(--color-dark-text);
+}
+
+.icon-xsmall {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    color: var(--color-dark-text);
+    transform: translateY(-2px); /* Slight adjustment for alignment */
+}
+
+
+.level-progress-card {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Space between elements */
+    margin-top: 10px; /* Space from previous section */
+}
+
+.level-badge {
+    width: 108px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.current-level {
+    width: 66px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.level-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.06px;
+    color: var(--color-medium-text);
+    flex-basis: 60%; /* Take more space on small screens */
+    min-width: 160px; /* Ensures text doesn't shrink too much */
+}
+
+.progress-bar-container {
+    width: calc(100% - 70px); /* Adjust width for count */
+    height: 8px;
+    background-color: var(--color-progress-grey);
+    border-radius: 4px;
+    overflow: hidden;
+    flex-basis: 100%; /* Full width below labels */
+    order: 3; /* Ensure it appears below text on small screens */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-primary-blue); /* Example filled progress */
+    border-radius: 4px;
+}
+
+.progress-count {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.06px;
+    color: var(--color-medium-text);
+    flex-basis: auto; /* Shrink to fit */
+    order: 4; /* Appears next to progress bar */
+}
+
+/* Ad/Banner Placeholder */
+.ad-banner {
+    width: 100%;
+    height: 48px;
+    background-color: var(--color-white);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    /* You can add a background image or specific content here */
+}
+
+/* Section Headers */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23.94px;
+    color: var(--color-dark-text);
+}
+
+.highlight-count {
+    color: var(--color-highlight-blue);
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.icon-medium {
+    width: 20px;
+    height: 20px;
+    color: var(--color-dark-text);
+}
+
+/* Empty State Sections (Consultation, Itinerary) */
+.empty-state {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.empty-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--color-dark-text);
+    margin-bottom: 8px;
+}
+
+.empty-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.04px;
+    color: var(--color-light-text);
+    margin-bottom: 20px;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.action-button {
+    background-color: var(--color-grey-background);
+    border-radius: 18px;
+    padding: 9px 20px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 36px; /* To center text vertically */
+    color: var(--color-medium-text);
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Benefit Info Section */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.info-item {
+    background-color: var(--color-light-blue);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-text {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22.05px;
+    color: var(--color-dark-text);
+}
+
+.info-toggle {
+    width: 34px;
+    height: 21px;
+    object-fit: contain;
+}
+
+/* Events & Benefits Section Carousel */
+.events-benefits-section {
+    padding: 20px;
+}
+
+.events-carousel-container {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    padding-bottom: 10px; /* Space for potential scrollbar */
+    position: relative; /* For potential arrows */
+}
+
+/* Hide scrollbar for Webkit browsers */
+.events-carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+.events-carousel {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0; /* Vertical padding for items inside container */
+    min-width: fit-content; /* Ensure items don't wrap */
+}
+
+.event-card {
+    min-width: 294px; /* Fixed width for each card */
+    width: 294px; /* Ensures width even if content is less */
+    height: 120px;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.03); /* Subtle shadow for cards */
+}
+
+.event-blue {
+    background-color: rgba(55, 154, 252, 0.10); /* var(--color-primary-blue) with 10% opacity */
+}
+
+.event-teal {
+    background-color: rgba(32, 193, 209, 0.10); /* var(--color-teal) with 10% opacity */
+}
+
+.event-purple {
+    background-color: rgba(106, 100, 217, 0.10); /* var(--color-purple) with 10% opacity */
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 4px;
+    color: var(--color-dark-text);
+}
+
+.event-blue .event-title { color: var(--color-primary-blue); }
+.event-teal .event-title { color: var(--color-teal); }
+.event-purple .event-title { color: var(--color-purple); }
+
+
+.event-description {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19.05px;
+    color: var(--color-medium-text);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--color-background-footer);
+    border-top: 1px solid var(--color-border);
+    padding-top: 1px; /* To prevent border from being eaten */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.footer-top {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.back-to-top-button {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 8px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--color-dark-text);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top-button:hover {
+    background-color: #f0f0f0;
+}
+
+.back-to-top-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-dark-text);
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-link-button {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 8px 15px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.70);
+    border-radius: 0; /* Remove default button border-radius */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-link-button:hover {
+    background-color: #f0f0f0;
+}
+
+.footer-info-toggle {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.70);
+    cursor: pointer;
+}
+
+.footer-arrow {
+    width: 12px;
+    height: 12px;
+    color: var(--color-footer-grey);
+}
+
+.company-details {
+    background-color: var(--color-progress-grey); /* Lighter grey for this section */
+    width: 100%;
+    padding: 20px 16px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Two columns: label and value */
+    gap: 8px 20px; /* Row and column gap */
+}
+
+.detail-row {
+    display: contents; /* Allows children to participate in the grid */
+}
+
+.detail-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-grey-separator);
+    text-align: right; /* Align labels to the right */
+}
+
+.detail-value {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-footer-grey);
+    text-align: left;
+}
+
+.footer-bottom-links {
+    display: flex;
+    flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Space between links and separators */
+    margin-top: 20px;
+    padding: 0 16px; /* Horizontal padding */
+}
+
+.bottom-link {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17.28px;
+    color: var(--color-footer-grey);
+    text-decoration: none;
+    white-space: nowrap; /* Prevent links from breaking in half */
+}
+
+.bottom-link-bold {
+    font-weight: 700;
+}
+
+.link-separator {
+    width: 1px;
+    height: 10px;
+    background-color: var(--color-footer-border);
+}
+
+.copyright {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15.84px;
+    color: var(--color-footer-grey);
+    margin-top: 15px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet (e.g., 768px and up) */
+@media screen and (min-width: 768px) {
+    .main-content {
+        padding: 0 20px; /* Slightly more padding */
+    }
+
+    .user-actions {
+        padding-bottom: 24px;
+    }
+
+    .level-progress-card {
+        flex-wrap: nowrap; /* Prevent wrapping on tablet */
+        justify-content: flex-start;
+        gap: 20px; /* More space */
+    }
+
+    .level-text {
+        flex-basis: auto; /* Allow it to take natural width */
+    }
+
+    .progress-bar-container {
+        width: 300px; /* Fixed width for progress bar on larger screens */
+        flex-grow: 1; /* Allow it to grow if space permits */
+        order: initial; /* Reset order */
+    }
+
+    .progress-count {
+        order: initial; /* Reset order */
+    }
+
+    .company-details {
+        max-width: 600px; /* Constrain width for desktop */
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Desktop (e.g., 1024px and up) */
+@media screen and (min-width: 1024px) {
+    .page-container {
+        padding: 0; /* Remove overall padding, content centers itself */
+    }
+
+    .top-nav {
+        padding: 0; /* Remove top nav padding */
+    }
+
+    .main-content {
+        max-width: 720px; /* Ensure content stays centered and readable */
+        padding: 0; /* Remove padding as max-width handles it */
+    }
+
+    section {
+        padding: 24px; /* More generous padding for sections */
+    }
+
+    .events-carousel-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .events-carousel {
+        justify-content: flex-start;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .event-card {
+        margin-right: 16px; /* Ensure consistent spacing */
+    }
+
+    .footer-bottom-links {
+        gap: 15px; /* More space between links */
+    }
+
+    .link-separator {
+        margin: 0;
+    }
+}
