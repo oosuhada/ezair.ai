@@ -1,46 +1,7 @@
-/* Custom styles for additional responsiveness */
-.container {
-  max-width: 1200px;
+header{
+  background:var(--);
 }
 
-/* Header */
-.custom-header {
-  background: #47AAB2;
-}
-
-.custom-login-link {
-  color: #47AAB2; /* This color is from the original, but hidden behind white in the HTML. Keeping for explicit clarity if needed. */
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.custom-login-button-bg {
-  background-image: url('https://placehold.co/76x54');
-}
-
-.custom-login-button {
-  font-family: 'Nanum Gothic';
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 28px;
-}
-
-.custom-navbar-bottom {
-  background: #E6EBEF;
-}
-
-.custom-navbar-bottom a {
-  font-size: 16px;
-  font-family: 'Helvetica Neue';
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.custom-navbar-bottom a.text-teal-600 {
-  color: #47AAB2;
-  border-bottom: 2px #47AAB2 solid;
-}
 
 /* Hero Section */
 .custom-hero-section {
