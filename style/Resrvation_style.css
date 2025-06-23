@@ -563,69 +563,70 @@ nav {
     display: none;
 
 }
+
 /*-----------------------------*/
 
 .checklist-box {
-  background: #fff;
-  border-radius: var(--border-radius);
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin: 30px;
-position: absolute;
-top: 330px;
-right: 0;
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 30px;
+    position: absolute;
+    top: 330px;
+    right: 0;
 }
 
 .checklist-title {
-  font-weight: bold;
-  font-size: 15px;
-  margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 16px;
 }
 
 .checklist-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .checklist-items li {
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  border-top: 1px solid #eee;
-  position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+    position: relative;
 }
 
 .checklist-items li:first-child {
-  border-top: none;
+    border-top: none;
 }
 
 .checklist-items img {
-  width: 32px;
-  height: 32px;
-  margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
 }
 
 .text-box {
-  flex: 1;
+    flex: 1;
 }
 
 .text-box strong {
-  display: block;
-  font-size: 14px;
-  color: #222;
-  margin-bottom: 2px;
+    display: block;
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 2px;
 }
 
 .text-box span {
-  font-size: 12px;
-  color: #888;
+    font-size: 12px;
+    color: #888;
 }
 
 .arrow {
-  font-size: 18px;
-  color: #bbb;
+    font-size: 18px;
+    color: #bbb;
 }
 
 /* --------------------------- */
@@ -740,70 +741,202 @@ right: 0;
     display: none;
 }
 
-.details-text {
-    font-size: 14px;
-    color: var(--text);
-}
-
-.details-text .range {
-    font-weight: 600;
-    color: var(--text);
-}
-
-.price-bar-wrapper {
-    position: relative;
-    display: flex;
-    height: 6px;
-    border-radius: 3px;
-    overflow: hidden;
-    background: #eee;
-}
-
-.price-bar-wrapper .bar {
-    flex: 1;
-}
-
-.price-bar-wrapper .bar.low {
-    background: var(--primary);
-}
-
-.price-bar-wrapper .bar.medium {
-    background: var(--secondary);
-}
-
-.price-bar-wrapper .bar.high {
-    background: var(--accent);
-}
-
-.price-bar-wrapper .indicator {
-    position: absolute;
-    top: -4px;
-    width: 12px;
-    height: 12px;
-    border: 2px solid var(--accent);
-    background: var(--bg);
-    border-radius: 50%;
-    transform: translateX(-50%);
-}
-
-.price-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text-light);
-}
-
-.price-chart {
-    height: 140px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+.price-comparison {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    font-size: 13px;
+    justify-content: space-between;
+    padding: 16px;
+    /* 필요에 따라 max-width 등 설정 */
 }
 
+.price-comparison_text {
+    max-width: 40%;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.price-comparison_text strong {
+    font-weight: 700;
+}
+
+.price-comparison_chart {
+    position: relative;
+    width: 55%;
+}
+
+/* ——— 색 분할 바 ——— */
+.price-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.segment {
+    flex-shrink: 0;
+}
+
+.segment-low {
+    background: #FFA726;
+    flex: 2;
+    border-radius: 50px 0px 0px 50px;
+}
+
+.segment-medium {
+    background: #10C2A0;
+    flex: 6;
+}
+
+.segment-high {
+    background: #E44D26;
+    flex: 2;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.price-bar_indicator {
+    position: absolute;
+    top: 50%;
+    left: calc((2 + 6) / (2 + 6 + 2) * 100%);
+    /* 전체 중 80% 지점 */
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid #E44D26;
+    border-radius: 50%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.price-bar_annotation {
+    position: absolute;
+    top: -28px;
+    left: calc((2 + 6) / (2 + 6 + 2) * 100%);
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    color: #E44D26;
+    border: 1px solid #E44D26;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.price-bar_labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #666;
+}
+
+.price-bar_min,
+.price-bar_max {
+    flex-shrink: 0;
+}
+
+/*챠트*/
+.line-chart-widget {
+  max-width: 1029px;
+  margin: 32px auto;
+  font-family: 'NanumSquare', sans-serif;
+}
+
+/* 1) 탭 버튼 */
+.time-range {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.time-range button {
+  flex: 1;
+  padding: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.time-range button.active {
+  background: #1987FA;
+  color: #fff;
+  border-color: #1987FA;
+}
+
+/* 2) 차트 컨테이너 */
+.chart-area {
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+/* Y축 */
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  padding-top: 4px;
+  padding-bottom: 16px;
+  font-size: 12px;
+  color: #777;
+  text-align: right;
+  margin-right: 8px;
+}
+
+/* 차트 + X축 */
+.chart-inner {
+  flex: 1;
+  position: relative;
+}
+
+/* SVG 영역 */
+.chart-svg {
+  width: 100%;
+  height: 200px;
+  overflow: visible;
+}
+.grid line {
+  stroke: #eee;
+  stroke-width: 1;
+}
+.data-line {
+  fill: none;
+  stroke: #1987FA;
+  stroke-width: 2;
+}
+.data-point {
+  fill: #fff;
+  stroke: #1987FA;
+  stroke-width: 2;
+}
+/* 툴팁 */
+.tooltip-group rect {
+  fill: #fff;
+  stroke: #1987FA;
+  stroke-width: 1;
+}
+.tooltip-group text {
+  font-size: 12px;
+  fill: #1987FA;
+}
+.tooltip-group path {
+  fill: #fff;
+  stroke: #1987FA;
+  stroke-width: 1;
+}
+
+/* X축 레이블 */
+.x-labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 8px;
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
 /* ------------------------- */
 
 .banner-swiper-container {
