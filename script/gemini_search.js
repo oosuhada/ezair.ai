@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const aiInput = document.querySelector('.ai-input');
-    const aiSearchBtn = document.querySelector('.ai-search-btn');
+    const aiSearchBtn = document.querySelector('.ai-search-btn'); // This is the button we'll target
     const aiResultsModal = document.getElementById('ai-results-modal');
     const closeModalBtn = aiResultsModal ? aiResultsModal.querySelector('.close-button') : null;
     const modalFlightResults = document.getElementById('modal-flight-results');
@@ -49,9 +49,28 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aiInput && aiSearchBtn && aiResultsModal && closeModalBtn && modalFlightResults && aiAdditionalRecommendation && searchFlightsBtn) {
         console.log("[Gemini_Search] All required AI assistant elements found. Attaching event listeners.");
 
+        // --- Lottie animation for ai-search-btn ---
+        // Ensure the aiSearchBtn is empty before loading the animation
+        aiSearchBtn.innerHTML = '';
+        const lottieAnimation = lottie.loadAnimation({
+            container: aiSearchBtn, // the DOM element that will contain the animation
+            renderer: 'svg',
+            loop: true, // You can set this to false if you want it to play once per click
+            autoplay: false, // Set to false so we can control playback on click
+            path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json'
+        });
+        console.log("[Gemini_Search] Lottie animation initialized for .ai-search-btn.");
+        // --- End Lottie animation setup ---
+
+
         aiSearchBtn.addEventListener('click', async function() {
             console.log("[Gemini_Search] AI search button clicked!");
             const query = aiInput.value.trim();
+
+            if (lottieAnimation) {
+                lottieAnimation.goToAndPlay(0, true); // Play from the beginning
+            }
+
             if (query) {
                 console.log("[Gemini_Search] AI search query entered:", query);
                 modalFlightResults.innerHTML = '<p>AI 어시스턴트가 항공편 검색 조건을 분석 중입니다...</p>';
@@ -253,10 +272,17 @@ If the query is not clearly about flights or booking, explain why you cannot pro
                     console.error("[Gemini_Search] An error occurred during AI flight search or parameter extraction:", error);
                     modalFlightResults.innerHTML = '<p>AI 항공권 검색 중 오류가 발생했습니다. 다시 시도해 주세요.</p>';
                     aiAdditionalRecommendation.innerHTML = "문제가 지속되면 시스템 관리자에게 문의하거나, '서울에서 제주도 다음주 금요일 가장 저렴한 항공권'과 같이 구체적으로 문의해주세요.";
+                } finally {
+                    if (lottieAnimation) {
+                        lottieAnimation.stop(); // Stop the animation after the search is complete
+                    }
                 }
 
             } else {
                 console.warn("[Gemini_Search] AI search query is empty. Please enter a query.");
+                if (lottieAnimation) {
+                    lottieAnimation.stop(); // Stop the animation if no query
+                }
             }
         });
 

@@ -1,174 +1,160 @@
-/* intro.css */
-
-/* 인트로 오버레이 */
+/* Intro Overlay */
 .intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #000;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 비행기 창문 */
-.airplane-window {
-  position: relative;
-  width: 400px;
-  height: 300px;
-  background: #2c3e50;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow:
-    inset 0 0 0 20px #34495e,
-    inset 0 0 0 30px #2c3e50,
-    0 20px 40px rgba(0,0,0,0.3);
+/* Airplane Window Container */
+.airplane-window-outer {
+    position: relative;
+    width: 300px;
+    height: 400px; /* Vertically long */
+    overflow: hidden;
+    border-radius: 80px;
+    background: #e0e0e0; /* Initial frame-like background */
+    border: 10px solid #ccc; /* Frame-like border */
 }
 
-.window-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  background: linear-gradient(45deg, #bdc3c7, #ecf0f1);
-  z-index: 3;
+/* Video Overlay (Window Inner) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit; /* Inherit border-radius from parent */
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
 }
 
-.window-inner {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  border-radius: 30px;
-  overflow: hidden;
-  background: #000;
+.video-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* 비디오 배경 대신 그라데이션 애니메이션 */
-.video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: linear-gradient(45deg, #87CEEB, #98FB98, #FFB6C1, #DDA0DD);
-  background-size: 400% 400%;
-  animation: gradientShift 4s ease-in-out infinite;
+/* Intro Airplane */
+.intro-airplane {
+    position: absolute;
+    width: 70vw;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* 구름 애니메이션 */
+/* Clouds */
 .clouds {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 .cloud {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
-  opacity: 0;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    opacity: 0;
 }
 
 .cloud:before {
-  content: '';
-  position: absolute;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
 }
 
 .cloud:after {
-  content: '';
-  position: absolute;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
 }
 
 .cloud1 {
-  width: 80px;
-  height: 40px;
-  top: 20%;
-  left: -100px;
-  animation: float1 8s infinite linear;
+    width: 80px;
+    height: 40px;
+    top: 20%;
+    left: -100px;
+    animation: float1 10s infinite linear;
 }
 
 .cloud1:before {
-  width: 50px;
-  height: 50px;
-  top: -25px;
-  left: 10px;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
 }
 
 .cloud1:after {
-  width: 60px;
-  height: 40px;
-  top: -15px;
-  right: 10px;
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 10px;
 }
 
 .cloud2 {
-  width: 60px;
-  height: 30px;
-  top: 60%;
-  left: -80px;
-  animation: float2 6s infinite linear;
-  animation-delay: 2s;
+    width: 60px;
+    height: 30px;
+    top: 60%;
+    left: -80px;
+    animation: float2 8s infinite linear;
+    animation-delay: 2s;
 }
 
 .cloud2:before {
-  width: 40px;
-  height: 40px;
-  top: -20px;
-  left: 5px;
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 5px;
 }
 
 .cloud2:after {
-  width: 50px;
-  height: 30px;
-  top: -10px;
-  right: 5px;
+    width: 50px;
+    height: 30px;
+    top: -10px;
+    right: 5px;
 }
 
 @keyframes float1 {
-  0% { left: -100px; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: 450px; opacity: 0; }
+    0% { left: -100px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 350px; opacity: 0; }
 }
 
 @keyframes float2 {
-  0% { left: -80px; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: 430px; opacity: 0; }
+    0% { left: -80px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 330px; opacity: 0; }
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 메인 컨텐츠 (초기 숨김) */
+/* Main Content */
 .main-content {
-  opacity: 0;
-  visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
-/* 반응형 */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .airplane-window {
-    width: 300px;
-    height: 225px;
-  }
+    .airplane-window-outer {
+        width: 225px;
+        height: 300px;
+    }
+
+    .intro-airplane {
+        width: 75px; /* Smaller size for mobile */
+    }
 }
