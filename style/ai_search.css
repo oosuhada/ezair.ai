@@ -155,22 +155,25 @@
     border: 1px solid #d4e9ff;
 
     /* 애니메이션을 위한 스타일 추가 */
-    height: 2.5em; /* 한 줄 높이 고정 */
-    line-height: 1.5;
+    height:32px; /* 한 줄 높이 고정 */
     overflow: hidden; /* 넘치는 자식 요소 숨김 */
     position: relative;
 }
 
 .tag-wrapper {
     position: absolute;
+
     top: 0;
     left: 15px; /* padding-left와 동일하게 */
     right: 15px; /* padding-right와 동일하게 */
 }
 
 .tag-item {
-    display: block; /* 한 줄씩 차지하도록 */
-    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 한 줄씩 차지하도록 */
+    height: 24px;
+    margin: 2px;
 }
 
 
