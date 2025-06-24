@@ -1093,6 +1093,17 @@ nav {
 }
 
 .flight-result-card {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.flight-result-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flight-result-card {
     width: 100%;
     background: #fff;
     border-radius: 12px;
