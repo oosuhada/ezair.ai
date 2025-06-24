@@ -1,3 +1,4 @@
+// intro.js
 document.addEventListener('DOMContentLoaded', function() {
     // Inject intro overlay HTML dynamically with airplane image
     const introHTML = `
@@ -46,10 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.set(introAirplane, { transformOrigin: "center center" });
 
         // Calculate starting and ending positions for airplane
-        const startX = -window.innerWidth / 2 - 1000; // Start outside top-left
-        const startY = -window.innerHeight / 2 - 1000;
-        const endX = window.innerWidth / 2 + 1000; // End outside bottom-right
-        const endY = window.innerHeight / 2 + 1000;
+        const startX = -window.innerWidth / 2 - 500; // Start outside top-left
+        const startY = -window.innerHeight / 2 - 500;
+        const endX = window.innerWidth / 2 + 500; // End outside bottom-right
+        const endY = window.innerHeight / 2 + 500;
 
         // Calculate target position and dimensions of the ai-input-box
         let targetX = 0;
@@ -87,136 +88,138 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const tl = gsap.timeline();
 
-        // 1. Initial airplane window appearance with CSS border
-        tl.from(airplaneWindow, {
-            duration: 3,
-            scale: 0.3,
-            rotation: 360,
-            ease: "back.out(1.7)"
+// 1. Initial airplane window appearance with CSS border
+tl.from(airplaneWindow, {
+    duration: 2,
+    scale: 0.3,
+    rotation: 360,
+    ease: "back.out(1.7)"
+});
+
+// 2. Cloud animation with slight delay
+tl.to('.cloud', {
+    duration: 1.2,
+    opacity: 1,
+    stagger: 0.4
+}, "-=2"); // Starts 2 seconds before the airplane window's initial animation ends
+
+// 3. Animate intro airplane flying from top-left to bottom-right at 135 degrees
+tl.fromTo(introAirplane, {
+    x: startX,
+    y: startY,
+    rotation: 135,
+    opacity: 1
+}, {
+    x: endX,
+    y: endY,
+    duration: 4, // Set airplane flight duration to 3 seconds
+    ease: "power2.inOut"
+}, "-=3"); // Starts 3 seconds before the clouds animation ends (adjust as needed for desired overlap)
+
+// Set the airplane's opacity to 0 immediately after its flight path completes
+tl.set(introAirplane, {
+    opacity: 0
+});
+
+// 4. Fade out video and clouds
+tl.to(windowInner, {
+    duration: 1.5,
+    opacity: 0,
+    ease: "power2.inOut",
+    onComplete: function() {
+        windowInner.style.display = 'none';
+    }
+}, ">-0.5"); // Starts 0.5 seconds before the *previous* animation (airplane.set) completes.
+            // Using '>' ensures it starts after the previous animation's effective end point.
+
+// 5. Transform airplane window to chatbox (position, size, border, and background)
+tl.to(airplaneWindow, {
+    duration: 1, // Set window transformation duration to 2 seconds
+    x: targetX,
+    y: targetY,
+    width: targetWidth,
+    height: targetHeight,
+    borderRadius: targetBorderRadius,
+    backgroundColor: targetBackgroundColor,
+    borderColor: targetBorderColor,
+    boxShadow: targetBoxShadow,
+    ease: "power2.inOut"
+}, ">-0.7"); // Starts 0.7 seconds before the *previous* animation (windowInner fade out) completes.
+            // This creates a smooth overlap where the window starts transforming as the video fades out.
+
+// 6. Inject and fade in chatbox content with introOverlay background transition and main content fade-in
+tl.to(airplaneWindow, {
+    duration: 1.2, // Duration for the internal content of the window
+    ease: "power2.inOut",
+    onStart: function () {
+        if (aiInputBox) {
+            const placeholderText = "다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘";
+
+            // Initial setup: clear and set up inner content
+            airplaneWindow.innerHTML = `
+                <div id="typing-wrapper" style="
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    font-size: 15px;
+                    color: var(--blk);
+                    background: var(--gray50);
+                    border-radius: ${targetBorderRadius};
+                    padding: 0 20px;
+                    box-sizing: border-box;
+                    border: 1px solid var(--gray100);
+                ">
+                    <div id="typing-text" style="flex: 1; white-space: nowrap;"></div>
+                    <div id="typing-btn" style="width: 38px; height: 38px;"></div>
+                </div>
+            `;
+
+            // Load Lottie animation for the typing button
+            lottie.loadAnimation({
+                container: document.getElementById('typing-btn'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json'
+            });
+
+            // Typing animation and simultaneous transitions for overlay background and main content
+            gsap.to("#typing-text", {
+                duration: 2, // Duration for typing text
+                text: placeholderText,
+                ease: "none"
+            });
+
+            gsap.to(introOverlay, {
+                duration: 6, // Duration for overlay background fade
+                backgroundColor: 'rgba(0,0,0,0)', // Transition to transparent
+                ease: "power2.inOut"
+            });
+
+            gsap.to(mainContent, {
+                duration: 6, // Duration for main content fade-in
+                opacity: 1,
+                visibility: 'visible',
+                ease: "power2.inOut"
+            });
+        }
+    }
+}, "+=0.3"); // Starts 0.3 seconds after the airplaneWindow transformation completes
+
+// 7. Fade out and remove the intro overlay
+tl.to(introOverlay, {
+    duration: 3.5,
+    opacity: 0,
+    ease: "power2.inOut",
+    onComplete: function() {
+        introOverlay.style.display = 'none';
+        introOverlay.remove();
+        gsap.set(airplaneWindow, {
+            zIndex: -1,
+            pointerEvents: "none",
+            clearProps: "all" // Clears all GSAP-applied inline styles
         });
-
-        // 2. Cloud animation with slight delay
-        tl.to('.cloud', {
-            duration: 1.2,
-            opacity: 1,
-            stagger: 0.4
-        }, "-=2");
-
-        // 3. Animate intro airplane flying from top-left to bottom-right at 135 degrees
-        tl.fromTo(introAirplane, {
-            x: startX,
-            y: startY,
-            rotation: 135,
-            opacity: 1
-        }, {
-            x: endX,
-            y: endY,
-            duration: 9,
-            ease: "power2.inOut"
-        }, "-=6");
-
-        // 비행기가 화면에서 벗어난 직후 갑자기 사라지게
-        tl.set(introAirplane, {
-            opacity: 0
-        });
-
-        // 4. Fade out video and clouds
-        tl.to(windowInner, {
-            duration: 1.3,
-            opacity: 0,
-            ease: "power2.inOut",
-            onComplete: function() {
-                windowInner.style.display = 'none';
-            }
-        }, "-=1");
-
-        // 5. Transform airplane window to chatbox (position, size, border, and background)
-        tl.to(airplaneWindow, {
-            duration:2,
-            x: targetX,
-            y: targetY,
-            width: targetWidth,
-            height: targetHeight,
-            borderRadius: targetBorderRadius,
-            backgroundColor: targetBackgroundColor,
-            borderColor: targetBorderColor,
-            boxShadow: targetBoxShadow,
-            ease: "power2.inOut"
-        }, "+=0");
-
-        // 6. Inject and fade in chatbox content with introOverlay background transition and main content fade-in
-        tl.to(airplaneWindow, {
-            duration: 1.2,
-            ease: "power2.inOut",
-            onStart: function () {
-                if (aiInputBox) {
-                    const placeholderText = "다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘";
-
-                    // 초기 셋업: 내부 콘텐츠 초기화
-                    airplaneWindow.innerHTML = `
-                        <div id="typing-wrapper" style="
-                            display: flex;
-                            align-items: center;
-                            height: 100%;
-                            font-size: 15px;
-                            color: var(--blk);
-                            background: var(--gray50);
-                            border-radius: ${targetBorderRadius};
-                            padding: 0 20px;
-                            box-sizing: border-box;
-                            border: 1px solid var(--gray100);
-                        ">
-                            <div id="typing-text" style="flex: 1; white-space: nowrap;"></div>
-                            <div id="typing-btn" style="width: 38px; height: 38px;"></div>
-                        </div>
-                    `;
-
-                    // Load Lottie animation
-                    lottie.loadAnimation({
-                        container: document.getElementById('typing-btn'), // the DOM element that will contain the animation
-                        renderer: 'svg',
-                        loop: true,
-                        autoplay: true,
-                        path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json' // the path to the animation json
-                    });
-
-                    // 타이핑 애니메이션과 동시에 introOverlay 배경색을 검정에서 투명으로 전환, 메인 콘텐츠 페이드인
-                    gsap.to("#typing-text", {
-                        duration: 2,
-                        text: placeholderText,
-                        ease: "none"
-                    });
-
-                    gsap.to(introOverlay, {
-                        duration: 6,
-                        backgroundColor: 'rgba(0,0,0,0)', // 투명 배경으로 전환
-                        ease: "power2.inOut"
-                    });
-
-                    gsap.to(mainContent, {
-                        duration: 6,
-                        opacity: 1,
-                        visibility: 'visible',
-                        ease: "power2.inOut"
-                    });
-                }
-            }
-        }, "+=0.3");
-
-        // 7. Fade out and remove the intro overlay
-        tl.to(introOverlay, {
-            duration: 3.5,
-            opacity: 0,
-            ease: "power2.inOut",
-            onComplete: function() {
-                introOverlay.style.display = 'none';
-                introOverlay.remove();
-                gsap.set(airplaneWindow, {
-                    zIndex: -1,
-                    pointerEvents: "none",
-                    clearProps: "all"
-                });
-            }
-        }, "+=2");
+    }
+}, "+=2"); // Starts 2 seconds after the previous animation (airplaneWindow content setup) completes
     }
 });
