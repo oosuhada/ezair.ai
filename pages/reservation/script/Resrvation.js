@@ -147,3 +147,61 @@ window.addEventListener('load', function () {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const polyline = document.querySelector(".data-line");
+
+  if (!polyline) return;
+
+  const originalPoints = polyline
+    .getAttribute("points")
+    .trim()
+    .split("\n")
+    .map((str) => {
+      const [x, y] = str.trim().split(",").map(Number);
+      return { x, y };
+    });
+
+  function animateZigZag() {
+    const duration = 1500;
+    const frameRate = 60;
+    const totalFrames = Math.round((duration / 1000) * frameRate);
+    const maxOffset = 50; // 더 큰 움직임
+    let frame = 0;
+
+    const interval = setInterval(() => {
+      frame++;
+      const t = frame / totalFrames;
+      const ease = Math.pow(1 - t, 2); // 끝으로 갈수록 줄어듦
+
+      const newPoints = originalPoints.map((pt, i) => {
+        const angle = (performance.now() / 1000) + i * 0.8;
+        const offset = (Math.sin(angle) + Math.cos(angle * 1.5)) * maxOffset * ease;
+        return `${pt.x},${pt.y + offset}`;
+      });
+
+      polyline.setAttribute("points", newPoints.join(" "));
+
+      if (frame >= totalFrames) {
+        const resetPoints = originalPoints.map((pt) => `${pt.x},${pt.y}`);
+        polyline.setAttribute("points", resetPoints.join(" "));
+        clearInterval(interval);
+      }
+    }, 1000 / frameRate);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateZigZag();
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(polyline);
+});
