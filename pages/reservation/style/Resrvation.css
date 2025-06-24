@@ -193,18 +193,33 @@ nav {
     flex-grow: 1;
 }
 
-.airport-selector,
+
 .date-selector {
-    background-color: var(--bg-light);
+    background-color: #f4f4f4;
     border-radius: 8px;
-    padding: 10px 12px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    width: 208px;
+    height: 48px;
+    border: 1px solid var(--gray100);
 }
 
 .airport-selector {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--gray200);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    flex: 1;
+}
+
+.airport-code {
+    font-size: 28px
 }
 
 .swap-button {
@@ -213,8 +228,8 @@ nav {
     justify-content: center;
     background-color: white;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     cursor: pointer;
     border: 1px solid var(--gray300);
 }
@@ -268,6 +283,13 @@ nav {
     font-size: 18px;
     cursor: pointer;
     color: #555;
+    width: 195px;
+    height: 48px;
+    line-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gray100);
 }
 
 #passenger-dropdown {
@@ -298,6 +320,7 @@ nav {
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+    height: 48px;
 }
 
 
@@ -488,11 +511,12 @@ nav {
     position: absolute;
     width: 532px;
     height: 200px;
-    top:484px;
+    top: 484px;
     border-radius: 0px 0px 12px 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 }
+
 /* 
 .flight-card-details2 {
     padding: 12px 16px;
@@ -807,6 +831,18 @@ nav {
     border-radius: 50%;
     box-sizing: border-box;
     z-index: 1;
+    animation: slideRight 1.2s ease-in-out forwards;
+}
+
+@keyframes slideRight {
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: calc((2 + 6) / (2 + 6 + 2) * 100%);
+        /* 원하는 위치로 조절 */
+    }
 }
 
 .price-bar_annotation {
@@ -823,6 +859,7 @@ nav {
     background: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .price-bar_labels {
     display: flex;
     justify-content: space-around;
@@ -838,105 +875,115 @@ nav {
 
 /*챠트*/
 .line-chart-widget {
-  max-width: 1029px;
-  margin: 32px auto;
-  font-family: 'NanumSquare', sans-serif;
+    max-width: 1029px;
+    margin: 32px auto;
+    font-family: 'NanumSquare', sans-serif;
 }
 
 /* 1) 탭 버튼 */
 .time-range {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
 }
+
 .time-range button {
-  flex: 1;
-  padding: 6px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
-  font-size: 14px;
-  cursor: pointer;
+    flex: 1;
+    padding: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 14px;
+    cursor: pointer;
 }
+
 .time-range button.active {
-  background: #1987FA;
-  color: #fff;
-  border-color: #1987FA;
+    background: #1987FA;
+    color: #fff;
+    border-color: #1987FA;
 }
 
 /* 2) 차트 컨테이너 */
 .chart-area {
-  display: flex;
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 /* Y축 */
 .y-axis {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40px;
-  padding-top: 4px;
-  padding-bottom: 16px;
-  font-size: 12px;
-  color: #777;
-  text-align: right;
-  margin-right: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    padding-top: 4px;
+    padding-bottom: 16px;
+    font-size: 12px;
+    color: #777;
+    text-align: right;
+    margin-right: 8px;
 }
 
 /* 차트 + X축 */
 .chart-inner {
-  flex: 1;
-  position: relative;
+    flex: 1;
+    position: relative;
 }
 
 /* SVG 영역 */
 .chart-svg {
-  width: 100%;
-  height: 200px;
-  overflow: visible;
+    width: 100%;
+    height: 200px;
+    overflow: visible;
 }
+
 .grid line {
-  stroke: #eee;
-  stroke-width: 1;
+    stroke: #eee;
+    stroke-width: 1;
 }
+
 .data-line {
-  fill: none;
-  stroke: #1987FA;
-  stroke-width: 2;
+    fill: none;
+    stroke: #1987FA;
+    stroke-width: 2;
 }
+
 .data-point {
-  fill: #fff;
-  stroke: #1987FA;
-  stroke-width: 2;
+    fill: #fff;
+    stroke: #1987FA;
+    stroke-width: 2;
 }
+
 /* 툴팁 */
 .tooltip-group rect {
-  fill: #fff;
-  stroke: #1987FA;
-  stroke-width: 1;
+    fill: #fff;
+    stroke: #1987FA;
+    stroke-width: 1;
 }
+
 .tooltip-group text {
-  font-size: 12px;
-  fill: #1987FA;
+    font-size: 12px;
+    fill: #1987FA;
 }
+
 .tooltip-group path {
-  fill: #fff;
-  stroke: #1987FA;
-  stroke-width: 1;
+    fill: #fff;
+    stroke: #1987FA;
+    stroke-width: 1;
 }
 
 /* X축 레이블 */
 .x-labels {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin-top: 8px;
-  font-size: 12px;
-  color: #777;
-  text-align: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
 }
+
 /* ------------------------- */
 
 .banner-swiper-container {
