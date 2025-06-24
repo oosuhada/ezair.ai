@@ -72,7 +72,7 @@ const destinationsData = [
         aiMatch: 82,
         aiReason: '뉴욕의 아름다운 자연환경을 경험하고 싶은 당신을 위한 완벽한 선택',
         aiInfo: '뉴욕에서 하룻밤 여행을 떠나 나이아가라 폭포의 장관을<br>감상하세요.',
-        price: '₩320,000',
+        price: '₩1.010,000',
         duration: '6일 5박',
         image: '../../../image/keyword_06.png',
         description: '로키 산맥의 심장부, 밴프 국립공원에서 하이킹, 스키, 카누를 즐겨보세요.',
