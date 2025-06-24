@@ -165,63 +165,80 @@
                     </ul>
                 </div>
             </div>
-            <div class="recommend">
-                <div class="recommend_top">
-                    <div class="recom_box_top_con">
-                        <h2>구름이 추천 항공편</h2>
-                        <div class="recom_box_top">
-                            <div class="recom_box_bt">
-                                <button type="button" class="recom-btn active"><img src="../../image/002_airplane-solid.svg" alt="">항공</button>
-                                <button type="button" class="recom-btn"><img src="../../image/002_hotel-fill.svg" alt="">숙박</button>
-                            </div>
-                            <div class="ai_recom_box">
-                                <ul>
-                                    <li>AI분석 결과</li>
-                                    <li>• 문화 체험 선호도: 높음</li>
-                                    <li>• 예산 범위: 중간</li>
-                                    <li>• 여행 스타일: 도시 + 자연</li>
-                                </ul>
-                            </div>
-                        </div>
+
+            <section class="ai-recommendation-section" role="region" aria-label="AI 기반 여행 추천">
+                <div class="ai-section-header-wrap">
+                    <div class="ai-header-title">
+                        <h2 class="ai-section-title">구름이 추천 여행지</h2>
+                        <p class="ai-section-description">구름이가 AI 알고리즘으로 맞춤 여행지를 EZ하게 찾아봐요!</p>
+                    </div>
+                    <div class="ai-header-buttons">
+                        <button class="ai-header-btn active"><img src="../../image/002_airplane-solid.svg"
+                                alt="항공 아이콘">항공편</button>
+                        <button class="ai-header-btn"><img src="../../image/002_hotel-fill.svg" alt="숙박 아이콘">숙박</button>
                     </div>
                 </div>
-                <div class="recom_box_bottom">
-                    <div class="swiper-container-wrapper">
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="gradient-left"></div>
-                        <div class="gradient-right"></div>
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="recom_box">
-                                        <div class="recom_box_img"><img src="../../image/002_img.png" alt=""><span class="recom_percent">추천도 87%</span><span class="recom_tag">해안 휴양 | 리조트</span></div>
-                                        <div class="recom_box_text"><h3>서울 (ICN) - 사가 (HSG)</h3><p>7월 6일 (일)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span class="direct_badge">직항</span></p><p>7월 7일 (월)<br><small>티웨이 항공의 ICN - HSG 항공권</small><span class="direct_badge">직항</span></p></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="recom_box">
-                                        <div class="recom_box_img"><img src="../../image/002_img2.png" alt=""><span class="recom_percent">추천도 85%</span><span class="recom_tag">도시 탐험 | 쇼핑</span></div>
-                                        <div class="recom_box_text"><h3>서울 (ICN) - 도쿄 (NRT)</h3><p>8월 15일 (금)<br><small>에어서울의 ICN - NRT 항공권</small><span class="direct_badge">직항</span></p><p>8월 18일 (월)<br><small>에어서울의 ICN - NRT 항공권</small><span class="direct_badge">직항</span></p></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="recom_box">
-                                        <div class="recom_box_img"><img src="../../image/002_img3.png" alt=""><span class="recom_percent">추천도 82%</span><span class="recom_tag">자연 | 트레킹</span></div>
-                                        <div class="recom_box_text"><h3>부산 (PUS) - 삿포로 (CTS)</h3><p>9월 12일 (금)<br><small>진에어의 PUS - CTS 항공권</small><span class="direct_badge">직항</span></p><p>9월 15일 (월)<br><small>진에어의 PUS - CTS 항공권</small><span class="direct_badge">직항</span></p></div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="recom_box">
-                                        <div class="recom_box_img"><img src="../../image/002_img4.png" alt=""><span class="recom_percent">추천도 91%</span><span class="recom_tag">문화 | 역사</span></div>
-                                        <div class="recom_box_text"><h3>서울 (ICN) - 다낭 (DAD)</h3><p>7월 20일 (일)<br><small>베트남항공의 ICN - DAD 항공권</small><span class="direct_badge">직항</span></p><p>7월 24일 (목)<br><small>베트남항공의 ICN - DAD 항공권</small><span class="direct_badge">직항</span></p></div>
-                                    </div>
-                                </div>
+                <div class="ai-content-wrapper">
+                    <div class="ai-keywords-panel">
+                        <h3 class="ai-panel-title">AI 키워드</h3>
+                        <div class="word-cloud-container">
+                            <svg id="word-cloud-svg" width="100%" height="100%" viewBox="0 0 400 450"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 100 Q150 50 200 100" stroke="#4a90e2" stroke-width="1" fill="none" />
+                                <path d="M150 150 Q250 200 200 250" stroke="#4a90e2" stroke-width="1" fill="none" />
+                                <circle cx="200" cy="225" r="120" fill="none" stroke="#ffffff" stroke-width="2" />
+                                <circle class="particle" cx="100" cy="100" r="3" fill="#4a90e2" opacity="0.5" />
+                                <circle class="particle" cx="300" cy="200" r="3" fill="#4a90e2" opacity="0.5" />
+                                <circle class="particle" cx="150" cy="350" r="3" fill="#4a90e2" opacity="0.5" />
+                            </svg>
+                            <div class="ai-status-indicator">
+                                <svg class="ai-loading-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c помощи.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.527.288 1.048.337 1.5.15z">
+                                    </path>
+                                </svg>
+                                AI 분석 중...
                             </div>
                         </div>
+                        <div class="ai-keyword-controls">
+                            <select id="category-filter" class="ai-filter-select" onchange="filterKeywords(this.value)"
+                                aria-label="키워드 카테고리 필터">
+                                <option value="all">모든 추천</option>
+                                <option value="city">도시 탐험</option>
+                                <option value="nature">자연 & 휴식</option>
+                                <option value="culture">역사 & 문화</option>
+                                <option value="adventure">액티비티 & 모험</option>
+                                <option value="romantic">로맨틱 여행</option>
+                            </select>
+                            <button class="ai-more-keywords-btn glow-button" onclick="shuffleKeywords()"
+                                aria-label="다른 키워드 보기">
+                                다른 키워드 보기
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ai-recommendation-cards-panel">
+                        <h3 class="ai-panel-title">키워드 추천 여행지</h3>
+                        <div class="carousel-wrapper">
+                            <div id="recommendation-grid" class="recommendation-grid">
+                                <!-- Cards will be dynamically inserted here -->
+                            </div>
+                        </div>
+                        <button class="carousel-button left" onclick="navigateCards(-1)" aria-label="이전 추천 보기">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-button right" onclick="navigateCards(1)" aria-label="다음 추천 보기">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            </div>
+            </section>
             <div class="banner-swiper-container">
                 <div class="swiper myBannerSwiper">
                     <div class="swiper-wrapper">
