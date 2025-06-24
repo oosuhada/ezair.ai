@@ -177,3 +177,40 @@ function initializeMobileFilter() {
         });
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const aiBtn = document.querySelector('.mf-ai-btn');
+    const slidePanel = document.querySelector('.ai-slide-panel');
+
+    if (aiBtn && slidePanel) {
+        aiBtn.addEventListener('click', function () {
+            slidePanel.classList.toggle('active');
+        });
+    }
+
+    const filterBtns = document.querySelectorAll('.mf-slide-filters2 .mf-filter-btn');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+    const openBtn = document.querySelector(".mf-ai-btn");
+    const dimmedOverlay = document.querySelector(".dimmed-overlay");
+
+    // 열기
+    openBtn.addEventListener("click", () => {
+        slidePanel.classList.add("active");
+        dimmedOverlay.classList.add("active");
+    });
+
+    // 딤드 누르면 닫기
+    dimmedOverlay.addEventListener("click", () => {
+        slidePanel.classList.remove("active");
+        dimmedOverlay.classList.remove("active");
+    });
+});
+
+
