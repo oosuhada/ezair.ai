@@ -36,11 +36,11 @@
 .title {
   text-align: center;
   position: relative;
-  color: var(--wht);
+  color:#FEFF80;
   font-size: 38px;
   line-height: 1.3;
   z-index: 10;
-  font-weight: 800;
+  font-weight: bold;
 }
 .title_2 {
   color: var(--wht);
