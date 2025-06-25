@@ -318,11 +318,15 @@ body {
     flex-shrink: 0;
     position: relative; 
     overflow: hidden; 
+<<<<<<< HEAD
     background-color: var(--primary);
+=======
+>>>>>>> b96495e (예약 페이지: AI 검색 버튼에 로딩 애니메이션 추가 및 스타일 수정)
     transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
     will-change: transform, box-shadow; /* GPU 가속 힌트 */
 }
 #ai-loading-lottie {
+<<<<<<< HEAD
   width: 32px;
   height: 32px;
   position: absolute;
@@ -370,6 +374,17 @@ body {
     }
 }
 
+=======
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+>>>>>>> b96495e (예약 페이지: AI 검색 버튼에 로딩 애니메이션 추가 및 스타일 수정)
 
 /* -----------------------서치 */
 .row1 {
@@ -426,6 +441,7 @@ body {
     color: var(--accent);
     padding: 4px 8px;
     font-size: 0.8rem;
+    font-weight: bold;
     cursor: pointer;
     font-weight: bold;
 }
@@ -494,11 +510,11 @@ body {
     background: #fafafa;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1px;
     position: absolute;
     width: 532px;
-    height: 200px;
-    top: 514px;
+    height: 212px;
+    top: 534px;
     border-radius: 0px 0px 12px 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
