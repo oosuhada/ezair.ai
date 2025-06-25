@@ -308,6 +308,7 @@ nav {
 
 #passenger-dropdown.show {
     display: block;
+     z-index: 9999;
 }
 
 
