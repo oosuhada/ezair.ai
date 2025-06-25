@@ -324,7 +324,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="price">${flight.price.amount.toLocaleString()} ${flight.price.currency}</span>
                     </div>
                 </div>
-                <button class="select-btn">예매하기</button>
+              <a href="./pages/flightResult/flightResult.html" class="select-btn-link">
+    <button class="select-btn">예매하기</button>
+</a>
             </div>
         `;
     }
