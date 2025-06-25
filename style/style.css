@@ -1,4 +1,6 @@
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+/* Import common styles including header and base variables */
+@import url('common.css'); 
 
 /* Import new modular CSS files */
 @import url('search_components.css'); /* New import */
@@ -6,133 +8,10 @@
 @import url('flight_results.css'); /* New import */
 
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-family: 'NanumSquare', sans-serif
-}
+/* Remove the global * and body styles as they are now in common.css */
+/* Remove the :root variables as they are now in common.css */
+/* Remove all header-related styles as they are now in common.css */
 
-body {
-  overflow-x: hidden;
-  background-color: #f9f9f9; /* 전반적인 배경색 통일 */
-  color: #333;
-}
-
-:root {
-  --blk: #222; /* 어두운 텍스트 */
-  --wht: #ffffff; /* 흰색 */
-  --gray700: #404040;
-  --gray500: #666666;
-  --gray300: #a3a3a3;
-  --gray100: #E5E5E5;
-  --gray50: #fafafa;
-  --primary: #1987fa; /* 네이버 블루 */
-  --secondary: #10c2a0; /* 네이버 그린 */
-  --accent: #00c8f8; /* 밝은 아쿠아 */
-  --gradient-blue-green: linear-gradient(135deg, var(--primary), var(--secondary));
-  --gradient-aqua-green: linear-gradient(135deg, var(--accent), var(--secondary));
-  --box-shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.08); /* 가벼운 그림자 */
-  --box-shadow-medium: 0px 5px 15px rgba(0, 0, 0, 0.1); /* 중간 그림자 */
-  --border-radius: 8px;
-  --radius-pill: 9999px;
-}
-
-.light { font-weight: 300 }
-.normal { font-weight: 400 }
-.bold { font-weight: 700 }
-.bolder { font-weight: 800 }
-
-/* Header */
-header {
-  width: 100%;
-  background-color: var(--wht); /* 흰색 헤더 배경 */
-  border-bottom: 1px solid var(--gray100);
-  position: sticky; /* 스크롤 시 상단 고정 */
-  top: 0;
-  z-index: 1000;
-  box-shadow: var(--box-shadow-light);
-}
-
-header .inner {
-  width: 1200px; /* 데스크톱 기준 너비 */
-  height: 70px; /* 헤더 높이 조정 */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px; /* 좌우 패딩 */
-}
-
-nav {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  margin-right: 40px; /* 로고와 GNB 사이 간격 */
-}
-
-.logo img {
-  height: 28px; /* 로고 크기 조정 */
-}
-
-.gnb ul {
-  display: flex;
-  align-items: center;
-}
-
-.gnb ul li {
-  padding: 0 18px;
-}
-
-.gnb ul li a {
-  color: var(--blk);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 5px 0;
-  transition: color 0.2s ease;
-}
-
-.gnb ul li a:hover {
-  color: var(--primary); /* 호버 시 색상 변경 */
-}
-
-.gnb ul li img {
-  vertical-align: middle;
-  margin-left: 4px;
-  height: 14px; /* 베타 이미지 크기 */
-}
-
-.btns {
-  display: flex;
-  align-items: center;
-}
-
-.btns .cs,
-.btns .user {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
-}
-
-.btns .cs { margin-right: 15px; }
-
-.btns .cs:hover,
-.btns .user:hover {
-  background-color: var(--gray50);
-}
-
-.btns img {
-  height: 20px;
-  width: 20px;
-}
 
 /* Hero Section (formerly .top) */
 .hero-section {
@@ -796,17 +675,17 @@ main {
 
 /* ───────── Responsive: Desktop → Tablet (1024~1199px for max-width: 1200px base) ───────── */
 @media (max-width: 1199px) {
-  header .inner,
-  .search_box,
+  .hero-section { height: 250px; } /* Re-added for clarity */
+  .title { font-size: 38px; } /* Re-added for clarity */
+  .title_2 { font-size: 42px; } /* Re-added for clarity */
+
+  #search,
   .recommend,
   .banner-swiper-container,
   .theme-travel {
     width: 95%; /* 전체적으로 너비 감소 */
     padding: 0 15px;
   }
-
-  .logo { margin-right: 20px; }
-  .gnb ul li { padding: 0 12px; }
 
   .top_right {
     display: none; /* 태블릿에서는 오른쪽 박스 숨김 */
@@ -828,30 +707,6 @@ main {
 
 /* ───────── Responsive: Tablet → Small Tablet (768~1023) ───────── */
 @media (max-width: 1023px) {
-  header .inner {
-    flex-direction: column;
-    height: auto;
-    padding: 15px 20px;
-  }
-  .gnb {
-    width: 100%;
-    justify-content: center;
-    margin-top: 15px;
-    border-top: 1px solid var(--gray100);
-    padding-top: 15px;
-  }
-  .logo { margin-right: 0; margin-bottom: 15px; }
-  .gnb ul {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .btns {
-    width: 100%;
-    justify-content: center;
-    margin-top: 15px;
-  }
-  .btns .cs { margin-right: 10px; }
-
   .hero-section { height: 200px; }
   .title { font-size: 30px; }
   .title_2 { font-size: 35px; }
@@ -908,11 +763,6 @@ main {
 
 /* ───────── Responsive: Extra Small Mobile (≤480) ───────── */
 @media (max-width: 480px) {
-  header .inner { padding: 10px; }
-  .gnb ul li { padding: 0 8px; font-size: 14px; }
-  .logo img { height: 24px; }
-  .btns img { height: 18px; width: 18px; }
-
   .hero-section { height: 180px; }
   .title { font-size: 26px; }
   .title_2 { font-size: 30px; }
