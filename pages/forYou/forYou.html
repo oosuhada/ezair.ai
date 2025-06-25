@@ -4,45 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For You - Hotel Recommendations</title>
-    <link rel="stylesheet" href="/pages/forYou/style/forYou.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../common/common.css">
+    <link rel="stylesheet" href="./style/forYou.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="page-container">
         <!-- Header Section -->
-        <header class="header">
-            <div class="header-top-bar">
-                <div class="container header-top-content">
-                    <div class="logo-group">
-                        <div class="logo-box logo-1"></div>
-                        <div class="logo-box logo-2"></div>
-                        <div class="logo-box logo-3"></div>
-                    </div>
-                    <div class="login-info">
-                        <div class="login-status">로그인 후 등급확인</div>
-                        <button class="login-button">
-                            <span class="login-text">로그인</span>
-                        </button>
-                        <button class="menu-button">
-                            <i class="fas fa-th"></i> <!-- Font Awesome grid icon -->
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="header-nav">
-                <div class="container nav-links">
-                    <a href="#" class="nav-item">항공</a>
-                    <a href="#" class="nav-item">호텔</a>
-                    <a href="#" class="nav-item">패키지</a>
-                    <a href="#" class="nav-item business-travel">
-                        출장 <i class="fas fa-caret-down"></i>
-                    </a>
-                    <a href="#" class="nav-item active-nav for-you-link">For U</a>
-                    <a href="#" class="nav-item">이벤트・혜택</a>
-                </div>
+     <header>
+        <div class="inner">
+            <div class="logo"><a href="/index.html"><img src="/ezair.ai/image/EZAIR_bk.svg" alt="이지에어 로고"></a></div>
+
+            <nav class="gnb">
+                <ul>
+                    <li class="index"><a href="/index.html">항공</a></li>
+                    <li class="hotel"><a href="/pages/hotels/hotels.html">호텔</a></li>
+                    <li class="package"><a href="/pages/pkgtour/pkgtour.html">패키지</a></li>
+                    <li class="forU"><a href="/pages/forYou/forYou.html">EZ for you</a><img src="/ezair.ai/image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                </ul>
             </nav>
-        </header>
+            <div class="btns">
+                <a class="cs" href="/pages/cs/cs.html"><img src="/ezair.ai/image/gnb_cs_bk.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="/pages/myPage/myPage.html"><img src="/ezair.ai/image/gnb_user_bk.svg" alt="이지에어 마이페이지"></a>
+            </div>
+            <button type="button" class="hamburger-btn" aria-label="메뉴 열기">
+                <img src="/image/mobileList.svg" alt="">
+            </button>
+        </div>
+    </header>
 
         <!-- Main Content Section -->
         <main class="main-content">
@@ -53,7 +43,7 @@
                         <h2 class="banner-title">최근 본 호텔이 없군요!</h2>
                         <p class="banner-description">괜찮아요! 네이버 여행상품 PICK의 알고리즘이 제공하는 추천 호텔을 먼저 확인 해보세요!</p>
                     </div>
-                    <img class="banner-image" src="https://placehold.co/82x19/F0F0F0/888888?text=AD" alt="Advertisement">
+                    <!-- <img class="banner-image" src="https://placehold.co/82x19/F0F0F0/888888?text=AD" alt="Advertisement"> -->
                 </section>
 
                 <!-- Age/Gender Preferred Hotels Section -->
@@ -83,7 +73,7 @@
                     <div class="hotel-cards-container scroll-x">
                         <!-- Hotel Card 1 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+1" alt="아미아나 리조트 나쨩">
+                            <img class="hotel-image" src="../../image/forYou/아미아나 리조트 나쨩.png" alt="아미아나 리조트 나쨩">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">아미아나 리조트 나쨩</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -99,7 +89,7 @@
 
                         <!-- Hotel Card 2 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+2" alt="디 아남 깜라인">
+                            <img class="hotel-image" src="../../image/forYou/디 아남 깜라인.png" alt="디 아남 깜라인">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">디 아남 깜라인</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -115,7 +105,7 @@
 
                         <!-- Hotel Card 3 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+3" alt="알마 리조트 깜라인">
+                            <img class="hotel-image" src="../../image/forYou/알마 리조트 깜라인.png" alt="알마 리조트 깜라인">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">알마 리조트 깜라인</h3>
                                 <p class="hotel-location">캄란, 베트남</p>
@@ -129,7 +119,7 @@
 
                         <!-- Hotel Card 4 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+4" alt="신라모노그램 다낭">
+                            <img class="hotel-image" src="../../image/forYou/신라모노그램 다낭.png" alt="신라모노그램 다낭">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">신라모노그램 다낭</h3>
                                 <p class="hotel-location">다낭, 베트남</p>
@@ -143,7 +133,7 @@
 
                         <!-- Hotel Card 5 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+5" alt="퓨전 리조트 깜라인 - 올 인클루시브">
+                            <img class="hotel-image" src="../../image/forYou/퓨전 리조트 깜라인 - 올 스파 인클루시브.png" alt="퓨전 리조트 깜라인 - 올 인클루시브">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">퓨전 리조트 깜라인 - 올 …</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -159,7 +149,7 @@
 
                         <!-- Hotel Card 6 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+6" alt="두짓타니 괌 리조트">
+                            <img class="hotel-image" src="../../image/forYou/두짓타니 괌 리조트.png" alt="두짓타니 괌 리조트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">두짓타니 괌 리조트</h3>
                                 <p class="hotel-location">타무닝, 괌</p>
@@ -202,7 +192,7 @@
                     <div class="hotel-cards-container full-width-cards scroll-x">
                         <!-- Full-width Hotel Card 1 -->
                         <div class="hotel-card-lg">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+1" alt="디 아남 깜라인">
+                            <img class="hotel-image" src="../../image/forYou/디 아남 깜라인02.png" alt="디 아남 깜라인">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">디 아남 깜라인</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -218,7 +208,7 @@
 
                         <!-- Full-width Hotel Card 2 -->
                         <div class="hotel-card-lg">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+2" alt="윙크 호텔 다낭 센터">
+                            <img class="hotel-image" src="../../image/forYou/윙크 호텔 다낭 센터.png" alt="윙크 호텔 다낭 센터">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">윙크 호텔 다낭 센터</h3>
                                 <p class="hotel-location">다낭, 베트남</p>
@@ -232,7 +222,7 @@
 
                         <!-- Full-width Hotel Card 3 -->
                         <div class="hotel-card-lg">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+3" alt="프리미어 하바나 냐짱 호텔">
+                            <img class="hotel-image" src="../../image/forYou/프리미어 하바나 냐짱 호텔.png" alt="프리미어 하바나 냐짱 호텔">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">프리미어 하바나 냐짱 호텔</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -248,7 +238,7 @@
 
                         <!-- Full-width Hotel Card 4 -->
                         <div class="hotel-card-lg">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+4" alt="르 모어 호텔">
+                            <img class="hotel-image" src="../../image/forYou/르 모어 호텔.png" alt="르 모어 호텔">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">르 모어 호텔</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -262,7 +252,7 @@
 
                         <!-- Full-width Hotel Card 5 -->
                         <div class="hotel-card-lg">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+5" alt="신주쿠 워싱턴 호텔 도쿄 본관">
+                            <img class="hotel-image" src="../../image/forYou/신주쿠 워싱턴 호텔 도쿄 메인.png" alt="신주쿠 워싱턴 호텔 도쿄 본관">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">신주쿠 워싱턴 호텔 도쿄 …</h3>
                                 <p class="hotel-location">도쿄, 일본</p>
@@ -276,7 +266,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                    <!-- <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button> -->
                 </section>
 
                 <!-- Pool Hotels Section -->
@@ -292,13 +282,13 @@
                     </div>
 
                     <div class="info-bar light-bg">
-                        <p><span class="info-highlight">최근 30일 동안 수영장 리뷰가 좋은 </span>인기순 호텔</p>
+                        <p><span class="info-highlight-bk">최근 30일 동안 수영장 리뷰가 좋은 </span>인기순 호텔</p>
                     </div>
 
                     <div class="hotel-cards-container full-width-cards scroll-x">
                         <!-- Full-width Hotel Card 1 -->
                         <div class="hotel-card-lg shadow-card">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+1" alt="윈덤 그랜드 푸꾸옥">
+                            <img class="hotel-image" src="../../image/forYou/윈덤 그랜드 푸꾸옥.png" alt="윈덤 그랜드 푸꾸옥">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">윈덤 그랜드 푸꾸옥</h3>
                                 <p class="hotel-location">푸꾸옥, 베트남</p>
@@ -312,7 +302,7 @@
 
                         <!-- Full-width Hotel Card 2 -->
                         <div class="hotel-card-lg shadow-card">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+2" alt="J 인스파이어드 호텔 & 리조트">
+                            <img class="hotel-image" src="../../image/forYou/인스파이어드 호텔 파타야.png" alt="J 인스파이어드 호텔 & 리조트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">J 인스파이어드 호텔 …</h3>
                                 <p class="hotel-location">촌부리주, 태국</p>
@@ -328,7 +318,7 @@
 
                         <!-- Full-width Hotel Card 3 -->
                         <div class="hotel-card-lg shadow-card">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+3" alt="스타시티 나트랑 호텔">
+                            <img class="hotel-image" src="../../image/forYou/스타시티 나트랑 호텔.png" alt="스타시티 나트랑 호텔">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">스타시티 나트랑 호텔</h3>
                                 <p class="hotel-location">냐짱, 베트남</p>
@@ -344,7 +334,7 @@
 
                         <!-- Full-width Hotel Card 4 -->
                         <div class="hotel-card-lg shadow-card">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+4" alt="캠플러스 게스트 로마 오버나이트">
+                            <img class="hotel-image" src="../../image/forYou/캠플러스 게스트 로마 카사 퍼 페리에.png" alt="캠플러스 게스트 로마 오버나이트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">캠플러스 게스트 로마 …</h3>
                                 <p class="hotel-location">로마, 이탈리아</p>
@@ -360,7 +350,7 @@
 
                         <!-- Full-width Hotel Card 5 -->
                         <div class="hotel-card-lg shadow-card">
-                            <img class="hotel-image" src="https://placehold.co/208x134/F0F0F0/888888?text=Hotel+5" alt="시 가든 호텔 다낭">
+                            <img class="hotel-image" src="../../image/forYou/시 가든 호텔 다낭.png" alt="시 가든 호텔 다낭">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">시 가든 호텔 다낭</h3>
                                 <p class="hotel-location">다낭, 베트남</p>
@@ -374,7 +364,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button>
+                    <!-- <button class="scroll-arrow right"><i class="fas fa-chevron-right"></i></button> -->
                 </section>
 
                 <!-- Book Early Hotels Section -->
@@ -396,7 +386,7 @@
                     <div class="hotel-cards-container scroll-x">
                         <!-- Hotel Card 1 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+1" alt="힐튼 하와이안 빌리지 와이키키 비치 리조트">
+                            <img class="hotel-image" src="../../image/forYou/힐튼 하와이안 빌리지 와이키키 비치 리조트.png" alt="힐튼 하와이안 빌리지 와이키키 비치 리조트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">힐튼 하와이안 빌리지 와…</h3>
                                 <p class="hotel-location">호놀룰루, 미국</p>
@@ -412,7 +402,7 @@
 
                         <!-- Hotel Card 2 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+2" alt="YEHS 호텔 시드니 하버 수프림">
+                            <img class="hotel-image" src="../../image/forYou/YEHS 호텔 시드니 하버 스위트.png" alt="YEHS 호텔 시드니 하버 수프림">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">YEHS 호텔 시드니 하버 …</h3>
                                 <p class="hotel-location">시드니, 호주</p>
@@ -428,7 +418,7 @@
 
                         <!-- Hotel Card 3 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+3" alt="더 풀러턴 호텔 시드니">
+                            <img class="hotel-image" src="../../image/forYou/더 풀러턴 호텔 시드니.png" alt="더 풀러턴 호텔 시드니">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">더 풀러턴 호텔 시드니</h3>
                                 <p class="hotel-location">시드니, 호주</p>
@@ -444,7 +434,7 @@
 
                         <!-- Hotel Card 4 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+4" alt="뉴월드 푸꾸옥 리조트">
+                            <img class="hotel-image" src="../../image/forYou/뉴월드 푸꾸옥 리조트.png" alt="뉴월드 푸꾸옥 리조트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">뉴월드 푸꾸옥 리조트</h3>
                                 <p class="hotel-location">푸꾸옥, 베트남</p>
@@ -460,7 +450,7 @@
 
                         <!-- Hotel Card 5 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+5" alt="하얏트 리젠시 와이키키 비치 리조트 & 스파">
+                            <img class="hotel-image" src="../../image/forYou/하얏트 리젠시 와이키키 비치 리조트 & 스파.png" alt="하얏트 리젠시 와이키키 비치 리조트 & 스파">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">하얏트 리젠시 와이키키 …</h3>
                                 <p class="hotel-location">호놀룰루, 미국</p>
@@ -476,7 +466,7 @@
 
                         <!-- Hotel Card 6 -->
                         <div class="hotel-card">
-                            <img class="hotel-image" src="https://placehold.co/130x130/F0F0F0/888888?text=Hotel+6" alt="쉐라톤 와이키키 비치 리조트">
+                            <img class="hotel-image" src="../../image/forYou/쉐라톤 와이키키 비치 리조트.png" alt="쉐라톤 와이키키 비치 리조트">
                             <div class="hotel-details">
                                 <h3 class="hotel-name">쉐라톤 와이키키 비치 리…</h3>
                                 <p class="hotel-location">호놀룰루, 미국</p>
@@ -496,68 +486,38 @@
         </main>
 
         <!-- Footer Section -->
-        <footer class="footer">
-            <div class="footer-actions">
-                <div class="container footer-action-buttons">
-                    <button class="action-btn share-btn">
-                        <i class="fas fa-share-alt"></i> <!-- Font Awesome share icon -->
-                        공유하기
+            <footer class="site-footer">
+                <div class="footer-actions">
+                    <button class="share-btn">
+                        <img src="/ezair.ai/image/bottom_bt1.svg" alt="공유하기"> 공유하기
                     </button>
-                    <button class="action-btn top-btn">
-                        <i class="fas fa-arrow-up"></i> <!-- Font Awesome arrow up icon -->
-                        맨위로
+                    <button class="top-btn">
+                        <img src="/ezair.ai/image/bottom_bt2.svg" alt="맨위로"> 맨위로
                     </button>
                 </div>
-            </div>
-            <div class="footer-main">
-                <button class="footer-link-btn">로그인</button>
-                <button class="footer-link-btn">전체서비스</button>
-                <p class="footer-disclaimer">
-                    네이버 호텔은 제휴사에서 제공하는 호텔정보 및 가격정보를 비교, 중개하는 서비스로서, 네이버(주)는 통신판매의 당사자가 아닙니다. 호텔 검색 결과 및 거래에 관한 의무와 책임은 판매자에게 있습니다. 외국인 관광 도시민박법에 따라 지정된 제주지역 외 국내 게스트하우스는 외국인만 투숙 가능합니다.
+
+                <div class="footer-links">
+                    <button class="footer-login">로그인</button>
+                    <button class="footer-service">전체서비스</button>
+                </div>
+
+                <p class="footer-desc">
+                    이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+                    관련한 의무와 책임은 각 판매자에게 있습니다.
                 </p>
-                <a href="#" class="footer-sub-link">네이버㈜ 사업자 정보 <i class="fas fa-caret-down"></i></a>
 
-                <div class="footer-company-info">
-                    <div class="info-group">
-                        <span class="info-label">대표이사</span>
-                        <span class="info-value">최수연</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">주소</span>
-                        <span class="info-value">경기도 성남시 분당구 정자일로 95 NAVER 1784, 13561</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">전화</span>
-                        <span class="info-value">1588-3820(대표전화/고객센터)</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">이메일</span>
-                        <span class="info-value">ccnaver@naver.com</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">사업자 등록번호</span>
-                        <span class="info-value">220-81-62517</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">통신판매번호</span>
-                        <span class="info-value">2006-경기성남-0692</span>
-                    </div>
-                    <div class="info-group">
-                        <span class="info-label">호스팅 서비스 제공</span>
-                        <span class="info-value">NAVER Cloud</span>
-                    </div>
+                <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+                <div class="footer-info">
+                    <a href="#">사업자정보 공개</a> |
+                    <a href="#">이용약관</a> |
+                    <a href="#" class="highlight">개인정보처리방침</a> |
+                    <a href="#">고객센터</a>
                 </div>
 
-                <div class="footer-legal-links">
-                    <a href="#" class="legal-link">사업자정보 공개</a>
-                    <a href="#" class="legal-link">이용약관</a>
-                    <a href="#" class="legal-link policy">개인정보처리방침</a>
-                    <a href="#" class="legal-link">고객센터</a>
-                </div>
-                <p class="copyright">ⓒ NAVER corp.</p>
-            </div>
-        </footer>
+                <p class="footer-copy">&copy; EZ AIR corp.</p>
+            </footer>
     </div>
-    <script src="/pages/forYou/script/forYou.js"></script>
+    <script src="./script/forYou.js"></script>
 </body>
 </html>
