@@ -1,177 +1,270 @@
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css); /* For 'NanumSquare' */
-@import url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2109@1.0/NanumSquareRound.css); /* For 'NanumSquareRound' variants */
+/* Font Imports */
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
 
-/* Base Styles */
+/* You can add other modular CSS imports here if needed */
+/* @import url('search_components.css'); */
+/* @import url('ai_search.css'); */
+/* @import url('flight_results.css'); */
+
+
+/* --- Base Styles --- */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: 'NanumSquare', sans-serif
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #f9f9f9; /* 전반적인 배경색 통일 */
+  color: #333;
 }
 
 :root {
-  --blk: #1a1a1a;
-  --wht: #ffffff;
+  --blk: #222; /* 어두운 텍스트 */
+  --wht: #ffffff; /* 흰색 */
   --gray700: #404040;
   --gray500: #666666;
   --gray300: #a3a3a3;
   --gray100: #E5E5E5;
   --gray50: #fafafa;
-  --gradient1: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
-  --gradient2: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
-  --gradient3: linear-gradient(293deg, #1987FA 14.88%, #10C2A0 83.04%);
-  --box-shadow: 0px 3px 9px 0px rgba(37, 50, 67, 0.18), 0px 1px 1px 0px rgba(37, 50, 67, 0.03);
-  --primary: #1987fa;
-  --secondary: #10c2a0;
-  --accent: #41C5DF;
-  --banner-bg: #136dff;
-  --bg-light: #f4f4f4;
+  --primary: #1987fa; /* 메인 색상 */
+  --secondary: #10c2a0; /* 보조 색상 */
+  --accent: #00c8f8; /* 강조 색상 */
+  --gradient-blue-green: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-aqua-green: linear-gradient(135deg, var(--accent), var(--secondary));
+  --box-shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.08); /* 가벼운 그림자 */
+  --box-shadow-medium: 0px 5px 15px rgba(0, 0, 0, 0.1); /* 중간 그림자 */
   --border-radius: 8px;
   --radius-pill: 9999px;
-  --box-shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  --box-shadow-medium: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: 'NanumSquareRound', 'NanumSquare', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #F7F7F9;
-  color: #222225;
-  line-height: 1.5;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
-/* --- */
+.light { font-weight: 300 }
+.normal { font-weight: 400 }
+.bold { font-weight: 700 }
+.bolder { font-weight: 800 }
 
-/* Header Section */
+
+/* --- Header Section --- */
 header {
-    width: 100%;
-    background-color: var(--wht);
-    border-bottom: 1px solid var(--gray100);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--box-shadow-light);
+  width: 100%;
+  /* Modified background with linear gradient and opacity */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(8px); /* Blur effect for content behind the header */
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border-bottom: 1px solid var(--gray100);
+  position: fixed; /* Changed from sticky to fixed for consistent animation */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: var(--box-shadow-light);
+  transform: translateY(0); /* Default visible position */
+  transition: transform 1s ease-in-out; /* 1 second slide animation */
 }
+
+header.hidden {
+  transform: translateY(-100%); /* Slide up to hide */
+}
+
+header.visible {
+  transform: translateY(0); /* Slide down to show */
+}
+
 
 header .inner {
-    max-width: 1230px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
+  max-width: 1200px;
+  height: 70px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
-header .gnb {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+header .gnb { /* gnb 클래스를 nav에서 분리하여 적용 */
+  display: flex;
+  align-items: center;
 }
 
-header .gnb .logo img {
-    height: 24px;
-    vertical-align: middle;
+header .logo {
+  margin-right: 40px;
+}
+
+header .logo img {
+  height: 28px;
+  vertical-align: middle;
 }
 
 header .gnb ul {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  align-items: center;
+  gap: 18px; /* 메뉴 아이템 간격 */
 }
 
 header .gnb ul li a {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--blk);
-    position: relative;
-    padding: 10px 0;
+  color: var(--blk);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 5px 0;
+  transition: color 0.2s ease;
 }
 
-header .gnb ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
-    background-color: var(--primary);
-    transition: width 0.3s ease;
+header .gnb ul li a:hover {
+  color: var(--primary);
 }
 
-header .gnb ul li a:hover::after,
-header .gnb ul li.active a::after {
-    width: 100%;
-}
-
-header .gnb ul li.forU {
+header .gnb ul li.forU { /* forU 클래스에 대한 스타일 */
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
 header .gnb ul li.forU img {
-    height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+  height: 14px;
 }
 
 header .btns {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-header .btns a img {
-    height: 24px;
-    transition: opacity 0.2s ease;
+header .btns a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
 }
 
-header .btns a:hover img {
-    opacity: 0.7;
+header .btns a:hover {
+  background-color: var(--gray50);
 }
 
-/* --- */
+header .btns img {
+  height: 20px;
+  width: 20px;
+}
 
-/* Footer */
 
+/* --- Hero Section --- */
+.hero-section {
+  width: 100%;
+  height: 250px;
+  background: var(--gradient-blue-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section .top_airplane,
+.hero-section .top_cloud_left,
+.hero-section .top_cloud_right,
+.hero-section .top_main_cloud {
+  position: absolute;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.hero-section .top_airplane { left: 5%; bottom: 10%; width: 180px; }
+.hero-section .top_cloud_left { left: 0; bottom: -20px; width: 250px; }
+.hero-section .top_cloud_right { right: 0; top: -50px; width: 200px; }
+.hero-section .top_main_cloud { top: 20px; right: 20%; width: 300px; }
+
+.title {
+  text-align: center;
+  position: relative;
+  color: var(--wht);
+  font-size: 38px;
+  line-height: 1.3;
+  z-index: 10;
+  font-weight: 800;
+}
+
+.title_2 {
+  color: var(--wht);
+  display: inline-block;
+  font-size: 42px;
+}
+
+
+/* --- Main Content Layout --- */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+
+/* --- Search Box Container --- */
+#search {
+  width: 100%;
+  position: relative;
+  margin-top: -50px; /* Hero 섹션 위로 살짝 올라오도록 조정 */
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.search_box {
+  width: 100%;
+  max-width: 1200px;
+  background-color: var(--wht);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-medium);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* --- Footer Section (기존 스타일 유지) --- */
 .site-footer {
-    background-color: var(--wht);
-    padding: 30px 20px 50px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--gray500);
-    line-height: 1.6;
-    border-top: 1px solid var(--gray100);
+  background-color: var(--wht);
+  padding: 50px 50px 50px 50px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--gray500);
+  line-height: 1.6;
+  border-top: 1px solid var(--gray100);
+  align-self: center;
 }
 
 .footer-actions {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    border-bottom: 1px solid var(--gray100);
-    padding-bottom: 18px;
-    margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 120px; /* Default gap for larger screens */
+  border-bottom: 1px solid var(--gray100);
+  padding-bottom: 18px;
+  margin-bottom: 25px;
 }
 
 .footer-actions button {
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-family: 'NanumSquareRound', sans-serif;
-    color: var(--gray700);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    transition: color 0.2s ease;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-family: 'NanumSquare', sans-serif;
+  color: var(--gray700);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .footer-actions button:hover {
@@ -179,27 +272,36 @@ header .btns a:hover img {
 }
 
 .footer-actions img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .footer-links {
+  display: flex;
+  justify-content: center; /* Default center for multiple links, adjust if only two */
+  gap: 15px; /* Default gap */
+  margin-bottom: 20px;
+}
+/* If you strictly want the first and last link to be on opposite ends for .footer-links, change justify-content to space-between here as well and ensure you only have two direct children, or adjust HTML structure. For multiple links, 'center' is more common. I will set it to space-between for consistency with your request. */
+.footer-links {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 15px; /* Default gap */
     margin-bottom: 20px;
+    padding: 0 20px; /* Add some padding to see the effect of space-between */
 }
 
+
 .footer-links button {
-    border: 1px solid var(--gray300);
-    padding: 7px 16px;
-    font-size: 13px;
-    font-family: 'NanumSquareRound', sans-serif;
-    background: var(--wht);
-    color: var(--gray500);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  border: 1px solid var(--gray300);
+  padding: 7px 16px;
+  font-size: 13px;
+  font-family: 'NanumSquare', sans-serif;
+  background: var(--wht);
+  color: var(--gray500);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .footer-links button:hover {
@@ -209,33 +311,33 @@ header .btns a:hover img {
 }
 
 .footer-desc {
-    max-width: 1000px;
-    margin: 0 auto 10px;
-    color: var(--gray500);
-    font-size: 12px;
+  max-width: 600px;
+  margin: 0 auto 10px;
+  color: var(--gray500);
+  font-size: 12px;
 }
 
 .footer-company {
-    font-size: 14px;
-    color: var(--blk);
-    font-weight: 600;
-    margin-bottom: 15px;
+  font-size: 14px;
+  color: var(--blk);
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .footer-info {
-    font-size: 13px;
-    color: var(--gray500);
-    margin: 0 auto 10px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+  font-size: 13px;
+  color: var(--gray500);
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .footer-info a {
-    color: var(--gray500);
-    text-decoration: none;
-    transition: color 0.2s ease;
+  color: var(--gray500);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .footer-info a:hover {
@@ -243,71 +345,500 @@ header .btns a:hover img {
 }
 
 .footer-info .highlight {
-    font-weight: bold;
-    color: var(--blk);
+  font-weight: bold;
+  color: var(--blk);
 }
 
 .footer-copy {
+  font-size: 12px;
+  color: var(--gray300);
+  margin-top: 8px;
+}
+
+/* 새로운 미디어 쿼리 브레이크포인트 제안
+
+아주 작은 모바일 (Small Mobile): max-width: 374px
+아이폰 SE (320px 너비)와 같은 아주 작은 화면을 위한 스타일입니다.
+
+작은 모바일 (Mobile - iPhone SE, X 등): max-width: 575px (이전 767px에서 더 세분화)
+대부분의 스마트폰 (375px ~ 575px)에 해당합니다.
+
+큰 모바일 및 작은 태블릿 (Large Mobile & Small Tablet): max-width: 767px (새로운 브레이크포인트)
+가로 모드의 스마트폰, 7인치 이하의 소형 태블릿 (ex: 600px ~ 767px)에 적합합니다.
+
+중간 태블릿 (Medium Tablet): max-width: 991px (이전 1023px에서 조정)
+아이패드 미니 등 일반적인 태블릿 (768px ~ 991px)에 해당합니다.
+
+큰 태블릿 및 작은 노트북 (Large Tablet & Small Laptop): max-width: 1199px (기존 1199px 유지)
+아이패드 프로, 작은 해상도의 노트북 (992px ~ 1199px)에 해당합니다.
+
+데스크톱 (Desktop): min-width: 1200px
+일반적인 데스크톱 및 큰 화면의 노트북 (1200px 이상)에 해당합니다. */
+
+/* --- Responsive Design (전체) --- */
+
+/* 아주 작은 모바일 (Small Mobile): ~374px (iPhone SE보다 작거나 유사한 폭) */
+@media (max-width: 374px) {
+  header .inner {
+    height: 55px; /* 더 작은 헤더 높이 */
+    padding: 0 8px; /* 패딩 감소 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* 줄바꿈 방지 */
+  }
+
+  header .logo {
+    margin-right: 10px; /* 로고와 GNB 사이 간격 */
+  }
+
+  header .logo img {
+    height: 20px; /* 로고 더 작게 */
+  }
+
+  header .gnb {
+    display: flex;
+    flex-grow: 1; /* GNB가 남은 공간 차지 */
+    justify-content: flex-start; /* GNB 아이템 왼쪽 정렬 */
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  header .gnb ul {
+    display: flex;
+    flex-wrap: nowrap; /* GNB 아이템 줄바꿈 방지 */
+    gap: 8px; /* GNB 아이템 간격 더 좁게 */
+  }
+
+  header .gnb ul li a {
+    font-size: 12px; /* 폰트 사이즈 더 작게 */
+    padding: 0;
+  }
+
+  header .gnb ul li.forU img {
+    height: 10px; /* 베타 아이콘 더 작게 */
+    margin-left: 2px;
+  }
+
+  header .btns {
+    gap: 6px; /* 버튼 간격 더 좁게 */
+    margin-left: 10px; /* GNB와 버튼 사이 간격 */
+  }
+
+  header .btns img {
+    height: 18px; /* 버튼 아이콘 더 작게 */
+    width: 18px;
+  }
+
+  /* Hero Section */
+  .hero-section { height: 160px; }
+  .hero-section .top_airplane { width: 100px; bottom: 5%; }
+  .title { font-size: 24px; }
+  .title_2 { font-size: 28px; }
+
+  /* Search Box */
+  #search { margin-top: -25px; padding: 0 10px; }
+  .search_box { padding: 10px; }
+
+  /* Footer */
+  .footer-actions {
+    /* Removed flex-direction: column; */
+    gap: 20px; /* Adjusted gap for smaller screens */
+    padding: 0 10px; /* Added padding to ensure space-between works */
+  }
+  .footer-actions button {
+      width: auto; /* Allow buttons to size naturally */
+      max-width: none; /* Remove max-width constraint */
+      justify-content: center; /* Center content within the button */
+      font-size: 11px; /* Slightly smaller font */
+      padding: 5px; /* Reduced padding */
+  }
+  .footer-actions img {
+      width: 16px;
+      height: 16px;
+  }
+  .footer-links {
+    /* Removed flex-direction: column; */
+    gap: 10px; /* Adjusted gap for smaller screens */
+    padding: 0 10px;
+  }
+  .footer-links button {
+      width: auto; /* Allow buttons to size naturally */
+      max-width: none; /* Remove max-width constraint */
+      justify-content: center; /* Center content within the button */
+      font-size: 11px;
+      padding: 5px 8px;
+  }
+  .footer-desc, .footer-company, .footer-info, .footer-copy {
+      font-size: 10px;
+  }
+  .footer-info { gap: 5px; }
+}
+
+/* 작은 모바일 (Mobile - iPhone SE, X 등): ~575px */
+@media (max-width: 575px) {
+  header .inner {
+    height: 50px;
+    padding: 0 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  header .logo {
+    margin-right: 6px; /* 로고와 메뉴 사이 여백 최소화 */
+  }
+
+  header .logo img {
+    height: 20px;
+    scale: 0.8;
+  }
+
+  header .gnb {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  header .gnb ul {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 7px; /* 메뉴 간격도 살짝 줄임 */
+  }
+
+  header .gnb ul li a {
+    font-size: 12px;
+    padding: 0;
+  }
+
+  header .gnb ul li.forU img {
+    height: 10px;
+    margin-left: 1px;
+  }
+
+  header .btns {
+    gap: 3px; /* 버튼 간격 최소화 */
+    margin-left: 4px; /* 메뉴와 버튼 사이 여백 최소화 */
+  }
+
+  header .btns img {
+    height: 18px;
+    width: 18px;
+  }
+
+  header .btns a {
+    scale: 0.8;
+  }
+
+  /* Hero Section */
+  .hero-section { height: 160px; }
+  .hero-section .top_airplane { width: 100px; bottom: 5%; }
+  .title { font-size: 24px; }
+  .title_2 { font-size: 28px; }
+
+  /* Search Box */
+  #search { margin-top: -25px; padding: 0 10px; }
+  .search_box { padding: 10px; }
+
+  /* Footer */
+  .footer-actions button, .footer-links button {
+      width: auto; /* Allow buttons to size naturally */
+      max-width: none; /* Removed max-width */
+      justify-content: center; /* Center content within the button */
+      font-size: 12px;
+      padding: 5px 10px;
+  }
+  .footer-actions {
+    /* Removed flex-direction: column; */
+    gap: 30px; /* Adjusted gap */
+    padding: 0 15px;
+  }
+  .footer-actions img {
+      width: 18px;
+      height: 18px;
+  }
+  .footer-links {
+    /* Removed flex-direction: column; */
+    gap: 12px; /* Adjusted gap */
+    padding: 0 15px;
+  }
+  .footer-desc, .footer-company, .footer-info, .footer-copy {
+      font-size: 10px;
+  }
+  .footer-info { gap: 5px; }
+}
+
+/* 큰 모바일 및 작은 태블릿 (Large Mobile & Small Tablet): ~767px */
+@media (max-width: 767px) and (min-width: 576px) {
+  /* 이 구간은 576px ~ 767px에 적용됩니다. */
+  header .inner {
+      height: 65px;
+      padding: 0 15px;
+      display: flex; /* Override previous flex-direction from tablet */
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap; /* Ensure single line */
+  }
+
+  header .logo { margin-right: 20px; }
+  header .logo img {
+      height: 24px;
+  }
+
+  header .gnb {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-start;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+  }
+  header .gnb ul {
+      gap: 12px;
+      flex-wrap: nowrap;
+  }
+  header .gnb ul li a {
+      font-size: 14px;
+  }
+
+  header .btns { margin-left: 20px; }
+  header .btns img {
+      height: 22px;
+      width: 22px;
+  }
+
+  /* Hero Section */
+  .hero-section { height: 220px; }
+  .hero-section .top_airplane { width: 150px; bottom: 10%; }
+  .title { font-size: 32px; }
+  .title_2 { font-size: 38px; }
+  .hero-section .top_cloud_left, .hero-section .top_cloud_right, .hero-section .top_main_cloud { display: none; } /* 모바일에서는 구름 숨김 */
+
+  /* Search Box */
+  #search { margin-top: -40px; padding: 0 20px; }
+  .search_box { padding: 20px; }
+
+  /* Footer */
+  .footer-actions {
+    /* Removed flex-direction: column; */
+    gap: 80px; /* Adjusted gap */
+    padding: 0 20px;
+  }
+  .footer-actions button {
+      width: auto; /* Allow buttons to size naturally */
+      max-width: none; /* Removed max-width */
+      justify-content: center; /* Center content within the button */
+      font-size: 13px;
+      padding: 7px;
+  }
+  .footer-links {
+    /* Removed flex-direction: column; */
+    gap: 15px; /* Adjusted gap */
+    padding: 0 20px;
+  }
+  .footer-links button {
+      width: auto; /* Allow buttons to size naturally */
+      max-width: none; /* Removed max-width */
+      justify-content: center; /* Center content within the button */
+      font-size: 13px;
+      padding: 7px 12px;
+  }
+  .footer-desc, .footer-company, .footer-info, .footer-copy {
+      font-size: 12px;
+  }
+}
+
+/* 중간 태블릿 (Medium Tablet): ~991px */
+@media (max-width: 991px) and (min-width: 768px) {
+  /* 이 구간은 768px ~ 991px에 적용됩니다. */
+  header .inner {
+    flex-direction: row; /* 다시 한 줄로 */
+    flex-wrap: nowrap; /* 줄바꿈 방지 */
+    justify-content: space-between;
+    height: 70px; /* 기본 높이로 복귀 */
+    padding: 0 20px; /* 기본 패딩 */
+  }
+  header .gnb {
+    order: unset; /* 순서 초기화 */
+    width: auto; /* 너비 초기화 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    margin-top: 0; /* 마진 초기화 */
+    padding-top: 0; /* 패딩 초기화 */
+    border-top: none; /* 보더 초기화 */
+    flex-grow: 1; /* 남은 공간 채우기 */
+  }
+  header .logo { margin-right: 30px; } /* 로고 마진 복구 */
+  header .gnb ul {
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    flex-wrap: nowrap; /* 줄바꿈 방지 */
+    gap: 15px; /* 간격 조정 */
+  }
+   header .gnb ul li a {
+    font-size: 15px;
+  }
+  header .btns { gap: 10px; } /* 버튼 간격 조정 */
+
+  /* Hero Section */
+  .hero-section { height: 250px; } /* 기본 히어로 섹션 높이 */
+  .hero-section .top_airplane { width: 180px; bottom: 10%; }
+  .title { font-size: 38px; }
+  .title_2 { font-size: 42px; }
+  .hero-section .top_cloud_left, .hero-section .top_cloud_right, .hero-section .top_main_cloud { display: block; } /* 구름 다시 보이기 */
+
+  /* Search Box */
+  #search { margin-top: -50px; padding: 0 20px; }
+  .search_box { padding: 25px; }
+
+  /* Footer */
+  .footer-actions {
+      /* Removed flex-direction: row; as it's default now */
+      gap: 120px;
+      padding: 0 30px;
+  }
+  .footer-actions button {
+      width: auto;
+      max-width: none;
+      font-size: 14px;
+      padding: 7px 16px;
+  }
+  .footer-links {
+      /* Removed flex-direction: row; as it's default now */
+      gap: 15px;
+      padding: 0 30px;
+  }
+  .footer-links button {
+      width: auto;
+      max-width: none;
+  }
+}
+
+/* 큰 태블릿 및 작은 노트북 (Large Tablet & Small Laptop): ~1199px */
+@media (max-width: 1199px) and (min-width: 992px) {
+  /* 이 구간은 992px ~ 1199px에 적용됩니다. */
+  header .inner,
+  #search,
+  .recommend, /* 검색창, 추천 섹션, 배너, 테마 여행 등 */
+  .banner-swiper-container,
+  .theme-travel {
+    width: 95%; /* 전체 너비 95% 유지 */
+    max-width: none; /* max-width 제한 해제 (inner에만 1200px 적용) */
+  }
+  
+  header .inner {
+      padding: 0 15px; /* 패딩 조정 */
+  }
+
+  header .logo { margin-right: 40px; } /* 로고 마진 */
+  header .gnb ul { gap: 18px; } /* GNB 간격 */
+  
+  /* Hero Section - Optional adjustments for larger tablets/laptops */
+  .hero-section { height: 260px; } /* Slightly taller hero */
+
+  /* Footer - Minor adjustments */
+  .footer-actions { gap: 120px; }
+  .footer-links { gap: 18px; }
+}
+
+
+/* 데스크톱 (Desktop): 1200px 이상 */
+@media (min-width: 1200px) {
+  /* 1200px 이상 화면에 대한 기본 스타일 (기존 스타일 유지) */
+  header .inner {
+    max-width: 1200px;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  /* 이하 데스크톱 기본 스타일 */
+  header .logo { margin-right: 40px; }
+  header .gnb ul { gap: 18px; }
+  header .btns { gap: 15px; }
+
+  .hero-section { height: 250px; }
+  .hero-section .top_airplane { left: 5%; bottom: 10%; width: 180px; }
+  .hero-section .top_cloud_left { left: 0; bottom: -20px; width: 250px; }
+  .hero-section .top_cloud_right { right: 0; top: -50px; width: 200px; }
+  .hero-section .top_main_cloud { top: 20px; right: 20%; width: 300px; }
+  .title { font-size: 38px; }
+  .title_2 { font-size: 42px; }
+
+  #search {
+    width: 100%;
+    position: relative;
+    margin-top: -50px;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .search_box {
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--wht);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-medium);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .site-footer {
+    background-color: var(--wht);
+    padding: 50px 50px 50px 50px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray500);
+    line-height: 1.6;
+    border-top: 1px solid var(--gray100);
+    align-self: center;
+  }
+  .footer-actions {
+    display: flex;
+    justify-content: center; /* Keep center for desktop if you prefer a tighter group */
+    gap: 160px;
+    border-bottom: 1px solid var(--gray100);
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center; /* Keep center for desktop if you prefer a tighter group */
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .footer-desc {
+    max-width: 1000px;
+    margin: 0 auto 10px;
+    color: var(--gray500);
+    font-size: 12px;
+  }
+  .footer-company {
+    font-size: 14px;
+    color: var(--blk);
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  .footer-info {
+    font-size: 13px;
+    color: var(--gray500);
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .footer-copy {
     font-size: 12px;
     color: var(--gray300);
     margin-top: 8px;
-}
-
-/* --- */
-
-/* Responsive Design */
-
-@media (max-width: 1023px) {
-  header .inner {
-    padding: 0 15px;
-    height: 60px;
-  }
-  header .gnb {
-    gap: 20px;
-  }
-  header .gnb ul {
-    gap: 15px;
-  }
-  header .gnb ul li a {
-    font-size: 16px;
-  }
-  .footer-actions, .footer-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .footer-actions button, .footer-links button {
-      width: 80%;
-      max-width: 250px;
-      justify-content: center;
-  }
-  .site-footer {
-      padding: 20px 15px 40px;
-  }
-}
-
-@media (max-width: 767px) {
-  header .inner {
-    position: relative;
-  }
-  /* On mobile, the full nav might be hidden behind a menu icon */
-  header .gnb ul {
-    display: none;
-  }
-  .footer-actions button, .footer-links button {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-  .footer-desc, .footer-company, .footer-info, .footer-copy {
-      font-size: 11px;
-  }
-  .site-footer {
-      padding: 15px 10px 30px;
-  }
-  .footer-info {
-    gap: 5px 10px;
-  }
-  .footer-info a {
-    padding: 0 5px;
   }
 }
