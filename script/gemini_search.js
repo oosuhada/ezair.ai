@@ -421,7 +421,8 @@ Example Response:
         aiLoadingStatus.style.display = 'none';
 
         // Populate results
-        aiInsightText.textContent = data.aiInsight || "AI가 추천하는 최적의 항공편입니다.";
+        aiInsightText.innerHTML = (data.aiInsight || "AI가 추천하는 최적의 항공편입니다.") +
+                                  ` <a href="./pages/flightResult/flightResult.html" class="more-link">더보기</a>`;
         aiFlightCardsContainer.innerHTML = ''; // Clear previous flight cards
 
         if (data.flights && data.flights.length > 0) {

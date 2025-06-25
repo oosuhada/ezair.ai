@@ -652,3 +652,17 @@
     font-size: 12px;
   }
 }
+
+/* ai_results.css or other relevant CSS file */
+.ai-insight .more-link {
+    font-size: 0.9em; /* Adjust font size as needed */
+    margin-left: 10px; /* Space from the text */
+    text-decoration: underline; /* Add underline */
+    color: #007bff; /* Example color, match your design */
+    cursor: pointer;
+}
+
+.ai-insight .more-link:hover {
+    color: #0056b3; /* Darker color on hover */
+    text-decoration: none; /* Remove underline on hover, or keep it */
+}
