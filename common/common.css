@@ -21,6 +21,10 @@ body {
   overflow-x: hidden;
   background-color: #f9f9f9; /* 전반적인 배경색 통일 */
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
 }
 
 :root {
