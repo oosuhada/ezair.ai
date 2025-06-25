@@ -4,59 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>패키지 여행</title>
-    <link rel="stylesheet" href="pkgtour.css">
+    <link rel="stylesheet" href="../common/common.css">
+    <link rel="stylesheet" href="./pkgtour.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Overall container for the entire page -->
-    <div class="page-container">
-        <!-- Header Section -->
-        <header class="header">
-            <!-- Top promotional bar -->
-            <div class="top-promo-bar">
-                <div class="header-content">
-                    <!-- Placeholder for top-left content -->
-                    <div class="header-menu-left">
-                        <i class="fas fa-bars icon"></i>
-                        <span>메뉴</span>
-                    </div>
-                    <!-- Right-aligned login and comparison -->
-                    <div class="header-auth-right">
-                        <span class="header-auth-text">로그인 후 등급확인</span>
-                        <div class="header-compare-product">
-                            <i class="fas fa-balance-scale icon"></i>
-                            <span class="header-compare-text">상품비교</span>
-                            <span class="header-compare-count">0</span>
-                        </div>
-                        <i class="fas fa-user-circle icon"></i>
-                        <span class="header-auth-text">로그인</span>
-                        <i class="fas fa-th-large icon"></i>
-                    </div>
-                </div>
-            </div>
+     <header>
+        <div class="inner">
+            <div class="logo"><a href="/index.html"><img src="/ezair.ai/image/EZAIR_bk.svg" alt="이지에어 로고"></a></div>
 
-            <!-- Main navigation bar -->
-            <nav class="main-nav">
-                <div class="header-content nav-content">
-                    <a href="#" class="nav-item">항공</a>
-                    <a href="#" class="nav-item">호텔</a>
-                    <a href="#" class="nav-item nav-item-active">패키지</a>
-                    <a href="#" class="nav-item nav-item-dropdown">
-                        출장 <i class="fas fa-chevron-down icon-sm"></i>
-                    </a>
-                    <a href="#" class="nav-item">For U</a>
-                    <a href="#" class="nav-item">이벤트·혜택</a>
-                </div>
+            <nav class="gnb">
+                <ul>
+                    <li class="index"><a href="/index.html">항공</a></li>
+                    <li class="hotel"><a href="/pages/hotels/hotels.html">호텔</a></li>
+                    <li class="package"><a href="/pages/pkgtour/pkgtour.html">패키지</a></li>
+                    <li class="forU"><a href="/pages/forYou/forYou.html">EZ for you</a><img src="/ezair.ai/image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                </ul>
             </nav>
-        </header>
+            <div class="btns">
+                <a class="cs" href="/pages/cs/cs.html"><img src="/ezair.ai/image/gnb_cs_bk.svg" alt="이지에어 고객센터"></a>
+                <a class="user" href="/pages/myPage/myPage.html"><img src="/ezair.ai/image/gnb_user_bk.svg" alt="이지에어 마이페이지"></a>
+            </div>
+            <button type="button" class="hamburger-btn" aria-label="메뉴 열기">
+                <img src="/image/mobileList.svg" alt="">
+            </button>
+        </div>
+    </header>
 
         <!-- Main Banner Section -->
         <section class="main-banner">
             <!-- Background images/shapes -->
-            <img class="banner-shape-bottom-left" src="https://placehold.co/109x92/9177F9/FFFFFF?text=Shape" alt="Decorative shape">
-            <img class="banner-shape-top-left" src="https://placehold.co/142x97/9177F9/FFFFFF?text=Shape" alt="Decorative shape">
-            <img class="banner-shape-bottom-right" src="https://placehold.co/219x96/9177F9/FFFFFF?text=Shape" alt="Decorative shape">
+            <img class="banner-shape-bottom-left" src="../../image/pkgtour/bg_Image_left02.png" alt="Decorative shape">
+            <img class="banner-shape-top-left" src="../../image/pkgtour/bg_Image_left01.png" alt="Decorative shape">
+            <img class="banner-shape-bottom-right" src="../../image/pkgtour/bg_Image_right.png" alt="Decorative shape">
 
             <div class="header-content banner-text-content">
                 <h1 class="banner-title">패키지 여행</h1>
@@ -120,49 +102,46 @@
                 <!-- Each category item -->
                 <div class="category-item">
                     <div class="category-icon-wrapper">
-                        <img class="category-icon" src="https://placehold.co/66x66/E0F2F7/222225?text=BEST" alt="Category icon">
-                        <span class="category-badge">NEW</span>
+                        <img class="category-icon" src="../../image/pkgtour/list_icon01.png" alt="Category icon">
                     </div>
                     <p class="category-text">휴양지<br/>BEST</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/E0F7E0/222225?text=EARLY" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon02.png" alt="Category icon">
                     <p class="category-text">얼리버드<br/>이벤트</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/FFF2CC/222225?text=CARD" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon03.png" alt="Category icon">
                     <p class="category-text">카드사<br/>프로모션</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/EAE2F7/222225?text=MONGOL" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon04.png" alt="Category icon">
                     <p class="category-text">요즘핫한<br/>몽골여행</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/F7E0E0/222225?text=SAPA" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon05.png" alt="Category icon">
                     <p class="category-text">베트남<br/>사파여행</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/E0F2F7/222225?text=SHOP" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon06.png" alt="Category icon">
                     <p class="category-text">홈쇼핑<br/>상품모음</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/E0F7E0/222225?text=SALE" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon07.png" alt="Category icon">
                     <p class="category-text">동남아<br/>땡처리</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/FFF2CC/222225?text=CHINA" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon08.png" alt="Category icon">
                     <p class="category-text">무비자<br/>중국여행</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/EAE2F7/222225?text=TSUSHIMA" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon09.png" alt="Category icon">
                     <p class="category-text">대마도<br/>여행</p>
                 </div>
                 <div class="category-item">
-                    <img class="category-icon" src="https://placehold.co/66x66/F7E0E0/222225?text=JAPAN" alt="Category icon">
+                    <img class="category-icon" src="../../image/pkgtour/list_icon10.png" alt="Category icon">
                     <p class="category-text">일본<br/>온천여행</p>
                 </div>
-                <!-- Right arrow for scrolling -->
-                <i class="fas fa-chevron-right scroll-arrow"></i>
             </div>
         </section>
 
@@ -170,7 +149,7 @@
         <section class="ad-banner-section">
             <div class="ad-banner-content">
                 <!-- Placeholder image for the banner content -->
-                <img class="ad-banner-image" src="https://placehold.co/1110x100/006AD5/FFFFFF?text=AD%20BANNER" alt="Promotional Banner">
+                <img class="ad-banner-image" src="../../image/pkgtour/banner.png" alt="Promotional Banner">
             </div>
         </section>
 
@@ -178,45 +157,24 @@
         <main class="main-content-area">
             <!-- Left Column for Product Listings -->
             <div class="product-listings-column">
-                <!-- Top Info Box (Login for benefits) -->
-                <div class="info-box">
-                    <div class="info-box-header">
-                        <div class="info-box-header-content">
-                            <img class="info-box-logo" src="https://placehold.co/80x17/F9FFFF/424242?text=NAVER" alt="Naver logo">
-                            <span class="info-box-text">로그인 후 등급확인 <span class="info-box-text-normal">하세요</span></span>
-                        </div>
-                    </div>
-                    <div class="info-box-footer">
-                        <div class="info-box-footer-item">
-                            <i class="fas fa-wallet info-box-icon"></i>
-                            <span class="info-box-footer-text">추천 혜택</span>
-                        </div>
-                        <div class="info-box-footer-item">
-                            <i class="fas fa-bullhorn info-box-icon"></i>
-                            <span class="info-box-footer-text">이벤트ㆍ혜택</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Section: 출발임박! 14일 이내 출발 상품 -->
                 <h2 class="section-title">출발임박! 14일 이내 출발 상품</h2>
                 <div class="product-grid">
                     <!-- Product Card 1 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Maldives" alt="Maldives honeymoon package">
+                            <img class="product-card-image" src="../../image/pkgtour/img01.jpg" alt="Maldives honeymoon package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.06.21.<br/>오후 11시 15분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/54x22/FFFFFF/000000?text=HONEYMOON" alt="Honeymoon tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/모두투어.png" alt="Honeymoon tag">
                             <h3 class="product-title">
                                 [허니문] 몰디브 풀만마무타 4박7일 <br/>비치빌라 2박+오션빌라 2박/AI/국…
                             </h3>
                             <p class="product-price">4,752,030원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 237,601원 적립</span>
                             </div>
                         </div>
@@ -224,19 +182,18 @@
                     <!-- Product Card 2 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=PhuQuoc" alt="Phu Quoc package">
+                            <img class="product-card-image" src="../../image/pkgtour/img02.jpg" alt="Phu Quoc package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.06.22.<br/>오전 5시 00분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/80x22/FFFFFF/000000?text=FREE_TRAVEL" alt="Free travel tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/신짜오나트랑.png" alt="Free travel tag">
                             <h3 class="product-title">
                                 [푸꾸옥 자유여행] 머큐리 푸꾸옥 리<br/>조트 & 빌라 에어텔 3박 5일 [럭셔…
                             </h3>
                             <p class="product-price">574,367원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 28,718원 적립</span>
                             </div>
                         </div>
@@ -244,19 +201,18 @@
                     <!-- Product Card 3 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Hawaii" alt="Hawaii package">
+                            <img class="product-card-image" src="../../image/pkgtour/img03.jpg" alt="Hawaii package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.06.26.<br/>오후 9시 05분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=HAWAII" alt="Hawaii tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Hawaii tag">
                             <h3 class="product-title">
                                 하와이 8일 쉐라톤프린세스카이울라<br/>니 타워파셜오션뷰 공항호텔 셔틀…
                             </h3>
                             <p class="product-price">2,403,660원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 120,183원 적립</span>
                             </div>
                         </div>
@@ -264,19 +220,18 @@
                     <!-- Product Card 4 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Bohol" alt="Bohol package">
+                            <img class="product-card-image" src="../../image/pkgtour/img04.jpg" alt="Bohol package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.06.28.<br/>오후 9시 00분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=BOHOL" alt="Bohol tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Bohol tag">
                             <h3 class="product-title">
                                 보홀 6일 비그랜드 돌핀왓칭 거북이<br/>스노클링 호핑투어 보홀데이투어 …
                             </h3>
                             <p class="product-price">950,503원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 47,525원 적립</span>
                             </div>
                         </div>
@@ -284,19 +239,18 @@
                     <!-- Product Card 5 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Taiwan" alt="Taiwan package">
+                            <img class="product-card-image" src="../../image/pkgtour/img05.jpg" alt="Taiwan package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.07.01.<br/>오후 10시 40분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=TAIWAN" alt="Taiwan tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Taiwan tag">
                             <h3 class="product-title">
                                 대만/야류/우라이/지우펀 3박 5일우라<br/>이옛거리스펀천등날리기
                             </h3>
                             <p class="product-price">611,003원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 30,550원 적립</span>
                             </div>
                         </div>
@@ -304,19 +258,18 @@
                     <!-- Product Card 6 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=PhuQuoc_AirTel" alt="Phu Quoc AirTel package">
+                            <img class="product-card-image" src="../../image/pkgtour/img06.jpg" alt="Phu Quoc AirTel package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.07.02.<br/>오후 5시 45분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/71x22/FFFFFF/000000?text=SAFE_TRAVEL" alt="Safe Travel tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/참좋은여행.png" alt="Safe Travel tag">
                             <h3 class="product-title">
                                 [푸꾸옥 안심 자유여행] 프리미어 레<br/>지던스 조식포함 왕복셔틀3박 5일
                             </h3>
                             <p class="product-price">532,530원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 26,626원 적립</span>
                             </div>
                         </div>
@@ -324,19 +277,18 @@
                     <!-- Product Card 7 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=KotaKinabalu" alt="Kota Kinabalu package">
+                            <img class="product-card-image" src="../../image/pkgtour/img07.jpg" alt="Kota Kinabalu package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.07.02.<br/>오후 6시 15분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=KOTA" alt="Kota Kinabalu tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Kota Kinabalu tag">
                             <h3 class="product-title">
                                 코타키나발루 5일 퍼시픽 수트라 디<br/>럭스룸 아일랜드투어 선셋야시장…
                             </h3>
                             <p class="product-price">652,810원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 32,640원 적립</span>
                             </div>
                         </div>
@@ -344,19 +296,18 @@
                     <!-- Product Card 8 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=GrandHyatt" alt="Grand Hyatt Taiwan package">
+                            <img class="product-card-image" src="../../image/pkgtour/img08.jpg" alt="Grand Hyatt Taiwan package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <p class="product-date">2025.07.02.<br/>오후 10시 55분 출발</p>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=TAIWAN" alt="Taiwan tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Taiwan tag">
                             <h3 class="product-title">
                                 대만/야스지 3박 5일 2일자유 특급호<br/>텔 그랜드하얏트타이페이
                             </h3>
                             <p class="product-price">766,203원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 38,310원 적립</span>
                             </div>
                         </div>
@@ -388,23 +339,21 @@
                     <!-- Emergency Deal Product Card 1 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Bohol_Deal" alt="Bohol Solrea Superior package">
+                            <img class="product-card-image" src="../../image/pkgtour/img09.jpg" alt="Bohol Solrea Superior package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 필리핀
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/54x22/FFFFFF/000000?text=SALE" alt="Sale tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/모두투어.png" alt="Sale tag">
                             <h3 class="product-title">
                                 [보홀 / 솔레아 슈페리어] 발리카삭호<br/>핑투어+돌핀왓칭 3박5일
                             </h3>
                             <p class="product-meta">07.13.~07.17. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">290,030원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 14,501원 적립</span>
                             </div>
                         </div>
@@ -412,23 +361,21 @@
                     <!-- Emergency Deal Product Card 2 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Deal" alt="Danang Hoi An package">
+                            <img class="product-card-image" src="../../image/pkgtour/img10.png" alt="Danang Hoi An package">
                             <div class="image-overlay"></div>
                             <span class="product-badge red">홈쇼핑</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=NO_TIP_OPTION" alt="No Tip No Option tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="No Tip No Option tag">
                             <h3 class="product-title">
                                 [노팁/노옵션/신규오픈호텔] 다낭/호<br/>이안/바나산 엠호텔 5일 (4대옵션 …
                             </h3>
                             <p class="product-meta">07.14.~07.18. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">559,550원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 27,977원 적립</span>
                             </div>
                         </div>
@@ -436,22 +383,20 @@
                     <!-- Emergency Deal Product Card 3 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Bangkok_Deal" alt="Bangkok Pattaya package">
+                            <img class="product-card-image" src="../../image/pkgtour/img11.jpg" alt="Bangkok Pattaya package">
                             <div class="image-overlay"></div>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 태국
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/72x22/FFFFFF/000000?text=NO_SHOPPING" alt="No Shopping tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/교원투어.png" alt="No Shopping tag">
                             <h3 class="product-title">
                                 방콕&파타야 5일 [노쇼핑&노옵션 진<br/>짜잘만든여행]오직 여행이지알카…
                             </h3>
                             <p class="product-meta">07.06.~07.10. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">649,000원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>6,490원 적립</span>
                             </div>
                         </div>
@@ -459,23 +404,21 @@
                     <!-- Emergency Deal Product Card 4 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Hotel" alt="Danang Hoi An Luxury Hotel package">
+                            <img class="product-card-image" src="../../image/pkgtour/img12.jpg" alt="Danang Hoi An Luxury Hotel package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=NO_TIP_OPTION" alt="No Tip No Option tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="No Tip No Option tag">
                             <h3 class="product-title">
                                 [노팁/노옵션] 다낭/호이안/바나산 럭<br/>셔리무엉탄호텔 5일 (4대옵션 포함)
                             </h3>
                             <p class="product-meta">07.14.~07.18. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">445,550원</p>
-                            <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
+                            <div class="product-points">alt="Point icon">
                                 <span>최대 22,277원 적립</span>
                             </div>
                         </div>
@@ -483,23 +426,21 @@
                     <!-- Emergency Deal Product Card 5 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Moungtan" alt="Danang Moungtan package">
+                            <img class="product-card-image" src="../../image/pkgtour/img12.jpg" alt="Danang Moungtan package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=NO_TIP_OPTION" alt="No Tip No Option tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="No Tip No Option tag">
                             <h3 class="product-title">
                                 [노팁/노옵션] 다낭/호이안/바나산 럭<br/>셔리무엉탄호텔 5일 (4대옵션 포함)
                             </h3>
                             <p class="product-meta">07.14.~07.18. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">493,050원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 24,652원 적립</span>
                             </div>
                         </div>
@@ -507,23 +448,21 @@
                     <!-- Emergency Deal Product Card 6 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Boracay_Garden" alt="Boracay Paradise Garden Resort package">
+                            <img class="product-card-image" src="../../image/pkgtour/img13.jpg" alt="Boracay Paradise Garden Resort package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 필리핀
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=BORACAY" alt="Boracay tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="Boracay tag">
                             <h3 class="product-title">
                                 보라카이 파라다이스 가든 리조트 4<br/>일
                             </h3>
                             <p class="product-meta">07.07.~07.10. <span class="dot-separator">•</span> 3박 4일</p>
                             <p class="product-price">337,560원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 16,878원 적립</span>
                             </div>
                         </div>
@@ -531,23 +470,21 @@
                     <!-- Emergency Deal Product Card 7 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Taiwan_Food" alt="Taiwan Food Tour package">
+                            <img class="product-card-image" src="../../image/pkgtour/img14.jpg" alt="Taiwan Food Tour package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 대만
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/71x22/FFFFFF/000000?text=CONFIRMED" alt="Confirmed Departure tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/참좋은여행.png" alt="Confirmed Departure tag">
                             <h3 class="product-title">
                                 출발확정 [노쇼핑/식사UP] 대만 4일<br/>미식여행 유유자적 우라이
                             </h3>
                             <p class="product-meta">07.20.~07.23. <span class="dot-separator">•</span> 3박 4일</p>
                             <p class="product-price">569,050원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 28,452원 적립</span>
                             </div>
                         </div>
@@ -555,23 +492,21 @@
                     <!-- Emergency Deal Product Card 8 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Special" alt="Danang Hoi An Bana Hills special">
+                            <img class="product-card-image" src="../../image/pkgtour/img15.jpg" alt="Danang Hoi An Bana Hills special">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/54x22/FFFFFF/000000?text=SPECIAL" alt="Special Offer tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/모두투어.png" alt="Special Offer tag">
                             <h3 class="product-title">
                                 [26만원상당특전포함] 다낭/호이안/바<br/>나힐 5일 (4성급호텔/모두투어단독 …
                             </h3>
                             <p class="product-meta">07.07.~07.11. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">265,905원</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 13,295원 적립</span>
                             </div>
                         </div>
@@ -603,23 +538,21 @@
                     <!-- Confirmed Departure Product Card 1 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Singapore_Confirmed" alt="Singapore package">
+                            <img class="product-card-image" src="../../image/pkgtour/img16.jpg" alt="Singapore package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 싱가포르
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/60x22/FFFFFF/000000?text=TOP_PICK" alt="Top Pick tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/노랑풍선.png" alt="Top Pick tag">
                             <h3 class="product-title">
                                 싱가포르 5일 TOP PICK 프리미엄 특<br/>급호텔 전일관광 NO팁NO옵션NO…
                             </h3>
                             <p class="product-meta">06.21.~06.25. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">1,454,030원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 72,701원 적립</span>
                             </div>
                         </div>
@@ -627,23 +560,21 @@
                     <!-- Confirmed Departure Product Card 2 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Bohol_Confirmed" alt="Bohol Solrea Superior package">
+                            <img class="product-card-image" src="../../image/pkgtour/img11.jpg" alt="Bohol Solrea Superior package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 필리핀
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/54x22/FFFFFF/000000?text=SALE" alt="Sale tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/모두투어.png" alt="Sale tag">
                             <h3 class="product-title">
                                 [보홀 / 솔레아 슈페리어] 발리카삭호<br/>핑투어+돌핀왓칭 3박5일
                             </h3>
                             <p class="product-meta">07.13.~07.17. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">290,030원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 14,501원 적립</span>
                             </div>
                         </div>
@@ -651,23 +582,21 @@
                     <!-- Confirmed Departure Product Card 3 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Confirmed" alt="Danang Hoi An package">
+                            <img class="product-card-image" src="../../image/pkgtour/img17.jpg" alt="Danang Hoi An package">
                             <div class="image-overlay"></div>
                             <span class="product-badge red">홈쇼핑</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=NO_TIP_OPTION" alt="No Tip No Option tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/참좋은여행.png" alt="No Tip No Option tag">
                             <h3 class="product-title">
                                 [노팁/노옵션/신규오픈호텔] 다낭/호<br/>이안/바나산 엠호텔 5일 (4대옵션 …
                             </h3>
                             <p class="product-meta">07.14.~07.18. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">559,550원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 27,977원 적립</span>
                             </div>
                         </div>
@@ -675,23 +604,21 @@
                     <!-- Confirmed Departure Product Card 4 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Confirmed_2" alt="Danang Hoi An Sheraton package">
+                            <img class="product-card-image" src="../../image/pkgtour/img10.png" alt="Danang Hoi An Sheraton package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/71x22/FFFFFF/000000?text=5_STAR" alt="5 Star tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="5 Star tag">
                             <h3 class="product-title">
                                 [다낭/호이안] 5성 포포인츠 쉐라톤<br/>SNS맛집 신라모노그램 망고빙수 …
                             </h3>
                             <p class="product-meta">07.13.~07.17. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">474,050원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 23,702원 적립</span>
                             </div>
                         </div>
@@ -699,23 +626,21 @@
                     <!-- Confirmed Departure Product Card 5 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Malaysia_Confirmed" alt="Kota Kinabalu package">
+                            <img class="product-card-image" src="../../image/pkgtour/img18.jpg" alt="Kota Kinabalu package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 말레이시아
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/93x22/FFFFFF/000000?text=BESTSELLER" alt="Best Seller tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/인터파크투어.png" alt="Best Seller tag">
                             <h3 class="product-title">
                                 [베스트셀러] 코타키나발루 5일, NO<br/>쇼핑 힐튼VS수트라VS샹그릴라 호…
                             </h3>
                             <p class="product-meta">07.13.~07.17. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">678,030원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 33,901원 적립</span>
                             </div>
                         </div>
@@ -723,23 +648,21 @@
                     <!-- Confirmed Departure Product Card 6 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Danang_Moungtan_2" alt="Danang Moungtan package">
+                            <img class="product-card-image" src="../../image/pkgtour/img12.jpg" alt="Danang Moungtan package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 베트남
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/66x22/FFFFFF/000000?text=NO_TIP_OPTION" alt="No Tip No Option tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/온라인투어.png" alt="No Tip No Option tag">
                             <h3 class="product-title">
                                 [노팁/노옵션] 다낭/호이안/바나산 럭<br/>셔리무엉탄호텔 5일 (4대옵션 포함)
                             </h3>
                             <p class="product-meta">07.14.~07.18. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">445,550원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/46x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 22,277원 적립</span>
                             </div>
                         </div>
@@ -747,23 +670,21 @@
                     <!-- Confirmed Departure Product Card 7 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Singapore_Value" alt="Singapore Value package">
+                            <img class="product-card-image" src="../../image/pkgtour/img19.jpg" alt="Singapore Value package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 싱가포르
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/56x22/FFFFFF/000000?text=CONFIRMED" alt="Confirmed Departure tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/하나투어.png" alt="Confirmed Departure tag">
                             <h3 class="product-title">
                                 [출발확정] 싱가포르 5일 완전특가 1<br/>일자유 센토사루지 슈퍼트리쇼 4성…
                             </h3>
                             <p class="product-meta">06.27.~07.01. <span class="dot-separator">•</span> 3박 5일</p>
                             <p class="product-price">834,103원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 41,705원 적립</span>
                             </div>
                         </div>
@@ -771,23 +692,21 @@
                     <!-- Confirmed Departure Product Card 8 -->
                     <div class="product-card">
                         <div class="product-card-image-wrapper">
-                            <img class="product-card-image" src="https://placehold.co/265x167/D1E8E2/1C2833?text=Taiwan_Food_2" alt="Taiwan Food Tour package">
+                            <img class="product-card-image" src="../../image/pkgtour/img14.jpg" alt="Taiwan Food Tour package">
                             <div class="image-overlay"></div>
                             <span class="product-badge green">최대 5% 적립</span>
                             <div class="product-location-tag">
-                                <i class="fas fa-map-marker-alt icon-sm"></i>
                                 대만
                             </div>
                         </div>
                         <div class="product-card-details">
-                            <img class="product-tag-image" src="https://placehold.co/71x22/FFFFFF/000000?text=CONFIRMED" alt="Confirmed Departure tag">
+                            <img class="product-tag-image" src="../../image/pkgtour/참좋은여행.png" alt="Confirmed Departure tag">
                             <h3 class="product-title">
                                 출발확정 [노쇼핑/식사UP] 대만 4일<br/>미식여행 유유자적 우라이
                             </h3>
                             <p class="product-meta">07.20.~07.23. <span class="dot-separator">•</span> 3박 4일</p>
                             <p class="product-price">569,050원~</p>
                             <div class="product-points">
-                                <img class="product-point-icon" src="https://placehold.co/36x13/FFFFFF/03AA5A?text=Point" alt="Point icon">
                                 <span>최대 28,452원 적립</span>
                             </div>
                         </div>
@@ -803,8 +722,8 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Right Column for Side Content -->
+        </main>
+                    <!-- Right Column for Side Content -->
             <aside class="side-content-column">
                 <!-- Essential Check Section -->
                 <div class="info-box side-info-box">
@@ -812,7 +731,7 @@
                     <ul class="side-box-list">
                         <li>
                             <div class="side-box-list-item">
-                                <img class="side-box-icon" src="https://placehold.co/36x36/F0F0F3/222225?text=ICON" alt="Icon">
+                                <img class="side-box-icon" src="../../image/pkgtour/sub_icon01.png" alt="Icon">
                                 <div class="side-box-text-content">
                                     <p class="side-box-main-text">멤버십 혜택 챙기셨나요?</p>
                                     <p class="side-box-sub-text">할인은 기본, 적립은 중복으로</p>
@@ -822,7 +741,7 @@
                         </li>
                         <li>
                             <div class="side-box-list-item">
-                                <img class="side-box-icon" src="https://placehold.co/36x36/F0F0F3/222225?text=ICON" alt="Icon">
+                                <img class="side-box-icon" src="../../image/pkgtour/sub_icon02.png" alt="Icon">
                                 <div class="side-box-text-content">
                                     <p class="side-box-main-text">해외여행 쇼핑 LIVE</p>
                                     <p class="side-box-sub-text">쇼핑라이브만의 특가와 혜택!</p>
@@ -832,7 +751,7 @@
                         </li>
                         <li>
                             <div class="side-box-list-item">
-                                <img class="side-box-icon" src="https://placehold.co/36x36/F0F0F3/222225?text=ICON" alt="Icon">
+                                <img class="side-box-icon" src="../../image/pkgtour/sub_icon03.png" alt="Icon">
                                 <div class="side-box-text-content">
                                     <p class="side-box-main-text">5만여개 여행 검색 꿀팁!</p>
                                     <p class="side-box-sub-text">패키지 활용법 보기</p>
@@ -842,73 +761,39 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Ongoing Events Section -->
-                <div class="info-box side-info-box">
-                    <h2 class="side-box-title">진행중인 이벤트</h2>
-                    <ul class="side-box-list">
-                        <li>
-                            <div class="side-box-list-item">
-                                <img class="side-box-icon" src="https://placehold.co/36x36/F0F0F3/222225?text=ICON" alt="Icon">
-                                <div class="side-box-text-content">
-                                    <p class="side-box-main-text">부산·대구 등 지방출발 특</p>
-                                    <p class="side-box-sub-text">최대 6%할인 + 6%적립</p>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-right icon-sm"></i>
-                        </li>
-                        <li>
-                            <div class="side-box-list-item">
-                                <img class="side-box-icon" src="https://placehold.co/36x36/F0F0F3/222225?text=ICON" alt="Icon">
-                                <div class="side-box-text-content">
-                                    <p class="side-box-main-text">미리 준비하는 여행</p>
-                                    <p class="side-box-sub-text">최대 10% 할인 + 10% 추가 적<br/>립!</p>
-                                </div>
-                            </div>
-                            <i class="fas fa-chevron-right icon-sm"></i>
-                        </li>
-                    </ul>
-                </div>
             </aside>
-        </main>
 
-        <!-- Footer Section -->
-        <footer class="footer">
-            <div class="header-content footer-content">
-                <!-- Footer Navigation Links -->
-                <div class="footer-nav-links">
-                    <a href="#" class="footer-link-bold">개인정보처리방침</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">이용약관</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">사업자정보 공개</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">고객센터</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">로그인</a>
-                    <span class="footer-separator">|</span>
-                    <a href="#" class="footer-link">전체서비스</a>
-                </div>
+    <footer class="site-footer">
+        <div class="footer-actions">
+            <button class="share-btn">
+                <img src="/ezair.ai/image/bottom_bt1.svg" alt="공유하기"> 공유하기
+            </button>
+            <button class="top-btn">
+                <img src="/ezair.ai/image/bottom_bt2.svg" alt="맨위로"> 맨위로
+            </button>
+        </div>
 
-                <!-- Company Information -->
-                <div class="footer-company-info">
-                    <p class="footer-info-line">
-                        사업자 등록번호 220-81-62517 <span class="footer-separator">|</span> 통신판매번호 2006-경기성남-0692 <span class="footer-separator">|</span> 대표이사 최수연 <span class="footer-separator">|</span> 전화번호 1588-3819 <span class="footer-separator">|</span> 이메일 helpcustomer@naver.com
-                    </p>
-                    <p class="footer-info-line">
-                        주소 경기도 성남시 분당구 정자일로 95 NAVER 1784, 13561 <span class="footer-separator">|</span> 호스팅 서비스 제공 NAVER Cloud
-                    </p>
-                </div>
+        <div class="footer-links">
+            <button class="footer-login">로그인</button>
+            <button class="footer-service">전체서비스</button>
+        </div>
 
-                <!-- Disclaimer -->
-                <p class="footer-disclaimer">
-                    네이버 티켓·패키지 여행은 여행 상품 판매사에서 제공한 여행 상품의 정보를 비교, 중개하는 서비스입니다. 네이버(주)는 통신판매의 당사자가 아니며 상품 검색 결과, 구매 및 환불 등에 관련한 의무와 책임은 각 판매자에게 있습니다.
-                </p>
+        <p class="footer-desc">
+            이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+            관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
 
-                <!-- Naver Logo at the bottom -->
-                <img class="footer-naver-logo" src="https://placehold.co/74x14/F7F7F9/000000?text=NAVER" alt="Naver logo">
-            </div>
-        </footer>
+        <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+        <div class="footer-info">
+            <a href="#">사업자정보 공개</a> |
+            <a href="#">이용약관</a> |
+            <a href="#" class="highlight">개인정보처리방침</a> |
+            <a href="#">고객센터</a>
+        </div>
+
+        <p class="footer-copy">&copy; EZ AIR corp.</p>
+    </footer>
     </div>
 
     <script src="pkgtour.js"></script>
