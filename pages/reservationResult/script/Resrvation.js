@@ -1,78 +1,77 @@
 // script/Resrvation_script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTripTabs();
-    initPassengerDropdown();
-    initFlatpickr3();
-    initFlightCardToggles();
+  initTripTabs();
+  // initPassengerDropdown();
+  initFlatpickr3();
 });
 
 const testBtn = document.querySelector('#passenger-btn');
-    if (testBtn) {
-        testBtn.addEventListener('click', () => console.log('클릭됨'));
-    } else {
-        console.warn('#passenger-btn 요소를 찾을 수 없습니다.');
-    }
+if (testBtn) {
+  testBtn.addEventListener('click', () => console.log('클릭됨'));
+} else {
+  console.warn('#passenger-btn 요소를 찾을 수 없습니다.');
+}
 
 function initTripTabs() {
-    document.querySelectorAll('.search-widget .trip-btn').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.search-widget .trip-btn')
-                .forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-        });
+  document.querySelectorAll('.search-widget .trip-btn').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.search-widget .trip-btn')
+        .forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
     });
+  });
 }
 
 function initPassengerDropdown() {
-    const wrapper = document.querySelector('.passenger-select-wrapper');
-    if (!wrapper) return;
+  const wrapper = document.querySelector('.passenger-select-wrapper');
+  if (!wrapper) return;
 
-    const btn = wrapper.querySelector('#passenger-btn');
-    const dropdown = wrapper.querySelector('#passenger-dropdown');
-    const count = dropdown.querySelector('#passenger-count');
-    const seat  = dropdown.querySelector('#seat-class');
+  const btn = wrapper.querySelector('#passenger-btn');
+  const dropdown = wrapper.querySelector('#passenger-dropdown');
+  const count = dropdown.querySelector('#passenger-count');
+  const seat = dropdown.querySelector('#seat-class');
 
-    btn.addEventListener('click', e => {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-    });
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    dropdown.classList.toggle('show');
+  });
 
-    document.addEventListener('click', e => {
-        if (!wrapper.contains(e.target)) dropdown.classList.remove('show');
-    });
+  document.addEventListener('click', e => {
+    if (!wrapper.contains(e.target)) dropdown.classList.remove('show');
+  });
 
-    const updateLabel = () => {
-        btn.textContent = `성인 ${count.value}명, ${seat.value}`;
-    };
-    count.addEventListener('change', updateLabel);
-    seat.addEventListener('change', updateLabel);
+  const updateLabel = () => {
+    btn.textContent = `성인 ${count.value}명, ${seat.value}`;
+  };
+  count.addEventListener('change', updateLabel);
+  seat.addEventListener('change', updateLabel);
 }
 
 function initFlatpickr3() {
-    document.querySelectorAll('.calendar-container3').forEach(container => {
-        const label = container.querySelector('.calendar-label3');
-        const input = container.querySelector('input.flatpickr-input3');
-        const defaultDate = label.dataset.default || null;
+  document.querySelectorAll('.calendar-container3').forEach(container => {
+    const label = container.querySelector('.calendar-label3');
+    const input = container.querySelector('input.flatpickr-input3');
+    const defaultDate = label.dataset.default || null;
 
-        const picker = flatpickr(input, {
-            dateFormat: 'm-d',
-            defaultDate,
-            disableMobile: true,
-            clickOpens: false,
-            onReady: (_, dateStr) => {
-                if (dateStr) label.textContent = dateStr;
-            },
-            onChange: (_, dateStr) => {
-                if (dateStr) label.textContent = dateStr;
-            }
-        });
-
-        label.addEventListener('click', e => {
-            e.stopPropagation();
-            picker.open();
-        });
+    const picker = flatpickr(input, {
+      dateFormat: 'm-d',
+      defaultDate,
+      disableMobile: true,
+      clickOpens: false,
+      onReady: (_, dateStr) => {
+        if (dateStr) label.textContent = dateStr;
+      },
+      onChange: (_, dateStr) => {
+        if (dateStr) label.textContent = dateStr;
+      }
     });
+
+    label.addEventListener('click', e => {
+      e.stopPropagation();
+      picker.open();
+    });
+  });
 }
 // 아래 코드는 initFlightCardToggles() 대신 사용할 함수예요
 function initFlightCardAppendDetails() {
@@ -133,27 +132,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 window.addEventListener('load', function () {
-    const swiper = new Swiper(".mySwiper", {
-        slidesPerView: "auto",
-        spaceBetween: 20,
-        grabCursor: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        freeMode: true
-    });
-    const bannerSwiper = new Swiper('.myBannerSwiper', {
-        loop: true,
-        autoplay: {
-            delay: 4000,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'fraction'
-        }
-    });
+  const swiper = new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+    spaceBetween: 20,
+    grabCursor: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    freeMode: true
+  });
+  const bannerSwiper = new Swiper('.myBannerSwiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction'
+    }
+  });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

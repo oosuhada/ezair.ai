@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
     <link rel="stylesheet" href="./style/Resrvation.css">
     <link rel="stylesheet" href="../../common/common.css">
 
@@ -117,7 +117,8 @@
                 </div>
                 <div class="ai-input-box">
                     <input type="text" class="ai-input" value="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
-                    <button class="ai-search-btn"></button>
+                    <button class="ai-search-btn"><div id="ai-loading-lottie"></div></button>
+                    <div class="ai-notification" id="ai-notification"></div>
                 </div>
                 <div id="searchResults">
                 </div>
