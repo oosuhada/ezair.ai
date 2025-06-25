@@ -1,8 +1,32 @@
 /* pkgtour.css */
 
 /* General styles */
+:root {
+    --blk: #1a1a1a;
+    --wht: #ffffff;
+    --gray700: #404040;
+    --gray500: #666666;
+    --gray300: #a3a3a3;
+    --gray100: #E5E5E5;
+    --gray50: #fafafa;
+    --gradient1: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
+    --gradient2: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+    --gradient3: linear-gradient(293deg, #1987FA 14.88%, #10C2A0 83.04%);
+    --box-shadow: 0px 3px 9px 0px rgba(37, 50, 67, 0.18), 0px 1px 1px 0px rgba(37, 50, 67, 0.03);
+    --primary: #1987fa;
+    --secondary: #10c2a0;
+    --accent: #41C5DF;
+    --banner-bg: #136dff;
+    --bg-light: #f4f4f4;
+    --border-radius: 8px;
+    --radius-pill: 9999px;
+}
+
 body {
-    font-family: 'Helvetica Neue', sans-serif; /* Adjusted to original spec or similar clean font */
+    font-family: 'NanumSquareRoundLight';
+    font-family: 'NanumSquareRound';
+    font-family: 'NanumSquareRoundBold';
+    font-family: 'NanumSquareRoundExtraBold';
     margin: 0;
     padding: 0;
     background-color: #F7F7F9;
@@ -29,6 +53,7 @@ body {
 .icon {
     font-size: 1.125rem; /* 18px */
     color: inherit; /* Inherit color from parent */
+    padding: 6px;
 }
 
 .icon-sm {
@@ -123,7 +148,7 @@ body {
 /* Main Banner Section */
 .main-banner {
     width: 100%;
-    background-color: #9177F9;
+    background-color: var(--accent);
     position: relative;
     overflow: hidden;
     padding: 2.5rem 0; /* py-10 */
@@ -168,7 +193,7 @@ body {
 
 .banner-title {
     color: white;
-    font-size: 2.3rem; /* text-3xl */
+    font-size: 2.25rem; /* text-3xl */
     font-weight: 700;
     margin-bottom: 0.5rem; /* mb-2 */
 }
@@ -205,7 +230,9 @@ body {
 .search-section {
     max-width: 1110px;
     margin: 0 auto;
-    padding: 2rem 20px; /* py-8 */
+    padding: 0px 20px; /* py-8 */
+    padding-top: 7rem;
+    padding-bottom: 2rem;
     margin-top: -4rem; /* -mt-16 */
     position: relative;
     z-index: 20;
@@ -239,12 +266,12 @@ body {
 }
 
 .search-tab-button:hover {
-    color: #8349F5;
+    color: var(--primary);
 }
 
 .search-tab-button-active {
-    color: #8349F5;
-    border-bottom: 2px solid #9362F5;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
     font-weight: 700;
 }
 
@@ -262,6 +289,7 @@ body {
     border-radius: 0.75rem; /* rounded-xl */
     border: 1px solid #F0F0F3; /* border border-gray-200 */
     padding: 0.75rem; /* p-3 */
+    height: 45px;
 }
 
 .search-input-field {
@@ -269,6 +297,7 @@ body {
     background-color: transparent;
     outline: none;
     color: #555558;
+    font-size: 0.875rem;
     font-weight: 700;
     border: none;
     padding: 0;
@@ -282,6 +311,7 @@ body {
     flex-grow: 1;
     color: #555558;
     font-weight: 700;
+    font-size: 0.875rem;
 }
 
 .search-input-actions {
@@ -301,6 +331,9 @@ body {
     cursor: pointer;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
     transition: background-color 0.15s ease-in-out;
+    height: 45px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    flex-direction: row;
 }
 
 .search-filter-button:hover {
@@ -312,15 +345,18 @@ body {
     font-weight: 700;
     font-size: 0.875rem; /* text-sm */
     margin-left: 0.5rem;
+    white-space: nowrap;  /* 줄바꿈 방지 */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* 너무 길면 말줄임 */
 }
 
 .search-button {
-    background-color: #9362F5;
+    background-color: var(--primary);
     color: white;
     border-radius: 0.75rem;
     padding: 0.75rem 1.5rem; /* py-3 px-6 */
     font-weight: 500;
-    font-size: 1.125rem; /* text-lg */
+    font-size: 0.875rem; /* text-lg */
     flex-shrink: 0;
     border: none;
     cursor: pointer;
@@ -328,7 +364,7 @@ body {
 }
 
 .search-button:hover {
-    background-color: #7B4CD0; /* Darker purple on hover */
+    background-color: var(--secondary); /* Darker purple on hover */
 }
 
 
@@ -342,6 +378,7 @@ body {
 .category-list {
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow-x: auto;
     gap: 1.5rem; /* space-x-6 */
     padding-bottom: 1rem; /* py-4 */
@@ -413,7 +450,7 @@ body {
 .ad-banner-content {
     width: 100%;
     height: 96px; /* h-24 */
-    background-color: #006AD5;
+    background-color: #136DFF;
     border-radius: 1.5rem; /* rounded-2xl */
     overflow: hidden;
     display: flex;
@@ -423,7 +460,7 @@ body {
 }
 
 .ad-banner-image {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     object-fit: cover;
 }
@@ -517,40 +554,41 @@ body {
 }
 
 .product-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Default to single column */
-    gap: 1.5rem; /* gap-6 */
-    margin-bottom: 2rem; /* mb-8 */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem; /* gap-6 */
+  margin-bottom: 2rem; /* mb-8 */
 }
 
 .product-card {
-    background-color: white;
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-md */
-    overflow: hidden;
-    padding-bottom: 1rem; /* pb-4 */
+  background-color: white;
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  padding-bottom: 1rem;
 }
 
 .product-card-image-wrapper {
-    position: relative;
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 0.75rem; /* 전체 radius 유지 */
 }
 
 .product-card-image {
-    width: 100%;
-    height: 160px; /* h-40 */
-    object-fit: cover;
-    border-top-left-radius: 0.75rem; /* rounded-t-xl */
-    border-top-right-radius: 0.75rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.75rem; /* 이미지에도 radius 적용 */
 }
 
 .image-overlay {
-    position: absolute;
-    inset: 0;
-    bottom: 0;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 72%); /* bg-gradient-to-t from-black via-transparent to-transparent opacity-70 */
-    border-bottom-left-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 72%);
+  border-radius: 0.75rem; /* 오버레이도 동일 radius */
+  pointer-events: none;
 }
 
 .product-badge {
@@ -565,11 +603,11 @@ body {
 }
 
 .product-badge.green {
-    background-color: #03AA5A; /* green-600 */
+    background-color: var(--primary); /* green-600 */
 }
 
 .product-badge.red {
-    background-color: #FC4C4E; /* red-500 */
+    background-color: var(--secondary); /* red-500 */
 }
 
 .product-date {
@@ -614,7 +652,7 @@ body {
 .product-points {
     display: flex;
     align-items: center;
-    color: #03AA5A; /* green-600 */
+    color: var(--primary); /* green-600 */
     font-size: 0.75rem; /* text-xs */
     font-weight: 700;
 }
@@ -684,7 +722,7 @@ body {
 }
 
 .filter-button {
-    background-color: #F7F7F9;
+    background-color: var(--gray100);
     border-radius: 9999px; /* rounded-full */
     padding: 0.5rem 1.25rem; /* px-5 py-2 */
     font-size: 0.875rem; /* text-sm */
@@ -697,7 +735,7 @@ body {
 }
 
 .filter-button.active {
-    background-color: #9362F5;
+    background-color: var(--primary);
     color: white;
     font-weight: 700;
 }
@@ -737,7 +775,13 @@ body {
 
 /* Side Content Column (Aside) */
 .side-content-column {
+    display: inline-block;
     width: 100%;
+    height: 270px;
+    position: static;
+    transform: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
 }
 
 .side-info-box {
@@ -905,14 +949,13 @@ body {
     .main-content-area {
         flex-direction: column; /* Remain column on small/medium */
     }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
-    }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    }
     .header-auth-text {
         font-size: 1rem; /* lg:text-base */
     }
@@ -958,6 +1001,9 @@ body {
 
 /* Large devices (desktops, 1024px and up) */
 @media (min-width: 1024px) {
+    .product-grid {
+    grid-template-columns: repeat(4, 1fr); /* 1024px 이상: 4열 */
+    }
     .search-inputs-grid {
         grid-template-columns: repeat(5, 1fr); /* lg:grid-cols-5 */
     }
@@ -976,17 +1022,9 @@ body {
         flex-direction: row; /* lg:flex-row */
     }
 
-    .product-listings-column {
+    /* .product-listings-column {
         width: 66.666667%; /* lg:w-2/3 */
-    }
-
-    .side-content-column {
-        width: 33.333333%; /* lg:w-1/3 */
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
-    }
+    /* } */
 
     .banner-shape-bottom-left {
         width: 160px; /* lg:w-40 */
@@ -998,5 +1036,17 @@ body {
 
     .banner-shape-bottom-right {
         width: 256px; /* lg:w-64 */
+    }
+}
+
+@media (min-width: 1800px){
+        .side-content-column {
+        width: 280px;
+        height: 270px;
+        position: fixed;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        margin-top: 0;
     }
 }
