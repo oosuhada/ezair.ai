@@ -3,45 +3,6 @@
   max-width: 1200px;
 }
 
-/* Header */
-.custom-header {
-  background: #47AAB2;
-}
-
-.custom-login-link {
-  color: #47AAB2; /* This color is from the original, but hidden behind white in the HTML. Keeping for explicit clarity if needed. */
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.custom-login-button-bg {
-  background-image: url('https://placehold.co/76x54');
-}
-
-.custom-login-button {
-  font-family: 'Nanum Gothic';
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 28px;
-}
-
-.custom-navbar-bottom {
-  background: #E6EBEF;
-}
-
-.custom-navbar-bottom a {
-  font-size: 16px;
-  font-family: 'Helvetica Neue';
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.custom-navbar-bottom a.text-teal-600 {
-  color: #47AAB2;
-  border-bottom: 2px #47AAB2 solid;
-}
-
 /* Hero Section */
 .custom-hero-section {
   background: #47AAB2;
@@ -409,70 +370,6 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
-}
-
-/* Footer */
-.custom-footer {
-  background: #F7F7F7;
-  border-top: 1px #EBEDF2 solid;
-}
-
-.custom-footer a {
-  color: #424242;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 15.60px;
-}
-
-.custom-footer a.font-bold {
-  font-weight: 700;
-}
-
-.custom-footer-info p {
-  color: #737373;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15.60px;
-}
-
-.custom-footer-info p:last-of-type {
-  line-height: 18px;
-}
-
-.custom-naver-logo {
-  margin-top: 15px;
-}
-
-/* Footer dividers */
-.custom-footer div > a + a {
-  position: relative;
-}
-
-.custom-footer div > a + a::before {
-  content: '';
-  position: absolute;
-  left: -8px; /* Adjust as needed */
-  top: 50%;
-  transform: translateY(-50%);
-  height: 11px;
-  border-left: 1px #C9C9C9 solid;
-}
-
-/* Footer info dividers */
-.custom-footer-info p span + span {
-  position: relative;
-  margin-left: 10px;
-  padding-left: 10px;
-}
-
-.custom-footer-info p span + span::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 11px;
-  border-left: 1px #C9C9C9 solid;
 }
 
 /* Popup */

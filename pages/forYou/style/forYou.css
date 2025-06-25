@@ -1,44 +1,3 @@
-/* Base Styles */
-:root {
-    --primary-blue: #1987FA;
-    --gradient1: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
-    --dark-blue-gradient-start: #3496A4;
-    --dark-blue-gradient-end: #3060DA;
-    --light-blue-gradient-start: #10C2A0;
-    --light-blue-gradient-end: #1987FA;
-    --dark-section-gradient-start: #10C2A0;
-    --dark-section-gradient-end: #1987FA;
-    --light-bg: #F5F9FE;
-    --gray-bg: #EBEDF2;
-    --light-gray-border: #DFE6ED;
-    --text-dark: #242424;
-    --text-medium: #424242;
-    --text-light: #8F8F8F;
-    --text-accent: #1987FA;
-    --border-light: #F1F1F1;
-    --border-medium: #D9D9D9;
-    --border-dark: #E2E5E8;
-    --shadow-light: rgba(25, 90, 238, 0.13);
-    --shadow-medium: rgba(23, 68, 148, 0.20);
-    --shadow-dark: rgba(0, 0, 0, 0.08);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'NanumSquareRoundLight';
-    font-family: 'NanumSquareRound';
-    font-family: 'NanumSquareRoundBold';
-    font-family: 'NanumSquareRoundExtraBold';
-    color: var(--text-dark);
-    line-height: 1.5;
-    background-color: white;
-}
-
 .page-container {
     display: flex;
     flex-direction: column;
@@ -434,39 +393,6 @@ section {
         padding: 0 20px;
     }
 
-    .header-top-bar, .header-nav {
-        height: 50px; /* Slightly reduced height */
-    }
-
-    .logo-group {
-        gap: 8px;
-    }
-
-    .logo-1 { width: 45px; height: 8px; }
-    .logo-2 { width: 60px; height: 18px; }
-    .logo-3 { width: 50px; height: 15px; }
-
-    .login-info {
-        gap: 10px;
-    }
-
-    .login-status {
-        font-size: 12px;
-    }
-
-    .login-button {
-        padding: 3px 8px;
-        font-size: 10px;
-    }
-
-    .nav-links {
-        gap: 20px;
-    }
-
-    .nav-item {
-        font-size: 15px;
-    }
-
     .recent-hotels-banner {
         padding: 20px;
     }
@@ -542,74 +468,12 @@ section {
     .hotel-rating .divider {
         margin: 0 3px;
     }
-
-    .footer-action-buttons {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .action-btn {
-        width: auto;
-        justify-content: center;
-    }
-
-    .footer-company-info {
-        grid-template-columns: 1fr; /* Stack company info vertically */
-        padding: 0 20px; /* Add padding */
-        text-align: left;
-    }
 }
 
 /* Mobile (up to 767px) */
 @media (max-width: 767px) {
     .container {
         padding: 0 10px; /* More padding for very small screens */
-    }
-
-    .header-top-bar {
-        height: auto; /* Allow height to adjust */
-        padding: 10px 0;
-    }
-
-    .header-top-content {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .logo-group {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .login-info {
-        width: 100%;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .login-status, .login-button, .menu-button {
-        font-size: 11px;
-        padding: 3px 6px;
-    }
-
-    .header-nav {
-        height: auto;
-        padding: 10px 0;
-    }
-
-    .nav-links {
-        flex-wrap: nowrap; /* Keep horizontal scroll for nav */
-        justify-content: flex-start;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .nav-item {
-        font-size: 14px;
-        padding: 0 8px;
     }
 
     .main-content {
@@ -721,58 +585,5 @@ section {
 
     .scroll-arrow {
         display: none; /* Hide scroll arrows on mobile, rely on touch scrolling */
-    }
-
-    .footer-action-buttons {
-        gap: 8px;
-    }
-
-    .action-btn {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-
-    .footer-main {
-        padding: 15px 10px;
-    }
-
-    .footer-link-btn {
-        margin: 0 3px 10px;
-        font-size: 12px;
-        padding: 5px 10px;
-    }
-
-    .footer-disclaimer {
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-
-    .footer-sub-link {
-        font-size: 11px;
-        margin-bottom: 15px;
-    }
-
-    .footer-company-info {
-        gap: 8px 10px;
-        padding: 0 10px;
-    }
-
-    .info-group {
-        flex-direction: column; /* Stack label and value vertically */
-        align-items: flex-start;
-        gap: 0;
-    }
-
-    .info-label, .info-value {
-        font-size: 11px;
-    }
-
-    .footer-legal-links {
-        gap: 8px 10px;
-        margin-bottom: 15px;
-    }
-
-    .legal-link {
-        font-size: 11px;
     }
 }

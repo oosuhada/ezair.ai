@@ -5,39 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flight Search</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/pages/hotels/style/hotels.css">
+  <link rel="stylesheet" href="./style/hotels.css">
+  <link rel="stylesheet" href="../../common/common.css">
 </head>
 <body class="bg-gray-100 font-sans">
-  <header class="bg-teal-600 text-white custom-header">
-    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-center items-center">
-      <div class="flex items-center space-x-4">
-        <div class="w-14 h-3 bg-white"></div>
-        <div class="w-20 h-6 bg-white"></div>
-        <div class="w-16 h-5 bg-white"></div>
-      </div>
-      <nav class="flex space-x-4 mt-4 md:mt-0 md:ml-auto">
-        <a href="#" class="text-sm font-bold text-teal-600 custom-login-link">로그인 후 등급확인</a>
-        <div class="w-22 h-4 bg-white"></div>
-        <div class="flex items-center space-x-2">
-          <div class="w-20 h-14 bg-[url('https://placehold.co/76x54')] custom-login-button-bg">
-            <button class="text-white text-xs font-light custom-login-button">로그인</button>
-          </div>
-          <div class="w-5 h-6 bg-white"></div>
-        </div>
-      </nav>
-    </div>
-    <div class="bg-gray-200 custom-navbar-bottom">
-      <div class="container mx-auto px-4 py-4 flex justify-center space-x-6">
-        <a href="#" class="text-black font-bold">항공</a>
-        <a href="#" class="text-teal-600 font-bold border-b-2 border-teal-600">호텔</a>
-        <a href="#" class="text-black font-bold">패키지</a>
-        <a href="#" class="text-black font-bold">출장</a>
-        <a href="#" class="text-black font-bold">For U</a>
-        <a href="#" class="text-black font-bold">이벤트・혜택</a>
-      </div>
-    </div>
-  </header>
-
+        <header>
+            <div class="inner">
+                <nav class="gnb">
+                    <div class="logo"><a href="../../index.html"><img src="../../image/EZAIR_bk.svg" alt="이지에어 로고"></a></div>
+                    <ul>
+                        <li class="air"><a href="../../index.html">항공</a></li>
+                        <li class="hotel"><a href="../hotels/hotels.html">호텔</a></li>
+                        <li class="package"><a href="../pkgtour/pkgtour.html">패키지</a></li>
+                        <li class="forU"><a href="../forYou/forYou.html">EZ for you</a><img src="../../image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                    </ul>
+                </nav>
+                <div class="btns">
+                    <a class="cs" href="../cs/cs.html"><img src="../../image/gnb_cs_bk.svg" alt="이지에어 고객센터"></a>
+                    <a class="user" href="../myPage/myPage.html"><img src="../../image/gnb_user_bk.svg" alt="이지에어 마이페이지"></a>
+                </div>
+            </div>
+        </header>
   <main class="container mx-auto px-4 py-8">
     <section class="relative bg-teal-600 text-white text-center py-10 custom-hero-section">
       <img src="https://placehold.co/1920x170" alt="Hero Image" class="w-full h-44 object-cover">
@@ -248,28 +236,38 @@
     </section>
   </main>
 
-  <footer class="bg-gray-50 border-t py-8 custom-footer">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-        <a href="#" class="text-gray-600">로그인</a>
-        <a href="#" class="text-gray-600">전체서비스</a>
-        <a href="#" class="text-gray-600">공유하기</a>
-        <a href="#" class="text-gray-600 font-bold">개인정보처리방침</a>
-        <a href="#" class="text-gray-600">이용약관</a>
-        <a href="#" class="text-gray-600">고객센터</a>
-        <a href="#" class="text-gray-600">사업자정보 공개</a>
-      </div>
-      <div class="text-gray-500 text-sm mt-4 custom-footer-info">
-        <p>사업자 등록번호: 220-81-62517 | 통신판매번호: 2006-경기성남-0692</p>
-        <p>대표이사: 최수연 | 전화번호: 1588-3820(대표전화/고객센터)</p>
-        <p>이메일: ccnaver@naver.com</p>
-        <p>주소: 경기도 성남시 분당구 정자일로 95 NAVER 1784, 13561</p>
-        <p>호스팅 서비스 제공: NAVER Cloud</p>
-        <p class="mt-4">네이버 호텔은 제휴사에서 제공하는 호텔정보 및 가격정보를 비교, 중개하는 서비스로서, 네이버(주)는 통신판매의 당사자가 아닙니다. 호텔 검색 결과 및 거래에 관한 의무와 책임은 판매자에게 있습니다.</p>
-        <img src="https://placehold.co/74x14" alt="Naver" class="mt-4 custom-naver-logo">
-      </div>
-    </div>
-  </footer>
+         <!-- Footer Section -->
+           <footer class="site-footer">
+        <div class="footer-actions">
+            <button class="share-btn">
+                <img src="../../image/bottom_bt1.svg" alt="공유하기"> 공유하기
+            </button>
+            <button class="top-btn">
+                <img src="../../image/bottom_bt2.svg" alt="맨위로"> 맨위로
+            </button>
+        </div>
+
+        <div class="footer-links">
+            <button class="footer-login">로그인</button>
+            <button class="footer-service">전체서비스</button>
+        </div>
+
+        <p class="footer-desc">
+            이지에어 항공권은 제휴사에서 제공하는 항공권 스케줄 및 가격정보를 비교, 중개하는 서비스로서 이지에어(주)는 통신판매의 당사자가 아니며, 항공권 검색 결과, 구매 및 환불 등과
+            관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+
+        <p class="footer-company">이지에어(주) 사업자 정보</p>
+
+        <div class="footer-info">
+            <a href="#">사업자정보 공개</a> |
+            <a href="#">이용약관</a> |
+            <a href="#" class="highlight">개인정보처리방침</a> |
+            <a href="#">고객센터</a>
+        </div>
+
+        <p class="footer-copy">&copy; EZ AIR corp.</p>
+    </footer>
 
   <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden custom-popup-overlay">
     <div class="bg-white rounded-lg p-6 w-full max-w-md custom-popup-content">
@@ -280,6 +278,7 @@
     </div>
   </div>
 
-  <script src="/pages/hotels/script/hotels.js"></script>
+  <script src="./script/hotels.js"></script>
+  <script src="../../common/common.js"></script>
 </body>
 </html>

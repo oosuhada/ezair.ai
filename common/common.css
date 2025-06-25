@@ -1,0 +1,313 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css); /* For 'NanumSquare' */
+@import url(https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2109@1.0/NanumSquareRound.css); /* For 'NanumSquareRound' variants */
+
+/* Base Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --blk: #1a1a1a;
+  --wht: #ffffff;
+  --gray700: #404040;
+  --gray500: #666666;
+  --gray300: #a3a3a3;
+  --gray100: #E5E5E5;
+  --gray50: #fafafa;
+  --gradient1: linear-gradient(132deg, #1987FA 0%, #10C2A0 94.35%);
+  --gradient2: linear-gradient(114deg, #1987FA 15.38%, #10C2A0 84.62%);
+  --gradient3: linear-gradient(293deg, #1987FA 14.88%, #10C2A0 83.04%);
+  --box-shadow: 0px 3px 9px 0px rgba(37, 50, 67, 0.18), 0px 1px 1px 0px rgba(37, 50, 67, 0.03);
+  --primary: #1987fa;
+  --secondary: #10c2a0;
+  --accent: #41C5DF;
+  --banner-bg: #136dff;
+  --bg-light: #f4f4f4;
+  --border-radius: 8px;
+  --radius-pill: 9999px;
+  --box-shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  --box-shadow-medium: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'NanumSquareRound', 'NanumSquare', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F7F7F9;
+  color: #222225;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* --- */
+
+/* Header Section */
+header {
+    width: 100%;
+    background-color: var(--wht);
+    border-bottom: 1px solid var(--gray100);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--box-shadow-light);
+}
+
+header .inner {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+header .gnb {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+header .gnb .logo img {
+    height: 24px;
+    vertical-align: middle;
+}
+
+header .gnb ul {
+    display: flex;
+    gap: 30px;
+}
+
+header .gnb ul li a {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blk);
+    position: relative;
+    padding: 10px 0;
+}
+
+header .gnb ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+header .gnb ul li a:hover::after,
+header .gnb ul li.active a::after {
+    width: 100%;
+}
+
+header .gnb ul li.forU {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header .gnb ul li.forU img {
+    height: 16px;
+}
+
+header .btns {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header .btns a img {
+    height: 24px;
+    transition: opacity 0.2s ease;
+}
+
+header .btns a:hover img {
+    opacity: 0.7;
+}
+
+/* --- */
+
+/* Footer */
+
+.site-footer {
+    background-color: var(--wht);
+    padding: 30px 20px 50px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--gray500);
+    line-height: 1.6;
+    border-top: 1px solid var(--gray100);
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    border-bottom: 1px solid var(--gray100);
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+}
+
+.footer-actions button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-family: 'NanumSquareRound', sans-serif;
+    color: var(--gray700);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.footer-actions button:hover {
+  color: var(--primary);
+}
+
+.footer-actions img {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-links button {
+    border: 1px solid var(--gray300);
+    padding: 7px 16px;
+    font-size: 13px;
+    font-family: 'NanumSquareRound', sans-serif;
+    background: var(--wht);
+    color: var(--gray500);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.footer-links button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--gray50);
+}
+
+.footer-desc {
+    max-width: 1000px;
+    margin: 0 auto 10px;
+    color: var(--gray500);
+    font-size: 12px;
+}
+
+.footer-company {
+    font-size: 14px;
+    color: var(--blk);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.footer-info {
+    font-size: 13px;
+    color: var(--gray500);
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-info a {
+    color: var(--gray500);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-info a:hover {
+  color: var(--primary);
+}
+
+.footer-info .highlight {
+    font-weight: bold;
+    color: var(--blk);
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: var(--gray300);
+    margin-top: 8px;
+}
+
+/* --- */
+
+/* Responsive Design */
+
+@media (max-width: 1023px) {
+  header .inner {
+    padding: 0 15px;
+    height: 60px;
+  }
+  header .gnb {
+    gap: 20px;
+  }
+  header .gnb ul {
+    gap: 15px;
+  }
+  header .gnb ul li a {
+    font-size: 16px;
+  }
+  .footer-actions, .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-actions button, .footer-links button {
+      width: 80%;
+      max-width: 250px;
+      justify-content: center;
+  }
+  .site-footer {
+      padding: 20px 15px 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  header .inner {
+    position: relative;
+  }
+  /* On mobile, the full nav might be hidden behind a menu icon */
+  header .gnb ul {
+    display: none;
+  }
+  .footer-actions button, .footer-links button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+  .footer-desc, .footer-company, .footer-info, .footer-copy {
+      font-size: 11px;
+  }
+  .site-footer {
+      padding: 15px 10px 30px;
+  }
+  .footer-info {
+    gap: 5px 10px;
+  }
+  .footer-info a {
+    padding: 0 5px;
+  }
+}
