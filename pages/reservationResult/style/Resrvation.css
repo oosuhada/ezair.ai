@@ -319,13 +319,17 @@ body {
     position: relative; 
     overflow: hidden; 
 <<<<<<< HEAD
+<<<<<<< HEAD
     background-color: var(--primary);
 =======
 >>>>>>> b96495e (예약 페이지: AI 검색 버튼에 로딩 애니메이션 추가 및 스타일 수정)
+=======
+>>>>>>> origin/0625_sumin
     transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
     will-change: transform, box-shadow; /* GPU 가속 힌트 */
 }
 #ai-loading-lottie {
+<<<<<<< HEAD
 <<<<<<< HEAD
   width: 32px;
   height: 32px;
@@ -375,6 +379,8 @@ body {
 }
 
 =======
+=======
+>>>>>>> origin/0625_sumin
     width: 24px;
     height: 24px;
     position: absolute;
@@ -384,7 +390,10 @@ body {
     pointer-events: none;
 }
 
+<<<<<<< HEAD
 >>>>>>> b96495e (예약 페이지: AI 검색 버튼에 로딩 애니메이션 추가 및 스타일 수정)
+=======
+>>>>>>> origin/0625_sumin
 
 /* -----------------------서치 */
 .row1 {

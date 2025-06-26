@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     initTripTabs();
     initFlatpickr3();
 =======
@@ -9,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // initPassengerDropdown();
   initFlatpickr3();
 >>>>>>> b96495e (예약 페이지: AI 검색 버튼에 로딩 애니메이션 추가 및 스타일 수정)
+=======
+  initTripTabs();
+  // initPassengerDropdown();
+  initFlatpickr3();
+>>>>>>> origin/0625_sumin
 });
 
 const testBtn = document.querySelector('#passenger-btn');
