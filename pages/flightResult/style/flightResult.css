@@ -117,7 +117,7 @@
     width: 100%;
     height: 200px;
     padding: 13px 16px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.6;
     color: var(--gray300);
     background-color: #f4f4f4;
@@ -269,18 +269,20 @@
 .price-prediction {
     text-align: left;
     color: #337ab7;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .prediction-text {
     font-size: 0.9em;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
     color: var(--gray500);
+
 }
 
 .prediction-date {
     font-weight: bold;
     color: var(--banner-bg);
+    margin-bottom: 6px;
 }
 
 .prediction-date_txt {
@@ -1070,7 +1072,7 @@
 
 .flight_con_l img {
     height: 20px;
-    margin-right: 4px;
+    margin-right: 8px;
 }
 
 .flight_con_l h3 {
@@ -1125,8 +1127,8 @@
     gap: 4px;
 }
 
-.blue_txt {
-    color: var(--primary);
+.gray_txt {
+    color: var(--gray300);
     font-size: 14px;
 }
 
@@ -1156,11 +1158,12 @@
 
 .flightconR_top p {
     text-align: center;
+    line-height: 28px;
 }
 
 .flightconR_top p span {
     font-size: 18px;
-    color: var(--gray700);
+    color: var(--gray300);
     font-weight: normal;
     margin-right: 8px;
 
@@ -1176,17 +1179,13 @@
     border: none;
     width: 242px;
     height: 48px;
-    background: var(--primary);
-    color: var(--wht);
+    background: var(--wht);
+    color: var(--primary);
     border-radius: 8px;
+    border:1px solid var(--primary);
     cursor: pointer;
     font-size: 18px;
 }
-
-/* .reserve_bt a{
-    text-decoration: none;
-    font-style: none;
-} */
 
 
 
