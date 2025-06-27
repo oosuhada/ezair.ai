@@ -199,7 +199,7 @@ function renderCarouselCard(destination) {
                 <div id="card-con-left">
                     <div class="card-image-wrap">
                         <img src="${destination.image}" alt="${destination.name}" class="card-image">
-                        <span class="card-badge">BEST</span>
+                        <span class="card-badge"><img src="../../image/ai-fill.svg">BEST</span>
                     </div>
 
                 </div>
