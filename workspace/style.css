@@ -850,6 +850,7 @@ text{
   display: flex;
   flex-direction: column;
   padding: 24px 34px 0px 0px;
+  align-items: flex-end;
 
 }
 
@@ -871,7 +872,7 @@ text{
 
 .book-now-button {
   margin-top: 15px;
-  width: 100%;
+  width: 70%;
   background: var(--gradient-blue-green);
   color: var(--wht);
   padding: 10px 18px;
