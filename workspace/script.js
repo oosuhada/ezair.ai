@@ -1,17 +1,17 @@
 // Data for destinations
 const destinationsData = [
     {
-        id: 'paris',
-        name: '파리, 프랑스',
-        type: ['city', 'romantic', 'culture'],
+        id: 'ny',
+        name: '뉴욕, 서밋 원 반더빌트 투어',
+        type: ['city', 'adventure', 'culture'],
         aiMatch: 95,
-        aiReason: '낭만적인 휴가와 예술 경험을 찾는 당신에게 완벽한 도시',
+        aiReason: '뉴욕의 화려한 도시와 아름다운 문화예술을 즐기고 싶은 당신을 위한 완벽한 선택',
         aiInfo: '원 반더빌트는 뉴욕에서 네 번째로 높은 마천루로, <br>서밋 전망대는 가장 인기 있는 전망대 중 하나입니다.',
         price: '₩450,000',
         duration: '5일 4박',
-        image: '../../../image/keyword_paris.png',
-        description: '에펠탑, 루브르 박물관, 세느강 유람선을 <br>즐기며 파리의 낭만을 만끽하세요.',
-        keywords: ['에펠탑', '루브르', '낭만', '미식', '예술']
+        image: '../../../image/keyword_ny1.png',
+        description: '뉴욕의 화려한 도시와 아름다운 문화예술을 <br>즐기고 싶은 당신을 위한 완벽한 선택',
+        keywords: ['도시', '액티비티','예술']
     },
     {
         id: 'bali',

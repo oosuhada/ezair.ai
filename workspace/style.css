@@ -530,11 +530,15 @@ main {
 .word.active {
   width: 40px;
   height: 100%;
-  background-color: var(--wht);
+  background-color: var(--primary);
   fill: var(--wht);
   display: block;
-  font-weight: bold;
+  font-weight: bolder;
+  font-size: 38px;
   transform: scale(1.25) translateY(-8px);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--wht);
   /* filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); */
 }
 /* 
@@ -830,6 +834,7 @@ main {
   margin-top: 4px;
   font-size: 18px;
   color: var(--gray500);
+  line-height: 28px;
 }
 
 .price-bt {
