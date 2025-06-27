@@ -491,9 +491,9 @@ main {
 
 .ai-panel-title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: bold;
   margin-bottom: 16px;
-  color: var(--blk);
+  color: var(--primary);
 }
 
 .word-cloud-container {
@@ -510,7 +510,7 @@ main {
 
 .word {
   position: absolute;
-  display: block;
+  display:inline-block;
   cursor: pointer;
   transition: transform 0.3s ease, fill 0.3s ease, filter 0.3s ease;
   font-weight: 600;
@@ -518,9 +518,13 @@ main {
   border-radius: 8px;
   padding: 20px;
   border: 1px solid var(--wht);
+  line-height: 24px;
   /* text-shadow: 1px 1px 2px rgba(0,0,0,0.1); */
 }
-
+text{
+  display: inline-block;
+  white-space: pre-wrap;
+}
 .word:hover {
   transform: scale(1.2) translateY(-5px);
   fill: var(--secondary);
@@ -532,12 +536,12 @@ main {
   height: 100%;
   background-color: var(--primary);
   fill: var(--wht);
-  display: block;
+  display: inline-block;
   font-weight: bolder;
   font-size: 38px;
   transform: scale(1.25) translateY(-8px);
   border-radius: 8px;
-  padding: 20px;
+  padding: 4px 8px;
   border: 1px solid var(--wht);
   /* filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)); */
 }
@@ -551,7 +555,7 @@ main {
 
 .word-tooltip {
   position: absolute;
-  display: inline-blockl;
+  display: inline-block;
   width: 40px;
   background-color: var(--wht);
   color: var(--wht);
@@ -709,7 +713,7 @@ main {
 
 .card-image-wrap {
   position: relative;
-  max-width: 310px;
+  max-width: 390px;
   height: 444px;
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -791,7 +795,7 @@ main {
   padding: 10px;
   border-radius: var(--border-radius);
   border: 1px solid var(--primary-lighter);
-  width: 100%;
+  width: 428px;
   height: 102px;
 }
 
