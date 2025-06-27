@@ -142,37 +142,41 @@ document.addEventListener('DOMContentLoaded', function() {
         aiLoadingLottieContainer = document.getElementById('ai-loading-lottie');
 
         // Re-initialize tag rolling animation if it's inside the modal content
-        const tagWrapper = modalFlightResultsContainer.querySelector('.tag-wrapper');
-        const tagItems = modalFlightResultsContainer.querySelectorAll('.tag-item');
-        if (tagWrapper && tagItems.length > 1) {
-            const tagCount = tagItems.length;
-            const tagHeight = tagItems[0].offsetHeight;
-            let currentIndex = 0;
-            const firstItemClone = tagItems[0].cloneNode(true);
-            tagWrapper.appendChild(firstItemClone);
+        // const tagWrapper = modalFlightResultsContainer.querySelector('.tag-wrapper');
+        // const tagItems = modalFlightResultsContainer.querySelectorAll('.tag-item');
+        // if (tagWrapper && tagItems.length > 1) {
+        //     const tagCount = tagItems.length;
+        //     const tagHeight = tagItems[0].offsetHeight;
+        //     let currentIndex = 0;
+        //     const firstItemClone = tagItems[0].cloneNode(true);
+        //     tagWrapper.appendChild(firstItemClone);
 
-            // Clear existing interval if any to prevent multiple intervals
-            if (tagWrapper._tagInterval) {
-                clearInterval(tagWrapper._tagInterval);
-            }
+        //     // Clear existing interval if any to prevent multiple intervals
+        //     if (tagWrapper._tagInterval) {
+        //         clearInterval(tagWrapper._tagInterval);
+        //     }
 
-            function rollTags() {
-                currentIndex++;
-                gsap.to(tagWrapper, {
-                    y: -currentIndex * tagHeight,
-                    duration: 0.7,
-                    ease: 'power2.inOut',
-                    onComplete: () => {
-                        if (currentIndex === tagCount) {
-                            gsap.set(tagWrapper, { y: 0 });
-                            currentIndex = 0;
-                        }
-                    }
-                });
-            }
-            tagWrapper._tagInterval = setInterval(rollTags, 3000); // Store interval ID
-        }
+        //     function rollTags() {
+        //         currentIndex++;
+        //         gsap.to(tagWrapper, {
+        //             y: -currentIndex * tagHeight,
+        //             duration: 0.7,
+        //             ease: 'power2.inOut',
+        //             onComplete: () => {
+        //                 if (currentIndex === tagCount) {
+        //                     gsap.set(tagWrapper, { y: 0 });
+        //                     currentIndex = 0;
+        //                 }
+        //             }
+        //         });
+        //     }
+        //     tagWrapper._tagInterval = setInterval(rollTags, 3000); // Store interval ID
+        // }
+        
     }
+
+    
+    
 
     // Call initializeModalContent once to set up the initial modal state
     initializeModalContent();

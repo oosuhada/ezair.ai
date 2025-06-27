@@ -65,6 +65,7 @@ main {
   z-index: 20;
   display: flex;
   justify-content: center;
+  overflow: visible;
 }
 .search_box {
   width: 100%;
@@ -74,7 +75,7 @@ main {
   box-shadow: var(--box-shadow-medium);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 .search_box_top {
   display: flex;
@@ -107,6 +108,7 @@ main {
   flex-direction: column;
   align-items: stretch;
   padding: 20px 25px;
+  overflow: visible;
 }
 .search_box_mid {
   display: flex;
@@ -126,15 +128,19 @@ main {
   height: 28px;
 }
 
+
+
 .calendar-container {
   display: flex;
   align-items: center;
+  overflow: visible;
   gap: 10px;
 }
 .calendar-label {
   font-size: 14px;
   color: var(--gray700);
   margin-right: 6px;
+  position: relative;
 }
 #depart-calendar,
 #return-calendar {
@@ -143,6 +149,13 @@ main {
   padding: 8px 12px;
   width: 110px;
   font-size: 14px;
+}
+
+.flatpickr-calendar {
+  position: fixed;
+  top: 124px;
+    left: 605px;
+    right: auto;
 }
 .passenger-select-wrapper {
   position: relative;
@@ -215,8 +228,22 @@ main {
 .ai-search-btn { width: 36px; height: 36px; border: none; border-radius: 50%; background: var(--primary); cursor: pointer; }
 .ai-search-btn:after { content: '🔍'; color: #fff; font-size: 17px; }
 .ai-notification { margin-top: 7px; font-size: 13px; color: var(--accent); }
-.ai-tags { margin-top: 10px; display: flex; gap: 7px; font-size: 14px; color: var(--primary); }
 
+/* .ai-tags { margin-top: 10px;
+   display: flex; gap: 7px; font-size: 14px; color: var(--primary); }
+  
+.ai-tags {
+  overflow: hidden;       
+  height: 56px;           
+  position: relative;
+}
+.tag-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  transform: translateY(0);
+} */
 /* --- Checklist (오른쪽) --- */
 .top_right {
   position: absolute;

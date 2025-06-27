@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
         departPicker = flatpickr(departCalendar, {
             dateFormat: "Y-m-d",
             disableMobile: true,
-            appendTo: document.getElementById('depart-label').parentElement,
+            positionElement: document.getElementById('depart-label'),
+
+            
             onChange: function (selectedDates, dateStr) {
                 document.getElementById('depart-label').textContent = dateStr || "가는 날";
                 document.getElementById('depart-label').classList.toggle('selected', !!dateStr);
@@ -46,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         returnPicker = flatpickr(returnCalendar, {
             dateFormat: "Y-m-d",
             disableMobile: true,
-            appendTo: document.getElementById('return-label').parentElement,
+            positionElement: document.getElementById('return-label'),
+
             onChange: function (selectedDates, dateStr) {
                 document.getElementById('return-label').textContent = dateStr || "오는 날";
                 document.getElementById('return-label').classList.toggle('selected', !!dateStr);
