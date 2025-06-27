@@ -38,79 +38,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- 애니메이션 로직 추가 ---
 
-    // 1. AI 태그 롤링 애니메이션
-    const wrapper = document.querySelector(".tag-wrapper"); // Changed to querySelector as ID "tagWrapper" was not in HTML
-    if (wrapper) { // Ensure wrapper exists before proceeding
-        const items = Array.from(wrapper.children);
+    const container = document.querySelector('.ai-tags');
+    const wrapper = container.querySelector('.tag-wrapper');
+    const items = wrapper.querySelectorAll('.tag-item');
+    if (items.length < 3) return;  // 2개 이상 있어야 롤링
 
-        // tag-item을 2번 더 복제하여 총 3세트로 만듦
-        for (let i = 0; i < 2; i++) {
-            items.forEach(item => {
-                wrapper.appendChild(item.cloneNode(true));
-            });
+    const cloneCount = 3;  // ← 여기서 복제할 개수를 지정
+for (let i = 0; i < cloneCount; i++) {
+  const clone = items[i].cloneNode(true);
+  wrapper.appendChild(clone);
+}
+
+    // 2. 높이 계산 & 컨테이너 고정
+    const itemHeight = items[0].getBoundingClientRect().height;
+    // container.style.height = itemHeight + 'px';
+
+    // 3. 애니메이션
+    let index = 0;
+    setInterval(() => {
+        index++;
+        wrapper.style.transition = 'transform 0.6s ease';
+        wrapper.style.transform = `translateY(-${index * itemHeight}px)`;
+
+        // 마지막(복제)까지 올라갔으면 즉시 리셋
+        if (index >= items.length) {
+            setTimeout(() => {
+                wrapper.style.transition = 'none';
+                wrapper.style.transform = 'translateY(0)';
+                index = 0;
+            }, 600); // transition 시간과 동일하게
         }
-
-        // 애니메이션 시간 자동 계산 (선택)
-        const durationPerItem = 2; // 초
-        const totalItemCount = wrapper.children.length;
-        const totalDuration = durationPerItem * totalItemCount;
-
-        // Apply animation directly with GSAP if preferred for more control, or keep CSS animation.
-        // For a CSS-based rolling animation, ensure your CSS has the @keyframes and animation properties.
-        // If using GSAP for continuous rolling, it's a bit more complex, often involving xPercent.
-        // For the current setup, assuming CSS animation will handle the continuous rolling.
-    }
-
-
-    // 2. 추천 항공편(.recommend) 카드 등장 애니메이션
-    const recommendCards = gsap.utils.toArray(".recommend .swiper-slide");
-    if (recommendCards.length > 0) {
-        gsap.from(recommendCards, {
-            scrollTrigger: {
-                trigger: ".recommend",
-                start: "top 80%",
-                toggleActions: "play reverse play reverse", // Play on enter, reverse on leave, play on re-enter, reverse on re-leave
-                // markers: true, // Uncomment for debugging ScrollTrigger
-            },
-            opacity: 0,
-            y: 50,
-            duration: 2,
-            stagger: 0.1,
-            ease: "power2.out"
-        });
-    }
-
-    // 3. 테마별 여행지(.theme-travel) 카드 등장 애니메이션
-    const themeCards = gsap.utils.toArray(".theme-travel .theme-card");
-    if (themeCards.length > 0) {
-        gsap.from(themeCards, {
-            scrollTrigger: {
-                trigger: ".theme-travel",
-                start: "top 80%",
-                toggleActions: "play reverse play reverse", // Play on enter, reverse on leave, play on re-enter, reverse on re-leave
-                // markers: true, // Uncomment for debugging ScrollTrigger
-            },
-            opacity: 0,
-            y: 50,
-            duration: 2,
-            stagger: .35,
-            ease: "power2.out"
-        });
-    }
-
+    }, 3000);
 });
 
-window.addEventListener('load', function () {
-    const swiper = new Swiper(".mySwiper", {
-        slidesPerView: "auto",
-        spaceBetween: 20,
-        grabCursor: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+// 3. 테마별 여행지(.theme-travel) 카드 등장 애니메이션
+const themeCards = gsap.utils.toArray(".theme-travel .theme-card");
+if (themeCards.length > 0) {
+    gsap.from(themeCards, {
+        scrollTrigger: {
+            trigger: ".theme-travel",
+            start: "top 80%",
+            toggleActions: "play reverse play reverse", // Play on enter, reverse on leave, play on re-enter, reverse on re-leave
+            // markers: true, // Uncomment for debugging ScrollTrigger
         },
-        freeMode: true
+        opacity: 0,
+        y: 50,
+        duration: 2,
+        stagger: .35,
+        ease: "power2.out"
     });
+}
+
+
+
+window.addEventListener('load', function () {
+
     const bannerSwiper = new Swiper('.myBannerSwiper', {
         loop: true,
         autoplay: {
@@ -235,7 +217,7 @@ function renderWordCloud() {
     const svgHeight = svg.viewBox.baseVal.height;
 
     const placedBoxes = [];
-    
+
 
     function isOverlap(a, b) {
         return !(b.x > a.x + a.width ||
@@ -272,7 +254,7 @@ function renderWordCloud() {
             svg.appendChild(textElement);
             bbox = textElement.getBBox();
             svg.removeChild(textElement);
-            
+
             tries++;
         } while (placedBoxes.some(b => isOverlap(b, bbox)) && tries < 50);
 
@@ -310,7 +292,7 @@ function renderWordCloud() {
 
         svg.appendChild(textElement);
         svg.appendChild(tooltip);
-        
+
     });
 
     if (filteredDestinations.length > 0) {
