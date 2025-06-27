@@ -11,7 +11,7 @@ const destinationsData = [
         duration: '5일 4박',
         image: '../../../image/keyword_ny1.png',
         description: '뉴욕의 화려한 도시와 아름다운 문화예술을 즐기고 싶은 당신을 위한 완벽한 선택',
-        keywords: ['도시', '액티비티','예술']
+        keywords: ['도시', '액티비티', '예술']
     },
     {
         id: 'bali',
@@ -108,10 +108,22 @@ function renderWordCloud() {
     const svgWidth = svg.viewBox.baseVal.width;
     const svgHeight = svg.viewBox.baseVal.height;
 
+    const placedBoxes = [];
+    
+
+    function isOverlap(a, b) {
+        return !(b.x > a.x + a.width ||
+            b.x + b.width < a.x ||
+            b.y > a.y + a.height ||
+            b.y + b.height < a.y);
+    }
+
+
     filteredDestinations.forEach(dest => {
         const fontSize = 16 + (dest.aiMatch / 100) * 16;
         const colorHue = 240 - (dest.aiMatch - 80) * 5;
         const color = `hsl(${colorHue}, 70%, 50%)`;
+
 
         const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
         textElement.setAttribute('class', 'word');
@@ -124,6 +136,30 @@ function renderWordCloud() {
         textElement.setAttribute('role', 'button');
         textElement.setAttribute('aria-label', `Select ${dest.name.split(',')[0]}`);
         textElement.textContent = dest.name.split(',')[0];
+
+        let bbox, tries = 0;
+        do {
+            const x = Math.random() * (svgWidth * 0.7 - 50) + 50;
+            const y = Math.random() * (svgHeight * 0.7 - 50) + 50;
+            textElement.setAttribute('x', x);
+            textElement.setAttribute('y', y);
+            svg.appendChild(textElement);
+            bbox = textElement.getBBox();
+            svg.removeChild(textElement);
+            
+            tries++;
+        } while (placedBoxes.some(b => isOverlap(b, bbox)) && tries < 50);
+
+        placedBoxes.push(bbox);
+        // textElement.setAttribute('x', bbox.x);
+        // textElement.setAttribute('y', bbox.y + bbox.height * 0.8);
+        const margin = 4; // 가장자리 여백
+        const finalX = Math.max(margin, Math.min(bbox.x, svgWidth - bbox.width - margin));
+        // y는 텍스트 baseline 기준이므로 bbox.y+height*0.8 를 사용
+        const rawY = bbox.y + bbox.height * 0.8;
+        const finalY = Math.max(fontSize, Math.min(rawY, svgHeight - margin));
+        textElement.setAttribute('x', finalX);
+        textElement.setAttribute('y', finalY);
 
         textElement.onclick = () => {
             const index = filteredDestinations.findIndex(d => d.id === dest.id);
@@ -141,13 +177,14 @@ function renderWordCloud() {
 
         const tooltip = document.createElementNS("http://www.w3.org/2000/svg", "text");
         tooltip.setAttribute('class', 'word-tooltip');
-        tooltip.setAttribute('x', parseFloat(textElement.getAttribute('x')) + 30);
-        tooltip.setAttribute('y', parseFloat(textElement.getAttribute('y')) + 20);
-        tooltip.textContent = `${dest.aiMatch}% match for ${dest.aiReason.toLowerCase()}`;
+        tooltip.setAttribute('x', parseFloat(textElement.getAttribute('x')) + 0);
+        tooltip.setAttribute('y', parseFloat(textElement.getAttribute('y')) + 30);
+        tooltip.textContent = `${dest.aiMatch}% match`;
         tooltip.style.pointerEvents = 'none';
 
         svg.appendChild(textElement);
         svg.appendChild(tooltip);
+        
     });
 
     if (filteredDestinations.length > 0) {
