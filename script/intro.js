@@ -20,6 +20,17 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.insertAdjacentHTML('afterbegin', introHTML);
 
+    // 여기서 intro airplane 크기 및 위치를 vw 단위로 직접 지정
+    const introAirplane = document.querySelector('.intro-airplane');
+    if (introAirplane) {
+        introAirplane.style.width = "70vw";      // CSS와 동일하게 vw 단위 사용
+        introAirplane.style.height = "auto";     // 비율 유지
+        introAirplane.style.left = "50%";        // 좌우 중앙 정렬
+        introAirplane.style.top = "20%";         // 상단 20% (원하는 위치 조정)
+        introAirplane.style.transform = "translateX(-50%)"; // 좌우 정중앙
+        introAirplane.style.position = "absolute";          // 위치 지정
+    }
+
     const mainContent = document.getElementById('mainContent');
     const introOverlay = document.getElementById('introOverlay');
 
