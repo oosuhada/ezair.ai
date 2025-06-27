@@ -796,7 +796,7 @@ text{
   border-radius: var(--border-radius);
   border: 1px solid var(--primary-lighter);
   width: 428px;
-  height: 102px;
+  height: auto;
 }
 
 .ai-match-icon {
@@ -836,9 +836,10 @@ text{
 .ai-reason-text {
   display: block;
   margin-top: 4px;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--gray500);
   line-height: 28px;
+  margin-top: 12px;
 }
 
 .price-bt {
