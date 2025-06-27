@@ -6,10 +6,11 @@ const destinationsData = [
         type: ['city', 'romantic', 'culture'],
         aiMatch: 95,
         aiReason: '낭만적인 휴가와 예술 경험을 찾는 당신에게 완벽한 도시',
+        aiInfo: '원 반더빌트는 뉴욕에서 네 번째로 높은 마천루로, <br>서밋 전망대는 가장 인기 있는 전망대 중 하나입니다.',
         price: '₩450,000',
         duration: '5일 4박',
-        image: 'https://placehold.co/400x250/A3B8CC/000000?text=Paris',
-        description: '에펠탑, 루브르 박물관, 세느강 유람선을 즐기며 파리의 낭만을 만끽하세요.',
+        image: '../../../image/keyword_paris.png',
+        description: '에펠탑, 루브르 박물관, 세느강 유람선을 <br>즐기며 파리의 낭만을 만끽하세요.',
         keywords: ['에펠탑', '루브르', '낭만', '미식', '예술']
     },
     {
@@ -189,27 +190,47 @@ function renderCarouselCard(destination) {
     cardDiv.id = `${destination.id}-card`;
     cardDiv.classList.add('card');
     cardDiv.innerHTML = `
-        <div class="card-image-wrap">
-            <img src="${destination.image}" alt="${destination.name}" class="card-image">
-            <span class="card-badge">BEST</span>
-        </div>
-        <div class="card-content-wrapper">
-            <div class="card-info-top">
-                <span>${destination.duration} | 인천 출발</span>
+        <div class="card-container">
+                <div id="card-con-left">
+                    <div class="card-image-wrap">
+                        <img src="${destination.image}" alt="${destination.name}" class="card-image">
+                        <span class="card-badge">BEST</span>
+                    </div>
+
+                </div>
+                <div id="card-con-right">
+                    <div class="card-content-wrapper">
+                        <div class="card-info-top">
+                            <span>${destination.duration} | 인천 출발</span>
+                        </div>
+                        <h3>${destination.name}</h3>
+                        <div class="card-tags">
+                            ${destination.keywords.map(keyword => `<span
+                                class="card-tag-item">#${keyword}</span>`).join('')}
+                        </div>
+                        <div class="ai-info-text1">
+                            <span class="ai-info-text2">${destination.aiInfo}</span>
+                        </div>
+                        <div class="ai-match-info">
+                            <div class="ai-info-icon"><img src="../../image/ai-fill.svg" alt="AI 추천 아이콘"
+                                    class="ai-match-icon">
+                                <div class="ai-match-text">AI 추천 ${destination.aiMatch}% 일치</div>
+                            </div>
+
+                            <span class="ai-reason-text">${destination.aiReason}</span>
+                        </div>
+                    </div>
+                    <div class="price-bt">
+                    <p class="price-info">성인 1인 <strong
+                            class="card-price">${destination.price}</strong> 부터</p>
+                        <button class="book-now-button glow-button"
+                            onclick="showMessageModal('예약하기', '${destination.name} 패키지 예약을 진행합니다.')"
+                            aria-label="Book ${destination.name} package">
+                            항공권 및 패키지 예매
+                        </button>
+                    </div>
+                </div>
             </div>
-            <h3>${destination.name}</h3>
-            <div class="card-tags">
-                ${destination.keywords.map(keyword => `<span class="card-tag-item">#${keyword}</span>`).join('')}
-            </div>
-            <div class="ai-match-info">
-                <img src="../../image/ai_match_icon.svg" alt="AI 추천 아이콘" class="ai-match-icon">
-                <div class="ai-match-text">AI 추천 ${destination.aiMatch}% 일치 <span class="ai-reason-text">${destination.aiReason}</span></div>
-            </div>
-            <p class="price-info">성인 1인 <strong class="card-price">${destination.price}</strong> 부터</p>
-            <button class="book-now-button glow-button" onclick="showMessageModal('예약하기', '${destination.name} 패키지 예약을 진행합니다.')" aria-label="Book ${destination.name} package">
-                항공권 및 패키지 예매
-            </button>
-        </div>
     `;
     return cardDiv;
 }
@@ -325,3 +346,4 @@ window.addEventListener('load', function () {
         }
     });
 });
+
