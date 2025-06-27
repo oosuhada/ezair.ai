@@ -1,26 +1,7 @@
 // intro.js (sessionStorage를 사용한 최종 해결 버전)
 document.addEventListener('DOMContentLoaded', function() {
-    // Inject intro overlay HTML dynamically with airplane image
-    const introHTML = `
-        <div class="intro-overlay" id="introOverlay" style="background-color: #000000;">
-            <img class="intro-airplane" src="../../image/introairplane.png" alt="Intro Airplane">
-            <div class="airplane-window-outer" id="airplaneWindow">
-                <div class="video-overlay" id="windowInner">
-                    <video autoplay muted loop playsinline>
-                        <source src="./video/airplaneview.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="clouds">
-                        <div class="cloud cloud1"></div>
-                        <div class="cloud cloud2"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    document.body.insertAdjacentHTML('afterbegin', introHTML);
 
-    // 여기서 intro airplane 크기 및 위치를 vw 단위로 직접 지정
+    // 이제는 HTML에 직접 있으므로, 아래 코드만 필요
     const introAirplane = document.querySelector('.intro-airplane');
     if (introAirplane) {
         introAirplane.style.width = "70vw";      // CSS와 동일하게 vw 단위 사용
@@ -115,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }, "+=0.3");
-        
+
         tl.to(introOverlay, {
             duration: 3.5,
             opacity: 0,
