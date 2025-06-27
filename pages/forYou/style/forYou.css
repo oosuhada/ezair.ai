@@ -14,7 +14,7 @@
 
 /* Main Content Styles */
 .main-content {
-    background-color: var(--gray-bg);
+    background-color: var(--gray50);
     padding: 20px 0;
     flex-grow: 1; /* Allow main content to take available space */
 }
@@ -30,7 +30,7 @@ section {
     background: white;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0px 3px 9px var(--shadow-light);
+    box-shadow: 0px 3px 9px var(--box-shadow-light);
 }
 
 .recent-hotels-banner {
@@ -44,12 +44,12 @@ section {
 .banner-title {
     font-size: 26px;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--blk);
 }
 
 .banner-description {
     font-size: 15px;
-    color: var(--text-medium);
+    color: var(--gray300);
 }
 
 .banner-image {
@@ -69,16 +69,16 @@ section {
 .section-title {
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--blk);
 }
 
 .section-title .highlight {
-    color: var(--primary-blue);
+    color: var(--primary);
 }
 
 .toggle-switch {
     display: flex;
-    background: var(--light-bg);
+    background: var(--gray50);
     border-radius: 100px;
     border: 1px rgba(68, 131, 233, 0.20) solid;
     padding: 2px; /* Internal padding for buttons */
@@ -100,9 +100,9 @@ section {
 
 .toggle-btn.active {
     background: white;
-    box-shadow: 0px 2px 7px var(--shadow-medium);
+    box-shadow: 0px 2px 7px var(--box-shadow-medium);
     font-weight: 700;
-    color: var(--primary-blue)
+    color: var(--primary)
 }
 
 .filter-buttons {
@@ -116,7 +116,7 @@ section {
 
 .filter-btn {
     background: none;
-    border: 1px var(--border-light) solid;
+    border: 1px var(--gray300) solid;
     border-radius: 25px;
     padding: 8px 18px;
     font-size: 15px;
@@ -126,7 +126,7 @@ section {
 }
 
 .filter-btn.active {
-    background: linear-gradient(292deg, var(--light-blue-gradient-start) 12%, var(--light-blue-gradient-end) 100%);
+    background: var(--gradient-blue-green);
     color: white;
     border-color: transparent;
     font-weight: 700;
@@ -145,7 +145,7 @@ section {
 }
 
 .info-bar .info-highlight {
-    color: var(--primary-blue);
+    color: var(--primary);
     font-weight: 700;
 }
 .info-bar .info-highlight-bk{
@@ -177,7 +177,7 @@ section {
     padding-bottom: 15px; /* Space for scrollbar */
     scroll-snap-type: x mandatory; /* Snap to cards */
     scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-blue) #f1f1f1; /* Firefox */
+    scrollbar-color: var(--primary) #f1f1f1; /* Firefox */
 }
 
 /* Webkit scrollbar for Chrome, Safari */
@@ -225,7 +225,7 @@ section {
 }
 
 .hotel-card-lg.shadow-card {
-    box-shadow: 0px 6px 12px var(--shadow-dark);
+    box-shadow: 0px 6px 12px var(--box-shadow-medium);
 }
 
 .hotel-image {
@@ -268,7 +268,7 @@ section {
 
 .hotel-location {
     font-size: 14px;
-    color: var(--text-accent);
+    color: var(--gray500);
     margin-bottom: 5px;
 }
 
@@ -280,14 +280,14 @@ section {
 }
 
 .hotel-rating i {
-    color: var(--primary-blue); /* Star icon color */
+    color: var(--primary); /* Star icon color */
     font-size: 13px;
 }
 
 .hotel-rating .score {
     font-size: 14px;
     font-weight: 700;
-    color: var(--text-medium);
+    color: var(--gray500);
 }
 
 .hotel-rating .divider {
@@ -299,13 +299,13 @@ section {
 
 .hotel-rating .review-text {
     font-size: 14px;
-    color: var(--text-light);
+    color: var(--gray300);
 }
 
 .hotel-price {
     font-size: 14.25px; /* Use original font size for price */
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--blk);
     display: flex;
     align-items: baseline; /* Align currency symbol */
 }
@@ -318,7 +318,7 @@ section {
 
 /* Dark section styles */
 .pool-hotels-section {
-    background: linear-gradient(350deg, var(--dark-section-gradient-start) 0%, var(--dark-section-gradient-end) 100%);
+    background: var(--gradient-blue-green);
     color: white; /* Change text color for dark background */
     box-shadow: none; /* Remove box shadow as background is dark */
 }
@@ -332,7 +332,7 @@ section {
 }
 
 .pool-hotels-section .toggle-switch {
-    background: rgba(23, 89, 182, 0.60);
+    background: rgba(0, 86, 207, 0.6);
     border: 1px rgba(255, 255, 255, 0.15) solid;
 }
 
