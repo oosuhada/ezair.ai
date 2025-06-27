@@ -42,6 +42,7 @@ body {
   --secondary: #10c2a0; /* 보조 색상 */
   --accent: #00c8f8; /* 강조 색상 */
   --error:#F44336;
+  --primary-lightest:#F0F4FF;
   --gradient-blue-green: linear-gradient(135deg, var(--primary), var(--secondary));
   --gradient-aqua-green: linear-gradient(135deg, var(--accent), var(--secondary));
   --box-shadow-light: 0px 2px 8px rgba(0, 0, 0, 0.08); /* 가벼운 그림자 */
