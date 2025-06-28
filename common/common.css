@@ -170,7 +170,7 @@ header .btns img {
 
 
 /* --- Hero Section --- */
-.hero-section {
+/* .hero-section {
   width: 100%;
   height: 250px;
   background: var(--gradient-blue-green);
@@ -210,7 +210,7 @@ header .btns img {
   display: inline-block;
   font-size: 42px;
 }
-
+ */
 
 /* --- Main Content Layout --- */
 main {
@@ -794,13 +794,16 @@ main {
   header .gnb ul { gap: 18px; }
   header .btns { gap: 15px; }
 
-  .hero-section { height: 250px; }
+  .hero-section {
+    width: 100vw;
+  }
+  /* { height: 250px; }
   .hero-section .top_airplane { left: 5%; bottom: 10%; width: 180px; }
   .hero-section .top_cloud_left { left: 0; bottom: -20px; width: 250px; }
   .hero-section .top_cloud_right { right: 0; top: -50px; width: 200px; }
   .hero-section .top_main_cloud { top: 20px; right: 20%; width: 300px; }
   .title { font-size: 38px; }
-  .title_2 { font-size: 42px; }
+  .title_2 { font-size: 42px; } */
 
   #search {
     width: 100%;
