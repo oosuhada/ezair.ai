@@ -715,10 +715,11 @@ width: 327px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px; /* Adjusted gap to be more consistent with original */
+  margin-bottom: 40px;
 }
 .custom-partners img{
   height: 26px;
-}  */
+}
 .search-container {
   width: 100%;
   max-width: 1100px;
@@ -1078,8 +1079,7 @@ width: 327px;
 
     .custom-hotel-chart {
         width: 1110px;
-        left: 50%;
-        transform: translateX(-50%);
+      
         position: relative;
     }
 
@@ -1105,11 +1105,9 @@ width: 327px;
 
     .custom-partners {
         width: 1025px; /* From original */
-        left: 50%;
-        transform: translateX(-50%);
         position: relative;
         flex-wrap: wrap;
-        justify-content: flex-start; /* Align to start */
+        justify-content: center;
         gap: 15px 30px; /* Adjusted spacing for 1920px width */
     }
 
@@ -1308,6 +1306,7 @@ width: 327px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .swiper-slide {
@@ -1318,8 +1317,8 @@ margin-right: 16px;
 
 
 .swiper {
-  width: 100%;
-  max-width: 1200px; /* 필요 시 제한 */
+  width: 140%;
+  max-width: 1440px; /* 필요 시 제한 */
   margin: 0 auto;
 }
 
