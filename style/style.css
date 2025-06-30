@@ -644,6 +644,10 @@
         .ai-more-keywords-btn:hover {
             background: var(--secondary);
         }
+        
+        #keyword-panel-content-wrapper{
+          width: 100%;
+        }
 
         /* Recommendation Cards Panel */
         /* MODIFIED: Remove flex property, set width to 100% */
@@ -672,12 +676,13 @@
             flex-wrap: nowrap;
             transition: transform 0.5s ease;
             width: 100%;
+            overflow: visible;
         }
 
         .card {
             display: flex;
             flex: 0 0 100%;
-            overflow: hidden;
+            overflow-y: hidden;
             border-radius: var(--border-radius);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
@@ -709,7 +714,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            flex: 1;
         }
 
         .card-badge {
@@ -739,11 +743,11 @@
 
         #card-con-right {
             padding: 0;
-            height: 444px;
+            /* height: 444px; */
+            max-width: 50%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            flex: 2;
+            /* justify-content: space-between; */
         }
 
         .card-info-top {
@@ -790,6 +794,7 @@
             border: 1px solid var(--primary-lighter);
             width: 428px;
             height: auto;
+            max-width: 100%;
         }
 
         .ai-match-icon {
@@ -838,7 +843,7 @@
         .price-bt {
             display: flex;
             flex-direction: column;
-            padding: 24px 34px 0px 0px;
+            padding: 0px 34px 0px 0px;
             align-items: flex-end;
         }
 
@@ -1281,7 +1286,7 @@
                 /* 2 parts of the width */
                 width: auto;
                 /* Reset width for flex behavior */
-                max-width: 60vw;
+                max-width: 55vw;
             }
         }
 
@@ -1313,6 +1318,18 @@
         }
 
         @media (max-width: 1023px) {
+
+              .word-cloud-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(132deg, rgba(25, 135, 250, 0.50) 0%, rgba(16, 194, 160, 0.50) 94.35%);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-light);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
             .hero-section {
                 height: 180px;
             }

@@ -207,40 +207,42 @@
                 <div class="ai-content-wrapper">
                     <div class="ai-keywords-panel">
                         <h3 class="ai-panel-title">AI 키워드</h3>
-                        <div class="word-cloud-container">
-                            <svg id="word-cloud-svg" width="100%" height="100%" viewBox="0 0 400 450"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M50 100 Q150 50 200 100" stroke="#4a90e2" stroke-width="1" fill="none" />
-                                <path d="M150 150 Q250 200 200 250" stroke="#4a90e2" stroke-width="1" fill="none" />
-                                <circle cx="200" cy="225" r="120" fill="none" stroke="#ffffff" stroke-width="2" />
-                                <circle class="particle" cx="100" cy="100" r="3" fill="#4a90e2" opacity="0.5" />
-                                <circle class="particle" cx="300" cy="200" r="3" fill="#4a90e2" opacity="0.5" />
-                                <circle class="particle" cx="150" cy="350" r="3" fill="#4a90e2" opacity="0.5" />
-                            </svg>
-                            <div class="ai-status-indicator">
-                                <svg class="ai-loading-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        <div id="keyword-panel-content-wrapper">
+                            <div class="word-cloud-container">
+                                <svg id="word-cloud-svg" width="100%" height="100%" viewBox="0 0 400 450"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c помощи.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.527.288 1.048.337 1.5.15z">
-                                    </path>
+                                    <path d="M50 100 Q150 50 200 100" stroke="#4a90e2" stroke-width="1" fill="none" />
+                                    <path d="M150 150 Q250 200 200 250" stroke="#4a90e2" stroke-width="1" fill="none" />
+                                    <circle cx="200" cy="225" r="120" fill="none" stroke="#ffffff" stroke-width="2" />
+                                    <circle class="particle" cx="100" cy="100" r="3" fill="#4a90e2" opacity="0.5" />
+                                    <circle class="particle" cx="300" cy="200" r="3" fill="#4a90e2" opacity="0.5" />
+                                    <circle class="particle" cx="150" cy="350" r="3" fill="#4a90e2" opacity="0.5" />
                                 </svg>
-                                AI 분석 중...
+                                <div class="ai-status-indicator">
+                                    <svg class="ai-loading-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c помощи.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.527.288 1.048.337 1.5.15z">
+                                        </path>
+                                    </svg>
+                                    AI 분석 중...
+                                </div>
                             </div>
-                        </div>
-                        <div class="ai-keyword-controls">
-                            <select id="category-filter" class="ai-filter-select" onchange="filterKeywords(this.value)"
-                                aria-label="키워드 카테고리 필터">
-                                <option value="all">모든 추천</option>
-                                <option value="city">도시 탐험</option>
-                                <option value="nature">자연 & 휴식</option>
-                                <option value="culture">역사 & 문화</option>
-                                <option value="adventure">액티비티 & 모험</option>
-                                <option value="romantic">로맨틱 여행</option>
-                            </select>
-                            <button class="ai-more-keywords-btn glow-button" onclick="shuffleKeywords()"
-                                aria-label="다른 키워드 보기">
-                                다른 키워드 보기
-                            </button>
+                            <div class="ai-keyword-controls">
+                                <select id="category-filter" class="ai-filter-select" onchange="filterKeywords(this.value)"
+                                    aria-label="키워드 카테고리 필터">
+                                    <option value="all">모든 추천</option>
+                                    <option value="city">도시 탐험</option>
+                                    <option value="nature">자연 & 휴식</option>
+                                    <option value="culture">역사 & 문화</option>
+                                    <option value="adventure">액티비티 & 모험</option>
+                                    <option value="romantic">로맨틱 여행</option>
+                                </select>
+                                <button class="ai-more-keywords-btn glow-button" onclick="shuffleKeywords()"
+                                    aria-label="다른 키워드 보기">
+                                    다른 키워드 보기
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="ai-recommendation-cards-panel">
@@ -248,6 +250,38 @@
                         <div class="carousel-wrapper">
                             <div id="recommendation-grid" class="recommendation-grid">
                                 <!-- Cards will be dynamically inserted here -->
+                                <div class="card">
+                                    <div class="card-container">
+                                        <div class="card-image-wrap">
+                                            <img src="https://images.unsplash.com/photo-1502602898657-3e91760c0341?q=80&w=2070&auto=format&fit=crop" alt="Paris" class="card-image">
+                                            <span class="card-badge">로맨틱</span>
+                                        </div>
+                                        <div id="card-con-right">
+                                            <div class="card-content-wrapper">
+                                                <div class="card-info-top">
+                                                    <span>프랑스</span>
+                                                </div>
+                                                <h3>파리</h3>
+                                                <div class="card-tags">
+                                                    <span class="card-tag-item">#에펠탑</span>
+                                                    <span class="card-tag-item">#예술</span>
+                                                    <span class="card-tag-item">#미식</span>
+                                                </div>
+                                                <div class="ai-match-info">
+                                                    <p class="ai-match-text"><strong>로맨틱</strong> 키워드와 <strong>95%</strong> 일치해요!</p>
+                                                    <p class="ai-reason-text">낭만적인 분위기와 아름다운 건축물로 커플 여행객에게 최고의 여행지입니다.</p>
+                                                </div>
+                                            </div>
+                                            <div class="price-bt">
+                                                <div class="price-info">
+                                                    최저가
+                                                    <span class="card-price">₩980,000</span>
+                                                </div>
+                                                <button class="book-now-button">항공권 보기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button class="carousel-button left" onclick="navigateCards(-1)" aria-label="이전 추천 보기">

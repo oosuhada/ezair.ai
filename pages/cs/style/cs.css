@@ -1,12 +1,15 @@
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
 
+/* 기본 스타일은 원본 유지 */
 .customer-center {
-    max-width: 1440px;
+    /* max-width를 1200px로 조정하여 큰 화면에서 여백 확보 */
+    max-width: 1200px; 
     align-items: center;
     margin: 0 auto 60px;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding: 0 20px; /* 작은 화면을 위한 좌우 패딩 추가 */
 }
 
 .cc-hero {
@@ -25,13 +28,12 @@
 .cc-title {
     font-size: 48px;
     font-weight: 700;
-
 }
 
 .cc-hero-buttons {
     display: flex;
-
     gap: 12px;
+    flex-wrap: wrap; /* 버튼이 많아지거나 화면이 줄어들 때 줄바꿈되도록 설정 */
 }
 
 .cc-btn {
@@ -47,9 +49,10 @@
 .cc-search-area {
     display: flex;
     justify-content: center;
-    width: 1212px;
-    height: 134px;
-    margin-bottom: 70px;
+    /* 고정 너비를 100%로 변경하여 유연하게 조절 */
+    width: 100%; 
+    height: auto; /* 높이를 자동으로 조절 */
+    margin-bottom: 40px; /* 하단 마진 조정 */
 }
 
 .cc-search-box {
@@ -60,7 +63,6 @@
     border: 2px dashed var(--accent, #00c8f8);
     border-radius: 12px;
     width: 100%;
-
 }
 
 .cc-search-icon {
@@ -76,7 +78,8 @@
     font-size: 20px;
     color: var(--gray500);
     outline: none;
-    width: 850px;
+    /* 고정 너비를 제거하고 최소 너비 설정 */
+    min-width: 100px;
     height: 56px;
     text-align: center;
 }
@@ -97,6 +100,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%; /* 너비 100% 설정 */
 }
 
 .cc-qa-title {
@@ -112,6 +116,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 25px;
+    flex-wrap: wrap; /* 화면이 작을 때 버튼들이 줄바꿈되도록 설정 */
 }
 
 .cc-cat-btn {
@@ -133,21 +138,85 @@
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
-    padding: 0 100px;
-
+    /* 좌우 패딩을 제거하여 유연하게 만듦 */
+    padding: 0;
 }
 
 .cc-qa-item {
     width: 100%;
-    height: 93px;
-    flex: 1 1 calc(50% - 12px);
+    height: auto; /* 높이를 자동으로 조절 */
+    min-height: 93px;
+    /* flex-basis를 48% 정도로 설정하여 2단 레이아웃 유지 */
+    flex: 1 1 48%; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 36px 83px;
+    padding: 24px 30px; /* 패딩 값 조정 */
     background: #f9f9f9;
     border-radius: 10px;
     font-size: 18px;
     color: var(--blk);
     cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive Adjustments */
+/* ------------------------------------------------------------------ */
+
+/* 태블릿 사이즈 이하 */
+@media (max-width: 1024px) {
+    .cc-search-box {
+        gap: 20px;
+        padding: 30px;
+    }
+
+    .cc-search-input {
+        font-size: 16px;
+    }
+}
+
+/* 모바일 사이즈 */
+@media (max-width: 768px) {
+    .customer-center {
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .cc-title {
+        font-size: 36px;
+    }
+
+    .cc-search-box {
+        flex-direction: column; /* 검색 박스 아이템들을 세로로 정렬 */
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .cc-search-btn {
+        width: 100%; /* 검색 버튼 너비를 100%로 설정 */
+    }
+
+    .cc-qa-item {
+        /* 아이템을 한 줄에 하나씩(1단 레이아웃) 표시 */
+        flex: 1 1 100%; 
+        font-size: 16px;
+        padding: 20px;
+    }
+}
+
+/* 작은 모바일 사이즈 */
+@media (max-width: 480px) {
+    .cc-title {
+        font-size: 28px;
+    }
+
+    .cc-search-input {
+        font-size: 14px;
+        height: 48px;
+    }
+    
+    .cc-search-btn {
+        height: 48px;
+        font-size: 16px;
+    }
 }
