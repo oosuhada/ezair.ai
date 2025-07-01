@@ -264,11 +264,11 @@ section {
 }
 
 .hotel-image {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 160px;
     object-fit: cover; /* Cover the area, maintaining aspect ratio */
     border-radius: 10px; /* Rounded corners for images */
     display: block;
@@ -472,7 +472,7 @@ section {
     }
 
     .hotel-cards-container {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Flexible columns for larger mobile/small tablets */
+         /* Flexible columns for larger mobile/small tablets */
         gap: 20px;
         width: 100%;
     }
@@ -481,7 +481,7 @@ section {
         min-width: 280px; /* Set a reasonable min-width for larger screens */
         flex-direction: column; /* Keep vertical stacking as it works well for tablets */
         padding: 15px;
-        width: 100%; /* Ensure card takes full width of its grid column */
+        width: auto; /* Ensure card takes full width of its grid column */
     }
     .hotel-image-wrapper {
         padding-top: 66.66%; /* 3:2 Aspect Ratio - common for cards (or adjust to your image content) */
@@ -526,10 +526,10 @@ section {
 
     .hotel-card {
         /* Revert to original side-by-side layout for hotel-card on larger screens */
-        flex-direction: row;
+        flex-direction: column;
         padding: 15px;
         min-width: 350px; /* Adjusted min-width for side-by-side layout */
-        width: 100%; /* Ensure card still takes full width of its grid column */
+        width: auto; /* Ensure card still takes full width of its grid column */
     }
     .hotel-card .hotel-image-wrapper {
         width: 130px;
