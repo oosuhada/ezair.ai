@@ -15,3 +15,66 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('popupClosed', Date.now());
   });
 });
+
+window.addEventListener('load', function () {
+    const swiper = new Swiper(".swiper", {
+        slidesPerView: 'auto',
+        spaceBetween: 16,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        
+      
+      
+    });
+
+
+
+
+
+
+    window.addEventListener('load', function () {
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        grabCursor: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        freeMode: true
+    });
+    const bannerSwiper = new Swiper('.myBannerSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction'
+        }
+    });
+});
+
+    
+    const bannerSwiper = new Swiper('.myBannerSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction'
+        }
+
+  
+    });
+});
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+
