@@ -54,12 +54,14 @@ body {
 /* ---------------------마이페이지/예약/탭/설정 등--------------------- */
 
 .myPage {
-    max-width: 1440px;
+    /* max-width를 1200px로 수정하여 좌우 여백 확보 */
+    max-width: 1200px;
     align-items: center;
     margin: 0 auto 60px;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    padding: 0 20px; /* 작은 화면을 위한 좌우 패딩 유지 */
 }
 
 .mp-hero {
@@ -83,6 +85,7 @@ body {
 .mp-container {
     display: flex;
     gap: 18px;
+    width: 100%;
 }
 
 .mp-left {
@@ -95,6 +98,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: var(--gray500);
+    flex-shrink: 0; /* 패널 축소 방지 */
 }
 
 .user-profile {
@@ -150,7 +154,9 @@ body {
 }
 
 .mp-right {
-    width: 1071px;
+    /* 부모 컨테이너 너비 변경에 따라 너비 수정 (1200 - 350 - 18 = 832) */
+    width: 832px;
+    flex-grow: 1; /* 패널이 남는 공간을 채우도록 설정 */
 }
 
 .mp-r-sort {
@@ -168,13 +174,14 @@ body {
 
 .mp-r-tr {
     display: flex;
-    gap: 32px;
+    gap: 3px;
 }
 
 .mp-r-tr p,
 .mp-r-tr .sort {
     font-size: 14px;
     display: flex;
+    min-width: 60px;
 }
 
 /* ---------- */
@@ -191,7 +198,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 242px;
+    height: auto;
     border-radius: 12px;
     overflow: hidden;
     background-color: var(--wht);
@@ -271,6 +278,7 @@ body {
     font-size: 12px;
     color: #666;
     margin-bottom: 8px;
+    flex-wrap: wrap; 
 }
 
 .rcardB-top p {
@@ -319,8 +327,7 @@ body {
     height: auto;
 }
 
-/* 
-------------------예약 */
+/* ------------------예약 */
 #wishCard,
 #price-alert-banner {
     display: none;
@@ -331,7 +338,6 @@ body {
     display: block;
 }
 
-/* 토글 버튼에 active 스타일 추가 */
 .mp-r-tl button.active {
     font-weight: normal;
     color: var(--gray500);
@@ -341,7 +347,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 279px;
+    height: auto;
     border-radius: 12px;
     overflow: hidden;
     background-color: var(--wht);
@@ -393,6 +399,7 @@ body {
     flex-direction: column;
     padding: 24px 0px;
     gap: 16px;
+    flex-grow: 1;
 }
 
 .flightconM_top,
@@ -424,6 +431,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0px;
+    flex-shrink: 0;
 }
 
 .flight-cm_line p {
@@ -453,6 +461,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 32px;
+    flex-shrink: 0;
 }
 
 .flight_con_r p {
@@ -497,8 +506,7 @@ body {
     cursor: pointer;
 }
 
-/* 
------알림 */
+/* -----알림 */
 
 .price-alert-banner {
     margin: 16px auto;
@@ -512,7 +520,8 @@ body {
     border-radius: 12px;
     border: 1px solid var(--gray100);
     padding: 16px;
-    height: 142px;
+    height: auto;
+    min-height: 142px;
     margin-bottom: 8px;
 }
 
@@ -741,4 +750,164 @@ body {
     background: #1078d1;
 }
 
-/* ---------------------헤더/푸터 코드는 없음 --------------------- */
+/* ------------------------------------------------------------------ */
+/* Responsive Adjustments */
+/* ------------------------------------------------------------------ */
+
+/* For Tablets and below */
+@media (max-width: 1024px) {
+    .mp-container {
+        flex-direction: column; 
+    }
+
+    .mp-left {
+        width: 100%; 
+        height: auto; 
+        margin-bottom: 18px;
+    }
+
+    .mp-right {
+        width: 100%; 
+    }
+
+    .flight-content {
+        flex-direction: column; 
+        align-items: stretch;
+        padding: 16px;
+    }
+
+    .flight_con_l, .flight_con_m, .flight_con_r {
+        padding: 8px 0;
+    }
+
+    .flight_con_r {
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .flight-cm_line .line_air .line {
+        width: 100%; 
+    }
+
+    .reserve_bt button {
+        width: 180px; 
+    }
+}
+
+/* For smaller tablets and large mobile phones */
+@media (max-width: 768px) {
+
+      .myPage {
+        padding: 0 10px; 
+        margin-bottom: 40px;
+    }
+    
+    .mp-title {
+        font-size: 36px; 
+    }
+
+    .reserveCardBottom {
+        flex-direction: column; 
+        gap: 16px;
+    }
+
+    .reserveCardBottom .line {
+        width: 100%;
+        height: 1px; 
+        margin: 16px 0;
+    }
+
+    .rcardB-btom {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .alert-banner {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .banner-action {
+       width: 100%;
+    }
+    
+    .reserve-btn {
+        width: 100%; 
+    }
+
+    .tab-content.active {
+        flex-direction: column; 
+        align-items: center;
+        gap: 24px;
+    }
+
+    .profile-picture {
+        flex-basis: auto; 
+    }
+}
+
+/* For small mobile phones */
+@media (max-width: 480px) {
+    .myPage {
+        padding: 0 10px; 
+        margin-bottom: 40px;
+    }
+
+    .mp-title {
+        font-size: 28px; 
+    }
+    
+    .mp-hero {
+        height: auto;
+        padding: 20px 15px;
+    }
+
+    .mp-r-sort {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 8px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .reservCardTop {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .reserveCardTopr a {
+        width: 100%;
+    }
+
+    .flight_con_r {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .reserve_bt button {
+        width: 100%;
+    }
+
+    .banner-icon {
+        margin-right: 16px;
+    }
+    
+    .banner-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .banner-title {
+        font-size: 15px;
+    }
+    .banner-message {
+        font-size: 13px;
+    }
+}
