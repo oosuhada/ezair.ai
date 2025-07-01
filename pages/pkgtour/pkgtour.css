@@ -113,6 +113,7 @@
 }
 
 .search-card {
+    margin-top: 2rem;
     background-color: white;
     padding: 1rem; /*p-4*/
     border-radius: 1rem; /*rounded-2xl*/

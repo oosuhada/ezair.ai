@@ -815,6 +815,7 @@ main {
     padding: 0 20px;
   }
   .search_box {
+    margin-top: 2rem;
     width: 100%;
     max-width: 1200px;
     background-color: var(--wht);
