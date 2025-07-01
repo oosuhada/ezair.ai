@@ -1,75 +1,97 @@
+/* Base styles (Mobile first - default for small screens) */
 .page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%; /* Ensure page-container takes full width */
 }
 
 .container {
     width: 100%;
     max-width: 1230px; /* Original width of inner content */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 15px; /* Add some padding for smaller screens */
+    margin-left: 20px !important; /* Force left margin */
+    margin-right: 20px !important; /* Force right margin */
+    padding: 0 10px; /* More padding for very small screens */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
 /* Main Content Styles */
 .main-content {
     background-color: var(--gray50);
-    padding: 20px 0;
+    padding: 15px 0; /* Adjusted padding for mobile */
     flex-grow: 1; /* Allow main content to take available space */
+    align-self: center;
+    width: 100%; /* Ensure main-content takes full width */
 }
 
 .content-area {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Spacing between sections */
+    gap: 20px; /* Smaller gap for mobile */
+    width: 100%; /* Ensure content-area takes full width of its parent (container) */
+    max-width: 1100px;
 }
 
 /* Section Styles */
 section {
     background: white;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 15px; /* Smaller padding for mobile */
+    border-radius: 15px; /* Smaller border-radius for mobile */
     box-shadow: 0px 3px 9px var(--box-shadow-light);
+    width: 100%; /* Ensure each section takes full width */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
 .recent-hotels-banner {
-    padding: 30px;
+    padding: 15px; /* Smaller padding for mobile */
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px; /* Smaller gap for mobile */
     align-items: flex-start;
+    width: 100%; /* Explicitly set to 100% */
+    max-width: 100%; /* Ensure it doesn't overflow its container */
+    box-sizing: border-box;
+}
+
+.banner-text {
+    width: 100%; /* Ensure banner-text takes full width within the banner */
 }
 
 .banner-title {
-    font-size: 26px;
+    font-size: 20px; /* Smaller font for mobile */
     font-weight: 700;
     color: var(--blk);
+    width: 100%; /* Ensure title takes full width */
 }
 
 .banner-description {
-    font-size: 15px;
+    font-size: 13px; /* Smaller font for mobile */
     color: var(--gray300);
+    width: 100%; /* Ensure description takes full width */
 }
 
 .banner-image {
-    width: 82px;
+    width: 82px; /* Keep fixed width for the image */
     height: 19px;
-    align-self: flex-end; /* Align to the right within the flex container */
+    align-self: flex-start; /* Align AD to left on mobile */
+    margin-top: 10px;
+    object-fit: contain; /* Ensure image ratio is maintained */
 }
 
 .section-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items to the top to accommodate multiline titles */
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-direction: column; /* Stack header items on mobile */
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px; /* Smaller margin for mobile */
+    width: 100%; /* Ensure section header takes full width */
 }
 
 .section-title {
-    font-size: 20px;
+    font-size: 17px; /* Smaller font for mobile */
     font-weight: 700;
     color: var(--blk);
+    width: 100%; /* Ensure title takes full width */
 }
 
 .section-title .highlight {
@@ -81,21 +103,25 @@ section {
     background: var(--gray50);
     border-radius: 100px;
     border: 1px rgba(68, 131, 233, 0.20) solid;
-    padding: 2px; /* Internal padding for buttons */
-    margin-top: 10px; /* Space from title on wrap */
+    padding: 2px;
+    width: 100%; /* Make toggle full width on mobile */
+    justify-content: center;
+    margin-top: 0; /* Reset margin */
 }
 
 .toggle-btn {
     background: none;
     border: none;
-    padding: 8px 15px;
+    padding: 6px 12px; /* Smaller padding for mobile */
     border-radius: 100px;
-    font-size: 14px;
+    font-size: 13px; /* Smaller font for mobile */
     font-weight: 400;
     color: #A3B7D8;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
+    flex-grow: 1; /* Allow buttons to grow and fill the toggle switch */
+    text-align: center; /* Center text within buttons */
 }
 
 .toggle-btn.active {
@@ -107,19 +133,22 @@ section {
 
 .filter-buttons {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 6px; /* Smaller gap for mobile */
+    margin-bottom: 15px; /* Smaller margin for mobile */
     overflow-x: auto; /* Allow horizontal scrolling for filters */
-    padding-bottom: 10px; /* Space for scrollbar on some systems */
+    padding-bottom: 8px; /* Space for scrollbar on some systems */
     -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap; /* Filters wrap on mobile */
+    justify-content: center;
+    width: 100%; /* Ensure filter buttons container takes full width */
 }
 
 .filter-btn {
     background: none;
     border: 1px var(--gray300) solid;
     border-radius: 25px;
-    padding: 8px 18px;
-    font-size: 15px;
+    padding: 5px 12px; /* Smaller padding for mobile */
+    font-size: 13px; /* Smaller font for mobile */
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -135,13 +164,16 @@ section {
 .info-bar {
     background: #F7FAFF;
     border-radius: 10px;
-    padding: 12px 15px;
-    margin-bottom: 20px;
+    padding: 10px 12px; /* Smaller padding for mobile */
+    margin-bottom: 15px;
+    width: 100%; /* Ensure info bar takes full width */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
 .info-bar p {
-    font-size: 14px;
+    font-size: 13px; /* Smaller font for mobile */
     color: #8090AA;
+    width: 100%; /* Ensure paragraph takes full width */
 }
 
 .info-bar .info-highlight {
@@ -149,9 +181,10 @@ section {
     font-weight: 700;
 }
 .info-bar .info-highlight-bk{
-    color: var(#fff);
+    color: var(--blk); /* Changed to black for contrast on white background */
     font-weight: 700;
 }
+
 
 .info-bar.light-bg {
     background: rgba(255, 255, 255, 0.07);
@@ -165,9 +198,10 @@ section {
 /* Hotel Cards */
 .hotel-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Flexible columns */
-    gap: 20px; /* Spacing between cards */
-    position: relative; /* For scroll arrows */
+    grid-template-columns: 1fr; /* Stack cards vertically on mobile */
+    gap: 15px; /* Smaller gap for mobile */
+    position: relative;
+    width: 100%; /* Ensure container takes full width */
 }
 
 .hotel-cards-container.scroll-x {
@@ -178,6 +212,7 @@ section {
     scroll-snap-type: x mandatory; /* Snap to cards */
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: var(--primary) #f1f1f1; /* Firefox */
+    width: 100%; /* Ensure container takes full width when scrolling horizontally */
 }
 
 /* Webkit scrollbar for Chrome, Safari */
@@ -206,70 +241,84 @@ section {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    display: flex; /* Use flex for internal layout */
-    flex-direction: row; /* Image and text side-by-side */
-    gap: 15px;
-    padding: 15px;
-    border: 1px rgba(0, 0, 0, 0.05) solid; /* Added border to match original structure */
-    min-width: 320px; /* Minimum width for small cards */
+    display: flex;
+    /* Changed for small screen layout: image on top, details below */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px; /* Smaller padding for mobile */
+    border: 1px rgba(0, 0, 0, 0.05) solid;
+    min-width: unset; /* Remove min-width to let them fill container */
+    width: 100%; /* Fill container width */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-.hotel-card {
-    min-width: 350px; /* For the 130px image on the left */
-}
-
-.hotel-card-lg {
-    flex-direction: column; /* Image on top, text below */
-    min-width: 280px; /* Minimum width for larger cards */
-    padding: 0; /* No padding directly on the card for large ones, content will have it */
-}
-
-.hotel-card-lg.shadow-card {
-    box-shadow: 0px 6px 12px var(--box-shadow-medium);
+/* Image wrapper to maintain aspect ratio */
+.hotel-image-wrapper {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (height / width * 100%) */
+    position: relative;
+    border-radius: 10px; /* inherited from image */
+    overflow: hidden; /* To clip image corners */
+    margin-bottom: 8px; /* Added margin for spacing */
 }
 
 .hotel-image {
-    border-radius: 10px; /* Slightly rounded corners for images */
-    object-fit: cover; /* Ensure images cover their area */
-}
-
-.hotel-card .hotel-image {
-    width: 130px;
-    height: 130px;
-}
-
-.hotel-card-lg .hotel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 160px; /* Adjusted height for vertical card */
+    height: 100%;
+    object-fit: cover; /* Cover the area, maintaining aspect ratio */
+    border-radius: 10px; /* Rounded corners for images */
+    display: block;
+}
+
+/* Specific adjustments for hotel-card (not _lg) on mobile */
+.hotel-card .hotel-image-wrapper {
+    /* For the specific `hotel-card` with side-by-side on larger screens, revert this for mobile */
+    /* This will be overridden by the media query */
+}
+
+.hotel-card-lg .hotel-image-wrapper {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+
+.hotel-card-lg.shadow-card {
+    box-shadow: 0px 6px 12px var(--box-shadow-medium);
 }
 
 .hotel-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: 10px; /* Prevent text from touching the edge */
+    padding: 0; /* Remove horizontal padding when stacked */
+    width: 100%;
+    align-items: center; /* Center align items for mobile stacked layout */
 }
 
 .hotel-card-lg .hotel-details {
-    padding: 15px; /* Add padding to content area of large card */
+    padding: 10px; /* Smaller padding for content area of large card */
 }
 
 .hotel-name {
-    font-size: 16px;
+    font-size: 15px; /* Smaller font for mobile */
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%; /* Ensure name takes full width */
 }
 
 .hotel-location {
-    font-size: 14px;
+    font-size: 13px; /* Smaller font for mobile */
     color: var(--gray500);
     margin-bottom: 5px;
+    width: 100%; /* Ensure location takes full width */
 }
 
 .hotel-rating {
@@ -277,6 +326,8 @@ section {
     align-items: center;
     gap: 5px;
     margin-bottom: 10px;
+    width: 100%; /* Ensure rating takes full width */
+    justify-content: center; /* Center align rating for stacked layout */
 }
 
 .hotel-rating i {
@@ -285,7 +336,7 @@ section {
 }
 
 .hotel-rating .score {
-    font-size: 14px;
+    font-size: 13px; /* Smaller font for mobile */
     font-weight: 700;
     color: var(--gray500);
 }
@@ -294,24 +345,26 @@ section {
     width: 1px;
     height: 11px;
     background: #D8D8D8;
-    margin: 0 5px;
+    margin: 0 3px; /* Smaller margin for mobile */
 }
 
 .hotel-rating .review-text {
-    font-size: 14px;
+    font-size: 13px; /* Smaller font for mobile */
     color: var(--gray300);
 }
 
 .hotel-price {
-    font-size: 14.25px; /* Use original font size for price */
+    font-size: 13px; /* Smaller font for mobile */
     font-weight: 700;
     color: var(--blk);
     display: flex;
-    align-items: baseline; /* Align currency symbol */
+    align-items: baseline;
+    width: 100%; /* Ensure price takes full width */
+    justify-content: center; /* Center align price for stacked layout */
 }
 
 .hotel-price .currency {
-    font-size: 15px;
+    font-size: 14px; /* Smaller font for mobile */
     font-weight: 500;
     margin-left: 5px;
 }
@@ -319,8 +372,8 @@ section {
 /* Dark section styles */
 .pool-hotels-section {
     background: var(--gradient-blue-green);
-    color: white; /* Change text color for dark background */
-    box-shadow: none; /* Remove box shadow as background is dark */
+    color: white;
+    box-shadow: none;
 }
 
 .pool-hotels-section .section-title {
@@ -328,7 +381,7 @@ section {
 }
 
 .pool-hotels-section .section-title .highlight {
-    color: #4EFFF4; /* Specific highlight color for dark section */
+    color: #4EFFF4;
 }
 
 .pool-hotels-section .toggle-switch {
@@ -348,242 +401,214 @@ section {
 
 /* Scroll Arrows for Horizontal Sections */
 .scroll-arrow {
-    position: absolute;
-    top: 62%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 10;
-    opacity: 0; /* Hidden by default
-    transition: opacity 0.3s ease; */
+    display: none; /* Hide scroll arrows on mobile by default */
 }
 
-.scroll-arrow i {
-    color: #333;
-    font-size: 20px;
-}
 
-.scroll-arrow.left {
-    left: 10px;
-}
+/* Media Queries for Responsiveness (min-width for mobile-first) */
 
-.scroll-arrow.right {
-    right: 10px;
-}
-
-/* Show arrows on hover for desktop */
-.hotel-cards-container:hover + .scroll-arrow,
-.scroll-arrow:hover {
-    opacity: 1;
-}
-
-/* Media Queries for Responsiveness */
-
-/* Tablet (768px - 1024px) */
-@media (max-width: 1024px) {
+/* Small devices (phones, 640px and up) - Not explicitly in your CSS, but good practice */
+@media (min-width: 640px) {
     .container {
-        padding: 0 20px;
+        padding: 0 15px;
     }
-
-    .recent-hotels-banner {
+    .content-area {
+        gap: 30px;
+        width: 100%; /* Keep 100% width within its parent */
+        max-width: 80%; /* Adjust max-width instead of width directly to center */
+        margin-left: auto !important; /* Center the container on larger screens */
+        margin-right: auto !important; /* Center the container on larger screens */
+    }
+    section {
         padding: 20px;
     }
-
+    .recent-hotels-banner {
+        gap: 15px;
+        width: 100%;
+    }
     .banner-title {
         font-size: 22px;
     }
-
     .banner-description {
         font-size: 14px;
     }
-
     .section-header {
-        flex-direction: column;
+        flex-direction: row; /* Layout side-by-side again */
         align-items: flex-start;
         gap: 10px;
+        width: 100%;
     }
-
     .section-title {
         font-size: 18px;
+        width: auto; /* Allow title to take content width when side-by-side */
     }
-
     .toggle-switch {
-        margin-top: 0; /* Reset margin */
+        width: auto; /* Allow toggle to shrink */
+        justify-content: flex-end;
     }
-
+    .toggle-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
     .filter-buttons {
-        flex-wrap: wrap; /* Allow filters to wrap to multiple lines */
-        justify-content: center; /* Center filters when wrapped */
         gap: 8px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        flex-wrap: nowrap; /* Prevent wrapping on tablet if space allows */
+        justify-content: flex-start;
+        width: 100%;
     }
-
     .filter-btn {
         padding: 6px 14px;
         font-size: 14px;
     }
-
-    .hotel-cards-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust min-width */
-    }
-
-    .hotel-card, .hotel-card-lg {
-        min-width: 280px; /* Adjust min-width for tablet */
-    }
-
-    .hotel-card {
-        flex-direction: column; /* Stack image and text vertically on tablet */
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-    }
-
-    .hotel-card .hotel-image {
-        width: 100%;
-        height: 180px; /* Make image taller */
-        margin-bottom: 10px;
-    }
-
-    .hotel-card-lg .hotel-image {
-        height: 180px; /* Adjust height for large cards too */
-    }
-
-    .hotel-details {
-        padding: 0; /* Remove horizontal padding when stacked */
-        width: 100%;
-        align-items: center;
-    }
-
-    .hotel-name, .hotel-location, .hotel-rating, .hotel-price {
-        text-align: center;
-    }
-
-    .hotel-rating .divider {
-        margin: 0 3px;
-    }
-}
-
-/* Mobile (up to 767px) */
-@media (max-width: 767px) {
-    .container {
-        padding: 0 10px; /* More padding for very small screens */
-    }
-
-    .main-content {
-        padding: 15px 0;
-    }
-
-    section {
-        padding: 15px;
-        border-radius: 15px;
-    }
-
-    .recent-hotels-banner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .banner-title {
-        font-size: 20px;
-    }
-
-    .banner-description {
-        font-size: 13px;
-    }
-
-    .banner-image {
-        align-self: flex-start; /* Move AD to left on mobile */
-        margin-top: 10px;
-    }
-
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .section-title {
-        font-size: 17px;
-    }
-
-    .toggle-switch {
-        width: 100%; /* Make toggle full width */
-        justify-content: center;
-    }
-
-    .toggle-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
-
-    .filter-buttons {
-        flex-wrap: wrap; /* Filters wrap */
-        justify-content: center;
-        gap: 6px;
-        margin-bottom: 15px;
-        padding-bottom: 8px;
-    }
-
-    .filter-btn {
-        padding: 5px 12px;
-        font-size: 13px;
-    }
-
     .info-bar {
-        padding: 10px 12px;
-        margin-bottom: 15px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        width: 100%;
     }
-
     .info-bar p {
-        font-size: 13px;
-    }
-
-    .hotel-cards-container {
-        grid-template-columns: 1fr; /* Stack cards vertically */
-        gap: 15px;
-    }
-
-    .hotel-card, .hotel-card-lg {
-        min-width: unset; /* Remove min-width to let them fill container */
-        width: 100%; /* Fill container width */
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .hotel-card .hotel-image,
-    .hotel-card-lg .hotel-image {
-        width: 100%;
-        height: 150px; /* Slightly smaller images on mobile */
-        margin-bottom: 8px;
-    }
-
-    .hotel-details {
-        width: 100%;
-        padding: 0;
-    }
-
-    .hotel-name {
-        font-size: 15px;
-    }
-
-    .hotel-location, .hotel-rating .score, .hotel-rating .review-text, .hotel-price {
-        font-size: 13px;
-    }
-
-    .hotel-price .currency {
         font-size: 14px;
     }
 
+    .hotel-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Flexible columns for larger mobile/small tablets */
+        gap: 20px;
+        width: 100%;
+    }
+
+    .hotel-card, .hotel-card-lg {
+        min-width: 280px; /* Set a reasonable min-width for larger screens */
+        flex-direction: column; /* Keep vertical stacking as it works well for tablets */
+        padding: 15px;
+        width: 100%; /* Ensure card takes full width of its grid column */
+    }
+    .hotel-image-wrapper {
+        padding-top: 66.66%; /* 3:2 Aspect Ratio - common for cards (or adjust to your image content) */
+    }
+
+    .hotel-details {
+        padding: 0;
+    }
+    .hotel-card-lg .hotel-details {
+        padding: 15px; /* Adjust padding for large cards */
+    }
+    .hotel-name {
+        font-size: 16px;
+    }
+    .hotel-location, .hotel-rating .score, .hotel-rating .review-text, .hotel-price {
+        font-size: 14px;
+    }
+    .hotel-price .currency {
+        font-size: 15px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .recent-hotels-banner {
+        padding: 30px;
+    }
+    .banner-title {
+        font-size: 26px;
+    }
+    .banner-description {
+        font-size: 15px;
+    }
+    .section-title {
+        font-size: 20px;
+    }
+
+    .hotel-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Adjust min-width for proper display */
+    }
+
+    .hotel-card {
+        /* Revert to original side-by-side layout for hotel-card on larger screens */
+        flex-direction: row;
+        padding: 15px;
+        min-width: 350px; /* Adjusted min-width for side-by-side layout */
+        width: 100%; /* Ensure card still takes full width of its grid column */
+    }
+    .hotel-card .hotel-image-wrapper {
+        width: 130px;
+        padding-top: 130px; /* Fixed height/width for side-by-side image */
+        flex-shrink: 0; /* Prevent wrapper from shrinking */
+    }
+    .hotel-details {
+        padding-right: 10px;
+        align-items: flex-start; /* Align text to left for side-by-side */
+        text-align: left;
+    }
+    .hotel-name, .hotel-location, .hotel-rating, .hotel-price {
+        text-align: left;
+    }
+    .hotel-rating, .hotel-price {
+        justify-content: flex-start; /* Align rating and price to the left */
+    }
+
+
+    /* Show scroll arrows on hover for desktop */
     .scroll-arrow {
-        display: none; /* Hide scroll arrows on mobile, rely on touch scrolling */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex; /* Show arrows on larger screens */
+        position: absolute; /* Add position absolute to arrows */
+        top: 62%; /* Adjusted positioning */
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+    .scroll-arrow.left {
+        left: 10px;
+    }
+    .scroll-arrow.right {
+        right: 10px;
+    }
+
+    .hotel-cards-container:hover + .scroll-arrow,
+    .scroll-arrow:hover {
+        opacity: 1;
+    }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .content-area {
+        gap: 40px; /* Revert to larger gap for desktop */
+        max-width: 1100px; /* Revert to original max-width for content area */
+    }
+    .recent-hotels-banner {
+        flex-direction: row; /* Revert to row for banner */
+        align-items: flex-start;
+    }
+    .banner-image {
+        align-self: flex-end; /* Align AD to right */
+        margin-top: 0;
+    }
+    .section-title {
+        font-size: 20px; /* Revert to original desktop size */
+    }
+
+    .hotel-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* More flexible grid for larger screens */
+    }
+
+    .hotel-card, .hotel-card-lg {
+        min-width: unset; /* Remove explicit min-width to let grid handle it */
+    }
+
+    /* Adjust padding for side content column */
+    .side-content-column {
+        padding: 20px;
     }
 }

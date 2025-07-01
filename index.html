@@ -75,84 +75,90 @@
         <main>
             <div id="search">
                 <div class="search_box" id="search_box">
-                    <div class="search_box_top">
-                        <button type="button" class="trip-btn active">왕복</button>
-                        <button type="button" class="trip-btn">편도</button>
-                        <button type="button" class="trip-btn">다구간</button>
-                        <div>
-                            <label style="margin-right: 20px;"><input type="radio" name="direct-flight" id="radio2">직항만</label>
-                            <label><input type="radio" name="business trip" id="radio1">해외출장입니다.</label>
-                        </div>
-                    </div>
-                    <div class="search_box_mb">
-                        <div class="search_box_mid">
-                            <div style="position: relative;">
-                                <input type="text" placeholder="출발지" id="origin-input">
-                                <div id="origin-suggestions" class="suggestions-dropdown"></div>
-                            </div>
-                            <button class="swap-btn"><img src="./image/ArrowsClockwise.svg" alt=""></button>
-                            <div style="position: relative;">
-                                <input type="text" placeholder="도착지" id="destination-input">
-                                <div id="destination-suggestions" class="suggestions-dropdown"></div>
-                            </div>
-                            <div class="calendar-container">
-                                <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
-                                <input type="text" id="depart-calendar" readonly>
-                                <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
-                                <input type="text" id="return-calendar" readonly>
-                            </div>
-                            <div class="passenger-select-wrapper">
-                                <button id="passenger-btn">성인 1명, 일반석</button>
-                                <div id="passenger-dropdown" class="dropdown">
-                                    <label>
-                                        인원수:
-                                        <select id="passenger-count">
-                                            <option value="1">1명</option>
-                                            <option value="2">2명</option>
-                                            <option value="3">3명</option>
-                                            <option value="4">4명</option>
-                                        </select>
-                                    </label>
-                                    <label>
-                                        좌석 등급:
-                                        <select id="seat-class">
-                                            <option value="ECONOMY">일반석</option>
-                                            <option value="BUSINESS">비즈니스</option>
-                                            <option value="FIRST">일등석</option>
-                                        </select>
-                                    </label>
-                                </div>
-                            </div>
-                            <button type="submit" id="search-flights-btn">검색</button>
-                        </div>
-                        <div class="search_box_bottom">
-                            <div class="ai-assistant-box">
-                                <div class="ai-header">
-                                    <span class="ai-badge">AI</span>
-                                    <strong><span class="bold">AI 항공권 어시스턴트</span></strong>
-                                    <span class="desc">자연어로 편리하게 항공권을 검색하고 추천받으세요</span>
-                                </div>
-                                <div class="ai-ip-box">
-                                    <img src="./image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
-                                    <div class="ai-input-box">
-                                        <input type="text" class="ai-input"
-                                            placeholder="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
-                                        <button class="ai-search-btn"></button>
-                                        <div class="ai-notification" id="ai-notification"></div>
-                                    </div>
-                                    <div class="ai-tags">
-                                        <div class="tag-wrapper">
-                                            <span class="tag-item">✨ 자연어 검색</span>
-                                            <span class="tag-item">🎯 맞춤 추천</span>
-                                            <span class="tag-item">⚡ 실시간 비교</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <div class="search_box_top">
+    <div class="trip-buttons-group"> <button type="button" class="trip-btn active">왕복</button>
+        <button type="button" class="trip-btn">편도</button>
+        <button type="button" class="trip-btn">다구간</button>
+    </div>
+    <div>
+        <label style="margin-right: 20px;"><input type="radio" name="direct-flight" id="radio2">직항만</label>
+        <label><input type="radio" name="business trip" id="radio1">해외출장입니다.</label>
+    </div>
+</div>
+                 <div class="search_box_mb">
+    <div class="search_box_mid">
+        <div class="search-group search-group-primary">
+            <div class="input-wrapper">
+                <input type="text" placeholder="출발지" id="origin-input">
+                <div id="origin-suggestions" class="suggestions-dropdown"></div>
+            </div>
+            <button class="swap-btn"><img src="./image/ArrowsClockwise.svg" alt=""></button>
+            <div class="input-wrapper">
+                <input type="text" placeholder="도착지" id="destination-input">
+                <div id="destination-suggestions" class="suggestions-dropdown"></div>
+            </div>
+            <div class="calendar-container">
+                <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
+                <input type="text" id="depart-calendar" readonly>
+            </div>
+            <div class="calendar-container">
+                <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
+                <input type="text" id="return-calendar" readonly>
+            </div>
+        </div>
+
+        <div class="search-group search-group-secondary">
+            <div class="passenger-select-wrapper">
+                <button id="passenger-btn">성인 1명, 일반석</button>
+                <div id="passenger-dropdown" class="dropdown">
+                    <label>
+                        인원수:
+                        <select id="passenger-count">
+                            <option value="1">1명</option>
+                            <option value="2">2명</option>
+                            <option value="3">3명</option>
+                            <option value="4">4명</option>
+                        </select>
+                    </label>
+                    <label>
+                        좌석 등급:
+                        <select id="seat-class">
+                            <option value="ECONOMY">일반석</option>
+                            <option value="BUSINESS">비즈니스</option>
+                            <option value="FIRST">일등석</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" id="search-flights-btn">검색</button>
+        </div>
+    </div>
+    <div class="search_box_bottom">
+        <div class="ai-assistant-box">
+            <div class="ai-header">
+                <span class="ai-badge">AI</span>
+                <strong><span class="bold">AI 항공권 어시스턴트</span></strong>
+                <span class="desc">자연어로 편리하게 항공권을 검색하고 추천받으세요</span>
+            </div>
+            <div class="ai-ip-box">
+                <img src="./image/ai_search_cloud.png" alt="구름" class="ai-cloud" />
+                <div class="ai-input-box">
+                    <input type="text" class="ai-input"
+                        placeholder="다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘" />
+                    <button class="ai-search-btn"></button>
+                    <div class="ai-notification" id="ai-notification"></div>
+                </div>
+                <div class="ai-tags">
+                    <div class="tag-wrapper">
+                        <span class="tag-item">✨ 자연어 검색</span>
+                        <span class="tag-item">🎯 맞춤 추천</span>
+                        <span class="tag-item">⚡ 실시간 비교</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
             <div class="top_right">
                 <div class="empty1"></div>
                 <div class="checklist-box">

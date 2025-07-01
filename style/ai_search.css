@@ -216,7 +216,7 @@
 @media (max-width: 1023px) {
     .ai-assistant-box { padding: 15px; }
     .ai-ip-box { flex-direction: column; align-items: stretch; gap: 10px; }
-    .ai-cloud { margin: 0 auto 10px auto; }
+    .ai-cloud { display: none; } 
     .ai-input-box { width: 100%; padding: 10px 15px; }
     .ai-input { font-size: 14px; }
     .ai-search-btn { width: 35px; height: 35px; }
