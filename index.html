@@ -57,30 +57,36 @@
             <div id="search">
                 <div class="search_box" id="search_box">
                     <div class="search_box_top">
-                        <button type="button" class="trip-btn active">왕복</button>
-                        <button type="button" class="trip-btn">편도</button>
-                        <button type="button" class="trip-btn">다구간</button>
                         <div>
                             <label style="margin-right: 20px;"><input type="radio" name="direct-flight" id="radio2">직항만</label>
                             <label><input type="radio" name="business trip" id="radio1">해외출장입니다.</label>
                         </div>
+                        <button type="button" class="trip-btn active">왕복</button>
+                        <button type="button" class="trip-btn">편도</button>
+                        <button type="button" class="trip-btn">다구간</button>
                     </div>
                     <div class="search_box_mb">
                         <div class="search_box_mid">
-                            <div style="position: relative;">
-                                <input type="text" placeholder="출발지" id="origin-input">
-                                <div id="origin-suggestions" class="suggestions-dropdown"></div>
+                            <div class="input-group">
+                                <div style="position: relative;">
+                                    <input type="text" placeholder="출발지" id="origin-input">
+                                    <div id="origin-suggestions" class="suggestions-dropdown"></div>
+                                </div>
+                                <button class="swap-btn"><img src="../../image/ArrowsClockwise.svg" alt=""></button>
+                                <div style="position: relative;">
+                                    <input type="text" placeholder="도착지" id="destination-input">
+                                    <div id="destination-suggestions" class="suggestions-dropdown"></div>
+                                </div>
                             </div>
-                            <button class="swap-btn"><img src="../../image/ArrowsClockwise.svg" alt=""></button>
-                            <div style="position: relative;">
-                                <input type="text" placeholder="도착지" id="destination-input">
-                                <div id="destination-suggestions" class="suggestions-dropdown"></div>
-                            </div>
-                            <div class="calendar-container">
-                                <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
-                                <input type="text" id="depart-calendar" readonly>
-                                <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
-                                <input type="text" id="return-calendar" readonly>
+                            <div class="date-group">
+                                <div class="calendar-container">
+                                    <label for="depart-calendar" class="calendar-label" id="depart-label">가는 날</label>
+                                    <input type="text" id="depart-calendar" readonly>
+                                </div>
+                                <div class="calendar-container">
+                                    <label for="return-calendar" class="calendar-label" id="return-label">오는 날</label>
+                                    <input type="text" id="return-calendar" readonly>
+                                </div>
                             </div>
                             <div class="passenger-select-wrapper">
                                 <button id="passenger-btn">성인 1명, 일반석</button>
@@ -221,8 +227,7 @@
                         <h3 class="ai-panel-title">키워드 추천 여행지</h3>
                         <div class="carousel-wrapper">
                             <div id="recommendation-grid" class="recommendation-grid">
-                                <!-- Cards will be dynamically inserted here -->
-                            </div>
+                                </div>
                         </div>
                         <button class="carousel-button left" onclick="navigateCards(-1)" aria-label="이전 추천 보기">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -332,7 +337,6 @@
                 <p class="footer-copy">© EZAir Corporation</p>
             </footer>
         </main>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
     <script src="./common/common.js"></script>

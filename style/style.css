@@ -1036,6 +1036,7 @@ text{
   .search_box { padding: 0; }
   .theme-grid { grid-template-columns: 1fr; }
   .more-theme { font-size: 14px; padding: 10px 16px; }
+  .ai-recommendation-section{padding: 0 5rem}
 }
 @media (max-width: 480px) {
   .main-content, .recommend, .theme-travel, .banner-swiper-container { padding: 0 5px; }
