@@ -1459,6 +1459,7 @@ margin-right: 16px;
   overflow: hidden;
   margin-bottom: 20px; /* 검색 박스와의 간격 */
   border-radius: 5px;
+  width: 100%;
 }
 
 .carousel-text {
