@@ -1055,8 +1055,6 @@ width: 327px;
 
     .custom-banner {
         width: 1110px;
-        left: 50%;
-        transform: translateX(-50%);
         position: relative;
     }
 
