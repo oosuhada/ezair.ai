@@ -117,7 +117,7 @@ const destinationsData = [
         aiInfo: '원 반더빌트는 뉴욕에서 네 번째로 높은 마천루로, <br>서밋 전망대는 가장 인기 있는 전망대 중 하나입니다.',
         price: '₩450,000',
         duration: '5일 4박',
-        image: '../../../image/keyword_ny1.png',
+        image: '../image/keyword_ny1.png',
         description: '뉴욕의 화려한 도시와 아름다운 문화예술을 즐기고 싶은 당신을 위한 완벽한 선택',
         keywords: ['도시', '액티비티', '예술']
     },
@@ -130,7 +130,7 @@ const destinationsData = [
         aiInfo: '맨해튼에서 브루클린까지 가이드가 안내하는<br> 뉴욕 시내 도보 투어를 즐겨보세요. ',
         price: '₩270,000',
         duration: '7일 6박',
-        image: '../../../image/keyword_02.png',
+        image: '../../image/keyword_02.png',
         description: '아름다운 해변, 울창한 정글, 고대 사원을 탐험하며 몸과 마음을 치유하세요.',
         keywords: ['도시', '관광', '역사']
     },
@@ -143,7 +143,7 @@ const destinationsData = [
         aiInfo: '뉴욕에서 하룻밤 여행을 떠나 나이아가라 폭포의 장관을 감상하세요.',
         price: '₩320,000',
         duration: '4일 3박',
-        image: '../../../image/keyword_03.png',
+        image: '../image/keyword_03.png',
         description: '현대적인 스카이라인, 전통 사찰, 그리고 활기찬 거리에서 일본의 매력을 느껴보세요.',
         keywords: ['자연', '관광', '보트여행']
     },
@@ -156,7 +156,7 @@ const destinationsData = [
         aiInfo: '뉴욕 항구를 통과하는 수백만 명의 이민자들을 맞이했던<br> 미국의 상징인 자유의 여신상을 만나보세요.',
         price: '₩210,000',
         duration: '6일 5박',
-        image: '../../../image/keyword_04.png',
+        image: '../image/keyword_04.png',
         description: '하얀 집들과 푸른 바다가 어우러진 절경, 세계 3대 석양을 감상하며 잊지 못할 추억을 만드세요.',
         keywords: ['역사', '관광', '문화예술']
     },
@@ -169,7 +169,7 @@ const destinationsData = [
         aiInfo: '뉴욕에서 하룻밤 여행을 떠나 나이아가라 폭포의 장관을<br>감상하세요.',
         price: '₩320,000',
         duration: '6일 5박',
-        image: '../../../image/keyword_05.png',
+        image: '../image/keyword_05.png',
         description: '로키 산맥의 심장부, 밴프 국립공원에서 하이킹, 스키, 카누를 즐겨보세요.',
         keywords: ['도시', '건물', '역사']
     },
@@ -182,7 +182,7 @@ const destinationsData = [
         aiInfo: '뉴욕에서 하룻밤 여행을 떠나 나이아가라 폭포의 장관을<br>감상하세요.',
         price: '₩1.010,000',
         duration: '6일 5박',
-        image: '../../../image/keyword_06.png',
+        image: '../image/keyword_06.png',
         description: '로키 산맥의 심장부, 밴프 국립공원에서 하이킹, 스키, 카누를 즐겨보세요.',
         keywords: ['자연', '호수', '도시']
     }
@@ -344,7 +344,7 @@ function renderCarouselCard(destination) {
                 <div id="card-con-left">
                     <div class="card-image-wrap">
                         <img src="${destination.image}" alt="${destination.name}" class="card-image">
-                        <span class="card-badge"><img src="../../image/ai-fill.svg">BEST</span>
+                        <span class="card-badge"><img src="../image/ai-fill.svg">BEST</span>
                     </div>
 
                 </div>
@@ -362,7 +362,7 @@ function renderCarouselCard(destination) {
                             <span class="ai-info-text2">${destination.aiInfo}</span>
                         </div>
                         <div class="ai-match-info">
-                            <div class="ai-info-icon"><img src="../../image/ai-fill.svg" alt="AI 추천 아이콘"
+                            <div class="ai-info-icon"><img src="../image/ai-fill.svg" alt="AI 추천 아이콘"
                                     class="ai-match-icon">
                                 <div class="ai-match-text">AI 추천 ${destination.aiMatch}% 일치</div>
                             </div>
