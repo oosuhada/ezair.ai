@@ -553,9 +553,9 @@ width: 327px;
   margin: 40px auto;
   border: 1px rgba(0, 0, 0, 0.05) solid;
 }
-.object-cover{
+/* .object-cover{
   margin: 0 auto;
-}
+} */
 .custom-banner-pagination {
   position: absolute;
   bottom: 0;
