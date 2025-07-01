@@ -24,10 +24,27 @@
     <link rel="stylesheet" href="style/ai_results.css">
     <link rel="stylesheet" href="style/flight_results.css">
     <link rel="stylesheet" href="./common/common.css">
-
 </head>
 
 <body>
+    <!-- Intro Overlay START -->
+    <div class="intro-overlay" id="introOverlay" style="background-color: #000000;">
+        <img class="intro-airplane" src="../../image/introairplane.png" alt="Intro Airplane">
+        <div class="airplane-window-outer" id="airplaneWindow">
+            <div class="video-overlay" id="windowInner">
+                <video autoplay muted loop playsinline>
+                    <source src="./video/airplaneview.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="clouds">
+                    <div class="cloud cloud1"></div>
+                    <div class="cloud cloud2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Intro Overlay END -->
+
     <div class="main-content" id="mainContent">
         <header>
             <div class="inner">
@@ -37,14 +54,12 @@
                         <li class="air"><a href="index.html#">항공</a></li>
                         <li class="hotel"><a href="./pages/hotels/hotels.html">호텔</a></li>
                         <li class="package"><a href="./pages/pkgtour/pkgtour.html">패키지</a></li>
-                        <li class="forU"><a href="./pages/forYou/forYou.html">EZ for you</a><img
-                                src="./image/gnb_beta.png" alt="이지에어 포유 베타"></li>
+                        <li class="forU"><a href="./pages/forYou/forYou.html">EZ for you</a><img src="./image/gnb_beta.png" alt="이지에어 포유 베타"></li>
                     </ul>
                 </nav>
                 <div class="btns">
                     <a class="cs" href="./pages/cs/cs.html"><img src="./image/gnb_cs_bk.svg" alt="이지에어 고객센터"></a>
-                    <a class="user" href="./pages/myPage/myPage.html"><img src="./image/gnb_user_bk.svg"
-                            alt="이지에어 마이페이지"></a>
+                    <a class="user" href="./pages/myPage/myPage.html"><img src="./image/gnb_user_bk.svg" alt="이지에어 마이페이지"></a>
                 </div>
             </div>
         </header>
@@ -65,8 +80,7 @@
                         <button type="button" class="trip-btn">편도</button>
                         <button type="button" class="trip-btn">다구간</button>
                         <div>
-                            <label style="margin-right: 20px;"><input type="radio" name="direct-flight"
-                                    id="radio2">직항만</label>
+                            <label style="margin-right: 20px;"><input type="radio" name="direct-flight" id="radio2">직항만</label>
                             <label><input type="radio" name="business trip" id="radio1">해외출장입니다.</label>
                         </div>
                     </div>
@@ -365,7 +379,5 @@
     <script type="module" src="script/intro.js"></script>
     <script type="module" src="script/config.js"></script>
     <script type="module" src="script/gemini_search.js"></script>
-
 </body>
-
 </html>
