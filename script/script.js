@@ -130,7 +130,7 @@ const destinationsData = [
         aiInfo: '맨해튼에서 브루클린까지 가이드가 안내하는<br> 뉴욕 시내 도보 투어를 즐겨보세요. ',
         price: '₩270,000',
         duration: '7일 6박',
-        image: '.././image/keyword_02.png',
+        image: './image/keyword_02.png',
         description: '아름다운 해변, 울창한 정글, 고대 사원을 탐험하며 몸과 마음을 치유하세요.',
         keywords: ['도시', '관광', '역사']
     },

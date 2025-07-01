@@ -1230,4 +1230,13 @@ body {
         transform: translateY(-50%);
         margin-top: 0;
     }
+
+
+}
+@media (max-width: 768px) {
+    .booking-details{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
