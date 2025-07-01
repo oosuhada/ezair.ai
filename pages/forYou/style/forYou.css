@@ -275,11 +275,6 @@ section {
 }
 
 /* Specific adjustments for hotel-card (not _lg) on mobile */
-.hotel-card .hotel-image-wrapper {
-    /* For the specific `hotel-card` with side-by-side on larger screens, revert this for mobile */
-    /* This will be overridden by the media query */
-}
-
 .hotel-card-lg .hotel-image-wrapper {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
