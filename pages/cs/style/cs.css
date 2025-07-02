@@ -79,7 +79,7 @@
     color: var(--gray500);
     outline: none;
     /* 고정 너비를 제거하고 최소 너비 설정 */
-    min-width: 100px;
+    min-width: 80%;
     height: 56px;
     text-align: center;
 }
@@ -92,7 +92,9 @@
     padding: 8px 20px;
     font-size: 18px;
     cursor: pointer;
-    width: 96px;
+    /* width: 96px; */
+    min-width: 12%;
+    max-width: 16%;
     height: 56px;
 }
 
