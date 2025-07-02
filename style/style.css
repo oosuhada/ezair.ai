@@ -865,7 +865,7 @@
 
         .book-now-button {
             margin-top: 15px;
-            width: 70%;
+            /* width: 70%; */
             background: var(--gradient-blue-green);
             color: var(--wht);
             padding: 10px 18px;
@@ -1286,7 +1286,7 @@
                 /* 2 parts of the width */
                 width: auto;
                 /* Reset width for flex behavior */
-                max-width: 42vw;
+                max-width: 55vw;
             }
         }
 
