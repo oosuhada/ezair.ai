@@ -246,11 +246,12 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+
     border: 1px rgba(0, 0, 0, 0.05) solid;
     min-width: unset; /* Remove min-width to let them fill container */
     width: 100%; /* Fill container width */
     box-sizing: border-box; /* Include padding in element's total width and height */
+    max-width: 100%; /* Ensure it doesn't exceed its parent on small screens */
 }
 
 /* Image wrapper to maintain aspect ratio */
@@ -474,8 +475,9 @@ section {
 
     .hotel-card, .hotel-card-lg {
         min-width: 280px; /* Set a reasonable min-width for larger screens */
+        max-width: 450px; /* Cap the max width here for single column or wider phones */
         flex-direction: column; /* Keep vertical stacking as it works well for tablets */
-        
+
         width: auto; /* Ensure card takes full width of its grid column */
     }
     .hotel-image-wrapper {
@@ -519,30 +521,11 @@ section {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Adjust min-width for proper display */
     }
 
-    .hotel-card {
-        /* Revert to original side-by-side layout for hotel-card on larger screens */
-        flex-direction: column;
-       
-        min-width: 350px; /* Adjusted min-width for side-by-side layout */
-        width: auto; /* Ensure card still takes full width of its grid column */
+    .hotel-card, .hotel-card-lg { /* Apply to both types of cards for consistency */
+        min-width: 350px; /* Adjusted min-width for general display */
+        max-width: 400px; /* Cap width for tablets, prevent single large card */
+        width: auto;
     }
-    .hotel-card .hotel-image-wrapper {
-        width: 130px;
-        padding-top: 130px; /* Fixed height/width for side-by-side image */
-        flex-shrink: 0; /* Prevent wrapper from shrinking */
-    }
-    .hotel-details {
-        padding: 14px;
-        align-items: flex-start; /* Align text to left for side-by-side */
-        text-align: left;
-    }
-    .hotel-name, .hotel-location, .hotel-rating, .hotel-price {
-        text-align: left;
-    }
-    .hotel-rating, .hotel-price {
-        justify-content: flex-start; /* Align rating and price to the left */
-    }
-
 
     /* Show scroll arrows on hover for desktop */
     .scroll-arrow {
@@ -599,7 +582,12 @@ section {
     }
 
     .hotel-card, .hotel-card-lg {
-        min-width: unset; /* Remove explicit min-width to let grid handle it */
+        /* Removed min-width: unset; which caused the issue.
+           Now it will inherit min-width from 768px (350px) or 640px (280px).
+           Explicitly setting min-width for clarity at this breakpoint: */
+        min-width: 280px; /* Ensure a minimum width even on large screens */
+        max-width: 350px; /* Set a maximum width to prevent excessive growth */
+        width: auto;
     }
 
     /* Adjust padding for side content column */
