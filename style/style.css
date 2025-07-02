@@ -1286,7 +1286,8 @@ text {
         /* 2 parts of the width */
         width: auto;
         /* Reset width for flex behavior */
-        max-width: 55vw;
+        max-width: 50vw;
+        min-width: 40vw;
     }
 }
 
