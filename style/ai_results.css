@@ -426,6 +426,588 @@
   margin-left: 15px; /* Add some spacing from flight details */
 }
 
+/* ── EZ AI product results ───────────────────────────────────────────────── */
+.modal-content {
+  max-width: 980px;
+  padding: 28px;
+  border: 1px solid rgba(25, 135, 250, 0.1);
+  box-shadow: 0 28px 80px rgba(18, 61, 95, 0.22);
+}
+
+.modal-content > h2 {
+  padding-right: 40px;
+  color: #253747;
+}
+
+.ezai-loading {
+  width: 100%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 36px 24px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(25, 135, 250, .09), transparent 24%),
+    radial-gradient(circle at 82% 78%, rgba(16, 194, 160, .11), transparent 25%),
+    #fbfdff;
+}
+
+.ezai-loading[hidden],
+.ezai-results[hidden],
+.ezai-error[hidden],
+.ezai-provider-note[hidden],
+.ezai-compare[hidden] {
+  display: none !important;
+}
+
+.ezai-loading-mark {
+  width: 82px;
+  height: 82px;
+}
+
+.ezai-loading-title {
+  margin: 0;
+  color: #263d4c;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.ezai-loading-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: min(680px, 100%);
+  margin-top: 8px;
+}
+
+.ezai-step {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 54px;
+  padding: 10px 13px;
+  border: 1px solid var(--gray100);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--gray500);
+  transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.ezai-step span {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--gray50);
+  color: var(--gray500);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ezai-step strong { font-size: 13px; }
+
+.ezai-step[data-status="active"] {
+  border-color: rgba(25, 135, 250, .35);
+  background: #f3f9ff;
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.ezai-step[data-status="active"] span {
+  background: var(--primary);
+  color: #fff;
+  animation: ezai-step-pulse 1.15s ease-in-out infinite;
+}
+
+.ezai-step[data-status="done"] {
+  border-color: rgba(16, 194, 160, .28);
+  background: #f4fffc;
+  color: #078e73;
+}
+
+.ezai-step[data-status="done"] span {
+  background: var(--secondary);
+  color: transparent;
+  position: relative;
+}
+
+.ezai-step[data-status="done"] span::after {
+  content: '✓';
+  position: absolute;
+  color: #fff;
+}
+
+@keyframes ezai-step-pulse {
+  50% { transform: scale(1.08); box-shadow: 0 0 0 7px rgba(25, 135, 250, .08); }
+}
+
+.ezai-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  font-style: normal;
+}
+
+.ezai-results-head,
+.ezai-section-head,
+.ezai-card-top,
+.ezai-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ezai-results-head h3 {
+  margin: 3px 0 0;
+  color: #243847;
+  font-size: 20px;
+  letter-spacing: -.025em;
+}
+
+.ezai-kicker,
+.ezai-section-head span {
+  display: block;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.ezai-source {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid rgba(16, 194, 160, .2);
+  border-radius: 999px;
+  background: rgba(16, 194, 160, .08);
+  color: #087d67;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ezai-result-intent {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ezai-result-intent .ai-intent-chip {
+  background: #f7fbff;
+}
+
+.ezai-insight {
+  margin: 0;
+  border-left-color: var(--secondary);
+  background: linear-gradient(135deg, rgba(25, 135, 250, .07), rgba(16, 194, 160, .08));
+}
+
+.ezai-insight p {
+  margin: 0;
+  color: #3f5361;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.ezai-provider-note {
+  padding: 10px 13px;
+  border: 1px solid #f0d8a8;
+  border-radius: 10px;
+  background: #fffaf0;
+  color: #7a5b2c;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ezai-flight-list {
+  display: grid;
+  gap: 10px;
+}
+
+.ezai-flight-card {
+  padding: 16px 18px 13px;
+  border: 1px solid #e7edf1;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(24, 57, 76, .05);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.ezai-flight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(24, 57, 76, .09);
+}
+
+.ezai-flight-card.is-selected {
+  border-color: rgba(25, 135, 250, .42);
+  box-shadow: 0 0 0 3px rgba(25, 135, 250, .08);
+}
+
+.ezai-airline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ezai-airline img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 9px;
+  border: 1px solid #eef2f4;
+  background: #fff;
+}
+
+.ezai-airline div { display: grid; gap: 2px; min-width: 0; }
+.ezai-airline strong { color: #283c4a; font-size: 14px; }
+.ezai-airline span { color: var(--gray500); font-size: 11px; }
+
+.ezai-card-badges {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.ezai-card-badges span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: #eaf5ff;
+  color: #1975cc;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ezai-card-badges span:nth-child(3n) {
+  background: #e8faf5;
+  color: #078e73;
+}
+
+.ezai-route-row {
+  display: grid;
+  grid-template-columns: 120px minmax(150px, 1fr) 120px minmax(130px, auto);
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0 13px;
+}
+
+.ezai-endpoint { display: grid; gap: 2px; }
+.ezai-endpoint.is-arrival { text-align: right; }
+.ezai-endpoint strong { color: #203643; font-size: 20px; line-height: 1; }
+.ezai-endpoint span { color: var(--primary); font-size: 13px; font-weight: 800; }
+.ezai-endpoint small { color: var(--gray500); font-size: 10px; }
+
+.ezai-route-line {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ezai-route-line span,
+.ezai-route-line small {
+  color: var(--gray500);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.ezai-route-line i {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.ezai-route-line i::before,
+.ezai-route-line i::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+.ezai-route-line i::before { left: 0; }
+.ezai-route-line i::after { right: 0; border-color: var(--secondary); }
+
+.ezai-price {
+  display: grid;
+  gap: 3px;
+  text-align: right;
+}
+
+.ezai-price strong {
+  color: #213946;
+  font-size: 18px;
+  letter-spacing: -.02em;
+}
+
+.ezai-price span { color: var(--gray500); font-size: 10px; }
+
+.ezai-card-actions {
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid #f0f3f5;
+}
+
+.ezai-compare-toggle,
+.ezai-detail-link,
+.ezai-modify button,
+.ezai-followups button,
+.ezai-link-btn {
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ezai-compare-toggle,
+.ezai-detail-link {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ezai-compare-toggle {
+  border: 1px solid #dfe7ec;
+  background: #fff;
+  color: #58707f;
+}
+
+.ezai-compare-toggle.is-on {
+  border-color: rgba(25, 135, 250, .28);
+  background: #eef7ff;
+  color: var(--primary);
+}
+
+.ezai-detail-link {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary);
+  color: #fff;
+}
+
+.ezai-compare {
+  padding: 14px;
+  border: 1px solid rgba(25, 135, 250, .13);
+  border-radius: 14px;
+  background: #f9fcff;
+}
+
+.ezai-section-head strong {
+  display: block;
+  margin-top: 3px;
+  color: #304653;
+  font-size: 13px;
+}
+
+.ezai-link-btn {
+  padding: 6px 8px;
+  border-radius: 7px;
+  background: #edf4f8;
+  color: #617684;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.ezai-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.ezai-compare-card {
+  position: relative;
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #e4edf2;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.ezai-compare-card strong,
+.ezai-compare-card span,
+.ezai-compare-card b,
+.ezai-compare-card small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ezai-compare-card strong { color: #2f4552; font-size: 12px; }
+.ezai-compare-card span, .ezai-compare-card small { color: var(--gray500); font-size: 10px; }
+.ezai-compare-card b { color: var(--primary); font-size: 14px; }
+.ezai-compare-card button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f5f7;
+  color: #748794;
+  cursor: pointer;
+}
+
+.ezai-modify {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(16, 194, 160, .16);
+  border-radius: 14px;
+  background: #f8fffd;
+}
+
+.ezai-modify > div:first-child strong {
+  display: block;
+  margin-top: 3px;
+  color: #304653;
+  font-size: 12px;
+}
+
+.ezai-modify-input-row {
+  display: flex;
+  gap: 7px;
+  min-width: 0;
+}
+
+.ezai-modify input {
+  min-width: 0;
+  flex: 1;
+  height: 40px;
+  padding: 0 13px;
+  border: 1px solid #d9e7e3;
+  border-radius: 9px;
+  background: #fff;
+  color: #2d424f;
+  outline: none;
+  font-size: 12px;
+}
+
+.ezai-modify input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(16, 194, 160, .1);
+}
+
+.ezai-modify button {
+  min-width: 82px;
+  border-radius: 9px;
+  background: var(--gradient-blue-green);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ezai-followups {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.ezai-followups button {
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid rgba(25, 135, 250, .12);
+  border-radius: 999px;
+  background: #f7fbff;
+  color: #3f6f8c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ezai-error {
+  width: 100%;
+  padding: 30px;
+  border: 1px solid #f0d7d4;
+  border-radius: 16px;
+  background: #fff9f8;
+  text-align: center;
+  font-style: normal;
+}
+
+.ezai-error strong { color: #7d3f3a; font-size: 16px; }
+.ezai-error p { margin: 8px 0 0; color: #96625e; font-size: 13px; }
+.ezai-error .ai-intent-preview { justify-content: center; padding-left: 0; }
+
+.ezai-empty {
+  padding: 28px 16px;
+  border: 1px dashed #d8e2e8;
+  border-radius: 12px;
+  color: var(--gray500);
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .modal-content {
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
+    padding: 20px 14px 16px;
+    border-radius: 18px;
+  }
+
+  .modal-content > h2 { font-size: 18px; }
+  .ezai-loading { min-height: 320px; padding: 26px 12px; }
+  .ezai-loading-steps { grid-template-columns: 1fr; gap: 6px; }
+  .ezai-step { min-height: 46px; }
+  .ezai-results-head { align-items: flex-start; }
+  .ezai-results-head h3 { font-size: 17px; }
+  .ezai-result-intent { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 3px; scrollbar-width: none; }
+  .ezai-result-intent::-webkit-scrollbar { display: none; }
+  .ezai-result-intent .ai-intent-chip { flex: 0 0 auto; }
+
+  .ezai-route-row {
+    grid-template-columns: minmax(64px, auto) minmax(90px, 1fr) minmax(64px, auto);
+    gap: 8px;
+  }
+
+  .ezai-price {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .ezai-endpoint strong { font-size: 17px; }
+  .ezai-compare-grid { display: flex; overflow-x: auto; }
+  .ezai-compare-card { flex: 0 0 min(220px, 72vw); }
+  .ezai-modify { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 430px) {
+  .ezai-airline strong { font-size: 12px; }
+  .ezai-card-badges { gap: 3px; }
+  .ezai-card-badges span { font-size: 9px; }
+  .ezai-flight-card { padding: 13px 12px 11px; }
+  .ezai-modify-input-row { flex-direction: column; }
+  .ezai-modify button { min-height: 38px; }
+  .ezai-card-actions { justify-content: stretch; }
+  .ezai-card-actions > * { flex: 1; justify-content: center; }
+}
+
 .select-btn:hover {
   background-color: #1565c0;
   transform: translateY(-2px);

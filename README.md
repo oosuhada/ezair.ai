@@ -1,88 +1,266 @@
-# EZ AIR
+# EZ AIR — AI로 쉬워진 항공권 검색
 
-AI flight-search UX demo built with a static HTML/CSS/Vanilla JS frontend and an Express API backend. EZ AIR began as a frontend/team project and later became a useful portfolio artifact for natural-language travel search, flight-result comparison, and safe API-key handling.
+**EZ AIR**는 항공권 검색에서 반복되는 출발지·도착지·날짜·인원·직항 조건 입력을 줄이고, 사용자가 여행 계획을 **한 문장으로 말하면 검색 조건으로 바꿔주는 AI flight-search product**입니다.
 
-[Live demo](https://ezair.oosu.dev) · [GitHub](https://github.com/oosuhada/ezair.ai)
+기존 EZ AIR의 한국어 중심 UI, blue → green color system, 여행 서비스 레이아웃, 그리고 **비행기 창이 AI 검색창으로 변하는 signature intro**를 제품의 중심에 그대로 두고, 자연어 intent parsing·실제 검색 API 경계·검색 조건 수정·결과 비교·명확한 demo fallback을 추가해 초기 프로토타입을 실제 사용할 수 있는 형태로 보강했습니다.
 
-![EZ AIR homepage](.github/assets/ezair-home.png)
+**Live**: https://ezair.oosu.dev
 
-## 한국어 요약
+<p align="center">
+  <img src=".github/assets/portfolio/02-ai-search.png" width="920" alt="EZ AIR natural-language flight search with parsed trip chips">
+</p>
 
-EZ AIR는 항공권 검색 UI를 기반으로 **자연어 여행 검색과 AI assistant interaction**을 실험한 초기 풀스택 프로젝트입니다. HTML/CSS/Vanilla JavaScript로 만든 프론트엔드에 Express API 경계를 추가해 Amadeus/Gemini 같은 외부 provider key가 브라우저에 노출되지 않도록 구조를 정리했습니다.
+## 제품 방향 / Product Direction
 
-- 항공권·호텔·패키지·고객센터·예약 결과 화면으로 구성된 여행 서비스 UI
-- 자연어 항공 검색을 위한 AI assistant modal
-- Amadeus/Gemini 연동을 server-side Express API 뒤로 이동
-- API key 없이도 포트폴리오를 검토할 수 있는 mock/demo mode
-- 현재의 Next.js/AI 제품으로 발전하기 전 Vanilla JS 기반 구현 역량을 보여주는 기록
+항공권을 찾을 때 가장 번거로운 순간은 검색 결과 자체보다, 날짜나 인원·도착지를 조금 바꿀 때마다 긴 폼을 다시 조작해야 하는 과정입니다.
 
-과거 Vercel 주소는 현재 production deployment가 없어 더 이상 대표 live link로 사용하지 않습니다. 이 README의 Live demo는 현재 운영 환경으로 이전한 주소만 가리키도록 관리합니다.
+EZ AIR는 이 문제를 두 가지 검색 방식으로 해결합니다.
 
-## What This Shows
+- **EZ AI 자연어 검색** — `다음주 금요일 서울에서 제주로 가는 직항 항공권 찾아줘`처럼 한 문장으로 검색
+- **기존 항공권 폼** — 출발지·도착지·날짜·인원·좌석을 직접 선택하는 익숙한 검색 방식
 
-- Natural-language flight-search interaction design using an AI assistant modal.
-- Static travel-site frontend with flight, hotel, package, customer-service, and reservation pages.
-- Express backend boundary for Amadeus and Gemini integration instead of browser-side secret usage.
-- Mock/demo mode for public portfolio review without provider keys.
-- A clear migration path from a vanilla frontend into Vite/TypeScript and eventually a fuller Next.js architecture.
+두 방식 모두 같은 Express API 경계를 사용하며, provider credential이 있을 때는 **Amadeus test API**를 우선 사용하고, 없는 환경에서는 검색·비교·수정 UX를 그대로 검증할 수 있는 **deterministic demo fallback**을 사용합니다. Demo 결과는 UI에서 명확하게 표시합니다.
 
-## Architecture
+## Signature Intro
+
+EZ AIR의 첫 화면은 단순 splash screen이 아닙니다.
+
+1. 검은 화면 위에 세로형 **비행기 창**이 회전하며 등장합니다.
+2. 창 안에서 실제 기내 창밖 영상과 구름이 움직입니다.
+3. 큰 비행기 이미지가 화면을 대각선으로 가로지릅니다.
+4. 창 안 영상이 사라지고, **그 비행기 창 자체가 EZ AI 검색창 크기와 위치로 morph**합니다.
+5. `다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘`가 타이핑되며 메인 화면이 자연스럽게 드러납니다.
+
+같은 브라우저 탭에서는 `sessionStorage`를 사용해 한 번만 재생되므로 반복 탐색을 방해하지 않습니다.
+
+## EZ AI Search Flow
+
+### 1. 문장을 검색 조건으로 이해
+
+입력 중인 문장에서 이해한 내용을 chip으로 즉시 보여줍니다.
+
+- 출발 / 도착
+- 가는 날 / 오는 날
+- 인원
+- 직항 여부
+- 좌석 등급
+- 예산 표현
+
+예:
+
+```text
+다음주 금요일 서울에서 제주로 가는 직항 항공권 찾아줘
+→ 출발 서울 · ICN
+→ 도착 제주 · CJU
+→ 가는 날 2026-08-28
+→ 인원 1명
+→ 경유 직항만
+```
+
+### 2. 실제 검색 상태만 표시
+
+고정 시간을 흉내 내는 fake progress 대신 실제 동작 단계에 맞춰 상태를 전환합니다.
+
+```text
+여행 조건 이해
+→ 항공편 검색
+→ 가격·시간 비교
+```
+
+### 3. 결과를 비교 가능한 정보로 정리
+
+현재 검색 결과를 기준으로 자동 계산한 label을 표시합니다.
+
+- **최저가**
+- **최단시간**
+- **균형 추천** — 가격·소요시간·경유 수를 함께 계산
+- **직항**
+
+최대 **3개 항공편**을 선택해 같은 화면에서 가격, 소요시간, 직항 여부를 나란히 비교할 수 있습니다.
+
+### 4. 검색 조건을 대화처럼 수정
+
+결과 화면에서 처음부터 다시 입력할 필요가 없습니다.
+
+```text
+하루 늦춰줘
+2명으로 바꿔줘
+직항만 보여줘
+경유도 괜찮아
+런던 말고 파리로
+```
+
+기존 route/date/passenger context를 유지한 채 변경된 조건만 적용하고 다시 검색합니다.
+
+## Preview
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/01-intro.png" width="100%" alt="EZ AIR signature airplane-window intro"><br>
+      <sub><b>Signature intro</b> · 원본 비행기 창 → AI 검색창 전환</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/02-ai-search.png" width="100%" alt="EZ AI parsed natural-language search"><br>
+      <sub><b>Natural-language search</b> · 문장에서 이해한 조건을 chip으로 표시</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/03-ai-results.png" width="100%" alt="EZ AIR flight results"><br>
+      <sub><b>Flight results</b> · 최저가/최단시간/균형 추천/직항 label</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/04-compare.png" width="100%" alt="EZ AIR flight comparison"><br>
+      <sub><b>Compare</b> · 최대 3개 항공편 side-by-side 비교</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/05-modify.png" width="100%" alt="EZ AIR contextual search modification"><br>
+      <sub><b>Modify search</b> · “하루 늦춰줘”처럼 기존 조건을 유지한 재검색</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src=".github/assets/portfolio/06-mobile.png" width="100%" alt="EZ AIR mobile AI search results"><br>
+      <sub><b>Mobile</b> · 390px viewport에서도 검색/결과/비교 흐름 유지</sub>
+    </td>
+  </tr>
+</table>
+
+## Runtime Architecture
 
 ```mermaid
 flowchart LR
-  browser["Static EZ AIR frontend"] --> backend["Express API backend"]
-  backend --> amadeus["Amadeus API via server env"]
-  backend --> gemini["Gemini API via server env"]
-  browser --> mock["dummy_flights.json demo mode"]
+  browser["EZ AIR HTML/CSS/Vanilla JS"] --> express["Same-origin Express API"]
+  express --> intent["Korean/English intent parser"]
+  intent --> amadeus{"Amadeus credentials?"}
+  amadeus -->|yes| live["Amadeus test API"]
+  amadeus -->|no / provider error| demo["Deterministic demo search"]
+  live --> normalized["Normalized flight results"]
+  demo --> normalized
+  normalized --> browser
 ```
 
 ```text
 ezair.ai/
-├── index.html                  # main flight-search page
-├── script/                     # vanilla search/AI interaction scripts
-├── style/                      # page and search-result styles
-├── backend/                    # Express API boundary
-├── pages/                      # hotels, package tour, CS, reservation result
-├── image/                      # travel and airline UI assets
-└── video/                      # intro airplane-window motion asset
+├── index.html
+├── style/
+│   ├── intro.css
+│   ├── ai_search.css
+│   ├── ai_results.css
+│   └── ...
+├── script/
+│   ├── intro.js
+│   ├── ai_search.js
+│   ├── amadeus_search.js
+│   └── script.js
+├── backend/
+│   ├── routes/
+│   │   ├── ai.js
+│   │   └── amadeus.js
+│   ├── services/
+│   │   ├── intentParser.js
+│   │   ├── flightSearchProductService.js
+│   │   ├── demoSearchService.js
+│   │   └── amadeusService.js
+│   └── tests/
+├── pages/
+├── image/
+└── video/
 ```
 
-## Security And Public Sharing Notes
+## API Behaviour
 
-- `GEMINI_API_KEY`, `AMADEUS_API_KEY`, and `AMADEUS_API_SECRET` must live only in server-side `.env` files.
-- Browser code should never assign provider keys to `window` or `NEXT_PUBLIC_` variables.
-- The public demo runs in development/mock mode unless a backend is configured.
-- Any provider key that was previously committed in `index.html` should be treated as exposed and revoked/rotated.
+### `POST /api/ai-intent`
+
+자연어 문장을 검색 context로 해석합니다.
+
+```json
+{
+  "query": "다음주 금요일 서울에서 제주로 가는 직항 항공권 찾아줘"
+}
+```
+
+### `POST /api/ai-search`
+
+신규 검색 또는 기존 context를 유지한 수정 검색을 수행합니다.
+
+```json
+{
+  "query": "하루 늦춰줘",
+  "context": {
+    "origin": "ICN",
+    "destination": "CJU",
+    "departDate": "2026-08-28",
+    "adults": 1,
+    "travelClass": "ECONOMY",
+    "nonStop": true
+  }
+}
+```
+
+### `GET /api/search-locations` / `POST /api/search-flights`
+
+기존 structured search form에서 사용합니다. Amadeus credential이 없거나 provider request가 실패할 경우에도 local location index와 demo result로 UX가 끊기지 않습니다.
 
 ## Run Locally
 
-Frontend:
-
-```bash
-python3 -m http.server 5500
-```
-
-Backend:
+프런트와 API를 별도 포트로 띄울 필요 없이 **Express 한 프로세스**로 실행합니다.
 
 ```bash
 cd backend
-npm install
+npm ci
 npm start
 ```
 
-Create backend `.env` from placeholder values only:
+브라우저에서:
+
+```text
+http://localhost:3000
+```
+
+환경 변수:
 
 ```text
 PORT=3000
 AMADEUS_API_KEY=
 AMADEUS_API_SECRET=
-GEMINI_API_KEY=
 ```
+
+Amadeus 값이 비어 있으면 자동으로 deterministic demo mode를 사용합니다. Provider secret은 브라우저 코드에 포함하지 않습니다.
 
 ## Validate
 
 ```bash
-node --check script/gemini_search.js
+cd backend
+npm test
+
+cd ..
+node --check script/intro.js
+node --check script/ai_search.js
+node --check script/amadeus_search.js
+node --check backend/server.js
 ```
 
-Open `http://localhost:5500/index.html` and confirm the AI search demo uses mock data unless the backend is configured.
+현재 parser test는 다음 흐름을 검증합니다.
+
+- `다음주 금요일 서울에서 제주로 ... 직항`
+- `하루 늦춰줘`
+- `2명으로 바꾸고 직항만`
+- `런던 말고 파리로`
+
+## Safety / Fare Accuracy
+
+- 현재 live-provider 연동은 **Amadeus test API** 기준입니다.
+- Credential이 없는 환경의 결과는 **데모 데이터**라고 UI에 명시합니다.
+- Demo 결과는 route/date/조건에 따라 deterministic하게 생성되지만 실제 판매 운임이 아닙니다.
+- 실제 예약 전에는 항공사 또는 판매처의 최종 운임·수하물·환불 조건을 다시 확인해야 합니다.
+- `AMADEUS_API_KEY`와 `AMADEUS_API_SECRET`은 server-side environment에만 둡니다.
+
+---
+
+### English Summary
+
+EZ AIR is a Korean-first flight-search product that keeps its original blue/green travel UI and signature airplane-window intro, then strengthens the product layer with structured natural-language intent parsing, same-origin Express APIs, Amadeus-first search, deterministic demo fallback, derived result labels, up-to-three-flight comparison, and contextual search modification.
+
+The goal is not to replace the original EZ AIR identity with a new product shell. The current version treats the original experience as the product foundation and improves the parts that previously behaved like a prototype.

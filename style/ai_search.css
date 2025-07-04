@@ -243,3 +243,64 @@
 @media (max-width: 480px) {
     .ai-input { font-size: 12px; }
 }
+
+/* ── EZ AIR product polish: understood trip context ─────────────────────── */
+.ai-intent-preview {
+    display: none;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 12px;
+    padding-left: 85px;
+}
+
+.ai-intent-preview.show {
+    display: flex;
+}
+
+.ai-intent-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid rgba(25, 135, 250, 0.16);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(25, 135, 250, 0.07), rgba(16, 194, 160, 0.08));
+    color: var(--gray700);
+    font-size: 12px;
+    line-height: 1;
+}
+
+.ai-intent-chip-label {
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .04em;
+}
+
+.ai-intent-chip strong {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blk);
+}
+
+@media (max-width: 1023px) {
+    .ai-intent-preview {
+        padding-left: 0;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ai-intent-preview {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+    }
+
+    .ai-intent-preview::-webkit-scrollbar { display: none; }
+    .ai-intent-chip { flex: 0 0 auto; }
+}

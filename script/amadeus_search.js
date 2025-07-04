@@ -3,6 +3,7 @@
 let departPicker;
 let returnPicker;
 let isRoundTrip = true; // Default to round trip
+window.isRoundTrip = true;
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log("[Amadeus_Search] DOMContentLoaded fired. Initializing...");
@@ -170,8 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("[Amadeus_Search] Displaying loading message for suggestions.");
 
         try {
-            // 백엔드 URL을 3000번 포트로 변경
-            const response = await fetch(`http://localhost:3000/api/search-locations?keyword=${encodeURIComponent(keyword)}`);
+            const response = await fetch(`/api/search-locations?keyword=${encodeURIComponent(keyword)}`);
             console.log("[Amadeus_Search] Location suggestions API call response status:", response.status);
 
             if (!response.ok) {
@@ -337,8 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (noResultsMessage) noResultsMessage.style.display = 'none';
 
         try {
-            // 백엔드 URL을 3000번 포트로 변경
-            const response = await fetch('http://localhost:3000/api/search-flights', {
+            const response = await fetch('/api/search-flights', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -365,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const data = await response.json();
             console.log("[Amadeus_Search] Flight offers data received:", data.data ? data.data.length : 0, "offers.");
-            displayFlightOffers(data.data, data.dictionaries);
+            displayFlightOffers(data.data, data.dictionaries, data._meta);
         } catch (error) {
             console.error('[Amadeus_Search] Error during flight search:', error);
             if (flightResultsDiv) flightResultsDiv.innerHTML = `<p style="color: red;">항공편 검색 중 오류가 발생했습니다: ${error.message}</p>`;
@@ -376,9 +375,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Function to display flight offers in the UI
-    function displayFlightOffers(offers, dictionaries) {
+    function displayFlightOffers(offers, dictionaries, meta) {
         console.log("[Amadeus_Search] Displaying flight offers...");
         if (flightResultsDiv) flightResultsDiv.innerHTML = '';
+
+        if (flightResultsDiv && meta?.sourceLabel) {
+            const sourceNote = document.createElement('div');
+            sourceNote.className = `standard-source-note standard-source-note--${meta.sourceMode || 'unknown'}`;
+            sourceNote.textContent = meta.sourceMode === 'demo'
+                ? `${meta.sourceLabel} · 실제 예약 전 공급자 운임을 다시 확인해주세요.`
+                : `${meta.sourceLabel}에서 조회한 결과입니다.`;
+            flightResultsDiv.appendChild(sourceNote);
+        }
 
         if (!offers || offers.length === 0) {
             if (noResultsMessage) noResultsMessage.style.display = 'block';
@@ -388,7 +396,8 @@ document.addEventListener('DOMContentLoaded', function () {
         noResultsMessage.style.display = 'none';
 
         offers.forEach(offer => {
-            const price = offer.price.grandTotal;
+            const price = Number(offer.price.grandTotal || offer.price.total || 0);
+            const currency = offer.price.currency || 'KRW';
             const outboundItinerary = offer.itineraries[0];
             const outboundSegment = outboundItinerary.segments[0];
             const inboundItinerary = window.isRoundTrip && offer.itineraries.length > 1 ? offer.itineraries[1] : null;
@@ -411,8 +420,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ${outboundItinerary.segments.length > 1 ? `<span class="stops-badge">${outboundItinerary.segments.length - 1} 경유</span>` : '<span class="direct-flight-badge">직항</span>'}
                 </div>
                 <div class="flight-price">
-                    <p>가격: <strong>₩${parseFloat(price).toLocaleString()}</strong></p>
-                    <button class="book-btn">예매하기</button>
+                    <p>가격: <strong>${new Intl.NumberFormat('ko-KR', { style: 'currency', currency, maximumFractionDigits: currency === 'KRW' ? 0 : 2 }).format(price)}</strong></p>
+                    <a href="./pages/flightResult/flightResult.html" class="book-btn">항공편 보기</a>
                 </div>
             `;
 

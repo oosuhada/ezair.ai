@@ -1,3 +1,41 @@
+/* EZ AIR standard-search source disclosure */
+.standard-source-note {
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 10px 13px;
+    border: 1px solid rgba(25, 135, 250, .14);
+    border-radius: 10px;
+    background: #f5faff;
+    color: #4f6d80;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.standard-source-note--demo {
+    border-color: #f0d8a8;
+    background: #fffaf0;
+    color: #7a5b2c;
+}
+
+.book-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.book-btn:hover {
+    background: var(--secondary);
+}
+
 /* /style/flight_results.css */
 
 /* --- AI Result Header (Main page) --- */
