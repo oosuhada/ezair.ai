@@ -223,6 +223,7 @@ http://localhost:3000
 
 ```text
 PORT=3000
+HOST=0.0.0.0
 AMADEUS_API_KEY=
 AMADEUS_API_SECRET=
 ```

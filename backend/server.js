@@ -8,6 +8,7 @@ const aiRoutes = require('./routes/ai');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 const projectRoot = path.resolve(__dirname, '..');
 
 app.use(express.json({ limit: '256kb' }));
@@ -32,6 +33,6 @@ app.use((err, _req, res, _next) => {
     res.status(statusCode).json({ error: err.message || 'Internal server error', status: statusCode });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`EZ AIR running at http://0.0.0.0:${PORT}`);
+app.listen(PORT, HOST, () => {
+    console.log(`EZ AIR running at http://${HOST}:${PORT}`);
 });
