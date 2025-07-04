@@ -1,20 +1,14 @@
-import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
 import { IS_DEVELOPMENT_MODE } from './config.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     console.log("[Gemini_Search] DOM content loaded. Initializing scripts.");
 
     // --- API 키 및 모델 설정 ---
-    const GEMINI_API_KEY = window.GEMINI_API_KEY;
     let genAI, model;
 
     if (!IS_DEVELOPMENT_MODE) {
-        if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("YOUR_GEMINI_API_KEY")) {
-            console.error("⛔️ 오류: Gemini API 키가 설정되지 않았습니다.");
-            return;
-        }
-        genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        console.error("⛔️ Direct browser Gemini calls are disabled. Use the Express backend with server-side environment variables.");
+        return;
     }
 
     // --- DOM 요소 참조 (초기 로드 시점) ---
