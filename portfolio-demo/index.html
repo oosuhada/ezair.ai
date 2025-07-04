@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EZ AIR · AI Flight Search UX</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: #172033; background: linear-gradient(160deg,#e8f4ff,#fff8ec 58%,#f7fbff); }
+    main { width: min(1060px,92vw); margin: 0 auto; padding: 72px 0 56px; }
+    .eyebrow { font-weight: 800; letter-spacing: .14em; color: #2774c9; text-transform: uppercase; font-size: .78rem; }
+    h1 { font-size: clamp(3.2rem,9vw,7rem); line-height: .9; margin: 14px 0 22px; letter-spacing: -.07em; }
+    .lead { max-width: 760px; font-size: 1.12rem; line-height: 1.75; color: #4f5f76; }
+    .panel { margin-top: 38px; padding: 28px; border: 1px solid #dbe6f2; border-radius: 28px; background: rgba(255,255,255,.76); box-shadow: 0 20px 70px rgba(39,86,139,.12); backdrop-filter: blur(14px); }
+    .search { display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 12px; align-items: center; }
+    .field { padding: 20px; background: #fff; border: 1px solid #dce6ef; border-radius: 18px; }
+    .label { font-size: .75rem; color: #7e8b9c; text-transform: uppercase; letter-spacing: .1em; }
+    .value { margin-top: 5px; font-size: 1.35rem; font-weight: 750; }
+    .arrow { color: #6e7c90; font-size: 1.4rem; }
+    .button { padding: 20px 24px; border-radius: 18px; background: #1667c8; color: white; font-weight: 800; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .chip { padding: 9px 12px; border-radius: 999px; background: #eef6ff; color: #2d5e91; font-size: .86rem; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 18px; }
+    .card { padding: 20px; border-radius: 20px; background: #fff; border: 1px solid #e0e8ef; }
+    .card strong { display: block; margin-bottom: 8px; }
+    footer { margin-top: 34px; color: #718095; font-size: .92rem; line-height: 1.6; }
+    a { color: inherit; }
+    @media (max-width: 720px) { .search,.grid { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); text-align:center; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Portfolio Demo · 포트폴리오 데모</div>
+    <h1>EZ AIR</h1>
+    <p class="lead">A lightweight public reconstruction of the original AI-assisted flight-search project. The real project combines a static travel UI with an Express server boundary for Amadeus and Gemini, while this page intentionally runs without provider keys or booking APIs.</p>
+    <section class="panel">
+      <div class="search">
+        <div class="field"><div class="label">From</div><div class="value">Seoul · ICN</div></div>
+        <div class="arrow">→</div>
+        <div class="field"><div class="label">To</div><div class="value">Barcelona · BCN</div></div>
+        <div class="button">Ask AI</div>
+      </div>
+      <div class="chips"><span class="chip">Natural-language search</span><span class="chip">Flight comparison</span><span class="chip">Mock-safe demo</span><span class="chip">Express API boundary</span></div>
+      <div class="grid">
+        <div class="card"><strong>1. Interpret</strong>Turn a travel request into route/date preferences.</div>
+        <div class="card"><strong>2. Compare</strong>Present candidate flights in a compact decision surface.</div>
+        <div class="card"><strong>3. Protect keys</strong>Keep provider credentials behind the server boundary.</div>
+      </div>
+    </section>
+    <footer>한국어: EZ AIR는 항공권 검색·비교 UX와 자연어 AI 검색을 실험한 초기 팀/개인 프로젝트입니다. 공개 데모는 보안을 위해 외부 항공/LLM API 호출 없이 제품 흐름만 보여줍니다.<br><br><a href="https://github.com/oosuhada/ezair.ai">Source repository</a></footer>
+  </main>
+</body>
+</html>
