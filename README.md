@@ -127,6 +127,19 @@ EZ AIR의 첫 화면은 단순 splash screen이 아닙니다.
   </tr>
 </table>
 
+## UI / UX Polish
+
+기능을 추가하는 것만큼 **기존 EZ AIR의 화면 밀도와 정보 계층을 정리하는 것**을 중요하게 봤습니다. 원래의 blue → green 브랜드 컬러와 여행 서비스 분위기는 유지하되, 페이지가 하나의 긴 카드처럼 보이던 구조를 독립적인 product section으로 다시 나눴습니다.
+
+- Hero와 검색 카드를 자연스럽게 겹쳐 첫 화면의 depth와 집중도를 강화
+- 12 / 18 / 24px radius와 일관된 border·shadow·spacing token으로 화면 리듬 통일
+- EZ AI 입력 영역을 검색 카드의 핵심 visual anchor로 강화
+- 결과 modal의 카드·비교·검색 수정 영역을 같은 hierarchy와 spacing system으로 정리
+- 390px 모바일에서는 출발/도착, 날짜, 인원/검색을 2열로 구성해 AI 검색창까지의 스크롤을 단축
+- 작은 화면의 테마 여행지는 긴 세로 목록 대신 horizontal snap rail로 변경
+- 기존 100px slide-in / 2초 stagger motion을 더 짧고 미세한 motion으로 조정
+- 1440 / 1024 / 390 / 320px viewport에서 horizontal overflow 없이 검증
+
 ## Runtime Architecture
 
 ```mermaid
@@ -148,6 +161,7 @@ ezair.ai/
 │   ├── intro.css
 │   ├── ai_search.css
 │   ├── ai_results.css
+│   ├── polish.css              # spacing / depth / responsive product polish
 │   └── ...
 ├── script/
 │   ├── intro.js

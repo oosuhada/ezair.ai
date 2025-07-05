@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="style/ai_results.css">
     <link rel="stylesheet" href="style/flight_results.css">
     <link rel="stylesheet" href="./common/common.css">
+    <link rel="stylesheet" href="style/polish.css">
 </head>
 
 <body>
@@ -61,15 +62,26 @@
         <div class="hero-section">
             <img class="top_airplane" src="./image/top_airplane.png" alt="">
             <img class="top_cloud_left" src="./image/top_cloud_left.png" alt="">
-            <h1 class="title">맞춤형 여행의 시작<br>
-                <p class="title_2">EZ AIR</p>
-            </h1>
+            <div class="hero-copy">
+                <p class="hero-eyebrow">AI로 더 쉬운 항공권 검색</p>
+                <h1 class="title">맞춤형 여행의 시작<br>
+                    <span class="title_2">EZ AIR</span>
+                </h1>
+                <p class="hero-subcopy">여행 조건을 고르거나, EZ AI에게 원하는 여행을 문장으로 말해보세요.</p>
+            </div>
             <img class="top_main_cloud" src="./image/top_main_cloud.png" alt="">
             <img class="top_cloud_right" src="./image/top_cloud_right.png" alt="">
         </div>
         <main>
             <div id="search">
                 <div class="search_box" id="search_box">
+          <div class="search-product-intro">
+              <div>
+                  <span>항공권 검색</span>
+                  <h2>어디로 떠나세요?</h2>
+              </div>
+              <p>조건을 직접 선택하거나 아래 EZ AI에 여행 계획을 한 문장으로 입력하세요.</p>
+          </div>
           <div class="search_box_top">
     <div class="trip-buttons-group"> <button type="button" class="trip-btn active">왕복</button>
         <button type="button" class="trip-btn">편도</button>
@@ -154,6 +166,19 @@
         </div>
     </div>
 </div>
+                </div>
+            </div>
+
+            <div id="flight-results-section" style="display: none;">
+                <div class="ai-result-header">
+                    <span class="section-eyebrow">검색 결과</span>
+                    <h2>조건에 맞는 항공편</h2>
+                    <p>EZ AIR가 검색한 항공편을 가격과 일정 기준으로 비교해보세요.</p>
+                </div>
+                <div id="flight-results">
+                    <p id="no-results-message" style="display: none;">항공편을 찾을 수 없습니다.</p>
+                </div>
+            </div>
             <div class="top_right">
                 <div class="empty1"></div>
                 <div class="checklist-box">
@@ -337,16 +362,6 @@
                     <button class="more-theme">추천 항공권 더보기</button>
                 </div>
             </section>
-            <div id="flight-results-section" style="display: none;">
-                <hr>
-                <div class="ai-result-header">
-                    <h2>AI 검색 결과</h2>
-                    <p>AI 어시스턴트가 찾은 맞춤 항공편입니다.</p>
-                </div>
-                <div id="flight-results">
-                    <p id="no-results-message" style="display: none;">항공편을 찾을 수 없습니다.</p>
-                </div>
-            </div>
             <div id="ai-results-modal" class="modal" aria-modal="true" role="dialog">
                 <div class="modal-content">
                     <span class="close-button" aria-label="Close modal">×</span>

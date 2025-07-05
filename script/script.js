@@ -82,9 +82,9 @@ if (themeCards.length > 0) {
             // markers: true, // Uncomment for debugging ScrollTrigger
         },
         opacity: 0,
-        y: 50,
-        duration: 2,
-        stagger: .35,
+        y: 22,
+        duration: .72,
+        stagger: .08,
         ease: "power2.out"
     });
 }
@@ -461,8 +461,8 @@ window.addEventListener('load', function () {
     // GSAP animations
     gsap.from(".ai-recommendation-section h2", {
         opacity: 0,
-        y: -50,
-        duration: 1,
+        y: -16,
+        duration: .65,
         ease: "power3.out",
         scrollTrigger: {
             trigger: ".ai-recommendation-section",
@@ -473,8 +473,8 @@ window.addEventListener('load', function () {
 
     gsap.from(".ai-keywords-panel", {
         opacity: 0,
-        x: -100,
-        duration: 1.2,
+        x: -28,
+        duration: .72,
         ease: "power3.out",
         scrollTrigger: {
             trigger: ".ai-recommendation-section",
@@ -485,10 +485,10 @@ window.addEventListener('load', function () {
 
     gsap.from(".ai-recommendation-cards-panel", {
         opacity: 0,
-        x: 100,
-        duration: 1.2,
+        x: 28,
+        duration: .72,
         ease: "power3.out",
-        delay: 0.2,
+        delay: 0.08,
         scrollTrigger: {
             trigger: ".ai-recommendation-section",
             start: "top 80%",
