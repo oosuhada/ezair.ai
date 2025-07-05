@@ -49,9 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.set(introAirplane, { transformOrigin: "center center" });
 
         const startX = -window.innerWidth / 2 - 500;
-        const startY = -window.innerHeight / 2 - 500;
-        const endX = window.innerWidth / 2 + 500;
-        const endY = window.innerHeight / 2 + 500;
+        const startY = -window.innerHeight / 2 - 360;
+        const loopRadiusX = Math.min(250, window.innerWidth * 0.18);
+        const loopRadiusY = Math.min(190, window.innerHeight * 0.22);
+        const exitX = -window.innerWidth / 2 - 620;
+        const exitY = window.innerHeight / 2 + 460;
 
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
 
@@ -78,7 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // GSAP 타임라인 코드는 모두 동일
         tl.from(airplaneWindow, { duration: 2, scale: 0.3, rotation: 360, ease: "back.out(1.7)" });
         tl.to('.cloud', { duration: 1.2, opacity: 1, stagger: 0.4 }, "-=2");
-        tl.fromTo(introAirplane, { x: startX, y: startY, rotation: 135, opacity: 1 }, { x: endX, y: endY, duration: 4, ease: "power2.inOut" }, "-=3");
+        tl.fromTo(
+            introAirplane,
+            { x: startX, y: startY, rotation: 135, opacity: 1 },
+            {
+                keyframes: [
+                    { x: -loopRadiusX, y: -loopRadiusY * 0.35, rotation: 135, duration: 1.1, ease: "power2.out" },
+                    { x: 0, y: -loopRadiusY, rotation: 180, duration: 0.7, ease: "sine.inOut" },
+                    { x: loopRadiusX, y: 0, rotation: 270, duration: 0.72, ease: "sine.inOut" },
+                    { x: 0, y: loopRadiusY, rotation: 360, duration: 0.72, ease: "sine.inOut" },
+                    { x: -loopRadiusX, y: 0, rotation: 450, duration: 0.72, ease: "sine.inOut" },
+                    { x: -loopRadiusX * 0.45, y: loopRadiusY * 0.62, rotation: 420, duration: 0.55, ease: "power1.in" },
+                    { x: exitX, y: exitY, rotation: 405, duration: 1.15, ease: "power2.in" }
+                ]
+            },
+            "-=3"
+        );
         tl.set(introAirplane, { opacity: 0 });
         tl.to(windowInner, { duration: 1.5, opacity: 0, ease: "power2.inOut", onComplete: function() { windowInner.style.display = 'none'; } }, ">-0.5");
         tl.to(airplaneWindow, { duration: 1, x: targetX, y: targetY, width: targetWidth, height: targetHeight, borderRadius: targetBorderRadius, backgroundColor: targetBackgroundColor, borderColor: targetBorderColor, boxShadow: targetBoxShadow, ease: "power2.inOut" }, ">-0.7");

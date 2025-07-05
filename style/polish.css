@@ -457,7 +457,22 @@ main { width: 100%; padding-bottom: 0; }
 
 .card { border-radius: var(--ez-radius-md); }
 .card-container { width: 100%; gap: 22px; }
-.card-image-wrap { flex: 0 0 46%; max-width: 46%; height: 360px; border-radius: var(--ez-radius-md); }
+#card-con-left {
+  flex: 0 0 46%;
+  width: 46%;
+  min-width: 0;
+  display: flex;
+  align-self: stretch;
+}
+.card-image-wrap {
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 360px;
+  border-radius: var(--ez-radius-md);
+}
 #card-con-right { max-width: none; min-width: 0; flex: 1; }
 .card-content-wrapper { padding: 16px 18px 12px 0; }
 .card-info-top { font-size: 13px; }
@@ -560,7 +575,7 @@ main { width: 100%; padding-bottom: 0; }
   .ai-content-wrapper { grid-template-columns: 1fr; }
   .word-cloud-container { height: 250px; }
   .ai-recommendation-cards-panel { max-width: none; min-width: 0; }
-  .card-image-wrap { height: 320px; }
+  .card-image-wrap { min-height: 320px; }
   .theme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -656,7 +671,8 @@ main { width: 100%; padding-bottom: 0; }
 
   .card-container { flex-direction: column; gap: 0; }
   .ai-recommendation-cards-panel { padding: 14px; }
-  .card-image-wrap { flex: none; max-width: none; width: 100%; height: 190px; border-radius: 15px; }
+  #card-con-left { flex: none; width: 100%; }
+  .card-image-wrap { flex: none; max-width: none; width: 100%; height: 190px; min-height: 190px; border-radius: 15px; }
   #card-con-right { max-width: 100%; }
   .card-content-wrapper { padding: 13px 2px 5px; }
   .card-info-top { margin-bottom: 5px; font-size: 11px; }
