@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // 화면 중앙을 기준으로 실제 이동 궤적을 만든다.
-        // 좌측 상단에서 충분히 이동하며 진입한 뒤, 중앙 구간에서만 loop를 한 번
-        // 수행하고 좌측 하단으로 같은 흐름을 이어간다.
+        // 좌측 상단에서 천천히 진입한 뒤 loop 직전에 가속하고, 중앙 loop는 짧고
+        // 빠르게 한 번 수행한다. 이후 감속하면서 우측 하단으로 빠져나간다.
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const airplaneWidth = introAirplane.getBoundingClientRect().width;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const loopRadiusY = Math.min(190, Math.max(105, viewportHeight * 0.24));
         const loopCenterX = Math.min(50, viewportWidth * 0.04);
         const loopCenterY = Math.min(30, viewportHeight * 0.04);
-        const exitX = -(viewportWidth / 2 + airplaneWidth * 0.58);
+        const exitX = viewportWidth / 2 + airplaneWidth * 0.58;
         const exitY = viewportHeight / 2 + airplaneWidth * 0.42;
 
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
@@ -86,20 +86,21 @@ document.addEventListener('DOMContentLoaded', function() {
             { x: startX, y: startY, rotation: 135, opacity: 1 },
             {
                 keyframes: [
-                    // 진입 동작을 충분히 보여 준 뒤 loop 구간으로 연결한다.
-                    { x: -viewportWidth * 0.31, y: -viewportHeight * 0.28, rotation: 135, duration: 0.95, ease: "power1.out" },
-                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.28, rotation: 145, duration: 0.7, ease: "sine.inOut" },
+                    // 좌측 상단 진입은 여유 있게 보여주고 loop 직전에 속도를 붙인다.
+                    { x: -viewportWidth * 0.31, y: -viewportHeight * 0.28, rotation: 135, duration: 1.0, ease: "power1.out" },
+                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.28, rotation: 145, duration: 0.46, ease: "power3.in" },
 
-                    // 중앙 40~50% 구간에서만 한 번 크게 loop한다.
-                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 45, duration: 0.55, ease: "sine.inOut" },
-                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 90, duration: 0.62, ease: "sine.inOut" },
-                    { x: loopCenterX + loopRadiusX, y: loopCenterY, rotation: 145, duration: 0.62, ease: "sine.inOut" },
-                    { x: loopCenterX + loopRadiusX * 0.45, y: loopCenterY + loopRadiusY, rotation: 220, duration: 0.62, ease: "sine.inOut" },
-                    { x: loopCenterX - loopRadiusX * 0.62, y: loopCenterY + loopRadiusY * 0.72, rotation: 280, duration: 0.58, ease: "sine.inOut" },
+                    // loop 자체는 약 1.35초 안에 끝내 roller-coaster처럼 빠르게 돈다.
+                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 45, duration: 0.24, ease: "none" },
+                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 90, duration: 0.27, ease: "none" },
+                    { x: loopCenterX + loopRadiusX, y: loopCenterY, rotation: 145, duration: 0.27, ease: "none" },
+                    { x: loopCenterX + loopRadiusX * 0.45, y: loopCenterY + loopRadiusY, rotation: 220, duration: 0.29, ease: "none" },
+                    { x: loopCenterX - loopRadiusX * 0.62, y: loopCenterY + loopRadiusY * 0.72, rotation: 280, duration: 0.28, ease: "none" },
 
-                    // loop를 끝낸 뒤 좌측 하단 방향으로 자연스럽게 빠져나간다.
-                    { x: -viewportWidth * 0.28, y: viewportHeight * 0.25, rotation: 264, duration: 0.72, ease: "power1.inOut" },
-                    { x: exitX, y: exitY, rotation: 236, duration: 1.15, ease: "power2.in" }
+                    // 빠른 loop에서 빠져나온 뒤 속도를 죽이며 우측 하단으로 길게 이탈한다.
+                    { x: viewportWidth * 0.22, y: viewportHeight * 0.24, rotation: 135, duration: 0.72, ease: "power3.out" },
+                    { x: viewportWidth * 0.42, y: viewportHeight * 0.38, rotation: 135, duration: 0.92, ease: "power2.out" },
+                    { x: exitX, y: exitY, rotation: 135, duration: 1.35, ease: "power1.out" }
                 ]
             },
             "-=3"
