@@ -48,12 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.set(airplaneWindow, { transformOrigin: "center center" });
         gsap.set(introAirplane, { transformOrigin: "center center" });
 
-        const startX = -window.innerWidth / 2 - 500;
-        const startY = -window.innerHeight / 2 - 360;
-        const loopRadiusX = Math.min(250, window.innerWidth * 0.18);
-        const loopRadiusY = Math.min(190, window.innerHeight * 0.22);
-        const exitX = -window.innerWidth / 2 - 620;
-        const exitY = window.innerHeight / 2 + 460;
+        // 좌측 상단 진입 → 중앙에서 한 번의 롤러코스터 loop → 좌측 하단 이탈
+        // 기존 중앙 고정 loop처럼 보이던 경로를 제거하고 진행 방향을 유지한다.
+        const startX = -window.innerWidth / 2 - 520;
+        const startY = -window.innerHeight / 2 - 420;
+        const loopRadiusX = Math.min(170, window.innerWidth * 0.13);
+        const loopRadiusY = Math.min(140, window.innerHeight * 0.16);
+        const exitX = -window.innerWidth / 2 - 520;
+        const exitY = window.innerHeight / 2 + 420;
 
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
 
@@ -85,13 +87,14 @@ document.addEventListener('DOMContentLoaded', function() {
             { x: startX, y: startY, rotation: 135, opacity: 1 },
             {
                 keyframes: [
-                    { x: -loopRadiusX, y: -loopRadiusY * 0.35, rotation: 135, duration: 1.1, ease: "power2.out" },
-                    { x: 0, y: -loopRadiusY, rotation: 180, duration: 0.7, ease: "sine.inOut" },
-                    { x: loopRadiusX, y: 0, rotation: 270, duration: 0.72, ease: "sine.inOut" },
-                    { x: 0, y: loopRadiusY, rotation: 360, duration: 0.72, ease: "sine.inOut" },
-                    { x: -loopRadiusX, y: 0, rotation: 450, duration: 0.72, ease: "sine.inOut" },
-                    { x: -loopRadiusX * 0.45, y: loopRadiusY * 0.62, rotation: 420, duration: 0.55, ease: "power1.in" },
-                    { x: exitX, y: exitY, rotation: 405, duration: 1.15, ease: "power2.in" }
+                    { x: -loopRadiusX * 2, y: -loopRadiusY * 1.5, rotation: 135, duration: 1.0, ease: "power2.out" },
+                    { x: -loopRadiusX, y: -loopRadiusY, rotation: 160, duration: 0.45, ease: "sine.inOut" },
+                    { x: 0, y: -loopRadiusY, rotation: 210, duration: 0.55, ease: "sine.inOut" },
+                    { x: loopRadiusX, y: 0, rotation: 270, duration: 0.65, ease: "sine.inOut" },
+                    { x: 0, y: loopRadiusY, rotation: 330, duration: 0.65, ease: "sine.inOut" },
+                    { x: -loopRadiusX, y: 0, rotation: 390, duration: 0.65, ease: "sine.inOut" },
+                    { x: 0, y: 0, rotation: 420, duration: 0.45, ease: "power1.inOut" },
+                    { x: exitX, y: exitY, rotation: 405, duration: 1.25, ease: "power2.in" }
                 ]
             },
             "-=3"

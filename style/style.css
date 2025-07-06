@@ -1163,9 +1163,12 @@ text {
 }
 
 .myBannerSwiper .swiper-slide img {
-    max-height: 100%;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    max-width: none;
     object-fit: contain;
+    display: block;
 }
 
 .myBannerSwiper .swiper-pagination {
