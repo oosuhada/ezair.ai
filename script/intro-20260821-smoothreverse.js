@@ -57,6 +57,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const exitX = viewportWidth / 2 + airplaneWidth * 0.58;
         const exitY = viewportHeight / 2 + airplaneWidth * 0.42;
 
+        // 반시계 loop를 실제 타원식으로 생성한다. 소수의 수동 waypoint를 잇는
+        // 방식보다 곡률 변화가 일정해 기체가 꺾이지 않고 한 번에 도는 느낌이 난다.
+        const loopStartAngle = 135;
+        const loopSteps = 14;
+        const loopSegmentDuration = 0.10;
+        const loopStartRad = loopStartAngle * Math.PI / 180;
+        const loopStartX = loopCenterX + loopRadiusX * Math.cos(loopStartRad);
+        const loopStartY = loopCenterY + loopRadiusY * Math.sin(loopStartRad);
+        let previousLoopRotation = 124;
+        const loopKeyframes = Array.from({ length: loopSteps }, (_, index) => {
+            const angleDeg = loopStartAngle - ((index + 1) * 360 / loopSteps);
+            const angle = angleDeg * Math.PI / 180;
+            const x = loopCenterX + loopRadiusX * Math.cos(angle);
+            const y = loopCenterY + loopRadiusY * Math.sin(angle);
+
+            // 기수는 타원의 접선 방향을 따른다. 0deg가 위쪽을 향하는 원본
+            // 비행기 이미지 기준이며, 회전값은 계속 감소시켜 반시계 방향을 유지한다.
+            const tangentX = loopRadiusX * Math.sin(angle);
+            const tangentY = -loopRadiusY * Math.cos(angle);
+            let rotation = Math.atan2(tangentY, tangentX) * 180 / Math.PI + 90;
+            while (rotation > previousLoopRotation) rotation -= 360;
+            previousLoopRotation = rotation;
+
+            return { x, y, rotation, duration: loopSegmentDuration, ease: "none" };
+        });
+
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
 
         if (aiInputBox) {
@@ -89,18 +115,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 keyframes: [
                     // 좌측 상단 진입은 여유 있게 보여주고 loop 직전에 속도를 붙인다.
                     { x: -viewportWidth * 0.31, y: -viewportHeight * 0.28, rotation: 135, duration: 1.0, ease: "power1.out" },
-                    { x: loopCenterX - loopRadiusX * 0.70, y: loopCenterY + loopRadiusY * 0.72, rotation: 143, duration: 0.46, ease: "power3.in" },
+                    { x: loopStartX, y: loopStartY, rotation: 124, duration: 0.46, ease: "power3.in" },
 
-                    // 이전 loop 진행 방향을 반대로 뒤집는다. 8개 원주 waypoint를
-                    // 사용해 꺾인 오각형처럼 보이지 않고 한 번의 원형 회전으로 읽히게 한다.
-                    { x: loopCenterX - loopRadiusX * 0.15, y: loopCenterY + loopRadiusY, rotation: 109, duration: 0.16, ease: "none" },
-                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY + loopRadiusY * 0.82, rotation: 80, duration: 0.17, ease: "none" },
-                    { x: loopCenterX + loopRadiusX, y: loopCenterY + loopRadiusY * 0.18, rotation: 47, duration: 0.17, ease: "none" },
-                    { x: loopCenterX + loopRadiusX * 0.78, y: loopCenterY - loopRadiusY * 0.62, rotation: -22, duration: 0.17, ease: "none" },
-                    { x: loopCenterX + loopRadiusX * 0.15, y: loopCenterY - loopRadiusY, rotation: -68, duration: 0.17, ease: "none" },
-                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY * 0.82, rotation: -100, duration: 0.17, ease: "none" },
-                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.18, rotation: -133, duration: 0.17, ease: "none" },
-                    { x: loopCenterX - loopRadiusX * 0.70, y: loopCenterY + loopRadiusY * 0.72, rotation: -207, duration: 0.17, ease: "none" },
+                    // 실제 타원식을 14구간으로 샘플링한 반시계 방향 loop.
+                    ...loopKeyframes,
 
                     // loop의 마지막 접선 방향을 그대로 살려 우측 하단으로 이어 붙인다.
                     // 속도는 첫 exit waypoint부터 순차적으로 줄어든다.
