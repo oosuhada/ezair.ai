@@ -251,7 +251,7 @@ cd backend
 npm test
 
 cd ..
-node --check script/intro-20260821-smoothreverse.js
+node --check script/intro-20260821-directexit.js
 node --check script/ai_search.js
 node --check script/amadeus_search.js
 node --check backend/server.js

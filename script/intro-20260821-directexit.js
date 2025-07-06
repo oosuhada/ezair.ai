@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 화면 중앙을 기준으로 실제 이동 궤적을 만든다.
         // 좌측 상단에서 천천히 진입한 뒤 loop 직전에 가속하고, 중앙 loop는
-        // 반시계 방향으로 짧고 빠르게 한 번 수행한다. 이후 감속하면서 우측
-        // 하단으로 빠져나간다.
+        // 반시계 방향으로 짧고 빠르게 한 번 수행한다. loop가 끝난 뒤에는
+        // 감속 없이 마지막 접선 속도를 유지하며 우측 하단으로 바로 빠져나간다.
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const airplaneWidth = introAirplane.getBoundingClientRect().width;
@@ -83,6 +83,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return { x, y, rotation, duration: loopSegmentDuration, ease: "none" };
         });
 
+        // loop 종료점에서 화면 밖 exit까지 직선으로 한 번에 연결한다.
+        // 타원 둘레 / loop 시간으로 현재 속도를 추정해 exit 구간 duration을
+        // 맞추면 loop 직후 속도가 갑자기 죽거나 다시 붙는 느낌이 사라진다.
+        const perimeterA = 3 * (loopRadiusX + loopRadiusY);
+        const perimeterB = Math.sqrt((3 * loopRadiusX + loopRadiusY) * (loopRadiusX + 3 * loopRadiusY));
+        const loopPerimeter = Math.PI * (perimeterA - perimeterB);
+        const loopSpeed = loopPerimeter / (loopSteps * loopSegmentDuration);
+        const exitDistance = Math.hypot(exitX - loopStartX, exitY - loopStartY);
+        const exitDuration = Math.max(0.82, Math.min(1.18, exitDistance / loopSpeed));
+        let exitRotation = Math.atan2(exitY - loopStartY, exitX - loopStartX) * 180 / Math.PI + 90;
+        while (exitRotation > previousLoopRotation + 180) exitRotation -= 360;
+        while (exitRotation < previousLoopRotation - 180) exitRotation += 360;
+
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
 
         if (aiInputBox) {
@@ -120,11 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 실제 타원식을 14구간으로 샘플링한 반시계 방향 loop.
                     ...loopKeyframes,
 
-                    // loop의 마지막 접선 방향을 그대로 살려 우측 하단으로 이어 붙인다.
-                    // 속도는 첫 exit waypoint부터 순차적으로 줄어든다.
-                    { x: viewportWidth * 0.20, y: viewportHeight * 0.28, rotation: -263, duration: 0.72, ease: "power3.out" },
-                    { x: viewportWidth * 0.43, y: viewportHeight * 0.42, rotation: -251, duration: 0.96, ease: "power2.out" },
-                    { x: exitX, y: exitY, rotation: -235, duration: 1.38, ease: "power1.out" }
+                    // 별도 감속 waypoint 없이 일정 속도로 화면 밖까지 직행한다.
+                    { x: exitX, y: exitY, rotation: exitRotation, duration: exitDuration, ease: "none" }
                 ]
             },
             "-=3"
