@@ -42,8 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // 화면 중앙을 기준으로 실제 이동 궤적을 만든다.
-        // 좌측 상단에서 천천히 진입한 뒤 loop 직전에 가속하고, 중앙 loop는 짧고
-        // 빠르게 한 번 수행한다. 이후 감속하면서 우측 하단으로 빠져나간다.
+        // 좌측 상단에서 천천히 진입한 뒤 loop 직전에 가속하고, 중앙 loop는
+        // 반시계 방향으로 짧고 빠르게 한 번 수행한다. 이후 감속하면서 우측
+        // 하단으로 빠져나간다.
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const airplaneWidth = introAirplane.getBoundingClientRect().width;
@@ -88,19 +89,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 keyframes: [
                     // 좌측 상단 진입은 여유 있게 보여주고 loop 직전에 속도를 붙인다.
                     { x: -viewportWidth * 0.31, y: -viewportHeight * 0.28, rotation: 135, duration: 1.0, ease: "power1.out" },
-                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.28, rotation: 145, duration: 0.46, ease: "power3.in" },
+                    { x: loopCenterX - loopRadiusX * 0.70, y: loopCenterY + loopRadiusY * 0.72, rotation: 143, duration: 0.46, ease: "power3.in" },
 
-                    // loop 자체는 약 1.35초 안에 끝내 roller-coaster처럼 빠르게 돈다.
-                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 45, duration: 0.24, ease: "none" },
-                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 90, duration: 0.27, ease: "none" },
-                    { x: loopCenterX + loopRadiusX, y: loopCenterY, rotation: 145, duration: 0.27, ease: "none" },
-                    { x: loopCenterX + loopRadiusX * 0.45, y: loopCenterY + loopRadiusY, rotation: 220, duration: 0.29, ease: "none" },
-                    { x: loopCenterX - loopRadiusX * 0.62, y: loopCenterY + loopRadiusY * 0.72, rotation: 280, duration: 0.28, ease: "none" },
+                    // 이전 loop 진행 방향을 반대로 뒤집는다. 8개 원주 waypoint를
+                    // 사용해 꺾인 오각형처럼 보이지 않고 한 번의 원형 회전으로 읽히게 한다.
+                    { x: loopCenterX - loopRadiusX * 0.15, y: loopCenterY + loopRadiusY, rotation: 109, duration: 0.16, ease: "none" },
+                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY + loopRadiusY * 0.82, rotation: 80, duration: 0.17, ease: "none" },
+                    { x: loopCenterX + loopRadiusX, y: loopCenterY + loopRadiusY * 0.18, rotation: 47, duration: 0.17, ease: "none" },
+                    { x: loopCenterX + loopRadiusX * 0.78, y: loopCenterY - loopRadiusY * 0.62, rotation: -22, duration: 0.17, ease: "none" },
+                    { x: loopCenterX + loopRadiusX * 0.15, y: loopCenterY - loopRadiusY, rotation: -68, duration: 0.17, ease: "none" },
+                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY * 0.82, rotation: -100, duration: 0.17, ease: "none" },
+                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.18, rotation: -133, duration: 0.17, ease: "none" },
+                    { x: loopCenterX - loopRadiusX * 0.70, y: loopCenterY + loopRadiusY * 0.72, rotation: -207, duration: 0.17, ease: "none" },
 
-                    // 빠른 loop에서 빠져나온 뒤 속도를 죽이며 우측 하단으로 길게 이탈한다.
-                    { x: viewportWidth * 0.22, y: viewportHeight * 0.24, rotation: 135, duration: 0.72, ease: "power3.out" },
-                    { x: viewportWidth * 0.42, y: viewportHeight * 0.38, rotation: 135, duration: 0.92, ease: "power2.out" },
-                    { x: exitX, y: exitY, rotation: 135, duration: 1.35, ease: "power1.out" }
+                    // loop의 마지막 접선 방향을 그대로 살려 우측 하단으로 이어 붙인다.
+                    // 속도는 첫 exit waypoint부터 순차적으로 줄어든다.
+                    { x: viewportWidth * 0.20, y: viewportHeight * 0.28, rotation: -263, duration: 0.72, ease: "power3.out" },
+                    { x: viewportWidth * 0.43, y: viewportHeight * 0.42, rotation: -251, duration: 0.96, ease: "power2.out" },
+                    { x: exitX, y: exitY, rotation: -235, duration: 1.38, ease: "power1.out" }
                 ]
             },
             "-=3"

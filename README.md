@@ -251,7 +251,7 @@ cd backend
 npm test
 
 cd ..
-node --check script/intro-20260821-fastloop.js
+node --check script/intro-20260821-reverseloop.js
 node --check script/ai_search.js
 node --check script/amadeus_search.js
 node --check backend/server.js
