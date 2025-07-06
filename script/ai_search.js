@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let previewAbortController = null;
     let previewTimer = null;
 
+    const DEFAULT_AI_QUERY = (window.EZAIR_DEFAULT_AI_QUERY || aiInput.placeholder || '').trim();
+
     const assistantAnimationUrl = 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json';
 
     function escapeHtml(value) {
@@ -429,12 +431,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     aiSearchBtn.addEventListener('click', () => {
-        const query = aiInput.value.trim();
+        const query = aiInput.value.trim() || DEFAULT_AI_QUERY;
         if (!query) {
             showNotification('여행 계획을 한 문장으로 입력해주세요.', 'warning');
             aiInput.focus();
             return;
         }
+        if (!aiInput.value.trim()) aiInput.value = query;
         handleAISearch(query, { preserveContext: false });
     });
 
