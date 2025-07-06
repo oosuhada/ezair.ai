@@ -45,10 +45,15 @@
 /* Intro Airplane */
 .intro-airplane {
     position: absolute;
-    width: 70vw;
+    left: 50%;
+    top: 50%;
+    width: clamp(260px, 42vw, 520px);
     height: auto;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
     z-index: 0;
     pointer-events: none;
+    will-change: transform;
 }
 
 /* Clouds */
@@ -152,5 +157,9 @@
     .airplane-window-outer {
         width: 225px;
         height: 300px;
+    }
+
+    .intro-airplane {
+        width: min(68vw, 300px);
     }
 }

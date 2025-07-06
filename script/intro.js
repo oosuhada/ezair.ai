@@ -1,17 +1,6 @@
 // intro.js (sessionStorage를 사용한 최종 해결 버전)
 document.addEventListener('DOMContentLoaded', function() {
 
-    // 이제는 HTML에 직접 있으므로, 아래 코드만 필요
-    const introAirplane = document.querySelector('.intro-airplane');
-    if (introAirplane) {
-        introAirplane.style.width = "70vw";      // CSS와 동일하게 vw 단위 사용
-        introAirplane.style.height = "auto";     // 비율 유지
-        introAirplane.style.left = "50%";        // 좌우 중앙 정렬
-        introAirplane.style.top = "20%";         // 상단 20% (원하는 위치 조정)
-        introAirplane.style.transform = "translateX(-50%)"; // 좌우 정중앙
-        introAirplane.style.position = "absolute";          // 위치 지정
-    }
-
     const mainContent = document.getElementById('mainContent');
     const introOverlay = document.getElementById('introOverlay');
 
@@ -46,16 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.set(mainContent, { opacity: 0, visibility: 'hidden' });
         gsap.set([introOverlay, airplaneWindow], { opacity: 1 });
         gsap.set(airplaneWindow, { transformOrigin: "center center" });
-        gsap.set(introAirplane, { transformOrigin: "center center" });
+        gsap.set(introAirplane, {
+            xPercent: -50,
+            yPercent: -50,
+            transformOrigin: "center center"
+        });
 
-        // 좌측 상단 진입 → 중앙에서 한 번의 롤러코스터 loop → 좌측 하단 이탈
-        // 기존 중앙 고정 loop처럼 보이던 경로를 제거하고 진행 방향을 유지한다.
-        const startX = -window.innerWidth / 2 - 520;
-        const startY = -window.innerHeight / 2 - 420;
-        const loopRadiusX = Math.min(170, window.innerWidth * 0.13);
-        const loopRadiusY = Math.min(140, window.innerHeight * 0.16);
-        const exitX = -window.innerWidth / 2 - 520;
-        const exitY = window.innerHeight / 2 + 420;
+        // 화면 중앙을 기준으로 실제 이동 궤적을 만든다.
+        // 좌측 상단에서 충분히 이동하며 진입한 뒤, 중앙 구간에서만 loop를 한 번
+        // 수행하고 좌측 하단으로 같은 흐름을 이어간다.
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const airplaneWidth = introAirplane.getBoundingClientRect().width;
+        const startX = -(viewportWidth / 2 + airplaneWidth * 0.58);
+        const startY = -(viewportHeight / 2 + airplaneWidth * 0.36);
+        const loopRadiusX = Math.min(260, Math.max(110, viewportWidth * 0.21));
+        const loopRadiusY = Math.min(190, Math.max(105, viewportHeight * 0.24));
+        const loopCenterX = Math.min(50, viewportWidth * 0.04);
+        const loopCenterY = Math.min(30, viewportHeight * 0.04);
+        const exitX = -(viewportWidth / 2 + airplaneWidth * 0.58);
+        const exitY = viewportHeight / 2 + airplaneWidth * 0.42;
 
         let targetX = 0, targetY = 0, targetWidth = 300, targetHeight = 50, targetBorderRadius = '25px', targetBackgroundColor = '#ffffff', targetBoxShadow = '0 5px 15px rgba(0,0,0,0.1)', targetBorderColor = '#ffffff';
 
@@ -87,14 +86,20 @@ document.addEventListener('DOMContentLoaded', function() {
             { x: startX, y: startY, rotation: 135, opacity: 1 },
             {
                 keyframes: [
-                    { x: -loopRadiusX * 2, y: -loopRadiusY * 1.5, rotation: 135, duration: 1.0, ease: "power2.out" },
-                    { x: -loopRadiusX, y: -loopRadiusY, rotation: 160, duration: 0.45, ease: "sine.inOut" },
-                    { x: 0, y: -loopRadiusY, rotation: 210, duration: 0.55, ease: "sine.inOut" },
-                    { x: loopRadiusX, y: 0, rotation: 270, duration: 0.65, ease: "sine.inOut" },
-                    { x: 0, y: loopRadiusY, rotation: 330, duration: 0.65, ease: "sine.inOut" },
-                    { x: -loopRadiusX, y: 0, rotation: 390, duration: 0.65, ease: "sine.inOut" },
-                    { x: 0, y: 0, rotation: 420, duration: 0.45, ease: "power1.inOut" },
-                    { x: exitX, y: exitY, rotation: 405, duration: 1.25, ease: "power2.in" }
+                    // 진입 동작을 충분히 보여 준 뒤 loop 구간으로 연결한다.
+                    { x: -viewportWidth * 0.31, y: -viewportHeight * 0.28, rotation: 135, duration: 0.95, ease: "power1.out" },
+                    { x: loopCenterX - loopRadiusX, y: loopCenterY - loopRadiusY * 0.28, rotation: 145, duration: 0.7, ease: "sine.inOut" },
+
+                    // 중앙 40~50% 구간에서만 한 번 크게 loop한다.
+                    { x: loopCenterX - loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 45, duration: 0.55, ease: "sine.inOut" },
+                    { x: loopCenterX + loopRadiusX * 0.55, y: loopCenterY - loopRadiusY, rotation: 90, duration: 0.62, ease: "sine.inOut" },
+                    { x: loopCenterX + loopRadiusX, y: loopCenterY, rotation: 145, duration: 0.62, ease: "sine.inOut" },
+                    { x: loopCenterX + loopRadiusX * 0.45, y: loopCenterY + loopRadiusY, rotation: 220, duration: 0.62, ease: "sine.inOut" },
+                    { x: loopCenterX - loopRadiusX * 0.62, y: loopCenterY + loopRadiusY * 0.72, rotation: 280, duration: 0.58, ease: "sine.inOut" },
+
+                    // loop를 끝낸 뒤 좌측 하단 방향으로 자연스럽게 빠져나간다.
+                    { x: -viewportWidth * 0.28, y: viewportHeight * 0.25, rotation: 264, duration: 0.72, ease: "power1.inOut" },
+                    { x: exitX, y: exitY, rotation: 236, duration: 1.15, ease: "power2.in" }
                 ]
             },
             "-=3"
