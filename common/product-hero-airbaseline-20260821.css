@@ -1,0 +1,144 @@
+/* Primary product heroes follow the AIR page's copy hierarchy and rhythm. */
+.ez-product-hero {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  min-height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+  isolation: isolate;
+}
+
+.ez-product-hero-copy {
+  position: relative;
+  z-index: 12;
+  display: grid;
+  justify-items: center;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  transform: translateY(-6px);
+}
+
+.ez-product-hero .ez-product-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  margin: 0 0 10px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.90);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .02em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ez-product-hero .ez-product-hero-title {
+  width: auto;
+  margin: 0;
+  color: #f9ff8c;
+  font-size: clamp(36px, 3vw, 44px);
+  font-weight: 800;
+  line-height: 1.13;
+  letter-spacing: -.045em;
+  text-shadow: 0 8px 30px rgba(8,86,113,.18);
+}
+
+.ez-product-hero .ez-product-hero-highlight,
+.ez-product-hero .ez-product-hero-title strong {
+  display: inline-block;
+  margin-top: 3px;
+  color: #fff;
+  font-size: 1.16em;
+  font-weight: 800;
+  letter-spacing: -.055em;
+}
+
+.ez-product-hero .ez-product-hero-subcopy {
+  width: auto;
+  max-width: 640px;
+  margin: 11px 0 0;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -.01em;
+}
+
+.ez-product-hero--hotel {
+  margin-bottom: 20px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.14), transparent 42%),
+    linear-gradient(128deg, #1688f5 0%, #16aee1 46%, #10c2a0 100%);
+}
+
+.ez-product-hero--package {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.14), transparent 42%),
+    linear-gradient(128deg, #1688f5 0%, #16aee1 46%, #10c2a0 100%);
+}
+
+.ez-product-hero--foryou {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,.14), transparent 42%),
+    linear-gradient(128deg, #1688f5 0%, #16aee1 46%, #10c2a0 100%);
+}
+
+/* Legacy hero decorations remain decorative only; AIR-like copy stays dominant. */
+.ez-product-hero--hotel .carousel-img,
+.ez-product-hero--package .banner-shape-bottom-left,
+.ez-product-hero--package .banner-shape-top-left,
+.ez-product-hero--package .banner-shape-bottom-right {
+  opacity: .62;
+}
+
+@media (max-width: 768px) {
+  .ez-product-hero {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .ez-product-hero-copy {
+    width: min(100% - 28px, 560px);
+    transform: translateY(-2px);
+  }
+
+  .ez-product-hero .ez-product-hero-eyebrow {
+    min-height: 26px;
+    margin-bottom: 7px;
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+
+  .ez-product-hero .ez-product-hero-title {
+    font-size: 26px;
+    line-height: 1.16;
+  }
+
+  .ez-product-hero .ez-product-hero-highlight,
+  .ez-product-hero .ez-product-hero-title strong {
+    margin-top: 2px;
+    font-size: 1.19em;
+  }
+
+  .ez-product-hero .ez-product-hero-subcopy {
+    max-width: 320px;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}

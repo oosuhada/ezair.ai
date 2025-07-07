@@ -1,0 +1,22 @@
+/* Keep the 376:100 source banner proportion while avoiding an oversized desktop treatment. */
+.banner-swiper-container {
+  width: min(680px, calc(100% - (var(--ez-gutter) * 2)));
+  max-width: 680px;
+  height: auto;
+  aspect-ratio: 376 / 100;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.myBannerSwiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .banner-swiper-container {
+    width: calc(100% - 24px);
+    max-width: 680px;
+  }
+}
