@@ -1,0 +1,13 @@
+/* On wide layouts the home search card should sit below the hero copy instead
+   of overlapping the subcopy. Mobile keeps the compact overlap treatment. */
+@media (min-width: 1200px) {
+  #search {
+    margin-top: 18px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  #search {
+    margin-top: -18px;
+  }
+}

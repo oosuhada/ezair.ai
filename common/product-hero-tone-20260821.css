@@ -1,0 +1,23 @@
+/* Keep AIR's lime headline unique to the home hero.
+   Secondary product heroes keep the shared type scale/structure but use
+   neutral light copy so each page's own background/decoration carries tone. */
+.ez-product-hero--hotel .ez-product-hero-title,
+.ez-product-hero--package .ez-product-hero-title,
+.ez-product-hero--foryou .ez-product-hero-title {
+  color: #fff;
+}
+
+.ez-product-hero--hotel .ez-product-hero-highlight,
+.ez-product-hero--hotel .ez-product-hero-title strong,
+.ez-product-hero--package .ez-product-hero-highlight,
+.ez-product-hero--package .ez-product-hero-title strong,
+.ez-product-hero--foryou .ez-product-hero-highlight,
+.ez-product-hero--foryou .ez-product-hero-title strong {
+  color: #fff;
+}
+
+.ez-product-hero--hotel .ez-product-hero-subcopy,
+.ez-product-hero--package .ez-product-hero-subcopy,
+.ez-product-hero--foryou .ez-product-hero-subcopy {
+  color: rgba(255, 255, 255, .84);
+}
