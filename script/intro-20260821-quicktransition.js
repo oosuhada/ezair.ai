@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const tl = gsap.timeline();
         // The path geometry stays identical; a modest global speed-up keeps the
         // scroll-locked intro from feeling longer than the visual story needs.
-        tl.timeScale(1.18);
+        tl.timeScale(1.35);
 
         // Airplane entry / loop / exit geometry intentionally matches the approved version.
         tl.from(airplaneWindow, { duration: 2, scale: 0.3, rotation: 360, ease: "back.out(1.7)" });
@@ -125,25 +125,25 @@ document.addEventListener('DOMContentLoaded', function() {
         tl.set(introAirplane, { opacity: 0 });
 
         // Shorten only the black-screen -> AI search handoff so scroll unlock arrives sooner.
-        tl.to(windowInner, { duration: 0.75, opacity: 0, ease: "power2.inOut", onComplete: function() { windowInner.style.display = 'none'; } }, ">-0.35");
-        tl.to(airplaneWindow, { duration: 0.62, x: targetX, y: targetY, width: targetWidth, height: targetHeight, borderRadius: targetBorderRadius, backgroundColor: targetBackgroundColor, borderColor: targetBorderColor, boxShadow: targetBoxShadow, ease: "power2.inOut" }, ">-0.38");
+        tl.to(windowInner, { duration: 0.65, opacity: 0, ease: "power2.inOut", onComplete: function() { windowInner.style.display = 'none'; } }, ">-0.32");
+        tl.to(airplaneWindow, { duration: 0.52, x: targetX, y: targetY, width: targetWidth, height: targetHeight, borderRadius: targetBorderRadius, backgroundColor: targetBackgroundColor, borderColor: targetBorderColor, boxShadow: targetBoxShadow, ease: "power2.inOut" }, ">-0.32");
         tl.to(airplaneWindow, {
-            duration: 0.85,
+            duration: 0.70,
             ease: "power2.inOut",
             onStart: function () {
                 if (aiInputBox) {
                     const placeholderText = "다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘";
                     airplaneWindow.innerHTML = `<div id="typing-wrapper" style="display: flex; align-items: center; height: 100%; font-size: 15px; color: var(--blk); background: var(--gray50); border-radius: ${targetBorderRadius}; padding: 0 20px; box-sizing: border-box; border: 1px solid var(--gray100);"><div id="typing-text" style="flex: 1; white-space: nowrap;"></div><div id="typing-btn" style="width: 38px; height: 38px;"></div></div>`;
                     lottie.loadAnimation({ container: document.getElementById('typing-btn'), renderer: 'svg', loop: true, autoplay: true, path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json' });
-                    gsap.to("#typing-text", { duration: 1.15, text: placeholderText, ease: "none" });
-                    gsap.to(introOverlay, { duration: 1.45, backgroundColor: 'rgba(0,0,0,0)', ease: "power2.inOut" });
-                    gsap.to(mainContent, { duration: 1.45, opacity: 1, visibility: 'visible', ease: "power2.inOut" });
+                    gsap.to("#typing-text", { duration: 0.90, text: placeholderText, ease: "none" });
+                    gsap.to(introOverlay, { duration: 1.10, backgroundColor: 'rgba(0,0,0,0)', ease: "power2.inOut" });
+                    gsap.to(mainContent, { duration: 1.10, opacity: 1, visibility: 'visible', ease: "power2.inOut" });
                 }
             }
-        }, "+=0.12");
+        }, "+=0.08");
 
         tl.to(introOverlay, {
-            duration: 1.05,
+            duration: 0.80,
             opacity: 0,
             ease: "power2.inOut",
             onComplete: function() {
@@ -151,6 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 gsap.set(airplaneWindow, { zIndex: -1, pointerEvents: "none", clearProps: "all" });
                 sessionStorage.setItem('introShown', 'true');
             }
-        }, "+=0.25");
+        }, "+=0.12");
     }
 });
