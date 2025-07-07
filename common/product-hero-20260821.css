@@ -1,0 +1,132 @@
+/* Shared hero rhythm for the four primary EZ AIR product tabs. */
+.ez-product-hero {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  min-height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
+  isolation: isolate;
+}
+
+.ez-product-hero-copy {
+  position: relative;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 0;
+  transform: none;
+}
+
+.ez-product-hero .ez-product-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+  color: rgba(255, 255, 255, .92);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .035em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ez-product-hero .ez-product-hero-title {
+  width: auto;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(36px, 3.1vw, 42px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -.045em;
+  text-shadow: 0 8px 30px rgba(8, 86, 113, .16);
+}
+
+.ez-product-hero .ez-product-hero-title strong,
+.ez-product-hero .ez-product-hero-highlight {
+  color: #f9ff8c;
+  font-size: 1em;
+  font-weight: 800;
+  letter-spacing: inherit;
+}
+
+.ez-product-hero .ez-product-hero-subcopy {
+  width: auto;
+  max-width: 640px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, .84);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -.01em;
+}
+
+/* Keep each product's visual identity while sharing the same geometry/type. */
+.ez-product-hero--hotel {
+  padding: 0;
+  margin-bottom: 20px;
+  border-radius: 0;
+  background: linear-gradient(128deg, #10bfa8 0%, #1bcbb1 52%, #36d7bd 100%);
+}
+
+.ez-product-hero--package {
+  padding: 0;
+}
+
+.ez-product-hero--foryou {
+  background:
+    radial-gradient(circle at 72% 20%, rgba(255,255,255,.18), transparent 30%),
+    linear-gradient(128deg, #1688f5 0%, #6d86ef 50%, #9d72df 100%);
+}
+
+.ez-product-hero--air .ez-product-hero-highlight {
+  display: inline-block;
+  margin-top: 2px;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .ez-product-hero {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .ez-product-hero-copy {
+    width: min(100% - 28px, 560px);
+  }
+
+  .ez-product-hero .ez-product-hero-eyebrow {
+    min-height: 26px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .ez-product-hero .ez-product-hero-title {
+    font-size: clamp(27px, 8vw, 31px);
+    line-height: 1.16;
+  }
+
+  .ez-product-hero .ez-product-hero-subcopy {
+    max-width: 330px;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,10 @@
+/* Follow-up spacing polish after the theme destination grid. */
+.theme-travel .more-btn-wrap {
+  margin-top: 46px;
+}
+
+@media (max-width: 768px) {
+  .theme-travel .more-btn-wrap {
+    margin-top: 30px;
+  }
+}
