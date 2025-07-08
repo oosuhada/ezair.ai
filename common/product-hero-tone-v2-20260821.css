@@ -1,0 +1,35 @@
+/* Product-specific headline accents.
+   AIR keeps its lime treatment; secondary tabs use soft colors that match
+   each product's mood without competing with the shared hero gradient. */
+.ez-product-hero--hotel .ez-product-hero-title {
+  color: #c9fff2;
+}
+
+.ez-product-hero--hotel .ez-product-hero-highlight,
+.ez-product-hero--hotel .ez-product-hero-title strong {
+  color: #e1fff8;
+}
+
+.ez-product-hero--package .ez-product-hero-title {
+  color: #d5efff;
+}
+
+.ez-product-hero--package .ez-product-hero-highlight,
+.ez-product-hero--package .ez-product-hero-title strong {
+  color: #e7f6ff;
+}
+
+.ez-product-hero--foryou .ez-product-hero-title {
+  color: #eadfff;
+}
+
+.ez-product-hero--foryou .ez-product-hero-highlight,
+.ez-product-hero--foryou .ez-product-hero-title strong {
+  color: #f3edff;
+}
+
+.ez-product-hero--hotel .ez-product-hero-subcopy,
+.ez-product-hero--package .ez-product-hero-subcopy,
+.ez-product-hero--foryou .ez-product-hero-subcopy {
+  color: rgba(255, 255, 255, .84);
+}
