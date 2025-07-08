@@ -1,0 +1,28 @@
+/* Product-specific first-line accents.
+   Keep the second line/product name pure white across every secondary hero. */
+.ez-product-hero--hotel .ez-product-hero-title {
+  color: #8cf2d7;
+}
+
+.ez-product-hero--package .ez-product-hero-title {
+  color: #9ddcff;
+}
+
+.ez-product-hero--foryou .ez-product-hero-title {
+  color: #c7a6ff;
+}
+
+.ez-product-hero--hotel .ez-product-hero-highlight,
+.ez-product-hero--hotel .ez-product-hero-title strong,
+.ez-product-hero--package .ez-product-hero-highlight,
+.ez-product-hero--package .ez-product-hero-title strong,
+.ez-product-hero--foryou .ez-product-hero-highlight,
+.ez-product-hero--foryou .ez-product-hero-title strong {
+  color: #fff;
+}
+
+.ez-product-hero--hotel .ez-product-hero-subcopy,
+.ez-product-hero--package .ez-product-hero-subcopy,
+.ez-product-hero--foryou .ez-product-hero-subcopy {
+  color: rgba(255, 255, 255, .84);
+}
