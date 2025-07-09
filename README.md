@@ -12,6 +12,12 @@
   <img src=".github/assets/portfolio/02-ai-search.png" width="920" alt="EZ AIR natural-language flight search with parsed trip chips">
 </p>
 
+## Why I Built It / 만든 이유
+
+Flight search involved tedious friction — returning to the home screen to reset filters for every minor date change and juggling separate notes just to compare options. With conversational LLMs emerging but not yet applied to flight booking, I built a natural-language search product where travelers can adjust conditions and compare itineraries seamlessly through plain dialogue.
+
+항공권을 검색할 때 날짜나 도시를 바꾸려면 매번 홈 화면으로 돌아가 폼을 처음부터 다시 채워야 했고, 여러 조건을 비교하려면 따로 메모해야 하는 번거로움이 있었습니다. 당시 LLM과 챗봇 기술이 급부상하고 있었지만 항공권 검색에 접목된 서비스는 없었기에, 대화 한 번으로 조건 변경과 일정 탐색을 끝낼 수 있는 자연어 항공권 검색을 직접 만들었습니다.
+
 ## 제품 방향 / Product Direction
 
 항공권을 찾을 때 가장 번거로운 순간은 검색 결과 자체보다, 날짜나 인원·도착지를 조금 바꿀 때마다 긴 폼을 다시 조작해야 하는 과정입니다.
