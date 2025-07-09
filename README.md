@@ -288,6 +288,16 @@ EZ AIR is a Korean-first flight-search product that keeps its original blue/gree
 
 The goal is not to replace the original EZ AIR identity with a new product shell. The current version treats the original experience as the product foundation and improves the parts that previously behaved like a prototype.
 
-## Topics
+## Architecture & Topics / 아키텍처 및 주제
 
-[`amadeus-api`](https://github.com/topics/amadeus-api) · [`express`](https://github.com/topics/express) · [`flight-search`](https://github.com/topics/flight-search) · [`full-stack`](https://github.com/topics/full-stack) · [`javascript`](https://github.com/topics/javascript) · [`natural-language-search`](https://github.com/topics/natural-language-search) · [`travel-tech`](https://github.com/topics/travel-tech) · [`vanilla-js`](https://github.com/topics/vanilla-js) · [`travel`](https://github.com/topics/travel) · [`chatbot`](https://github.com/topics/chatbot) · [`nodejs`](https://github.com/topics/nodejs) · [`api-integration`](https://github.com/topics/api-integration) · [`conversational-ai`](https://github.com/topics/conversational-ai) · [`web-app`](https://github.com/topics/web-app) · [`amadeus`](https://github.com/topics/amadeus) · [`flight-booking`](https://github.com/topics/flight-booking)
+**Architecture / 아키텍처**<br>
+[`conversational-interface`](https://github.com/topics/conversational-interface) · [`client-server-architecture`](https://github.com/topics/client-server-architecture) · [`adapter-pattern`](https://github.com/topics/adapter-pattern) · [`external-api-integration`](https://github.com/topics/external-api-integration) · [`session-state`](https://github.com/topics/session-state) · [`natural-language-interface`](https://github.com/topics/natural-language-interface) · [`graceful-degradation`](https://github.com/topics/graceful-degradation)
+
+**Core technologies / 핵심 기술**<br>
+[`amadeus-api`](https://github.com/topics/amadeus-api)
+
+**Project context / 프로젝트 맥락**<br>
+[`amadeus`](https://github.com/topics/amadeus) · [`api-integration`](https://github.com/topics/api-integration) · [`chatbot`](https://github.com/topics/chatbot) · [`conversational-ai`](https://github.com/topics/conversational-ai) · [`flight-booking`](https://github.com/topics/flight-booking) · [`flight-search`](https://github.com/topics/flight-search) · [`full-stack`](https://github.com/topics/full-stack) · [`natural-language-search`](https://github.com/topics/natural-language-search) · [`travel`](https://github.com/topics/travel) · [`travel-tech`](https://github.com/topics/travel-tech) · [`web-app`](https://github.com/topics/web-app)
+
+**Implementation stack / 구현 스택**<br>
+[`express`](https://github.com/topics/express) · [`javascript`](https://github.com/topics/javascript) · [`nodejs`](https://github.com/topics/nodejs) · [`vanilla-js`](https://github.com/topics/vanilla-js)
