@@ -287,3 +287,7 @@ node --check backend/server.js
 EZ AIR is a Korean-first flight-search product that keeps its original blue/green travel UI and signature airplane-window intro, then strengthens the product layer with structured natural-language intent parsing, same-origin Express APIs, Amadeus-first search, deterministic demo fallback, derived result labels, up-to-three-flight comparison, and contextual search modification.
 
 The goal is not to replace the original EZ AIR identity with a new product shell. The current version treats the original experience as the product foundation and improves the parts that previously behaved like a prototype.
+
+## Topics
+
+[`amadeus-api`](https://github.com/topics/amadeus-api) · [`express`](https://github.com/topics/express) · [`flight-search`](https://github.com/topics/flight-search) · [`full-stack`](https://github.com/topics/full-stack) · [`javascript`](https://github.com/topics/javascript) · [`natural-language-search`](https://github.com/topics/natural-language-search) · [`travel-tech`](https://github.com/topics/travel-tech) · [`vanilla-js`](https://github.com/topics/vanilla-js)
