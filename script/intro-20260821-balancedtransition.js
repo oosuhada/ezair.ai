@@ -1,32 +1,66 @@
 // intro.js — balanced handoff: keep the airplane path, soften only the final morph/typing/fade.
+// The intro must start when the DOM/layout is ready, not after every image/video/CDN asset
+// has finished loading. Waiting for window.load made the first frame look frozen on the
+// public site whenever non-critical resources were slow.
 document.addEventListener('DOMContentLoaded', function() {
 
     const mainContent = document.getElementById('mainContent');
     const introOverlay = document.getElementById('introOverlay');
+    const INTRO_COMPLETE_EVENT = 'ezair:intro-complete';
+    let introStarted = false;
+
+    function announceIntroComplete() {
+        document.dispatchEvent(new CustomEvent(INTRO_COMPLETE_EVENT));
+    }
+
+    function revealMainContent() {
+        if (introOverlay) introOverlay.remove();
+        if (mainContent) {
+            if (typeof gsap !== 'undefined') gsap.set(mainContent, { opacity: 1, visibility: 'visible' });
+            else {
+                mainContent.style.opacity = '1';
+                mainContent.style.visibility = 'visible';
+            }
+        }
+        sessionStorage.setItem('introShown', 'true');
+        announceIntroComplete();
+    }
 
     if (sessionStorage.getItem('introShown') === 'true') {
-        if (introOverlay) introOverlay.remove();
-        gsap.set(mainContent, { opacity: 1, visibility: 'visible' });
+        revealMainContent();
         return;
     }
 
-    window.addEventListener('load', function() {
-        startIntroAnimation();
+    // CSS in <head> has already resolved before DOMContentLoaded. One animation frame is
+    // enough for the search box geometry to settle, while avoiding the multi-second wait
+    // for below-the-fold images, video and third-party resources.
+    requestAnimationFrame(function() {
+        try {
+            startIntroAnimation();
+        } catch (error) {
+            console.error('[EZ AIR intro] failed to start', error);
+            revealMainContent();
+        }
     });
 
     function startIntroAnimation() {
+        if (introStarted) return;
+        introStarted = true;
+
         const airplaneWindow = document.getElementById('airplaneWindow');
         const windowInner = document.getElementById('windowInner');
         const aiInputBox = document.querySelector('.ai-input-box');
         const introAirplane = document.querySelector('.intro-airplane');
 
+        if (!mainContent || !introOverlay || !airplaneWindow || !windowInner || !introAirplane) {
+            console.error('[EZ AIR intro] required intro DOM is missing.');
+            revealMainContent();
+            return;
+        }
+
         if (typeof gsap === 'undefined') {
             console.error("Error: GSAP is not defined.");
-            if (introOverlay) introOverlay.remove();
-            if (mainContent) {
-                mainContent.style.opacity = '1';
-                mainContent.style.visibility = 'visible';
-            }
+            revealMainContent();
             return;
         }
 
@@ -112,7 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!aiInputBox) return;
                 const placeholderText = window.EZAIR_DEFAULT_AI_QUERY || document.querySelector('.ai-input')?.placeholder || "다음주 금요일 서울에서 제주도 가는 가장 저렴한 항공권 찾아줘";
                 airplaneWindow.innerHTML = `<div id="typing-wrapper" style="display: flex; align-items: center; height: 100%; font-size: 15px; color: var(--blk); background: var(--gray50); border-radius: ${targetBorderRadius}; padding: 0 20px; box-sizing: border-box; border: 1px solid var(--gray100);"><div id="typing-text" style="flex: 1; white-space: nowrap;"></div><div id="typing-btn" style="width: 38px; height: 38px;"></div></div>`;
-                lottie.loadAnimation({ container: document.getElementById('typing-btn'), renderer: 'svg', loop: true, autoplay: true, path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json' });
+                if (window.lottie && document.getElementById('typing-btn')) {
+                    window.lottie.loadAnimation({ container: document.getElementById('typing-btn'), renderer: 'svg', loop: true, autoplay: true, path: 'https://gist.githubusercontent.com/oosuhada/10350c165ecf9363a48efa8f67aaa401/raw/ea144b564bea1a65faffe4b6c52f8cc1275576de/ai-assistant-logo.json' });
+                }
                 gsap.to("#typing-text", { duration: 1.15, text: placeholderText, ease: "none" });
                 gsap.to(introOverlay, { duration: 1.45, backgroundColor: 'rgba(0,0,0,0)', ease: "power2.inOut" });
                 gsap.to(mainContent, { duration: 1.45, opacity: 1, visibility: 'visible', ease: "power2.inOut" });
@@ -124,9 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0,
             ease: "power2.inOut",
             onComplete: function() {
-                if (introOverlay) introOverlay.remove();
                 gsap.set(airplaneWindow, { zIndex: -1, pointerEvents: "none", clearProps: "all" });
-                sessionStorage.setItem('introShown', 'true');
+                revealMainContent();
             }
         }, "+=0.22");
     }

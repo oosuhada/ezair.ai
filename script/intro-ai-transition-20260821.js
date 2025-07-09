@@ -144,14 +144,18 @@
         });
         lockState.observer.observe(document.body, { childList: true, subtree: true });
 
-        window.addEventListener('error', (event) => {
-            if (String(event.filename || '').includes('intro-20260821-directexit.js')) {
-                forceIntroFallback('intro script error fallback');
-            }
+        // Any uncaught error while the intro owns the screen should fail open. The active
+        // intro file has changed over time, so keying this fallback to an old filename left
+        // the current balanced transition capable of trapping the user on the overlay.
+        window.addEventListener('error', () => {
+            forceIntroFallback('intro script error fallback');
+        });
+        window.addEventListener('unhandledrejection', () => {
+            forceIntroFallback('intro promise rejection fallback');
         });
 
         lockState.safetyTimer = window.setTimeout(() => {
             forceIntroFallback('intro completion timeout fallback');
-        }, 30000);
+        }, 15000);
     });
 })();
