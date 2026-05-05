@@ -8,15 +8,25 @@ function futureDate(daysAhead) {
     return d.toISOString().slice(0, 10);
 }
 
-function addMinutes(isoDate, minutes) {
-    return new Date(new Date(isoDate).getTime() + minutes * 60000).toISOString().replace('.000Z', '+09:00');
+function pad2(value) {
+    return String(value).padStart(2, '0');
+}
+
+function formatLocalDateTime(date) {
+    return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}T${pad2(date.getHours())}:${pad2(date.getMinutes())}:00`;
+}
+
+function addMinutes(localDateTime, minutes) {
+    const d = new Date(localDateTime);
+    d.setMinutes(d.getMinutes() + minutes);
+    return formatLocalDateTime(d);
 }
 
 function makeDepTime(daysAhead, hour, minute = 0) {
     const d = new Date();
     d.setDate(d.getDate() + daysAhead);
     d.setHours(hour, minute, 0, 0);
-    return d.toISOString().replace('.000Z', '+09:00');
+    return formatLocalDateTime(d);
 }
 
 const ROUTES = {

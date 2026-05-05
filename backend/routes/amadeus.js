@@ -5,6 +5,12 @@ const router = express.Router();
 const amadeusService = require('../services/amadeusService');
 
 const iataDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, '날짜는 YYYY-MM-DD 형식이어야 합니다.');
+const optionalDate = z.preprocess(v => v === '' || v == null ? undefined : v, iataDate.optional());
+const booleanLike = z.preprocess(v => {
+    if (typeof v === 'boolean') return v;
+    if (typeof v === 'string') return v.toLowerCase() === 'true';
+    return Boolean(v);
+}, z.boolean());
 const iataCode = z.string().length(3, 'IATA 코드는 3자리여야 합니다.').transform(v => v.toUpperCase());
 
 const locationSchema = z.object({
@@ -15,10 +21,10 @@ const flightSchema = z.object({
     origin: iataCode,
     destination: iataCode,
     departDate: iataDate,
-    returnDate: iataDate.optional(),
+    returnDate: optionalDate,
     adults: z.coerce.number().int().min(1, '성인 인원은 1명 이상이어야 합니다.').max(9, '성인 인원은 최대 9명입니다.'),
     travelClass: z.enum(['ECONOMY', 'PREMIUM_ECONOMY', 'BUSINESS', 'FIRST']).default('ECONOMY'),
-    nonStop: z.coerce.boolean().default(false)
+    nonStop: booleanLike.default(false)
 });
 
 function validationError(res, issues) {

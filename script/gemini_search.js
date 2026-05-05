@@ -1,5 +1,3 @@
-import { IS_DEVELOPMENT_MODE } from './config.js';
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log("[Gemini_Search] DOM content loaded. Initializing scripts.");
 
@@ -388,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchFlightData(query) {
         const url = (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function')
             ? window.EZAIR_CONFIG.getApiUrl('/ai/flight-search')
-            : 'http://localhost:3000/api/ai/flight-search';
+            : '/api/ai/flight-search';
 
         const response = await fetch(url, {
             method: 'POST',
@@ -461,12 +459,19 @@ document.addEventListener('DOMContentLoaded', function() {
             followUpButtonsContainer.innerHTML = ''; // Clear previous follow-up buttons
             data.followUpActions.forEach(action => {
                 if (action && typeof action === 'object') {
-                    const query = safeString(action.query, action.query);
-                    const label = safeString(action.label, action.label);
-                    followUpButtonsContainer.innerHTML += `
-                    <button class="ai-action-btn" data-query="${query}">
-                        <span class="icon">🤔</span> ${label}
-                    </button>`;
+                    const query = safeString(action.query, action.label || '');
+                    const label = safeString(action.label, action.query || '추천 검색');
+                    const button = document.createElement('button');
+                    button.className = 'ai-action-btn';
+                    button.dataset.query = query;
+
+                    const icon = document.createElement('span');
+                    icon.className = 'icon';
+                    icon.textContent = '🤔';
+
+                    button.appendChild(icon);
+                    button.appendChild(document.createTextNode(' ' + label));
+                    followUpButtonsContainer.appendChild(button);
                 }
             });
             aiFollowUpContainer.querySelector('.ai-chat-bubble').textContent = "💡 이런 것도 궁금하신가요?";

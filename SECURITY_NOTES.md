@@ -53,9 +53,9 @@ AMADEUS_API_KEY=
 AMADEUS_API_SECRET=
 
 # .env (로컬/서버 전용 — 절대 커밋 금지)
-GEMINI_API_KEY=실제값
+GEMINI_API_KEY=<서버 .env에만 입력>
 AMADEUS_API_KEY=실제값
-AMADEUS_API_SECRET=실제값
+AMADEUS_API_SECRET=<서버 .env에만 입력>
 ```
 
 ---

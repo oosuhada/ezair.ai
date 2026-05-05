@@ -2,7 +2,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "check": "node --check server.js && node --check routes/amadeus.js && node --check routes/gemini.js && node --check services/amadeusService.js"
+    "check": "node --check server.js && node --check routes/amadeus.js && node --check routes/gemini.js && node --check services/amadeusService.js && node --check services/cacheService.js && node --check services/flightIntentSchema.js && node --check services/flightNormalizer.js && node --check services/geminiService.js && node --check services/locationResolver.js && node --check services/mockFlightService.js",
+    "smoke": "node scripts/smoke-check.js",
+    "security:scan": "node scripts/security-scan.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

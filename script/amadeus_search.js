@@ -5,8 +5,8 @@ function _apiUrl(path) {
     if (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function') {
         return window.EZAIR_CONFIG.getApiUrl(path);
     }
-    const base = 'http://localhost:3000/api';
-    return base + (path.startsWith('/') ? path : '/' + path);
+    const base = (window.EZAIR_CONFIG && window.EZAIR_CONFIG.API_BASE_URL) || '/api';
+    return String(base).replace(/\/$/, '') + (path.startsWith('/') ? path : '/' + path);
 }
 let departPicker;
 let returnPicker;

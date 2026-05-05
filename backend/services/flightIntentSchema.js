@@ -31,7 +31,19 @@ function normalizeIntent(input) {
     if (!result.success) {
         return { ok: false, issues: result.error.issues.map(i => ({ field: i.path.join('.'), message: i.message })) };
     }
-    return { ok: true, data: result.data };
+
+    const data = { ...result.data };
+    const missing = [];
+    if (!data.originIata && !data.originText) missing.push('출발지');
+    if (!data.destinationIata && !data.destinationText) missing.push('도착지');
+    if (!data.departDate) missing.push('출발일');
+
+    if (missing.length > 0) {
+        data.needsClarification = true;
+        data.clarificationQuestion = `${missing.join(', ')} 정보를 조금 더 알려주세요.`;
+    }
+
+    return { ok: true, data };
 }
 
 module.exports = { flightIntentSchema, normalizeIntent };

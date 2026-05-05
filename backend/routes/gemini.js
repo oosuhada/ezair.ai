@@ -8,6 +8,12 @@ const { buildMockAiFlightSearchResponse } = require('../services/mockFlightServi
 const amadeusService = require('../services/amadeusService');
 const { getCache, setCache } = require('../services/cacheService');
 
+const FOLLOW_UP_ACTIONS = [
+    { label: '더 저렴한 날짜 찾아줘', query: '하루 전후로 더 저렴한 항공권도 비교해줘' },
+    { label: '직항만 보여줘', query: '직항 항공편만 보여줘' },
+    { label: '하루 전후 비교', query: '출발일 하루 전후 항공권도 비교해줘' }
+];
+
 router.get('/gemini-health', (req, res) => {
     res.json({ ok: true, service: 'gemini', mode: process.env.AI_SEARCH_MODE || 'mock' });
 });
@@ -30,7 +36,7 @@ router.post('/ai/flight-search', async (req, res) => {
         try {
             intent = await parseFlightQuery(query);
         } catch (err) {
-            return res.status(err.status || 503).json({ error: err.message });
+            return res.status(err.status || 503).json({ error: 'AI_PARSE_ERROR', message: 'AI 검색어 분석 중 오류가 발생했습니다.' });
         }
 
         // 2. 명확화 필요
@@ -112,7 +118,7 @@ router.post('/ai/flight-search', async (req, res) => {
                 nonStop: intent.nonStop
             });
         } catch (err) {
-            return res.status(err.status || 503).json({ error: err.message });
+            return res.status(err.status || 503).json({ error: 'FLIGHT_PROVIDER_ERROR', message: '항공권 공급자 API 호출 중 오류가 발생했습니다.' });
         }
 
         // 6. Normalize
