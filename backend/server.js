@@ -1,7 +1,9 @@
 // server.js
 require('dotenv').config();
 const express = require('express');
-// const cors = require('cors'); // 이 라인은 완전히 제거하거나 주석 처리되어 있어야 합니다!
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const amadeusRoutes = require('./routes/amadeus');
 const geminiRoutes = require('./routes/gemini');
@@ -9,48 +11,75 @@ const geminiRoutes = require('./routes/gemini');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// --- Helmet (CSP off: 정적 프로젝트에서 CDN/inline 사용) ---
+app.use(helmet({ contentSecurityPolicy: false }));
+
+// --- CORS ---
+const allowedOrigins = process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+    : [
+        'http://localhost:5500',
+        'http://127.0.0.1:5500',
+        'http://localhost:5173',
+        'http://localhost:3000'
+      ];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error(`CORS: origin not allowed — ${origin}`));
+        }
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false
+};
+app.use(cors(corsOptions));
+
 // --- JSON Body 파서 ---
-app.use(express.json());
-console.log('[Server] JSON 바디 파서 설정 완료');
+app.use(express.json({ limit: '1mb' }));
 
-// --- ✅ OPTIONS 요청을 최우선으로 직접 처리 (가장 강력한 해결책 시도) ---
-// /api/gemini-chat 경로에 대한 OPTIONS 요청이 들어오면, 다른 어떤 라우터보다 먼저 여기서 처리합니다.
-app.options('/api/gemini-chat', (req, res) => {
-    console.log('✅ SERVER.JS: OPTIONS /api/gemini-chat 요청 직접 처리 시작!');
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5500'); // ✅ 프론트엔드 주소와 포트 정확히 일치 확인!
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS'); // ✅ POST와 OPTIONS 모두 허용
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // ✅ Content-Type 헤더 허용
-    res.sendStatus(200); // 200 OK 상태 코드 반환
-    console.log('✅ SERVER.JS: OPTIONS /api/gemini-chat 응답 완료 (200 OK)');
+// --- Rate Limit: AI 검색 endpoint ---
+const aiRateLimit = rateLimit({
+    windowMs: 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.' }
 });
-// ----------------------------------------------------------------------
+app.use('/api/ai', aiRateLimit);
 
+// --- Health Check ---
+app.get('/api/health', (req, res) => {
+    res.json({ ok: true, service: 'ezair-api', timestamp: new Date().toISOString() });
+});
 
-// --- 라우터 등록 (위의 app.options() 라우트보다 뒤에 있어야 합니다) ---
-// 순서는 이제 중요하지 않습니다. 왜냐하면 /api/gemini-chat에 대한 OPTIONS 요청은 위에서 이미 처리됐기 때문입니다.
+// --- 라우터 등록 ---
 app.use('/api', geminiRoutes);
-console.log('[Server] /api/gemini 경로 라우트 등록 완료');
-
 app.use('/api', amadeusRoutes);
-console.log('[Server] /api/amadeus 경로 라우트 등록 완료');
 
-
-// --- 루트 테스트 엔드포인트 ---
+// --- 루트 테스트 ---
 app.get('/', (req, res) => {
-    console.log('[Server] 루트 경로 (/) 요청 수신됨');
     res.send('Welcome to the Flight Booking API Backend!');
 });
 
-// --- 에러 핸들링 미들웨어 ---
-app.use((err, req, res, next) => {
-    console.error('[Server Error]', err.stack);
-    const statusCode = err.status || 500;
-    res.status(statusCode).send({
-        error: err.message || 'Something broke!',
-        status: statusCode
-    });
+// --- 404 Handler ---
+app.use((req, res) => {
+    res.status(404).json({ error: 'Not Found', path: req.path });
 });
-console.log('[Server] 에러 핸들링 미들웨어 등록 완료');
+
+// --- Error Handler ---
+app.use((err, req, res, next) => {
+    console.error('[Server Error]', err.message);
+    const statusCode = err.status || 500;
+    const body = { error: err.message || 'Internal Server Error', status: statusCode };
+    if (process.env.NODE_ENV !== 'production') {
+        body.stack = err.stack;
+    }
+    res.status(statusCode).json(body);
+});
 
 // --- 서버 시작 ---
 app.listen(PORT, () => {

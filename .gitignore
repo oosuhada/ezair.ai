@@ -16,6 +16,10 @@ logs/
 .vercel/
 .parcel-cache/
 
+# IDE
+.idea/
+.vscode/
+
 # Local machine and logs
 .DS_Store
 *.log

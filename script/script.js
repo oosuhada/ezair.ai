@@ -27,48 +27,48 @@ document.addEventListener('DOMContentLoaded', function () {
     setupToggleRadio('radio1');
     setupToggleRadio('radio2'); // Make sure to setup for radio2 as well if needed
 
-    // 왕복/편도/다구간 버튼 active
+    // 왕복/편도/다구간 버튼 active — amadeus_search.js가 없는 페이지 전용 fallback
     const tripButtons = document.querySelectorAll('.trip-btn');
-    tripButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tripButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    // --- 애니메이션 로직 추가 ---
-
-    const container = document.querySelector('.ai-tags');
-    const wrapper = container.querySelector('.tag-wrapper');
-    const items = wrapper.querySelectorAll('.tag-item');
-    if (items.length < 3) return;  // 2개 이상 있어야 롤링
-
-    const cloneCount = 3;  // ← 여기서 복제할 개수를 지정
-for (let i = 0; i < cloneCount; i++) {
-  const clone = items[i].cloneNode(true);
-  wrapper.appendChild(clone);
-}
-
-    // 2. 높이 계산 & 컨테이너 고정
-    const itemHeight = items[0].getBoundingClientRect().height;
-    // container.style.height = itemHeight + 'px';
-
-    // 3. 애니메이션
-    let index = 0;
-    setInterval(() => {
-        index++;
-        wrapper.style.transition = 'transform 0.6s ease';
-        wrapper.style.transform = `translateY(-${index * itemHeight}px)`;
-
-        // 마지막(복제)까지 올라갔으면 즉시 리셋
-        if (index >= items.length) {
-            setTimeout(() => {
-                wrapper.style.transition = 'none';
-                wrapper.style.transform = 'translateY(0)';
-                index = 0;
-            }, 600); // transition 시간과 동일하게
+    setTimeout(() => {
+        if (!document.body.dataset.flightSearchInitialized) {
+            tripButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tripButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
         }
-    }, 3000);
+    }, 0);
+
+    // --- 태그 롤링 애니메이션 (.ai-tags 없는 페이지는 skip) ---
+    const container = document.querySelector('.ai-tags');
+    if (container) {
+        const wrapper = container.querySelector('.tag-wrapper');
+        if (wrapper) {
+            const items = wrapper.querySelectorAll('.tag-item');
+            if (items.length >= 3) {
+                const cloneCount = Math.min(3, items.length);
+                for (let i = 0; i < cloneCount; i++) {
+                    wrapper.appendChild(items[i].cloneNode(true));
+                }
+
+                const itemHeight = items[0].getBoundingClientRect().height;
+                let index = 0;
+                setInterval(() => {
+                    index++;
+                    wrapper.style.transition = 'transform 0.6s ease';
+                    wrapper.style.transform = `translateY(-${index * itemHeight}px)`;
+                    if (index >= items.length) {
+                        setTimeout(() => {
+                            wrapper.style.transition = 'none';
+                            wrapper.style.transform = 'translateY(0)';
+                            index = 0;
+                        }, 600);
+                    }
+                }, 3000);
+            }
+        }
+    }
 });
 
 // 3. 테마별 여행지(.theme-travel) 카드 등장 애니메이션
@@ -420,14 +420,6 @@ function updateNavigationButtons() {
 
 // Initial setup
 window.addEventListener('load', function () {
-    const tripButtons = document.querySelectorAll('.trip-btn');
-    tripButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tripButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
     function setupToggleRadio(id) {
         const radio = document.getElementById(id);
         if (!radio) return;
