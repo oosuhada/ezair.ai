@@ -9,7 +9,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-01T10:00:00",
-        "arrivalTime": "2025-07-01T11:00:00",
+        "arrivalTime": "2025-07-02T00:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1200000,
@@ -26,7 +26,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-01T14:30:00",
-        "arrivalTime": "2025-07-01T15:30:00",
+        "arrivalTime": "2025-07-02T04:30:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1350000,
@@ -43,7 +43,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-02T09:00:00",
-        "arrivalTime": "2025-07-02T10:00:00",
+        "arrivalTime": "2025-07-02T23:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1150000,
@@ -60,7 +60,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-03T11:00:00",
-        "arrivalTime": "2025-07-03T12:00:00",
+        "arrivalTime": "2025-07-04T01:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1280000,
@@ -77,7 +77,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-01T08:30:00",
-        "arrivalTime": "2025-07-01T09:30:00",
+        "arrivalTime": "2025-07-01T22:30:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1180000,
@@ -94,7 +94,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-02T13:00:00",
-        "arrivalTime": "2025-07-02T14:00:00",
+        "arrivalTime": "2025-07-03T03:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1400000,
@@ -111,7 +111,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-03T10:00:00",
-        "arrivalTime": "2025-07-03T11:00:00",
+        "arrivalTime": "2025-07-04T00:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1250000,
@@ -128,7 +128,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-01T16:00:00",
-        "arrivalTime": "2025-07-01T17:00:00",
+        "arrivalTime": "2025-07-02T06:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1300000,
@@ -145,7 +145,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-02T07:00:00",
-        "arrivalTime": "2025-07-02T08:00:00",
+        "arrivalTime": "2025-07-02T21:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1220000,
@@ -162,7 +162,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-03T15:00:00",
-        "arrivalTime": "2025-07-03T16:00:00",
+        "arrivalTime": "2025-07-04T05:00:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1380000,
@@ -179,7 +179,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-01T11:30:00",
-        "arrivalTime": "2025-07-01T12:30:00",
+        "arrivalTime": "2025-07-02T01:30:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1270000,
@@ -196,7 +196,7 @@
         "origin": "ICN",
         "destination": "JFK",
         "departureTime": "2025-07-02T09:30:00",
-        "arrivalTime": "2025-07-02T10:30:00",
+        "arrivalTime": "2025-07-02T23:30:00",
         "duration": "14h 00m",
         "price": {
           "amount": 1290000,
@@ -208,6 +208,285 @@
     ],
     "ai_insight": "서울-뉴욕 노선은 직항편이 많으며, 대한항공과 아시아나항공 외에도 델타항공, 유나이티드항공, 에어캐나다 등 다양한 항공사의 선택지가 있습니다. 7월 초는 성수기 시작 전이라 비교적 합리적인 가격을 찾을 수 있습니다.",
     "additional_recommendation": "뉴욕 여행 시 대중교통 이용이 편리하며, 시티패스 구매를 고려해보세요. 브로드웨이 쇼 티켓은 미리 예약하는 것이 좋습니다."
+  },
+  "seoul_jeju_flights": {
+    "flights": [
+      {
+        "id": "flight-JJ-001",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE151",
+        "origin": "ICN",
+        "destination": "CJU",
+        "departureTime": "2025-07-01T08:00:00",
+        "arrivalTime": "2025-07-01T09:15:00",
+        "duration": "1h 15m",
+        "price": {
+          "amount": 89000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "recommend"
+      },
+      {
+        "id": "flight-JJ-002",
+        "airline": "Asiana Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "OZ171",
+        "origin": "ICN",
+        "destination": "CJU",
+        "departureTime": "2025-07-01T12:00:00",
+        "arrivalTime": "2025-07-01T13:10:00",
+        "duration": "1h 10m",
+        "price": {
+          "amount": 95000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "special"
+      },
+      {
+        "id": "flight-JJ-003",
+        "airline": "Jeju Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "7C142",
+        "origin": "ICN",
+        "destination": "CJU",
+        "departureTime": "2025-07-02T10:30:00",
+        "arrivalTime": "2025-07-02T11:45:00",
+        "duration": "1h 15m",
+        "price": {
+          "amount": 72000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      },
+      {
+        "id": "flight-JJ-004",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE155",
+        "origin": "ICN",
+        "destination": "CJU",
+        "departureTime": "2025-07-02T16:00:00",
+        "arrivalTime": "2025-07-02T17:20:00",
+        "duration": "1h 20m",
+        "price": {
+          "amount": 92000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      }
+    ],
+    "ai_insight": "서울에서 제주도는 국내 최고의 휴양지입니다. 1시간 정도의 짧은 비행으로 도착할 수 있으며, 저렴한 항공료와 다양한 항공사 선택지가 있습니다.",
+    "additional_recommendation": "제주도에서는 한라산 등산, 해수욕, 현지 음식 체험을 추천합니다. 렌터카 이용으로 자유로운 여행을 즐길 수 있습니다."
+  },
+  "seoul_osaka_flights": {
+    "flights": [
+      {
+        "id": "flight-OSA-001",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE711",
+        "origin": "ICN",
+        "destination": "KIX",
+        "departureTime": "2025-07-01T09:00:00",
+        "arrivalTime": "2025-07-01T12:00:00",
+        "duration": "2h 00m",
+        "price": {
+          "amount": 180000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "direct"
+      },
+      {
+        "id": "flight-OSA-002",
+        "airline": "Asiana Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "OZ161",
+        "origin": "ICN",
+        "destination": "KIX",
+        "departureTime": "2025-07-01T14:00:00",
+        "arrivalTime": "2025-07-01T17:00:00",
+        "duration": "2h 00m",
+        "price": {
+          "amount": 195000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "recommend"
+      },
+      {
+        "id": "flight-OSA-003",
+        "airline": "Peach Aviation",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "MM189",
+        "origin": "ICN",
+        "destination": "KIX",
+        "departureTime": "2025-07-02T10:30:00",
+        "arrivalTime": "2025-07-02T13:40:00",
+        "duration": "2h 10m",
+        "price": {
+          "amount": 135000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "special"
+      },
+      {
+        "id": "flight-OSA-004",
+        "airline": "ANA (All Nippon Airways)",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "NH901",
+        "origin": "ICN",
+        "destination": "KIX",
+        "departureTime": "2025-07-03T11:00:00",
+        "arrivalTime": "2025-07-03T14:05:00",
+        "duration": "2h 05m",
+        "price": {
+          "amount": 210000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      }
+    ],
+    "ai_insight": "서울에서 오사카는 2시간의 짧은 비행으로 연결되는 가까운 일본 관광지입니다. 저가 항공사와 일반항공사 모두 다양한 선택지를 제공합니다.",
+    "additional_recommendation": "오사카 도톤보리는 야식과 쇼핑의 중심지이며, 오사카 성과 유니버설 스튜디오 방문을 추천합니다. 교토와 나라는 당일치기로도 방문 가능합니다."
+  },
+  "seoul_tokyo_flights": {
+    "flights": [
+      {
+        "id": "flight-TOK-001",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE722",
+        "origin": "ICN",
+        "destination": "NRT",
+        "departureTime": "2025-07-01T08:30:00",
+        "arrivalTime": "2025-07-01T12:00:00",
+        "duration": "2h 30m",
+        "price": {
+          "amount": 195000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "recommend"
+      },
+      {
+        "id": "flight-TOK-002",
+        "airline": "Asiana Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "OZ131",
+        "origin": "ICN",
+        "destination": "NRT",
+        "departureTime": "2025-07-02T10:00:00",
+        "arrivalTime": "2025-07-02T13:45:00",
+        "duration": "2h 45m",
+        "price": {
+          "amount": 210000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "special"
+      },
+      {
+        "id": "flight-TOK-003",
+        "airline": "ANA (All Nippon Airways)",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "NH922",
+        "origin": "ICN",
+        "destination": "NRT",
+        "departureTime": "2025-07-03T09:00:00",
+        "arrivalTime": "2025-07-03T12:45:00",
+        "duration": "2h 45m",
+        "price": {
+          "amount": 225000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "direct"
+      },
+      {
+        "id": "flight-TOK-004",
+        "airline": "Japan Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "JL099",
+        "origin": "ICN",
+        "destination": "NRT",
+        "departureTime": "2025-07-01T16:00:00",
+        "arrivalTime": "2025-07-01T20:15:00",
+        "duration": "2h 15m",
+        "price": {
+          "amount": 240000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      }
+    ],
+    "ai_insight": "서울과 도쿄는 2시간 반 정도의 가까운 거리에 있으며, 매일 많은 항공편이 운항됩니다. 다양한 항공사의 경쟁으로 합리적인 가격을 찾을 수 있습니다.",
+    "additional_recommendation": "도쿄는 신주쿠, 시부야, 아사쿠사 등 다양한 관광지가 있습니다. JR 패스나 Suica 카드 구매를 추천하며, 먹거리는 미슐랭 별 레스토랑부터 대중적인 라멘까지 다양합니다."
+  },
+  "busan_jeju_flights": {
+    "flights": [
+      {
+        "id": "flight-BJ-001",
+        "airline": "Korean Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "KE254",
+        "origin": "PUS",
+        "destination": "CJU",
+        "departureTime": "2025-07-01T09:00:00",
+        "arrivalTime": "2025-07-01T09:50:00",
+        "duration": "50m",
+        "price": {
+          "amount": 75000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "recommend"
+      },
+      {
+        "id": "flight-BJ-002",
+        "airline": "Asiana Airlines",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "OZ251",
+        "origin": "PUS",
+        "destination": "CJU",
+        "departureTime": "2025-07-02T13:00:00",
+        "arrivalTime": "2025-07-02T13:45:00",
+        "duration": "45m",
+        "price": {
+          "amount": 82000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": "special"
+      },
+      {
+        "id": "flight-BJ-003",
+        "airline": "Jeju Air",
+        "airlineLogo": "./image/flightResult/result_airseoul.svg",
+        "flightNumber": "7C215",
+        "origin": "PUS",
+        "destination": "CJU",
+        "departureTime": "2025-07-03T11:30:00",
+        "arrivalTime": "2025-07-03T12:25:00",
+        "duration": "55m",
+        "price": {
+          "amount": 68000,
+          "currency": "KRW"
+        },
+        "direct": true,
+        "recommendation": ""
+      }
+    ],
+    "ai_insight": "부산에서 제주도로 가는 국내 항공편은 45분~1시간의 짧은 비행시간과 저렴한 가격대가 특징입니다. 부산 지역 여행객들에게 인기 있는 노선입니다.",
+    "additional_recommendation": "부산에서 출발하는 여행객들은 비용 절감 효과가 크므로 저가항공사 이용을 추천합니다. 부산역, 센텀시티에서의 접근성도 좋습니다."
   },
   "no_results": {
     "ai_insight": "죄송합니다. 현재 조건으로는 항공편을 찾을 수 없습니다. 날짜를 변경하거나 조건을 완화하여 다시 시도해 주십시오.",

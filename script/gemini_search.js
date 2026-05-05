@@ -1,21 +1,7 @@
-import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
 import { IS_DEVELOPMENT_MODE } from './config.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log("[Gemini_Search] DOM content loaded. Initializing scripts.");
-
-    // --- API 키 및 모델 설정 ---
-    const GEMINI_API_KEY = window.GEMINI_API_KEY;
-    let genAI, model;
-
-    if (!IS_DEVELOPMENT_MODE) {
-        if (!GEMINI_API_KEY || GEMINI_API_KEY.includes("YOUR_GEMINI_API_KEY")) {
-            console.error("⛔️ 오류: Gemini API 키가 설정되지 않았습니다.");
-            return;
-        }
-        genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-        model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    }
 
     // --- DOM 요소 참조 (초기 로드 시점) ---
     const aiInput = document.querySelector('.ai-input');
@@ -289,43 +275,107 @@ document.addEventListener('DOMContentLoaded', function() {
         modalFlightResultsContainer.querySelector('.ai-assistant-box').style.display = 'block';
     }
 
+    // Helper function to escape HTML and prevent XSS
+    function escapeHtml(value) {
+        if (typeof value !== 'string') return '';
+        const div = document.createElement('div');
+        div.textContent = value;
+        return div.innerHTML;
+    }
+
+    // Helper function to safely format price
+    function formatPrice(price) {
+        if (!price || typeof price !== 'object') {
+            return '가격 정보 없음';
+        }
+        const amount = price.amount;
+        const currency = price.currency || '₩';
+        
+        if (typeof amount !== 'number' || !Number.isFinite(amount)) {
+            return '가격 정보 없음';
+        }
+        
+        return `${amount.toLocaleString()} ${escapeHtml(currency)}`;
+    }
+
+    // Helper function to safely get string values with fallback
+    function safeString(value, fallback = '') {
+        if (typeof value === 'string') return escapeHtml(value);
+        return fallback;
+    }
+
     function createFlightCardHTML(flight) {
+        // Safety check: ensure flight is an object
+        if (!flight || typeof flight !== 'object') {
+            return '';
+        }
+
         const formatDate = (dateString) => {
             if (!dateString) return '';
-            const date = new Date(dateString);
-            const options = { month: 'long', day: 'numeric', weekday: 'short' };
-            return date.toLocaleDateString('ko-KR', options).replace('.', '');
+            try {
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) return '';
+                const options = { month: 'long', day: 'numeric', weekday: 'short' };
+                return date.toLocaleDateString('ko-KR', options).replace('.', '');
+            } catch (e) {
+                return '';
+            }
         };
+
         const formatTime = (dateString) => {
             if (!dateString) return '';
-            const date = new Date(dateString);
-            return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false });
+            try {
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) return '';
+                return date.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false });
+            } catch (e) {
+                return '';
+            }
         };
+
+        // Extract and safely escape values
+        const airline = safeString(flight.airline, '항공사 정보 없음');
+        const airlineLogo = safeString(flight.airlineLogo, '../../image/airline_logos/default.png');
+        const origin = safeString(flight.origin, '출발지');
+        const destination = safeString(flight.destination, '도착지');
+        const duration = safeString(flight.duration, '소요시간 정보 없음');
+        const recommendation = safeString(flight.recommendation, '');
+        const priceStr = formatPrice(flight.price);
+
+        // Determine badge text based on recommendation type
+        let badgeHtml = '';
+        if (recommendation) {
+            let badgeText = '추천';
+            if (recommendation === 'direct') badgeText = '직항';
+            else if (recommendation === 'special') badgeText = '특가';
+            badgeHtml = `<span class="badge ${escapeHtml(recommendation)}">${badgeText}</span>`;
+        }
+
         return `
-            <div class="ai-flight-card${flight.recommendation ? ' highlight' : ''}">
+            <div class="ai-flight-card${recommendation ? ' highlight' : ''}">
                 <div class="flight-card-header">
-                    <img src="${flight.airlineLogo}" alt="${flight.airline} 로고" class="airline-logo" onerror="this.src='../../image/airline_logos/default.png'">
-                    <span class="airline-name">${flight.airline}</span>
-                    ${flight.recommendation ? `<span class="badge ${flight.recommendation}">${flight.recommendation === 'direct' ? '직항' : flight.recommendation === 'special' ? '특가' : '추천'}</span>` : ''}
+                    <img src="${airlineLogo}" alt="${airline} 로고" class="airline-logo" onerror="this.src='../../image/airline_logos/default.png'">
+                    <span class="airline-name">${airline}</span>
+                    ${badgeHtml}
                 </div>
                 <div class="flight-card-main">
                     <div class="flight-info">
                         <div class="time-airport">
-                            <span class="airport">${flight.origin}</span>
+                            <span class="airport">${origin}</span>
                             <span class="flight-time">${formatTime(flight.departureTime)}</span>
                             <span class="date">${formatDate(flight.departureTime)}</span>
                         </div>
                         <span class="arrow">→</span>
                         <div class="time-airport">
-                            <span class="airport">${flight.destination}</span>
+                            <span class="airport">${destination}</span>
                             <span class="flight-time">${formatTime(flight.arrivalTime)}</span>
                             <span class="date">${formatDate(flight.arrivalTime)}</span>
                         </div>
                     </div>
                     <div class="flight-details">
-                        <span class="flight-duration">${flight.duration}</span>
+                        <span class="flight-duration">${duration}</span>
                         <span class="class">ECONOMY</span>
-                        <span class="price">${flight.price.amount.toLocaleString()} ${flight.price.currency}</span>
+                        <span class="price">${priceStr}</span>
                     </div>
                 </div>
               <a href="./pages/flightResult/flightResult.html" class="select-btn-link">
@@ -336,83 +386,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function fetchFlightData(query) {
-        if (IS_DEVELOPMENT_MODE) {
-            // --- 여기서 인위적으로 2초 딜레이 추가 ---
-            await new Promise(res => setTimeout(res, 6000)); // 2초간 로딩 UI 보여줌
+        const url = (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function')
+            ? window.EZAIR_CONFIG.getApiUrl('/ai/flight-search')
+            : 'http://localhost:3000/api/ai/flight-search';
 
-            try {
-                const response = await fetch('./dummy_flights.json');
-                if (!response.ok) throw new Error('Failed to load dummy data');
-                const data = await response.json();
-                // Check if query is for Seoul to New York
-                if (query.toLowerCase().includes('서울') && query.toLowerCase().includes('뉴욕')) {
-                    return data.seoul_newyork_flights;
-                } else {
-                    return data.no_results;
-                }
-            } catch (error) {
-                console.error('Error loading dummy data:', error);
-                throw error;
-            }
-        } else {
-            // Use Gemini API in production
-            const geminiPrompt = `
-You are a helpful flight booking assistant. Extract parameters from the user query into a JSON object.
-- The JSON should contain: origin (IATA), destination (IATA), departDate (YYYY-MM-DD), returnDate (YYYY-MM-DD or null), adults (number), travelClass (ECONOMY, BUSINESS, FIRST), nonStop (boolean).
-- Also include a short, friendly "aiInsight" text summarizing what you understood.
-- Today is ${new Date().toISOString().split('T')[0]}.
-- User Query: "${query}"
-Example Response:
-\`\`\`json
-{
-  "origin": "ICN",
-  ""destination": "CJU",
-  "departDate": "2024-10-25",
-  "returnDate": null,
-  "adults": 1,
-  "travelClass": "ECONOMY",
-  "nonStop": true,
-  "aiInsight": "금요일에 서울에서 제주도로 가는 가장 저렴한 직항 항공편을 찾아볼게요!"
-}
-\`\`\`
-`;
-            try {
-                const result = await model.generateContent(geminiPrompt);
-                const responseText = result.response.text();
-                console.log("[Gemini Response]", responseText);
-                const jsonMatch = responseText.match(/```json\n([\s\S]*?)\n```/);
-                if (!jsonMatch) throw new Error("AI 응답 형식이 올바르지 않습니다.");
-                const params = JSON.parse(jsonMatch[1]);
-                // Mock flight data for Gemini API (replace with actual API call if available)
-                return {
-                    aiInsight: params.aiInsight,
-                    additional_recommendation: "주말에 출발하는 항공편은 가격이 오를 수 있으니, 평일 출발도 고려해보세요!",
-                    followUpActions: [
-                        { label: "더 저렴한 날짜 찾아줘", query: "더 싼 날짜는 언제가 좋을까?" },
-                        { label: "2명으로 검색", query: "2명이면 얼마야?" },
-                        { label: "호텔도 추천해줘", query: "이 근처에 묵을만한 호텔 추천해줘" }
-                    ],
-                    flights: [
-                        {
-                            airline: "Korean Air",
-                            airlineLogo: "../../image/airline_logos/korean_air.png",
-                            flightNumber: "KE081",
-                            origin: params.origin,
-                            destination: params.destination,
-                            departureTime: "2025-07-01T09:30:00",
-                            arrivalTime: "2025-07-01T12:40:00",
-                            duration: "14h 10m",
-                            price: { amount: 1200000, currency: "KRW" },
-                            direct: params.nonStop,
-                            recommendation: "recommend"
-                        }
-                    ]
-                };
-            } catch (error) {
-                console.error('Gemini API Error:', error);
-                throw error;
-            }
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query })
+        });
+
+        if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            throw new Error(err.error || err.message || `서버 오류 (${response.status})`);
         }
+
+        return response.json();
     }
 
     function renderResultsInModal(data) {
@@ -421,13 +410,26 @@ Example Response:
         aiLoadingStatus.style.display = 'none';
 
         // Populate results
-        aiInsightText.innerHTML = (data.aiInsight || "AI가 추천하는 최적의 항공편입니다.") +
-                                  ` <a href="./pages/flightResult/flightResult.html" class="more-link">더보기</a>`;
+        aiInsightText.textContent = (data.aiInsight || "AI가 추천하는 최적의 항공편입니다.");
+        
+        // Create and append the "더보기" link separately for safety
+        const moreLink = document.createElement('a');
+        moreLink.href = './pages/flightResult/flightResult.html';
+        moreLink.className = 'more-link';
+        moreLink.textContent = '더보기';
+        aiInsightText.appendChild(document.createTextNode(' '));
+        aiInsightText.appendChild(moreLink);
         aiFlightCardsContainer.innerHTML = ''; // Clear previous flight cards
 
-        if (data.flights && data.flights.length > 0) {
-            data.flights.forEach(flight => {
-                aiFlightCardsContainer.innerHTML += createFlightCardHTML(flight);
+        // Ensure data.flights is an array, default to empty array if not
+        const flights = Array.isArray(data.flights) ? data.flights : [];
+
+        if (flights.length > 0) {
+            flights.forEach(flight => {
+                const cardHtml = createFlightCardHTML(flight);
+                if (cardHtml) { // Only add non-empty cards
+                    aiFlightCardsContainer.innerHTML += cardHtml;
+                }
             });
             aiFlightCardsContainer.querySelectorAll('.select-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -455,13 +457,17 @@ Example Response:
             aiRecommendationContainer.style.display = 'none';
         }
 
-        if (data.followUpActions && data.followUpActions.length > 0) {
+        if (data.followUpActions && Array.isArray(data.followUpActions) && data.followUpActions.length > 0) {
             followUpButtonsContainer.innerHTML = ''; // Clear previous follow-up buttons
             data.followUpActions.forEach(action => {
-                followUpButtonsContainer.innerHTML += `
-                    <button class="ai-action-btn" data-query="${action.query}">
-                        <span class="icon">🤔</span> ${action.label}
+                if (action && typeof action === 'object') {
+                    const query = safeString(action.query, action.query);
+                    const label = safeString(action.label, action.label);
+                    followUpButtonsContainer.innerHTML += `
+                    <button class="ai-action-btn" data-query="${query}">
+                        <span class="icon">🤔</span> ${label}
                     </button>`;
+                }
             });
             aiFollowUpContainer.querySelector('.ai-chat-bubble').textContent = "💡 이런 것도 궁금하신가요?";
             aiFollowUpContainer.style.display = 'block';
@@ -506,8 +512,22 @@ Example Response:
         runLoadingSequence();
 
         try {
-            const data = await fetchFlightData(query);
-            renderResultsInModal(data);
+            const serverData = await fetchFlightData(query);
+
+            if (serverData.mode === 'CLARIFICATION') {
+                aiLoadingStatus.style.display = 'none';
+                aiStatusMessage.textContent = serverData.question || '추가 정보가 필요합니다.';
+                aiStatusMessage.style.display = 'block';
+            } else {
+                const renderData = {
+                    aiInsight: serverData.aiInsight,
+                    flights: serverData.flights || [],
+                    followUpActions: (serverData.followUpActions || []).map(a =>
+                        typeof a === 'string' ? { label: a, query: a } : a
+                    )
+                };
+                renderResultsInModal(renderData);
+            }
         } catch (error) {
             console.error("[AI Search Error]", error);
             // Hide loading status and show error message

@@ -1,5 +1,13 @@
 // script/amadeus_search.js
 // Flatpickr 인스턴스를 전역으로 노출
+
+function _apiUrl(path) {
+    if (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function') {
+        return window.EZAIR_CONFIG.getApiUrl(path);
+    }
+    const base = 'http://localhost:3000/api';
+    return base + (path.startsWith('/') ? path : '/' + path);
+}
 let departPicker;
 let returnPicker;
 let isRoundTrip = true; // Default to round trip
@@ -108,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updatePassengerLabel(); // Initial update on load
 
 
-    // Trip type (왕복/편도/다구간) button logic
+    // Trip type (왕복/편도/다구간) button logic — 이 파일이 처리하므로 플래그 설정
+    document.body.dataset.flightSearchInitialized = 'true';
     tripButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             console.log(`[Amadeus_Search] Trip type button clicked: ${this.textContent}`);
@@ -170,8 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("[Amadeus_Search] Displaying loading message for suggestions.");
 
         try {
-            // 백엔드 URL을 3000번 포트로 변경
-            const response = await fetch(`http://localhost:3000/api/search-locations?keyword=${encodeURIComponent(keyword)}`);
+            const response = await fetch(`${_apiUrl('/search-locations')}?keyword=${encodeURIComponent(keyword)}`);
             console.log("[Amadeus_Search] Location suggestions API call response status:", response.status);
 
             if (!response.ok) {
@@ -188,7 +196,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } catch (error) {
             console.error('[Amadeus_Search] Error fetching location suggestions:', error);
-            suggestionsDiv.innerHTML = `<div class="suggestion-item error">오류 발생: ${error.message}</div>`;
+            const errItem = document.createElement('div');
+            errItem.className = 'suggestion-item error';
+            errItem.textContent = `오류 발생: ${error.message}`;
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.appendChild(errItem);
             suggestionsDiv.style.display = 'block';
         }
     }
@@ -337,8 +349,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (noResultsMessage) noResultsMessage.style.display = 'none';
 
         try {
-            // 백엔드 URL을 3000번 포트로 변경
-            const response = await fetch('http://localhost:3000/api/search-flights', {
+            const response = await fetch(_apiUrl('/search-flights'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -368,7 +379,13 @@ document.addEventListener('DOMContentLoaded', function () {
             displayFlightOffers(data.data, data.dictionaries);
         } catch (error) {
             console.error('[Amadeus_Search] Error during flight search:', error);
-            if (flightResultsDiv) flightResultsDiv.innerHTML = `<p style="color: red;">항공편 검색 중 오류가 발생했습니다: ${error.message}</p>`;
+            if (flightResultsDiv) {
+                const errorP = document.createElement('p');
+                errorP.style.color = 'red';
+                errorP.textContent = `항공편 검색 중 오류가 발생했습니다: ${error.message}`;
+                flightResultsDiv.innerHTML = '';
+                flightResultsDiv.appendChild(errorP);
+            }
             if (noResultsMessage) noResultsMessage.style.display = 'block';
         }
     }
