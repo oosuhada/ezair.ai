@@ -8,11 +8,13 @@ build/
 .next/
 out/
 coverage/
+logs/
 
 # Tool caches
 .cache/
 .turbo/
 .vercel/
+.parcel-cache/
 
 # Local machine and logs
 .DS_Store
@@ -27,3 +29,5 @@ pnpm-debug.log*
 .env.*
 **/.env
 **/.env.*
+!.env.example
+!**/.env.example
