@@ -8,6 +8,16 @@ function _apiUrl(path) {
     const base = (window.EZAIR_CONFIG && window.EZAIR_CONFIG.API_BASE_URL) || '/api';
     return String(base).replace(/\/$/, '') + (path.startsWith('/') ? path : '/' + path);
 }
+
+const API_SERVER_HINT = 'API 서버가 실행 중인지 확인해주세요: http://localhost:3300/api/health';
+
+function _networkErrorMessage(error, fallback) {
+    const message = error && error.message ? error.message : fallback;
+    if (message === 'Failed to fetch' || message.includes('NetworkError')) {
+        return `${message}. ${API_SERVER_HINT}`;
+    }
+    return message;
+}
 let departPicker;
 let returnPicker;
 let isRoundTrip = true; // Default to round trip
@@ -198,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('[Amadeus_Search] Error fetching location suggestions:', error);
             const errItem = document.createElement('div');
             errItem.className = 'suggestion-item error';
-            errItem.textContent = `오류 발생: ${error.message}`;
+            errItem.textContent = `오류 발생: ${_networkErrorMessage(error, '위치 검색에 실패했습니다.')}`;
             suggestionsDiv.innerHTML = '';
             suggestionsDiv.appendChild(errItem);
             suggestionsDiv.style.display = 'block';
@@ -332,14 +342,26 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("[Amadeus_Search] Performing flight search with params:", params);
         const { origin, destination, departDate, returnDate, adults, travelClass, nonStop } = params;
 
+        const showFlightSearchMessage = (message, isError = true) => {
+            if (flightResultsSection) flightResultsSection.style.display = 'block';
+            if (flightResultsDiv) {
+                const messageP = document.createElement('p');
+                messageP.style.color = isError ? 'red' : '';
+                messageP.textContent = message;
+                flightResultsDiv.innerHTML = '';
+                flightResultsDiv.appendChild(messageP);
+            }
+            if (noResultsMessage) noResultsMessage.style.display = isError ? 'block' : 'none';
+        };
+
         if (!origin || !destination || !departDate) {
-            alert('출발지, 도착지, 가는 날은 필수 입력 사항입니다.');
+            showFlightSearchMessage('출발지, 도착지, 가는 날은 필수 입력 사항입니다.');
             console.warn("[Amadeus_Search] Missing required search parameters.");
             return;
         }
 
         if (window.isRoundTrip && !returnDate) {
-            alert('왕복 선택 시 오는 날도 입력해주세요.');
+            showFlightSearchMessage('왕복 선택 시 오는 날도 입력해주세요.');
             console.warn("[Amadeus_Search] Round trip selected but return date is missing.");
             return;
         }
@@ -379,14 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
             displayFlightOffers(data.data, data.dictionaries);
         } catch (error) {
             console.error('[Amadeus_Search] Error during flight search:', error);
-            if (flightResultsDiv) {
-                const errorP = document.createElement('p');
-                errorP.style.color = 'red';
-                errorP.textContent = `항공편 검색 중 오류가 발생했습니다: ${error.message}`;
-                flightResultsDiv.innerHTML = '';
-                flightResultsDiv.appendChild(errorP);
-            }
-            if (noResultsMessage) noResultsMessage.style.display = 'block';
+            showFlightSearchMessage(`항공편 검색 중 오류가 발생했습니다: ${_networkErrorMessage(error, '항공편 검색에 실패했습니다.')}`);
         }
     }
     window.performFlightSearch = performFlightSearch; // Expose globally

@@ -384,9 +384,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function fetchFlightData(query) {
+        const getAiFlightSearchUrl = () => {
+            if (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function') {
+                return window.EZAIR_CONFIG.getApiUrl('/ai/flight-search');
+            }
+
+            const configuredBase = window.EZAIR_API_BASE_URL;
+            const { hostname, port } = window.location;
+            const isLocalStaticServer = ['5500', '5501', '5173'].includes(port);
+            const fallbackBase = configuredBase || (
+                (hostname === 'localhost' || hostname === '127.0.0.1') && isLocalStaticServer
+                    ? 'http://localhost:3300/api'
+                    : '/api'
+            );
+
+            return String(fallbackBase).replace(/\/$/, '') + '/ai/flight-search';
+        };
+
         const url = (window.EZAIR_CONFIG && typeof window.EZAIR_CONFIG.getApiUrl === 'function')
             ? window.EZAIR_CONFIG.getApiUrl('/ai/flight-search')
-            : '/api/ai/flight-search';
+            : getAiFlightSearchUrl();
 
         const response = await fetch(url, {
             method: 'POST',
@@ -538,7 +555,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hide loading status and show error message
             aiLoadingStatus.style.display = 'none';
             aiFinalResults.style.display = 'none'; // Ensure results are hidden
-            aiStatusMessage.textContent = `오류가 발생했습니다: ${error.message}`;
+            const errorMessage = error && error.message ? error.message : 'AI 검색에 실패했습니다.';
+            const serverHint = 'API 서버가 실행 중인지 확인해주세요: http://localhost:3300/api/health';
+            aiStatusMessage.textContent = errorMessage === 'Failed to fetch' || errorMessage.includes('NetworkError')
+                ? `오류가 발생했습니다: ${errorMessage}. ${serverHint}`
+                : `오류가 발생했습니다: ${errorMessage}`;
             aiStatusMessage.style.display = 'block';
 
             // Add retry button if it's not already there
